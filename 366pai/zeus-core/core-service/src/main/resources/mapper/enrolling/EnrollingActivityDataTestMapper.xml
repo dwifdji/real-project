@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月16日 13时57分16秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingActivityDataTestMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingActivityDataTest">
+	<result column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" property="content" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, content, activity_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.enrolling_activity_data_test
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingActivityDataTestCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.enrolling_activity_data_test
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.EnrollingActivityDataTest">
+    insert into zeus.enrolling_activity_data_test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="content != null">
+        content, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingActivityDataTest">
+    update zeus.enrolling_activity_data_test
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

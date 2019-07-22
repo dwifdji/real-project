@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月08日 15时58分33秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.disposal.mapper.TDisposeShowMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.disposal.TDisposeShow">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="provider_id" jdbcType="INTEGER" property="providerId" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, provider_id, city_id, activity_id, del_flag, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_dispose_show
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.disposal.TDisposeShowCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_dispose_show
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="providerId != null">
+        AND provider_id = #{providerId,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.disposal.TDisposeShow">
+    insert into zeus.t_dispose_show
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="providerId != null">
+        provider_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.disposal.TDisposeShow">
+    update zeus.t_dispose_show
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getShowProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    SELECT
+      t2.id id,
+      t2.company_name companyName,
+      t2.contact_name contactName,
+      t2.contact_mobile contactMobile
+    FROM
+	  zeus.t_dispose_show t1
+	  LEFT JOIN zeus.t_dispose_provider t2 ON t1.provider_id = t2.id
+    WHERE
+	  t1.del_flag = 0
+	  <if test="activityId != null and activityId != ''"> AND t1.activity_id = #{activityId}</if>
+    ORDER BY t1.id DESC
+  </select>
+
+  <select id="getFirstLevelShowProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select * from (
+      select
+          t2.id as id,
+          t2.company_name as companyName,
+          t2.contact_name as contactName,
+          t2.contact_mobile as contactMobile,
+          t1.level_flag as levelFlag
+      from
+          zeus.t_dispose_level t1
+          left join zeus.t_dispose_provider t2 on t1.provider_id = t2.id
+      where
+          t1.replace_time = '0'
+          and t1.city_id = #{cityId}
+          and t1.level_flag = '10'
+    union
+    select
+        t2.id as id,
+        t2.company_name as companyName,
+        t2.contact_name as contactName,
+        t2.contact_mobile as contactMobile,
+        '00' as levelFlag
+    from
+        zeus.t_dispose_show t1
+        left join zeus.t_dispose_provider t2 on t1.provider_id = t2.id
+    where
+        t1.del_flag = 0
+        <if test="activityId != null and activityId != ''">and t1.activity_id = #{activityId}</if>
+        and t1.provider_id not in (select provider_id from zeus.t_dispose_level where level_flag ='10' and replace_time = '0' and city_id = #{cityId})
+    ) tmp
+    order by levelFlag, id desc
+  </select>
+</mapper>

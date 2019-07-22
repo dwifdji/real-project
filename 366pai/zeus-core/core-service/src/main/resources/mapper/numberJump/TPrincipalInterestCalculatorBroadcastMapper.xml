@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 17时59分07秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.numberJump.mapper.TPrincipalInterestCalculatorBroadcastMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorBroadcast">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="calculator_id" jdbcType="INTEGER" property="calculatorId" />
+    <result column="record_date" jdbcType="DATE" property="recordDate" />
+    <result column="days" jdbcType="INTEGER" property="days" />
+    <result column="today_interest" jdbcType="DECIMAL" property="todayInterest" />
+    <result column="income" jdbcType="DECIMAL" property="income" />
+    <result column="read_flag" jdbcType="BOOLEAN" property="readFlag" />
+    <result column="is_delete" jdbcType="BOOLEAN" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, calculator_id, record_date, days, today_interest, income,
+    read_flag, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_principal_interest_calculator_broadcast
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.numberJump.TPrincipalInterestCalculatorBroadcastCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_principal_interest_calculator_broadcast
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="calculatorId != null">
+        AND calculator_id = #{calculatorId,jdbcType=INTEGER}
+      </if>
+      <if test="recordDate != null">
+        AND record_date = #{recordDate,jdbcType=DATE}
+      </if>
+      <if test="days != null">
+        AND days = #{days,jdbcType=INTEGER}
+      </if>
+      <if test="todayInterest != null">
+        AND today_interest = #{todayInterest,jdbcType=DECIMAL}
+      </if>
+      <if test="income != null">
+        AND income = #{income,jdbcType=DECIMAL}
+      </if>
+      <if test="readFlag != null">
+        AND read_flag = #{readFlag,jdbcType=BIT}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorBroadcast">
+    insert into zeus.t_principal_interest_calculator_broadcast
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="calculatorId != null">
+        calculator_id,
+      </if>
+      <if test="recordDate != null">
+        record_date,
+      </if>
+      <if test="days != null">
+        days,
+      </if>
+      <if test="todayInterest != null">
+        today_interest,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="readFlag != null">
+        read_flag,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="calculatorId != null">
+        #{calculatorId,jdbcType=INTEGER},
+      </if>
+      <if test="recordDate != null">
+        #{recordDate,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=INTEGER},
+      </if>
+      <if test="todayInterest != null">
+        #{todayInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=DECIMAL},
+      </if>
+      <if test="readFlag != null">
+        #{readFlag,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorBroadcast">
+    update zeus.t_principal_interest_calculator_broadcast
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="calculatorId != null">
+        calculator_id = #{calculatorId,jdbcType=INTEGER},
+      </if>
+      <if test="recordDate != null">
+        record_date = #{recordDate,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        days = #{days,jdbcType=INTEGER},
+      </if>
+      <if test="todayInterest != null">
+        today_interest = #{todayInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=DECIMAL},
+      </if>
+      <if test="readFlag != null">
+        read_flag = #{readFlag,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="findLatestByCalculatorId" resultType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorBroadcast">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_principal_interest_calculator_broadcast b
+    where  b.is_delete=0 and b.calculator_id=#{calculatorId}
+    order by b.record_date desc
+    limit 0,1
+  </select>
+
+  <select id="findByCalculatorId" resultType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorBroadcast">
+    select b.*
+    from zeus.t_principal_interest_calculator_broadcast b
+    where  b.is_delete=0 and b.calculator_id=#{calculatorId}
+    order by b.record_date desc
+  </select>
+  <select id="getUnreadBroadcastCount" resultType="java.lang.Integer">
+     select count(pcb.id) from t_principal_interest_calculator t
+     left JOIN t_principal_interest_calculator_broadcast pcb on pcb.calculator_id = t.id
+     where t.ext_bind_id = #{extBindId} and t.pay_flag = 1 and t.is_delete = 0 and t.closed_flag = 0
+     and pcb.read_flag =0
+  </select>
+
+</mapper>

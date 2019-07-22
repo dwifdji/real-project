@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CVMConfig>
+	<CRLContext>
+		<RetryPolicy>60,600,6000</RetryPolicy>
+		<NotCheckCRL>true</NotCheckCRL>
+		<!--若NotCheckCRL设置为true，则将不检查CRL是否由指定CA所颁发-->
+		<CrlUrl>
+			http://itruschina.com/public/itruscrl?CA=2E36F0E9D19052AC22D58C7C287E5223222893BD
+		</CrlUrl>
+		<CaFileName>cafiles/testca.cer</CaFileName>
+	</CRLContext>
+</CVMConfig>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月29日 13时21分37秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaBidderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersonaBidder">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="persona_id" jdbcType="INTEGER" property="personaId" />
+	<result column="fund_source" jdbcType="CHAR" property="fundSource" />
+	<result column="is_need_funding" jdbcType="BIT" property="isNeedFunding" />
+	<result column="funding_level" jdbcType="CHAR" property="fundingLevel" />
+	<result column="acceptable_funding_rate" jdbcType="DECIMAL" property="acceptableFundingRate" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="asset_property_type" jdbcType="VARCHAR" property="assetPropertyType" />
+	<result column="prospective_annual_income" jdbcType="DECIMAL" property="prospectiveAnnualIncome" />
+	<result column="responsible_investigation" jdbcType="CHAR" property="responsibleInvestigation" />
+	<result column="dispoal_investigation" jdbcType="CHAR" property="dispoalInvestigation" />
+	<result column="return_period" jdbcType="DECIMAL" property="returnPeriod" />
+	<result column="remain_invest_amount" jdbcType="DECIMAL" property="remainInvestAmount" />
+	<result column="current_hold_asset_status" jdbcType="LONGVARCHAR" property="currentHoldAssetStatus" />
+	<result column="annual_purchase_plan" jdbcType="LONGVARCHAR" property="annualPurchasePlan" />
+    <result column="investment_area" jdbcType="VARCHAR" property="investmentArea" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, persona_id, fund_source, is_need_funding, funding_level, acceptable_funding_rate, 
+	asset_type, asset_property_type, prospective_annual_income, responsible_investigation, dispoal_investigation, return_period, 
+	remain_invest_amount, current_hold_asset_status, annual_purchase_plan, investment_area, is_delete, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_persona_bidder
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaBidderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_persona_bidder
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="personaId != null">
+        AND persona_id = #{personaId,jdbcType=INTEGER}
+      </if>
+      <if test="fundSource != null">
+        AND fund_source = #{fundSource,jdbcType=CHAR}
+      </if>
+      <if test="isNeedFunding != null">
+        AND is_need_funding = #{isNeedFunding,jdbcType=BIT}
+      </if>
+      <if test="fundingLevel != null">
+        AND funding_level = #{fundingLevel,jdbcType=CHAR}
+      </if>
+      <if test="acceptableFundingRate != null">
+        AND acceptable_funding_rate = #{acceptableFundingRate,jdbcType=DECIMAL}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="assetPropertyType != null">
+        AND asset_property_type = #{assetPropertyType,jdbcType=VARCHAR}
+      </if>
+      <if test="prospectiveAnnualIncome != null">
+        AND prospective_annual_income = #{prospectiveAnnualIncome,jdbcType=DECIMAL}
+      </if>
+      <if test="responsibleInvestigation != null">
+        AND responsible_investigation = #{responsibleInvestigation,jdbcType=CHAR}
+      </if>
+      <if test="dispoalInvestigation != null">
+        AND dispoal_investigation = #{dispoalInvestigation,jdbcType=CHAR}
+      </if>
+      <if test="returnPeriod != null">
+        AND return_period = #{returnPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="remainInvestAmount != null">
+        AND remain_invest_amount = #{remainInvestAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="currentHoldAssetStatus != null">
+        AND current_hold_asset_status = #{currentHoldAssetStatus,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="annualPurchasePlan != null">
+        AND annual_purchase_plan = #{annualPurchasePlan,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersonaBidder">
+    insert into zeus.t_persona_bidder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="personaId != null">
+        persona_id, 
+      </if>
+      <if test="fundSource != null">
+        fund_source, 
+      </if>
+      <if test="isNeedFunding != null">
+        is_need_funding, 
+      </if>
+      <if test="fundingLevel != null">
+        funding_level, 
+      </if>
+      <if test="acceptableFundingRate != null">
+        acceptable_funding_rate, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type, 
+      </if>
+      <if test="prospectiveAnnualIncome != null">
+        prospective_annual_income, 
+      </if>
+      <if test="responsibleInvestigation != null">
+        responsible_investigation, 
+      </if>
+      <if test="dispoalInvestigation != null">
+        dispoal_investigation, 
+      </if>
+      <if test="returnPeriod != null">
+        return_period, 
+      </if>
+      <if test="remainInvestAmount != null">
+        remain_invest_amount, 
+      </if>
+      <if test="currentHoldAssetStatus != null">
+        current_hold_asset_status, 
+      </if>
+      <if test="annualPurchasePlan != null">
+        annual_purchase_plan, 
+      </if>
+      <if test="investmentArea != null">
+        investment_area,
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="fundSource != null">
+        #{fundSource,jdbcType=CHAR},
+      </if>
+      <if test="isNeedFunding != null">
+        #{isNeedFunding,jdbcType=BIT},
+      </if>
+      <if test="fundingLevel != null">
+        #{fundingLevel,jdbcType=CHAR},
+      </if>
+      <if test="acceptableFundingRate != null">
+        #{acceptableFundingRate,jdbcType=DECIMAL},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="prospectiveAnnualIncome != null">
+        #{prospectiveAnnualIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="responsibleInvestigation != null">
+        #{responsibleInvestigation,jdbcType=CHAR},
+      </if>
+      <if test="dispoalInvestigation != null">
+        #{dispoalInvestigation,jdbcType=CHAR},
+      </if>
+      <if test="returnPeriod != null">
+        #{returnPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="remainInvestAmount != null">
+        #{remainInvestAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="currentHoldAssetStatus != null">
+        #{currentHoldAssetStatus,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="annualPurchasePlan != null">
+        #{annualPurchasePlan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="investmentArea != null">
+        #{investmentArea,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersonaBidder">
+    update zeus.t_persona_bidder
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        persona_id = #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="fundSource != null">
+        fund_source = #{fundSource,jdbcType=CHAR},
+      </if>
+      <if test="isNeedFunding != null">
+        is_need_funding = #{isNeedFunding,jdbcType=BIT},
+      </if>
+      <if test="fundingLevel != null">
+        funding_level = #{fundingLevel,jdbcType=CHAR},
+      </if>
+      <if test="acceptableFundingRate != null">
+        acceptable_funding_rate = #{acceptableFundingRate,jdbcType=DECIMAL},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type = #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="prospectiveAnnualIncome != null">
+        prospective_annual_income = #{prospectiveAnnualIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="responsibleInvestigation != null">
+        responsible_investigation = #{responsibleInvestigation,jdbcType=CHAR},
+      </if>
+      <if test="dispoalInvestigation != null">
+        dispoal_investigation = #{dispoalInvestigation,jdbcType=CHAR},
+      </if>
+      <if test="returnPeriod != null">
+        return_period = #{returnPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="remainInvestAmount != null">
+        remain_invest_amount = #{remainInvestAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="currentHoldAssetStatus != null">
+        current_hold_asset_status = #{currentHoldAssetStatus,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="annualPurchasePlan != null">
+        annual_purchase_plan = #{annualPurchasePlan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="investmentArea != null">
+        investment_area = #{investmentArea,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

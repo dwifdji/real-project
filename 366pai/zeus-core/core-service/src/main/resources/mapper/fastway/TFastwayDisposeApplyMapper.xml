@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月26日 10时48分58秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.fastway.mapper.TFastwayDisposeApplyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.fastway.TFastwayDisposeApply">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="apply_filed" jdbcType="VARCHAR" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" property="applyFiled" />
+	<result column="apply_status" jdbcType="VARCHAR" property="applyStatus" />
+	<result column="apply_type" jdbcType="VARCHAR" property="applyType" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="refuse_reason" jdbcType="VARCHAR" property="refuseReason" />
+    <result property="operatorTime" jdbcType="TIMESTAMP" column="operator_time"/>
+    <result property="source" jdbcType="VARCHAR" column="source"/>
+    <result property="beginDate" jdbcType="TIMESTAMP" column="begin_date"/>
+    <result property="endDate" jdbcType="TIMESTAMP" column="end_date"/>
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, party_id, apply_filed, apply_status, apply_type, 
+	operator_id, remark, refuse_reason, operator_time, source, begin_date,end_date,create_time, update_time, is_del,
+	 business_operator_id, open_account_operator_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_fastway_dispose_apply
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.fastway.TFastwayDisposeApplyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_fastway_dispose_apply
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="applyFiled != null">
+        AND apply_filed = #{applyFiled,jdbcType=VARCHAR}
+      </if>
+      <if test="applyStatus != null">
+        AND apply_status = #{applyStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="applyType != null">
+        AND apply_type = #{applyType,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="refuseReason != null">
+        AND refuse_reason = #{refuseReason,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorTime != null">
+        AND operator_time = #{operatorTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="beginDate != null">
+        AND begin_date = #{beginDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=BIT}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.fastway.TFastwayDisposeApply" keyProperty="id" useGeneratedKeys="true">
+    insert into zeus.t_fastway_dispose_apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="applyFiled != null">
+        apply_filed, 
+      </if>
+      <if test="applyStatus != null">
+        apply_status, 
+      </if>
+      <if test="applyType != null">
+        apply_type, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason, 
+      </if>
+      <if test="operatorTime != null">
+        operator_time,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="beginDate != null">
+        begin_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="applyFiled != null">
+        #{applyFiled,jdbcType=VARCHAR ,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="applyStatus != null">
+        #{applyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null">
+        #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseReason != null">
+        #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.fastway.TFastwayDisposeApply">
+    update zeus.t_fastway_dispose_apply
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="applyFiled != null">
+        apply_filed = #{applyFiled,jdbcType=VARCHAR ,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="applyStatus != null">
+        apply_status = #{applyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null">
+        apply_type = #{applyType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="beginDate != null">
+        begin_date = #{beginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findByParam" resultMap="BaseResultMap">
+      select
+      t1.*,
+      t2.mobile
+      from
+      zeus.t_fastway_dispose_apply t1 left join zeus.t_account t2 on t1.account_id = t2.id
+      <where>
+      t1.is_del = 0
+      <if test="applyStatus != '' and applyStatus != null ">
+        and t1.apply_status = #{applyStatus}
+      </if>
+      <if test="query != '' and query != null">
+        and (
+           (t1.apply_type = 'lawOffice' and JSON_EXTRACT(t1.apply_filed,'$.lawOffice.lawOffice') LIKE CONCAT ('%',#{query},'%') )
+        or (t1.apply_type = 'lawyer'    and JSON_EXTRACT(t1.apply_filed,'$.lawyer.cardName')     LIKE CONCAT ('%',#{query},'%') )
+        or (t2.mobile LIKE CONCAT ('%', #{query}, '%'))
+        )
+      </if>
+      </where>
+      ORDER BY t1.id DESC, t1.operator_time DESC
+  </select>
+</mapper>

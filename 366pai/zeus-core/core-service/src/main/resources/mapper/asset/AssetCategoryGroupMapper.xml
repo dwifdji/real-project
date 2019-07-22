@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetCategoryGroupMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetCategoryGroup">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="business_type" jdbcType="CHAR" property="businessType" />
+	<result column="deal_mode" jdbcType="CHAR" property="dealMode" />
+	<result column="enabled" jdbcType="BIT" property="enabled" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, business_type, deal_mode, enabled
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.asset_category_group
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetCategoryGroupCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.asset_category_group
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="businessType != null">
+        AND business_type = #{businessType,jdbcType=CHAR}
+      </if>
+      <if test="dealMode != null">
+        AND deal_mode = #{dealMode,jdbcType=CHAR}
+      </if>
+      <if test="enabled != null">
+        AND enabled = #{enabled,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.AssetCategoryGroup">
+    insert into zeus.asset_category_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="businessType != null">
+        business_type, 
+      </if>
+      <if test="dealMode != null">
+        deal_mode, 
+      </if>
+      <if test="enabled != null">
+        enabled, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="dealMode != null">
+        #{dealMode,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.AssetCategoryGroup">
+    update zeus.asset_category_group
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="dealMode != null">
+        deal_mode = #{dealMode,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

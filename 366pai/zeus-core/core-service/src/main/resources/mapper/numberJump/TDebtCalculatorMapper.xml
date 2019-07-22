@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 17时06分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.numberJump.mapper.TDebtCalculatorMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.numberJump.TDebtCalculator">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="ext_bind_id" jdbcType="INTEGER" property="extBindId" />
+	<result column="project_name" jdbcType="VARCHAR" property="projectName" />
+	<result column="debt_principal" jdbcType="DECIMAL" property="debtPrincipal" />
+	<result column="debt_interest" jdbcType="DECIMAL" property="debtInterest" />
+	<result column="maximum_debt" jdbcType="DECIMAL" property="maximumDebt" />
+	<result column="liquidation_amount" jdbcType="DECIMAL" property="liquidationAmount" />
+	<result column="transfer_amount" jdbcType="DECIMAL" property="transferAmount" />
+	<result column="gp_amount" jdbcType="DECIMAL" property="gpAmount" />
+	<result column="lp_amount" jdbcType="DECIMAL" property="lpAmount" />
+	<result column="with_funding_annualized_rate" jdbcType="DECIMAL" property="withFundingAnnualizedRate" />
+	<result column="with_funding_period" jdbcType="DECIMAL" property="withFundingPeriod" />
+	<result column="disposal_annualized_rate" jdbcType="DECIMAL" property="disposalAnnualizedRate" />
+	<result column="disposal_period" jdbcType="DECIMAL" property="disposalPeriod" />
+	<result column="annualized_return" jdbcType="DECIMAL" property="annualizedReturn" />
+	<result column="estimated_income" jdbcType="DECIMAL" property="estimatedIncome" />
+	<result column="with_funding_amount" jdbcType="DECIMAL" property="withFundingAmount" />
+	<result column="disposal_amount" jdbcType="DECIMAL" property="disposalAmount" />
+	<result column="due_diligence_amount" jdbcType="DECIMAL" property="dueDiligenceAmount" />
+	<result column="misc_amount" jdbcType="DECIMAL" property="miscAmount" />
+	<result column="total_cost" jdbcType="DECIMAL" property="totalCost" />
+	<result column="pay_flag" jdbcType="BIT" property="payFlag" />
+	<result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
+    <result column="project_manager" jdbcType="VARCHAR" property="projectManager" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="closed_flag" jdbcType="BIT" property="closedFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, ext_bind_id, project_name, debt_principal, debt_interest, maximum_debt, 
+	liquidation_amount, transfer_amount, gp_amount, lp_amount, with_funding_annualized_rate,
+	with_funding_period, disposal_annualized_rate, disposal_period, annualized_return, estimated_income, with_funding_amount,
+	disposal_amount, due_diligence_amount, misc_amount, total_cost, pay_flag, pay_amount, 
+	is_delete, create_time, update_time,project_manager,province,city,area,closed_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_debt_calculator
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.numberJump.TDebtCalculatorCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_debt_calculator
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="extBindId != null">
+        AND ext_bind_id = #{extBindId,jdbcType=INTEGER}
+      </if>
+      <if test="projectName != null">
+        AND project_name = #{projectName,jdbcType=VARCHAR}
+      </if>
+      <if test="debtPrincipal != null">
+        AND debt_principal = #{debtPrincipal,jdbcType=DECIMAL}
+      </if>
+      <if test="debtInterest != null">
+        AND debt_interest = #{debtInterest,jdbcType=DECIMAL}
+      </if>
+      <if test="maximumDebt != null">
+        AND maximum_debt = #{maximumDebt,jdbcType=DECIMAL}
+      </if>
+      <if test="liquidationAmount != null">
+        AND liquidation_amount = #{liquidationAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="transferAmount != null">
+        AND transfer_amount = #{transferAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="gpAmount != null">
+        AND gp_amount = #{gpAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="lpAmount != null">
+        AND lp_amount = #{lpAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="withFundingAnnualizedRate != null">
+        AND with_funding_annualized_rate = #{withFundingAnnualizedRate,jdbcType=DECIMAL}
+      </if>
+      <if test="withFundingPeriod != null">
+        AND with_funding_period = #{withFundingPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="disposalAnnualizedRate != null">
+        AND disposal_annualized_rate = #{disposalAnnualizedRate,jdbcType=DECIMAL}
+      </if>
+      <if test="disposalPeriod != null">
+        AND disposal_period = #{disposalPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="annualizedReturn != null">
+        AND annualized_return = #{annualizedReturn,jdbcType=DECIMAL}
+      </if>
+      <if test="estimatedIncome != null">
+        AND estimated_income = #{estimatedIncome,jdbcType=DECIMAL}
+      </if>
+      <if test="withFundingAmount != null">
+        AND with_funding_amount = #{withFundingAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="disposalAmount != null">
+        AND disposal_amount = #{disposalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="dueDiligenceAmount != null">
+        AND due_diligence_amount = #{dueDiligenceAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="miscAmount != null">
+        AND misc_amount = #{miscAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="totalCost != null">
+        AND total_cost = #{totalCost,jdbcType=DECIMAL}
+      </if>
+      <if test="payFlag != null">
+        AND pay_flag = #{payFlag,jdbcType=BIT}
+      </if>
+      <if test="payAmount != null">
+        AND pay_amount = #{payAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="projectManager != null">
+        AND project_manager = #{projectManager,jdbcType=VARCHAR}
+      </if>
+      <if test="province != null">
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="area != null">
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="closedFlag != null">
+        AND closed_flag = #{closedFlag,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.numberJump.TDebtCalculator" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_debt_calculator
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id, 
+      </if>
+      <if test="projectName != null">
+        project_name, 
+      </if>
+      <if test="debtPrincipal != null">
+        debt_principal, 
+      </if>
+      <if test="debtInterest != null">
+        debt_interest, 
+      </if>
+      <if test="maximumDebt != null">
+        maximum_debt, 
+      </if>
+      <if test="liquidationAmount != null">
+        liquidation_amount, 
+      </if>
+      <if test="transferAmount != null">
+        transfer_amount, 
+      </if>
+      <if test="gpAmount != null">
+        gp_amount, 
+      </if>
+      <if test="lpAmount != null">
+        lp_amount, 
+      </if>
+      <if test="withFundingAnnualizedRate != null">
+        with_funding_annualized_rate, 
+      </if>
+      <if test="withFundingPeriod != null">
+        with_funding_period,
+      </if>
+      <if test="disposalAnnualizedRate != null">
+        disposal_annualized_rate, 
+      </if>
+      <if test="disposalPeriod != null">
+        disposal_period, 
+      </if>
+      <if test="annualizedReturn != null">
+        annualized_return, 
+      </if>
+      <if test="estimatedIncome != null">
+        estimated_income, 
+      </if>
+      <if test="withFundingAmount != null">
+        with_funding_amount, 
+      </if>
+      <if test="disposalAmount != null">
+        disposal_amount, 
+      </if>
+      <if test="dueDiligenceAmount != null">
+        due_diligence_amount, 
+      </if>
+      <if test="miscAmount != null">
+        misc_amount, 
+      </if>
+      <if test="totalCost != null">
+        total_cost, 
+      </if>
+      <if test="payFlag != null">
+        pay_flag, 
+      </if>
+      <if test="payAmount != null">
+        pay_amount, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+
+      <if test="projectManager != null">
+       project_manager,
+      </if>
+      <if test="province != null">
+       province ,
+      </if>
+      <if test="city != null">
+       city ,
+      </if>
+      <if test="area != null">
+       area ,
+      </if>
+      <if test="closedFlag != null">
+        closed_flag ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtPrincipal != null">
+        #{debtPrincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="debtInterest != null">
+        #{debtInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="maximumDebt != null">
+        #{maximumDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="liquidationAmount != null">
+        #{liquidationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transferAmount != null">
+        #{transferAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gpAmount != null">
+        #{gpAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lpAmount != null">
+        #{lpAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingAnnualizedRate != null">
+        #{withFundingAnnualizedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingPeriod != null">
+        #{withFundingPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalAnnualizedRate != null">
+        #{disposalAnnualizedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalPeriod != null">
+        #{disposalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="annualizedReturn != null">
+        #{annualizedReturn,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatedIncome != null">
+        #{estimatedIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingAmount != null">
+        #{withFundingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalAmount != null">
+        #{disposalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dueDiligenceAmount != null">
+        #{dueDiligenceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="miscAmount != null">
+        #{miscAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCost != null">
+        #{totalCost,jdbcType=DECIMAL},
+      </if>
+      <if test="payFlag != null">
+        #{payFlag,jdbcType=BIT},
+      </if>
+      <if test="payAmount != null">
+        #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="projectManager != null">
+        #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="closedFlag != null">
+        #{closedFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.numberJump.TDebtCalculator">
+    update zeus.t_debt_calculator
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id = #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtPrincipal != null">
+        debt_principal = #{debtPrincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="debtInterest != null">
+        debt_interest = #{debtInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="maximumDebt != null">
+        maximum_debt = #{maximumDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="liquidationAmount != null">
+        liquidation_amount = #{liquidationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transferAmount != null">
+        transfer_amount = #{transferAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="gpAmount != null">
+        gp_amount = #{gpAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lpAmount != null">
+        lp_amount = #{lpAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingAnnualizedRate != null">
+        with_funding_annualized_rate = #{withFundingAnnualizedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingPeriod != null">
+        with_funding_period = #{withFundingPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalAnnualizedRate != null">
+        disposal_annualized_rate = #{disposalAnnualizedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalPeriod != null">
+        disposal_period = #{disposalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="annualizedReturn != null">
+        annualized_return = #{annualizedReturn,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatedIncome != null">
+        estimated_income = #{estimatedIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="withFundingAmount != null">
+        with_funding_amount = #{withFundingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalAmount != null">
+        disposal_amount = #{disposalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dueDiligenceAmount != null">
+        due_diligence_amount = #{dueDiligenceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="miscAmount != null">
+        misc_amount = #{miscAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCost != null">
+        total_cost = #{totalCost,jdbcType=DECIMAL},
+      </if>
+      <if test="payFlag != null">
+        pay_flag = #{payFlag,jdbcType=BIT},
+      </if>
+      <if test="payAmount != null">
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="projectManager != null">
+        project_manager = #{projectManager,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="closedFlag != null">
+        closed_flag = #{closedFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getHistoryList" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.CalculatorHistory">
+      select t.*
+      from (
+        select d.id,d.project_name projectName,'1' type,d.total_cost totalCost,
+        d.estimated_income estimatedIncome,d.annualized_return annualizedReturn,d.disposal_period disposalPeriod,d.create_time
+        from zeus.t_debt_calculator d
+        where d.ext_bind_id=#{extBindId} and d.is_delete=0
+        union all
+        select d.id,d.project_name projectName,'0' type,d.total_cost totalCost,
+        0 estimatedIncome,0 annualizedReturn,0 disposalPeriod,d.create_time
+        from zeus.t_principal_interest_calculator d
+        where d.ext_bind_id=#{extBindId} and d.is_delete=0
+      ) t
+      order by t.create_time desc
+  </select>
+
+  <select id="getHistoryListV2" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.CalculatorHistory">
+        select d.id,d.project_name projectName,'1' as type, convert(d.total_cost/10000 ,decimal(20,6)) as totalCost,d.project_manager as projectManager,d.province as province,d.city as city,d.area as area,
+    convert(d.estimated_income/10000,decimal(20,6)) as estimatedIncome,d.annualized_return annualizedReturn,d.disposal_period disposalPeriod,d.create_time
+        from zeus.t_debt_calculator d
+        where d.ext_bind_id=#{extBindId} and d.is_delete=0
+          <if test="projectName != null  and projectName != '' ">
+              AND project_name = #{projectName,jdbcType=VARCHAR}
+          </if>
+        <if test="projectManager != null  and projectManager != '' ">
+          AND project_manager = #{projectManager,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+          AND province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+          AND  city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null and area != '' ">
+          AND area = #{area,jdbcType=VARCHAR}
+        </if>
+        order by d.create_time desc
+
+  </select>
+
+  <select id="getNeedToBroadcastList" parameterType="java.util.Map" resultType="com._360pai.core.model.numberJump.TDebtCalculator">
+        select d.*
+        from zeus.t_debt_calculator d
+        left join zeus.t_debt_calculator_broadcast b on b.calculator_id=d.id and b.record_date=#{recordDate} and b.is_delete=0
+        where d.pay_flag=1 and d.is_delete=0 and d.closed_flag = 0 and b.id is null
+  </select>
+
+
+    <select id="getMyBroadcastList" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.CalculatorBroadcast">
+        select t.*
+        from (
+          select c.id,c.project_name projectName,'1' type,c.create_time
+          from zeus.t_debt_calculator c
+          where c.ext_bind_id=#{extBindId} and c.pay_flag=1 and c.is_delete=0
+          union all
+          select c.id,c.project_name projectName,'0' type,c.create_time
+          from zeus.t_principal_interest_calculator c
+          where c.ext_bind_id=#{extBindId} and c.pay_flag=1 and c.is_delete=0
+        ) t
+        order by t.create_time desc
+  </select>
+
+    <select id="getMyBroadcastListV2" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.CalculatorBroadcast">
+
+        select c.id,c.project_name projectName,'1' type,c.create_time,c.province as province,c.city as city,c.area as area,c.project_manager as projectManager
+    ,c.closed_flag as closedFlag
+        from zeus.t_debt_calculator c where c.ext_bind_id=#{extBindId} and c.pay_flag=1 and c.is_delete=0
+      <if test="projectName != null  and projectName != '' ">
+          AND project_name = #{projectName,jdbcType=VARCHAR}
+      </if>
+         <if test="projectManager != null  and projectManager != '' ">
+          AND project_manager = #{projectManager,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+          AND province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+          AND  city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null and area != '' ">
+          AND area = #{area,jdbcType=VARCHAR}
+        </if>
+        order by c.create_time desc
+
+  </select>
+
+  <select id="getUnreadBroadcastCount" resultType="int">
+      select sum(t.cnt)
+      from (
+        select count(b.id) cnt
+        from zeus.t_debt_calculator c
+        inner join zeus.t_debt_calculator_broadcast b on b.calculator_id=c.id and b.read_flag=0 and b.is_delete=0
+        where c.ext_bind_id=#{extBindId} and c.pay_flag=1 and c.is_delete=0 and c.closed_flag = 0
+        union all
+        select count(b.id) cnt
+        from zeus.t_principal_interest_calculator c
+        inner join zeus.t_principal_interest_calculator_broadcast b on b.calculator_id=c.id and b.read_flag=0 and b.is_delete=0
+        where c.ext_bind_id=#{extBindId} and c.pay_flag=1 and c.is_delete=0 and c.closed_flag = 0
+      ) t
+  </select>
+</mapper>

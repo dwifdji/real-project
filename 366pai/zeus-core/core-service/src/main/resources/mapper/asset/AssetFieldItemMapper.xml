@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetFieldItemMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetFieldItem">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+        <result column="field_id" jdbcType="INTEGER" property="fieldId"/>
+        <result column="required" jdbcType="BIT" property="required"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, category_id, group_id, field_id, required
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_field_item
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetFieldItemCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_field_item
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="categoryId != null">
+                AND category_id = #{categoryId,jdbcType=INTEGER}
+            </if>
+            <if test="groupId != null">
+                AND group_id = #{groupId,jdbcType=INTEGER}
+            </if>
+            <if test="fieldId != null">
+                AND field_id = #{fieldId,jdbcType=INTEGER}
+            </if>
+            <if test="required != null">
+                AND required = #{required,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetFieldItem">
+        insert into zeus.asset_field_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="groupId != null">
+                group_id,
+            </if>
+            <if test="fieldId != null">
+                field_id,
+            </if>
+            <if test="required != null">
+                required,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="groupId != null">
+                #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                #{fieldId,jdbcType=INTEGER},
+            </if>
+            <if test="required != null">
+                #{required,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetFieldItem">
+        update zeus.asset_field_item
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="groupId != null">
+                group_id = #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                field_id = #{fieldId,jdbcType=INTEGER},
+            </if>
+            <if test="required != null">
+                required = #{required,jdbcType=BIT},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <delete id="deleteItem">
+        delete  from zeus.asset_field_item where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月20日 19时07分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPartyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TParty">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="is_del" jdbcType="INTEGER" property="isDel" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="is_channel_agent" jdbcType="BIT" property="isChannelAgent" />
+    <result column="is_in_black_list" jdbcType="BIT" property="isInBlackList" />
+    <result column="apply_source" jdbcType="CHAR" property="applySource" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, is_del, type, category, is_channel_agent, is_in_black_list, apply_source, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_party
+    where is_del=0
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPartyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_party
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="category != null">
+        AND category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="isChannelAgent != null">
+        AND is_channel_agent = #{isChannelAgent,jdbcType=BIT}
+      </if>
+      <if test="isInBlackList != null">
+        AND is_in_black_list = #{isInBlackList,jdbcType=BIT}
+      </if>
+      <if test="applySource != null">
+        AND apply_source = #{applySource,jdbcType=CHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      AND is_del=0
+	</where>
+  </select>
+  
+  <insert id="insert"  keyProperty="id" useGeneratedKeys="true" parameterType="com._360pai.core.model.account.TParty">
+    insert into zeus.t_party
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="category != null">
+        category, 
+      </if>
+      <if test="isChannelAgent != null">
+        is_channel_agent,
+      </if>
+      <if test="isInBlackList != null">
+        is_in_black_list,
+      </if>
+      <if test="applySource != null">
+        apply_source,
+      </if>
+        create_time,update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="isChannelAgent != null">
+        #{isChannelAgent,jdbcType=BIT},
+      </if>
+      <if test="isInBlackList != null">
+        #{isInBlackList,jdbcType=BIT},
+      </if>
+      <if test="applySource != null">
+        #{applySource,jdbcType=CHAR},
+      </if>
+        now(),now()
+    </trim>
+  </insert>
+  
+  <update id="updateById"  parameterType="com._360pai.core.model.account.TParty">
+    update zeus.t_party
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="isChannelAgent != null">
+        is_channel_agent = #{isChannelAgent,jdbcType=BIT},
+      </if>
+      <if test="isInBlackList != null">
+        is_in_black_list = #{isInBlackList,jdbcType=BIT},
+      </if>
+      <if test="applySource != null">
+        apply_source = #{applySource,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      update_time=now()
+    </set>
+	<where>
+       id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

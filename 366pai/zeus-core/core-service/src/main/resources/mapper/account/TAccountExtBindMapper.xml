@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月23日 09时16分44秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAccountExtBindMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAccountExtBind">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="ext_type" jdbcType="CHAR" property="extType" />
+	<result column="ext_user_id" jdbcType="VARCHAR" property="extUserId" />
+	<result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+	<result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+	<result column="current_party_id" jdbcType="INTEGER" property="currentPartyId" />
+	<result column="invite_code" jdbcType="INTEGER" property="inviteCode" />
+	<result column="invite_type" jdbcType="CHAR" property="inviteType" />
+    <result column="union_id" jdbcType="VARCHAR" property="unionId" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, ext_type, ext_user_id, nick_name, head_img_url, 
+	current_party_id, invite_code, invite_type, union_id, is_delete, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_account_ext_bind
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAccountExtBindCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_account_ext_bind
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="extType != null">
+        AND ext_type = #{extType,jdbcType=CHAR}
+      </if>
+      <if test="extUserId != null">
+        AND ext_user_id = #{extUserId,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        AND nick_name = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="headImgUrl != null">
+        AND head_img_url = #{headImgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="currentPartyId != null">
+        AND current_party_id = #{currentPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="inviteCode != null">
+        AND invite_code = #{inviteCode,jdbcType=INTEGER}
+      </if>
+      <if test="inviteType != null">
+        AND invite_type = #{inviteType,jdbcType=CHAR}
+      </if>
+      <if test="unionId != null">
+        AND union_id = #{unionId,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TAccountExtBind" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_account_ext_bind
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="extType != null">
+        ext_type, 
+      </if>
+      <if test="extUserId != null">
+        ext_user_id, 
+      </if>
+      <if test="nickName != null">
+        nick_name, 
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url, 
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id, 
+      </if>
+      <if test="inviteCode != null">
+        invite_code, 
+      </if>
+      <if test="inviteType != null">
+        invite_type, 
+      </if>
+      <if test="unionId != null">
+        union_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="extType != null">
+        #{extType,jdbcType=CHAR},
+      </if>
+      <if test="extUserId != null">
+        #{extUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPartyId != null">
+        #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=INTEGER},
+      </if>
+      <if test="inviteType != null">
+        #{inviteType,jdbcType=CHAR},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TAccountExtBind">
+    update zeus.t_account_ext_bind
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="extType != null">
+        ext_type = #{extType,jdbcType=CHAR},
+      </if>
+      <if test="extUserId != null">
+        ext_user_id = #{extUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id = #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=INTEGER},
+      </if>
+      <if test="inviteType != null">
+        invite_type = #{inviteType,jdbcType=CHAR},
+      </if>
+      <if test="unionId != null">
+        union_id = #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getInviteRecordList" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.InviteRecord">
+      select a.mobile,a.create_time registerTime,b.nick_name nickName,b.head_img_url headImgUrl,
+      case when s.id is null then 0 else 1 end isOpenShop, case when t.isDeal is null then 0 else t.isDeal end isDeal
+      from zeus.t_account_ext_bind b
+      inner join zeus.t_account a on a.id=b.account_id
+      left join zeus.t_applet_shop s on s.id=a.shop_id
+      left join (
+        select p.id,count(o.id) > 0 isDeal
+        from zeus.t_party p
+        left join zeus.auction_order o on o.buyer_id=p.id and o.status='RECEIVED'
+        group by p.id
+      ) t on t.id=b.current_party_id
+      where b.ext_type='APPLET' and b.invite_type='DP' and b.invite_code=#{inviteCode}
+      order by a.create_time desc
+  </select>
+
+  <select id="inviteCount" resultType="int">
+    select count(0) from zeus.t_account_ext_bind where invite_type=#{inviteType} and invite_code=#{inviteCode}
+  </select>
+</mapper>

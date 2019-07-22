@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月27日 15时13分45秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TPlatformArticleMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TPlatformArticle">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_type_id" jdbcType="INTEGER" property="articleTypeId" />
+    <result column="article_name" jdbcType="VARCHAR" property="articleName" />
+    <result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="public_at" jdbcType="TIMESTAMP" property="publicAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, article_type_id, article_name, detail, status, order_num,
+	del_flag, view_count, create_time, public_at
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_platform_article
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TPlatformArticleCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_platform_article
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="articleTypeId != null">
+        AND article_type_id = #{articleTypeId,jdbcType=INTEGER}
+      </if>
+      <if test="articleName != null">
+        AND article_name = #{articleName,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=INTEGER}
+      </if>
+      <if test="viewCount != null">
+        AND view_count = #{viewCount,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="publicAt != null">
+        AND public_at = #{publicAt,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TPlatformArticle">
+    insert into zeus.t_platform_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="articleTypeId != null">
+        article_type_id,
+      </if>
+      <if test="articleName != null">
+        article_name,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="publicAt != null">
+        public_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="articleTypeId != null">
+        #{articleTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="articleName != null">
+        #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicAt != null">
+        #{publicAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TPlatformArticle">
+    update zeus.t_platform_article
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="articleTypeId != null">
+        article_type_id = #{articleTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="articleName != null">
+        article_name = #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicAt != null">
+        public_at = #{publicAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <update id="addViewCount">
+    update zeus.t_platform_article set view_count = view_count + 1 where id = #{id}
+  </update>
+</mapper>

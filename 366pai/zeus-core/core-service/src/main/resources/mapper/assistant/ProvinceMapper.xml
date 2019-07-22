@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.ProvinceMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.Province">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="code" jdbcType="VARCHAR" property="code" />
+        <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, code, pinyin
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.province
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.ProvinceCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.province
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="code != null">
+                AND code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="pinyin != null">
+                AND pinyin = #{pinyin,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.Province">
+        insert into zeus.province
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="pinyin != null">
+                pinyin,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                #{pinyin,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.Province">
+        update zeus.province
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                pinyin = #{pinyin,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

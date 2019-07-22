@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分54秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingDepositMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingDeposit">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="participate_proof" jdbcType="VARCHAR" property="participateProof" />
+	<result column="upload_at" jdbcType="TIMESTAMP" property="uploadAt" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="show_name" jdbcType="VARCHAR" property="showName" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id, party_id, amount, status, agency_id, 
+	created_at, participate_proof, upload_at,type,order_num,show_name,delete_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.enrolling_deposit
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingDepositCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.enrolling_deposit
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="participateProof != null">
+        AND participate_proof = #{participateProof,jdbcType=VARCHAR}
+      </if>
+      <if test="uploadAt != null">
+        AND upload_at = #{uploadAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="showName != null">
+        AND show_name = #{showName,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.EnrollingDeposit">
+    insert into zeus.enrolling_deposit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="participateProof != null">
+        participate_proof, 
+      </if>
+      <if test="uploadAt != null">
+        upload_at, 
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="showName != null">
+        show_name,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="participateProof != null">
+        #{participateProof,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadAt != null">
+        #{uploadAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="showName != null">
+        #{showName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingDeposit">
+    update zeus.enrolling_deposit
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="participateProof != null">
+        participate_proof = #{participateProof,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadAt != null">
+        upload_at = #{uploadAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="showName != null">
+        show_name = #{showName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="getEnrollingDepositList" parameterType="com._360pai.core.dto.enrolling.ActivityIdReqDto" resultType="com._360pai.core.vo.enrolling.EnrollingDepositListVo" >
+    SELECT
+    a.NAME AS agency,
+    u.NAME AS useName,
+    u.certificate_number AS useNumber,
+    u.mobile AS useMobile,
+    c.mobile AS comMobile,
+    c.NAME AS comName,
+    c.license AS comNumber,
+    e.created_at AS createdAt,
+    e.STATUS AS STATUS,
+    u.address as useAddress,
+    c.address as comAddress,
+    e.id as depositId,
+    e.show_name as showName
+
+    FROM
+    enrolling_deposit e
+    LEFT JOIN t_agency a ON e.agency_id = a.id
+    LEFT JOIN t_company c ON e.party_id = c.id
+    LEFT JOIN t_user u ON u.id = e.party_id
+    <where>
+      <if test="activityId != null and activityId !=''">
+        AND e.activity_id = #{activityId,jdbcType=BIGINT}
+      </if>
+    </where>
+
+    order by e.id desc
+  </select>
+
+
+
+
+
+  <select id="getAuditList" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.EnrollingAuditListVo" >
+    SELECT
+    u.NAME AS useName,
+    u.mobile AS useMobile,
+    c.mobile AS comMobile,
+    c.NAME AS comName,
+    e.created_at AS createdAt,
+    a.NAME AS NAME,
+    a.CODE AS CODE,
+    e.participate_proof AS participateProof,
+    e.amount AS amount
+    FROM
+    enrolling_deposit e
+    LEFT JOIN enrolling_activity a ON a.id = e.activity_id
+    LEFT JOIN t_company c ON e.party_id = c.id
+    LEFT JOIN t_user u ON u.id = e.party_id
+   	where 1 = 1
+    	AND  a.status != "NOT_PAY"
+        and e.participate_proof IS NOT NULL
+        AND  e.participate_proof != ''
+        and a.type = '1'
+        and e.delete_flag='0'
+    <if test="status != null and status != ''">
+        AND e.status = #{status,jdbcType=CHAR}
+      </if>
+
+      <if test="info != null and info != ''">
+        AND (a.name like concat(concat('%', #{info}), '%') or a.code like concat(concat('%', #{info}), '%'))
+      </if>
+
+      <if test=" createdAtFrom != null and createdAtFrom != ''">
+        and e.created_at  >=  #{createdAtFrom}
+      </if>
+
+      <if test=" createdAtTo != null and createdAtTo != ''">
+        and   #{createdAtTo}  >=  e.created_at
+      </if>
+
+      <if test="(partyName != null and  partyName != '') and partyType == 1">
+        AND u.name like concat(concat('%', #{partyName}), '%')
+      </if>
+
+      <if test="(partyName != null and partyName != '')  and partyType == 2" >
+        AND c.name like concat(concat('%', #{partyName}), '%')
+      </if>
+        ORDER BY e.created_at desc
+  </select>
+
+
+  <select id="getBeginIn5MinuteList" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+    select ea.*
+    from zeus.enrolling_deposit ed
+    inner join zeus.enrolling_activity ea on ea.id=ed.activity_id
+    where ed.party_id=#{partyId} and ea.begin_at > now() and timestampdiff(MINUTE, now(), ea.begin_at) &lt;= 5
+  </select>
+
+  <select id="getEndIn5MinuteList" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+    select ea.*
+    from zeus.enrolling_deposit ed
+    inner join zeus.enrolling_activity ea on ea.id=ed.activity_id
+    where ed.party_id=${partyId} and ea.end_at > now() and timestampdiff(MINUTE, now(), ea.end_at) &lt;= 5
+  </select>
+
+</mapper>

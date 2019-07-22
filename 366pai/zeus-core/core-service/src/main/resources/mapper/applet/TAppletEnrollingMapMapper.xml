@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月25日 15时52分17秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletEnrollingMapMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletEnrollingMap">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+	<result column="enrolling_id" jdbcType="INTEGER" property="enrollingId" />
+	<result column="push_desc" jdbcType="INTEGER" property="pushDesc" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="is_del" jdbcType="VARCHAR" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, shop_id, enrolling_id, push_desc, status, is_del, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_applet_enrolling_map
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletEnrollingMapCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_applet_enrolling_map
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=VARCHAR}
+      </if>
+      <if test="enrollingId != null">
+        AND enrolling_id = #{enrollingId,jdbcType=INTEGER}
+      </if>
+      <if test="pushDesc != null">
+        AND push_desc = #{pushDesc,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletEnrollingMap">
+    insert into zeus.t_applet_enrolling_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="shopId != null">
+        shop_id, 
+      </if>
+      <if test="enrollingId != null">
+        enrolling_id, 
+      </if>
+      <if test="pushDesc != null">
+        push_desc, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollingId != null">
+        #{enrollingId,jdbcType=INTEGER},
+      </if>
+      <if test="pushDesc != null">
+        #{pushDesc,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletEnrollingMap">
+    update zeus.t_applet_enrolling_map
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollingId != null">
+        enrolling_id = #{enrollingId,jdbcType=INTEGER},
+      </if>
+      <if test="pushDesc != null">
+        push_desc = #{pushDesc,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <select id="getShopWebEnrollingList"
+          parameterType="com._360pai.core.facade.shop.dto.ShopEnrollingSearchDto" resultType="com._360pai.core.facade.applet.vo.ShopEnrollingListVO">
+    SELECT
+      e.id as activityId,
+      e.type as type,
+      e.STATUS AS STATUS,
+      e.city_name AS cityName,
+      e.NAME AS activityName,
+      e.created_at AS createdAt,
+      e.deposit AS deposit,
+      e.ref_price AS refPrice,
+      e.begin_at as beginAt,
+      e.end_at endAt,
+      e.extra ->> '$.images[0]' as imageUrl,
+      e.apply_number as depositNum,
+      e.browse_number as browseNum,
+      e.focus_number as focusNum,
+      e.guarantee as mortgageValue,
+      e.province_id provinceId,
+      if(IFNULL(taem.id, 0) = 0, 0, 1) AS choseFlag,
+      if(e.third_party_status = 3, 1, 0) as wallFlag
+    FROM
+      enrolling_activity e
+      left join
+        (select id, enrolling_id from t_applet_enrolling_map where 1 = 1
+        <if test="shopId != null and '' != shopId">
+          and shop_id = #{shopId}
+        </if>
+        and is_del = 0
+        )  taem on taem.enrolling_id = e.id
+      where 1 = 1
+      AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+      AND e.begin_at &lt; NOW()
+      AND e.visibility_level = 'PLATFORM_DEFAULT'
+    <if test="type != null and type != ''">
+      AND e.type = #{type}
+    </if>
+
+    <if test="query != null and '' != query">
+      AND e.name like concat('%',#{query},'%')
+    </if>
+
+    <if test="beginPrice != null and '' != beginPrice">
+      AND e.ref_price >= #{beginPrice}
+    </if>
+
+    <if test="endPrice != null and '' != endPrice">
+      AND e.ref_price &lt;= #{endPrice}
+    </if>
+    <if test="cityId != null and cityId != ''">
+      AND find_in_set(#{cityId}, e.city_id)
+    </if>
+    <if test="provinceId != null and provinceId != ''">
+      AND find_in_set(#{provinceId}, e.province_id)
+    </if>
+
+    order by
+      e.status desc,
+      e.apply_number desc,
+      e.browse_number desc,
+      e.begin_at desc
+
+  </select>
+
+
+  <select id="getShopEnrollingList" parameterType="com._360pai.core.facade.shop.dto.ShopEnrollingSearchDto"
+          resultType="com._360pai.core.facade.applet.vo.ShopEnrollingListVO">
+    SELECT
+    e.id AS activityId,
+    e.type AS type,
+    e.STATUS AS STATUS,
+    e.city_name AS cityName,
+    e.NAME AS activityName,
+    e.created_at AS createdAt,
+    e.deposit AS deposit,
+    e.ref_price AS refPrice,
+    e.begin_at AS beginAt,
+    e.end_at endAt,
+    e.extra ->> '$.images[0]' AS imageUrl,
+    e.apply_number AS depositNum,
+    e.browse_number AS browseNum,
+    e.focus_number AS focusNum,
+    e.guarantee AS mortgageValue,
+    IF( IFNULL( taem.push_desc, 0 ) = 0, 0, 1 ) AS pushFlag,
+    if(e.third_party_status = 3, 1, 0) as wallFlag
+    FROM
+    t_applet_enrolling_map taem
+    INNER JOIN enrolling_activity e ON taem.enrolling_id = e.id
+    WHERE
+    1 = 1
+    AND taem.is_del = 0
+    AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+    AND e.begin_at &lt; NOW()
+    AND e.visibility_level = 'PLATFORM_DEFAULT'
+    <if test="shopId != null and '' != shopId">
+      AND taem.shop_id = #{shopId,jdbcType=VARCHAR}
+    </if>
+
+    <if test="beginPrice != null and '' != beginPrice">
+      AND e.ref_price >= #{beginPrice}
+    </if>
+
+    <if test="endPrice != null and '' != endPrice">
+      AND e.ref_price &lt;= #{endPrice}
+    </if>
+
+    <if test="outFlag != null and '' != outFlag">
+      AND taem.status = #{outFlag}
+    </if>
+
+    <if test="cityId != null and '' != cityId">
+      AND FIND_IN_SET(#{cityId}, e.city_id)
+    </if>
+
+    <if test="provinceId != null and provinceId != ''">
+      AND find_in_set(#{provinceId}, e.province_id)
+    </if>
+
+    <if test="status != null and '' != status">
+      AND e.status = #{status}
+    </if>
+
+    <if test="type != null and '' != type">
+      AND e.type = #{type}
+    </if>
+    order by
+      taem.push_desc desc,
+      e.status desc,
+      e.apply_number desc,
+      e.browse_number desc,
+      e.begin_at desc
+
+  </select>
+
+
+  <insert id="saveBatchAppletEnrollingList" useGeneratedKeys="true" keyProperty="id"
+          keyColumn="id" parameterType="java.util.List">
+    INSERT INTO t_applet_enrolling_map (id, shop_id, enrolling_id, `status`, is_del, create_time, update_time)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id},#{item.shopId},#{item.enrollingId}, #{item.status},#{item.isDel},#{item.createTime},#{item.updateTime})
+    </foreach>
+  </insert>
+
+
+  <update id="updateBatchAppletEnrollingList" parameterType="java.util.List">
+
+    update t_applet_enrolling_map
+
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="is_del = case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.isDel != null and '' != item.isDel">
+            when id = #{item.id} then #{item.isDel}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="status = case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.status != null and '' != item.status">
+            when id = #{item.id} then #{item.status}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.updateTime!=null">
+            when id = #{item.id} then #{item.updateTime}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where
+    <foreach collection="list" separator="or" item="item" index="index" >
+      id = #{item.id}
+    </foreach>
+  </update>
+  
+  <update id="deleteEnrollingHomePage" parameterType="String">
+    update t_applet_enrolling_map set push_desc = 0 where shop_id = #{shopId} and is_del = 0
+  </update>
+
+
+  <update id="setEnrollingHomePage" parameterType="java.util.List">
+
+    update t_applet_enrolling_map
+
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="push_desc = case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.pushDesc != null and '' != item.pushDesc">
+            when id = #{item.id} then #{item.pushDesc}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.updateTime!=null">
+            when id = #{item.id} then #{item.updateTime}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where
+    <foreach collection="list" separator="or" item="item" index="index" >
+      id = #{item.id}
+    </foreach>
+  </update>
+  
+  <select id="getSearchAuctionAndEnrollingList"
+          parameterType="com._360pai.core.facade.shop.dto.ShopEnrollingSearchDto" resultType="com._360pai.core.facade.applet.vo.ShopEnrollingAndAuctionListVO">
+    select * from (SELECT
+    e.id as enrollingId,
+    e.type as type,
+    e.STATUS AS STATUS,
+    e.NAME AS name,
+    e.deposit AS deposit,
+    e.ref_price AS refPrice,
+    e.extra ->> '$.images[0]' as images,
+    e.guarantee as mortgageValue,
+    if(IFNULL(taem.id, 0) = 0, 0, 1) AS choseFlag,
+    e.city_name as cityName,
+    if(e.third_party_status = 3, 1, 0) as wallFlag,
+
+    null AS activityId,
+    null AS activityName,
+    null AS acDeposit,
+    null AS acSTATUS,
+    null AS MODE,
+    null AS startingPrice,
+    null AS imageUrl,
+    null AS acChoseFlag,
+
+    1 as objectType,
+    e.created_at as createdTime
+
+    FROM
+    enrolling_activity e
+    left join
+    (select id, enrolling_id from t_applet_enrolling_map where 1 = 1
+      <if test="shopId != null and '' != shopId">
+          and shop_id = #{shopId}
+      </if>
+    and is_del = 0
+    )  taem on taem.enrolling_id = e.id
+    where 1 = 1
+    AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+    AND e.begin_at &lt; NOW()
+    AND e.visibility_level = 'PLATFORM_DEFAULT'
+    <if test="query != null and '' != query">
+      AND e.name like concat('%',#{query},'%')
+    </if>
+
+    union all
+
+    SELECT
+    null as enrollingId,
+    null as type,
+    null AS STATUS,
+    null AS name,
+    null AS deposit,
+    null AS refPrice,
+    null as images,
+    null as mortgageValue,
+    null AS choseFlag,
+    null AS cityName,
+    '0' as wallFlag,
+
+    ac.id AS activityId,
+    ac.asset_name AS activityName,
+    ac.deposit AS acDeposit,
+     CASE
+    WHEN ac.`status` = 'ONLINE' AND ac.begin_at > now() THEN 'UPCOMING'
+    WHEN ac.`status` = 'ONLINE' AND ac.begin_at &lt; now()  THEN 'SALE'
+    WHEN ac.`status` = 'SUCCESS' THEN 'SUCCESS'
+    WHEN ac.`status` = 'FAILED' THEN 'FAILED'
+    ELSE '' END AS acStatus,
+    ac.MODE AS MODE,
+    ac.starting_price AS startingPrice,
+    ass.extra ->> '$.images[0]' AS imageUrl,
+    if(IFNULL(taam.id, 0) = 0, 0, 1) AS acChoseFlag,
+
+
+    2 as objectType,
+    ac.created_at as createdTime
+
+    FROM
+    auction_activity ac
+    LEFT JOIN asset ass ON ac.asset_id = ass.id
+    LEFT JOIN city c ON c.id = ass.city_id
+    LEFT JOIN auction_activity_view_count aavc ON aavc.activity_id = ac.id
+    LEFT JOIN party pa ON pa.id = ass.party_id
+    LEFT JOIN (select id, auction_id from t_applet_auction_map where 1 = 1
+      <if test="shopId != null and '' != shopId">
+          and shop_id = #{shopId}
+      </if>
+    and is_del = 0
+    ) taam
+    on taam.auction_id = ac.id
+    where 1 = 1
+    AND ac.category_id != -1
+    AND ac.visibility_level = 'PLATFORM_DEFAULT'
+    AND NOW() > ac.preview_at
+    <if test="query != null and '' != query">
+      AND ac.asset_name like concat('%',#{query},'%')
+    </if>
+    AND ac.status not in
+    ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')) t1 ORDER BY createdTime desc
+  </select>
+
+
+  <select id="getHotPushIds" parameterType="com._360pai.core.facade.shop.dto.ShopEnrollingSearchDto" resultType="String">
+    SELECT
+        enrolling_id AS aucionId
+    FROM
+        t_applet_enrolling_map
+    WHERE
+        shop_id = #{shopId}
+        AND push_desc != 0
+        AND is_del = 0
+  </select>
+
+  <select id="countProduct" resultType="int">
+    select count(0)
+    from zeus.t_applet_enrolling_map  m
+    inner join zeus.enrolling_activity e on e.id=m.enrolling_id and e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED") and e.begin_at &lt; NOW() and e.visibility_level = 'PLATFORM_DEFAULT'
+    where m.shop_id=#{shopId} and m.status=0 and m.is_del=0
+  </select>
+</mapper>

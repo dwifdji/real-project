@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月07日 20时50分28秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.SysPermissionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.SysPermission">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="module_code" jdbcType="VARCHAR" property="moduleCode" />
+    <result column="module_name" jdbcType="VARCHAR" property="moduleName" />
+    <result column="module_order" jdbcType="INTEGER" property="moduleOrder" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_order" jdbcType="INTEGER" property="menuOrder" />
+    <result column="permission_code" jdbcType="VARCHAR" property="permissionCode" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="required_permission" jdbcType="BIT" property="requiredPermission" />
+    <result column="permission_type" jdbcType="CHAR" property="permissionType" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, module_code, module_name, module_order, menu_code, menu_name,
+    menu_order, permission_code, permission_name, required_permission, permission_type, is_delete
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.sys_permission
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.SysPermissionCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.sys_permission
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="moduleCode != null">
+        AND module_code = #{moduleCode,jdbcType=VARCHAR}
+      </if>
+      <if test="moduleName != null">
+        AND module_name = #{moduleName,jdbcType=VARCHAR}
+      </if>
+      <if test="moduleOrder != null">
+        AND module_order = #{moduleOrder,jdbcType=INTEGER}
+      </if>
+      <if test="menuCode != null">
+        AND menu_code = #{menuCode,jdbcType=VARCHAR}
+      </if>
+      <if test="menuName != null">
+        AND menu_name = #{menuName,jdbcType=VARCHAR}
+      </if>
+      <if test="menuOrder != null">
+        AND menu_order = #{menuOrder,jdbcType=INTEGER}
+      </if>
+      <if test="permissionCode != null">
+        AND permission_code = #{permissionCode,jdbcType=VARCHAR}
+      </if>
+      <if test="permissionName != null">
+        AND permission_name = #{permissionName,jdbcType=VARCHAR}
+      </if>
+      <if test="requiredPermission != null">
+        AND required_permission = #{requiredPermission,jdbcType=BIT}
+      </if>
+      <if test="permissionType != null">
+        AND permission_type = #{permissionType,jdbcType=CHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.SysPermission">
+    insert into zeus.sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="moduleCode != null">
+        module_code,
+      </if>
+      <if test="moduleName != null">
+        module_name,
+      </if>
+      <if test="moduleOrder != null">
+        module_order,
+      </if>
+      <if test="menuCode != null">
+        menu_code,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="menuOrder != null">
+        menu_order,
+      </if>
+      <if test="permissionCode != null">
+        permission_code,
+      </if>
+      <if test="permissionName != null">
+        permission_name,
+      </if>
+      <if test="requiredPermission != null">
+        required_permission,
+      </if>
+      <if test="permissionType != null">
+        permission_type,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="moduleCode != null">
+        #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null">
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleOrder != null">
+        #{moduleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="menuCode != null">
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuOrder != null">
+        #{menuOrder,jdbcType=INTEGER},
+      </if>
+      <if test="permissionCode != null">
+        #{permissionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredPermission != null">
+        #{requiredPermission,jdbcType=BIT},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.SysPermission">
+    update zeus.sys_permission
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="moduleCode != null">
+        module_code = #{moduleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleName != null">
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleOrder != null">
+        module_order = #{moduleOrder,jdbcType=INTEGER},
+      </if>
+      <if test="menuCode != null">
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuOrder != null">
+        menu_order = #{menuOrder,jdbcType=INTEGER},
+      </if>
+      <if test="permissionCode != null">
+        permission_code = #{permissionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        permission_name = #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredPermission != null">
+        required_permission = #{requiredPermission,jdbcType=BIT},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType,jdbcType=CHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getAllModuleList" resultType="com._360pai.core.model.account.SysPermission">
+    select p.module_code,p.module_name,p.menu_code,p.menu_name,p.module_order,p.menu_order
+    from zeus.sys_permission p
+    where p.permission_type='0' and p.is_delete='0'
+    group by p.module_code,p.module_name,p.menu_code,p.menu_name,p.module_order,p.menu_order
+    order by p.module_order,p.menu_order
+  </select>
+
+  <select id="getStaffModuleList" resultType="com._360pai.core.model.account.SysPermission">
+    select p.module_code,p.module_name,p.menu_code,p.menu_name
+    from zeus.sys_staff_role sr
+    inner join zeus.sys_role_permission rp on rp.role_id=sr.role_id and rp.is_delete='0'
+    inner join zeus.sys_permission p on p.id=rp.permission_id and p.is_delete='0'
+    where sr.staff_id=#{staffId} and p.permission_type='0' and sr.is_delete='0'
+    group by p.module_code,p.module_name,p.menu_code,p.menu_name,p.module_order,p.menu_order
+    order by p.module_order,p.menu_order
+  </select>
+
+  <select id="getRoleModuleList" resultType="com._360pai.core.model.account.SysPermission">
+    select p.module_code,p.module_name,p.menu_code,p.menu_name,p.module_order,p.menu_order
+    from zeus.sys_role_permission rp
+    inner join zeus.sys_permission p on p.id=rp.permission_id and p.is_delete='0'
+    where rp.role_id=#{roleId} and p.permission_type='0' and rp.is_delete='0'
+    group by p.module_code,p.module_name,p.menu_code,p.menu_name,p.module_order,p.menu_order
+    order by p.module_order,p.menu_order
+  </select>
+
+  <select id="getStaffPermissionCodeList" resultType="java.lang.String">
+    select distinct p.permission_code
+    from zeus.sys_staff_role sr
+    inner join zeus.sys_role_permission rp on rp.role_id=sr.role_id and rp.is_delete='0'
+    inner join zeus.sys_permission p on p.id=rp.permission_id and p.is_delete='0'
+    where sr.staff_id=#{staffId} and p.permission_type='0' and sr.is_delete='0'
+    union
+    select p.permission_code
+    from zeus.sys_staff_permission sp
+    inner join zeus.sys_permission p on p.id=sp.permission_id and p.is_delete='0'
+    where sp.staff_id=#{staffId} and sp..is_delete='0'
+  </select>
+</mapper>

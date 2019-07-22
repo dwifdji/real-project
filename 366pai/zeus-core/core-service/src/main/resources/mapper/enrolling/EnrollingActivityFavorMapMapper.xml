@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分53秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingActivityFavorMapMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingActivityFavorMap">
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="enrolling_activity_id" jdbcType="INTEGER" property="enrollingActivityId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	party_id, enrolling_activity_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.enrolling_activity_favor_map
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingActivityFavorMapCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.enrolling_activity_favor_map
+	<where>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="enrollingActivityId != nufll">
+        AND enrolling_activity_id = #{enrollingActivityId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.EnrollingActivityFavorMap">
+    insert into zeus.enrolling_activity_favor_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="enrollingActivityId != null">
+        enrolling_activity_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="enrollingActivityId != null">
+        #{enrollingActivityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingActivityFavorMap">
+    update zeus.enrolling_activity_favor_map
+    <set>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="enrollingActivityId != null">
+        enrolling_activity_id = #{enrollingActivityId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+	  AND ID = #{ID,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分50秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.Article">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="create_at" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="order_num" jdbcType="CHAR" property="orderNum"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, title, content, create_at, category_id, status,order_num
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.article
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.ArticleCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.article
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="title != null">
+                AND title = #{title,jdbcType=VARCHAR}
+            </if>
+            <if test="content != null">
+                AND content = #{content,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="createAt != null">
+                AND create_at = #{createAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="categoryId != null">
+                AND category_id = #{categoryId,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=CHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.Article">
+        insert into zeus.article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            create_at,
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+
+            now(),
+
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.Article">
+        update zeus.article
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=CHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <delete id="deleteArticle">
+      delete from zeus.article where id = #{paramsId};
+    </delete>
+
+</mapper>

@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月06日 15时50分14秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.withfudig.mapper.TWithfudigRequirementMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.withfudig.TWithfudigRequirement">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="requirement_name" jdbcType="VARCHAR" property="requirementName"/>
+        <result column="requirement_no" jdbcType="VARCHAR" property="requirementNo"/>
+        <result column="asset_type" jdbcType="CHAR" property="assetType"/>
+        <result column="asset_price" jdbcType="DECIMAL" property="assetPrice"/>
+        <result column="requirement_amount" jdbcType="DECIMAL" property="requirementAmount"/>
+        <result column="requirement_match_percent" jdbcType="VARCHAR" property="requirementMatchPercent"
+                typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+        <result column="requirement_interest_percent_start" jdbcType="DECIMAL"
+                property="requirementInterestPercentStart"/>
+        <result column="requirement_interest_percent_end" jdbcType="DECIMAL" property="requirementInterestPercentEnd"/>
+        <result column="requirement_term" jdbcType="DECIMAL" property="requirementTerm"/>
+        <result column="requirement_status" jdbcType="CHAR" property="requirementStatus"/>
+        <result column="company_description" jdbcType="VARCHAR" property="companyDescription"/>
+        <result column="item_description" jdbcType="VARCHAR" property="itemDescription"/>
+        <result column="repayment_description" jdbcType="VARCHAR" property="repaymentDescription"/>
+        <result column="guarantee_description" jdbcType="VARCHAR" property="guaranteeDescription"/>
+        <result column="disposal_party_description" jdbcType="VARCHAR" property="disposalPartyDescription"/>
+        <result column="disposal_plan_description" jdbcType="VARCHAR" property="disposalPlanDescription"/>
+        <result column="asset_id" jdbcType="INTEGER" property="assetId"/>
+        <result column="is_platform" jdbcType="BIT" property="isPlatform"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="special_notice" jdbcType="VARCHAR" property="specialNotice"/>
+        <result column="pay_time" jdbcType="TIMESTAMP" property="payTime"/>
+        <result column="pay_id" jdbcType="VARCHAR" property="payId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="operator_id" jdbcType="VARCHAR" property="operatorId"/>
+        <result column="account_id" jdbcType="INTEGER" property="accountId"/>
+        <result column="party_id" jdbcType="INTEGER" property="partyId"/>
+        <result column="view_num" jdbcType="INTEGER" property="viewNum"/>
+        <result column="follow_num" jdbcType="INTEGER" property="followNum"/>
+        <result column="extra" jdbcType="VARCHAR" property="extra"
+                typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, requirement_name, requirement_no, asset_type, asset_price, requirement_amount, 
+	requirement_match_percent, requirement_interest_percent_start, requirement_interest_percent_end, requirement_term, requirement_status, company_description, 
+	item_description, repayment_description, guarantee_description, disposal_party_description, disposal_plan_description, asset_id, 
+	is_platform, description, pay_time, pay_id, remark, is_delete,
+	created_time, update_time, operator_id,account_id,party_id,view_num,follow_num,special_notice,extra
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_withfudig_requirement where id_delete = 0
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.withfudig.TWithfudigRequirementCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_withfudig_requirement
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="requirementName != null and requirementName != ''">
+                AND requirement_name like '%${requirementName}%'
+            </if>
+            <if test="requirementNo != null and requirementNo != ''">
+                AND requirement_no = #{requirementNo,jdbcType=VARCHAR}
+            </if>
+            <if test="assetType != null and assetType != ''">
+                AND asset_type = #{assetType,jdbcType=CHAR}
+            </if>
+            <if test="assetPrice != null">
+                AND asset_price = #{assetPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementAmount != null">
+                AND requirement_amount = #{requirementAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementMatchPercent != null">
+                AND requirement_match_percent = #{requirementMatchPercent,jdbcType=VARCHAR}
+            </if>
+            <if test="requirementInterestPercentStart != null">
+                AND requirement_interest_percent_start = #{requirementInterestPercentStart,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementInterestPercentEnd != null">
+                AND requirement_interest_percent_end = #{requirementInterestPercentEnd,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementTerm != null">
+                AND requirement_term = #{requirementTerm,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementStatus != null and requirementStatus != ''">
+                AND requirement_status = #{requirementStatus,jdbcType=CHAR}
+            </if>
+            <if test="companyDescription != null">
+                AND company_description = #{companyDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="itemDescription != null">
+                AND item_description = #{itemDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="repaymentDescription != null">
+                AND repayment_description = #{repaymentDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="guaranteeDescription != null">
+                AND guarantee_description = #{guaranteeDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="disposalPartyDescription != null">
+                AND disposal_party_description = #{disposalPartyDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="disposalPlanDescription != null">
+                AND disposal_plan_description = #{disposalPlanDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="assetId != null">
+                AND asset_id = #{assetId,jdbcType=INTEGER}
+            </if>
+            <if test="isPlatform != null and isPlatform != ''">
+                AND is_platform = #{isPlatform,jdbcType=BIT}
+            </if>
+            <if test="description != null">
+                AND description = #{description,jdbcType=VARCHAR}
+            </if>
+            <if test="payTime != null">
+                AND pay_time = #{payTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="payId != null">
+                AND pay_id = #{payId,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                AND remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="createdTime != null">
+                AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="operatorId != null">
+                AND operator_id = #{operatorId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null">
+                AND account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="partyId != null  and partyId != ''">
+                AND party_id = #{partyId,jdbcType=INTEGER}
+            </if>
+            AND is_delete = 0 and requirement_status > 0
+        </where>
+        order by id desc
+    </select>
+
+    <select id="myRequirementList" parameterType="com._360pai.core.condition.withfudig.TWithfudigRequirementCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_withfudig_requirement
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="requirementName != null and requirementName != ''">
+                AND requirement_name like '%${requirementName}%'
+            </if>
+            <if test="requirementNo != null and requirementNo != ''">
+                AND requirement_no = #{requirementNo,jdbcType=VARCHAR}
+            </if>
+            <if test="assetType != null and assetType != ''">
+                AND asset_type = #{assetType,jdbcType=CHAR}
+            </if>
+            <if test="assetPrice != null">
+                AND asset_price = #{assetPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementAmount != null">
+                AND requirement_amount = #{requirementAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementMatchPercent != null">
+                AND requirement_match_percent = #{requirementMatchPercent,jdbcType=VARCHAR}
+            </if>
+            <if test="requirementInterestPercentStart != null">
+                AND requirement_interest_percent_start = #{requirementInterestPercentStart,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementInterestPercentEnd != null">
+                AND requirement_interest_percent_end = #{requirementInterestPercentEnd,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementTerm != null">
+                AND requirement_term = #{requirementTerm,jdbcType=DECIMAL}
+            </if>
+            <if test="requirementStatus != null and requirementStatus != ''">
+                AND requirement_status = #{requirementStatus,jdbcType=CHAR}
+            </if>
+            <if test="companyDescription != null">
+                AND company_description = #{companyDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="itemDescription != null">
+                AND item_description = #{itemDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="repaymentDescription != null">
+                AND repayment_description = #{repaymentDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="guaranteeDescription != null">
+                AND guarantee_description = #{guaranteeDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="disposalPartyDescription != null">
+                AND disposal_party_description = #{disposalPartyDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="disposalPlanDescription != null">
+                AND disposal_plan_description = #{disposalPlanDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="assetId != null">
+                AND asset_id = #{assetId,jdbcType=INTEGER}
+            </if>
+            <if test="isPlatform != null and isPlatform != ''">
+                AND is_platform = #{isPlatform,jdbcType=BIT}
+            </if>
+            <if test="description != null">
+                AND description = #{description,jdbcType=VARCHAR}
+            </if>
+            <if test="payTime != null">
+                AND pay_time = #{payTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="payId != null">
+                AND pay_id = #{payId,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                AND remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="createdTime != null">
+                AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="operatorId != null">
+                AND operator_id = #{operatorId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null">
+                AND account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="partyId != null  and partyId != ''">
+                AND party_id = #{partyId,jdbcType=INTEGER}
+            </if>
+            AND is_delete = 0
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectByIdWithoutPay" resultType="com._360pai.core.model.withfudig.TWithfudigRequirement">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_withfudig_requirement
+        where id = #{id}
+    </select>
+
+    <select id="selectListForPlatform" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_withfudig_requirement
+        <where>
+            <if test="requirementName != null and requirementName!=''">
+                AND requirement_name like CONCAT('%',#{requirementName},'%')
+            </if>
+            <if test="requirementAmountFrom != null">
+                AND requirement_amount &gt;= #{requirementAmountFrom}
+            </if>
+            <if test="requirementAmountTo != null ">
+                AND requirement_amount &lt;= #{requirementAmountTo}
+            </if>
+            <if test="requirementTermFrom != null">
+                AND requirement_term &gt;= #{requirementTermFrom}
+            </if>
+            <if test="requirementTermTo != null">
+                AND requirement_term &lt;= #{requirementTermTo}
+            </if>
+            <if test="createdTime != null">
+                AND DATE_SUB(CURDATE(), INTERVAL 6 DAY) &lt;= date(created_time)
+            </if>
+            and is_delete = 0   and  requirement_status &gt;=12 and requirement_status &lt; 20
+        </where>
+        order by
+        <choose>
+            <when test="orderBy != null and orderBy == 'orderByInterestPercent_asc'.toString()">
+                requirement_interest_percent_start asc
+            </when>
+            <when test="orderBy != null and orderBy == 'orderByInterestPercent_desc'.toString()">
+                requirement_interest_percent_end desc
+            </when>
+            <when test="orderBy != null and orderBy == 'orderByRequirementAmount_asc'.toString()">
+                requirement_amount asc
+            </when>
+            <when test="orderBy != null and orderBy == 'orderByRequirementAmount_desc'.toString()">
+                requirement_amount desc
+            </when>
+            <otherwise>
+                id desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectFollowListForPlatform" resultType="com._360pai.core.model.withfudig.TWithfudigRequirement">
+        select
+          t2.*
+        from
+          zeus.t_service_follow t1 left join zeus.t_withfudig_requirement t2
+          on t1.relative_id = t2.id
+        <where>
+            t1.relative_type= 'withfudig'
+            <if test="partyId != null">AND t1.party_id = #{partyId}</if>
+            <if test="accountId != null">AND t1.account_id = #{accountId}</if>
+            AND t1.del_flag = 0
+            <if test="requirementAmountFrom != null">
+                AND t2.requirement_amount &gt;= #{requirementAmountFrom}
+            </if>
+            <if test="requirementAmountTo != null ">
+                AND t2.requirement_amount &lt;= #{requirementAmountTo}
+            </if>
+            <if test="requirementTermFrom != null">
+                AND t2.requirement_term &gt;= #{requirementTermFrom}
+            </if>
+            <if test="requirementTermTo != null">
+                AND t2.requirement_term &lt;= #{requirementTermTo}
+            </if>
+        </where>
+        order by
+        <choose>
+            <when test="orderByInterestPercentAsc != null and orderByInterestPercentAsc != ''">
+                requirement_interest_percent_start asc
+            </when>
+            <when test="orderByInterestPercentDesc != null and orderByInterestPercentDesc != ''">
+                requirement_interest_percent_end desc
+            </when>
+            <when test="orderByRequirementAmount != null and orderByRequirementAmount != ''">
+                requirement_amount  ${orderByRequirementAmount}
+            </when>
+            <otherwise>
+                id desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.withfudig.TWithfudigRequirement" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into zeus.t_withfudig_requirement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="requirementName != null">
+                requirement_name,
+            </if>
+            <if test="requirementNo != null">
+                requirement_no,
+            </if>
+            <if test="assetType != null">
+                asset_type,
+            </if>
+            <if test="assetPrice != null">
+                asset_price,
+            </if>
+            <if test="requirementAmount != null">
+                requirement_amount,
+            </if>
+            <if test="requirementMatchPercent != null">
+                requirement_match_percent,
+            </if>
+            <if test="requirementInterestPercentStart != null">
+                requirement_interest_percent_start,
+            </if>
+            <if test="requirementInterestPercentEnd != null">
+                requirement_interest_percent_end,
+            </if>
+            <if test="requirementTerm != null">
+                requirement_term,
+            </if>
+            <if test="requirementStatus != null">
+                requirement_status,
+            </if>
+            <if test="companyDescription != null">
+                company_description,
+            </if>
+            <if test="itemDescription != null">
+                item_description,
+            </if>
+            <if test="repaymentDescription != null">
+                repayment_description,
+            </if>
+            <if test="guaranteeDescription != null">
+                guarantee_description,
+            </if>
+            <if test="disposalPartyDescription != null">
+                disposal_party_description,
+            </if>
+            <if test="disposalPlanDescription != null">
+                disposal_plan_description,
+            </if>
+            <if test="assetId != null">
+                asset_id,
+            </if>
+            <if test="isPlatform != null">
+                is_platform,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="payTime != null">
+                pay_time,
+            </if>
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="operatorId != null">
+                operator_id,
+            </if>
+            <if test="accountId != null">
+                account_id,
+            </if>
+            <if test="partyId != null">
+                party_id,
+            </if>
+            <if test="viewNum != null">
+                view_num,
+            </if>
+            <if test="followNum != null">
+                follow_num,
+            </if>
+            <if test="specialNotice != null">
+                special_notice,
+            </if>
+            <if test="extra != null">
+                extra,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="requirementName != null">
+                #{requirementName,jdbcType=VARCHAR},
+            </if>
+            <if test="requirementNo != null">
+                #{requirementNo,jdbcType=VARCHAR},
+            </if>
+            <if test="assetType != null">
+                #{assetType,jdbcType=CHAR},
+            </if>
+            <if test="assetPrice != null">
+                #{assetPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementAmount != null">
+                #{requirementAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementMatchPercent != null">
+                #{requirementMatchPercent,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+            <if test="requirementInterestPercentStart != null">
+                #{requirementInterestPercentStart,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementInterestPercentEnd != null">
+                #{requirementInterestPercentEnd,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementTerm != null">
+                #{requirementTerm,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementStatus != null">
+                #{requirementStatus,jdbcType=CHAR},
+            </if>
+            <if test="companyDescription != null">
+                #{companyDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="itemDescription != null">
+                #{itemDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="repaymentDescription != null">
+                #{repaymentDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="guaranteeDescription != null">
+                #{guaranteeDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="disposalPartyDescription != null">
+                #{disposalPartyDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="disposalPlanDescription != null">
+                #{disposalPlanDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="assetId != null">
+                #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="isPlatform != null">
+                #{isPlatform,jdbcType=BIT},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null">
+                #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="payId != null">
+                #{payId,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="viewNum != null">
+                #{viewNum,jdbcType=INTEGER},
+            </if>
+            <if test="followNum != null">
+                #{followNum,jdbcType=INTEGER},
+            </if>
+            <if test="specialNotice != null">
+                #{specialNotice,jdbcType=VARCHAR},
+            </if>
+            <if test="extra != null">
+                #{extra,jdbcType=LONGVARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.withfudig.TWithfudigRequirement">
+        update zeus.t_withfudig_requirement
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="requirementName != null and requirementName != '' ">
+                requirement_name = #{requirementName,jdbcType=VARCHAR},
+            </if>
+            <if test="requirementNo != null and requirementNo != '' ">
+                requirement_no = #{requirementNo,jdbcType=VARCHAR},
+            </if>
+            <if test="assetType != null and assetType != ''">
+                asset_type = #{assetType,jdbcType=CHAR},
+            </if>
+            <if test="assetPrice != null and assetPrice != ''">
+                asset_price = #{assetPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementAmount != null and requirementAmount != ''">
+                requirement_amount = #{requirementAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementMatchPercent != null">
+                requirement_match_percent =
+                #{requirementMatchPercent,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+            <if test="requirementInterestPercentStart != null and requirementInterestPercentStart !=''">
+                requirement_interest_percent_start = #{requirementInterestPercentStart,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementInterestPercentEnd != null and requirementInterestPercentEnd != ''">
+                requirement_interest_percent_end = #{requirementInterestPercentEnd,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementTerm != null and requirementTerm != ''">
+                requirement_term = #{requirementTerm,jdbcType=DECIMAL},
+            </if>
+            <if test="requirementStatus != null and requirementStatus != ''">
+                requirement_status = #{requirementStatus,jdbcType=CHAR},
+            </if>
+            <if test="companyDescription != null and companyDescription != ''">
+                company_description = #{companyDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="itemDescription != null and itemDescription != ''">
+                item_description = #{itemDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="repaymentDescription != null and repaymentDescription != ''">
+                repayment_description = #{repaymentDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="guaranteeDescription != null and guaranteeDescription != ''">
+                guarantee_description = #{guaranteeDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="disposalPartyDescription != null and disposalPartyDescription != ''">
+                disposal_party_description = #{disposalPartyDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="disposalPlanDescription != null and disposalPlanDescription != ''">
+                disposal_plan_description = #{disposalPlanDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="assetId != null and assetId != ''">
+                asset_id = #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="isPlatform != null and isPlatform != ''">
+                is_platform = #{isPlatform,jdbcType=BIT},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null ">
+                pay_time = #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="payId != null and payId != ''">
+                pay_id = #{payId,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="isDelete != null and isDelete != ''">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="createdTime != null ">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null ">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorId != null and operatorId != ''">
+                operator_id = #{operatorId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null and accountId != ''">
+                account_id = #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                party_id = #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="viewNum != null">
+                view_num = #{viewNum,jdbcType=INTEGER},
+            </if>
+            <if test="followNum != null">
+                follow_num = #{followNum,jdbcType=INTEGER},
+            </if>
+            <if test="specialNotice != null">
+                special_notice = #{specialNotice,jdbcType=VARCHAR},
+            </if>
+            <if test="extra != null">
+                extra = #{extra,jdbcType=LONGVARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

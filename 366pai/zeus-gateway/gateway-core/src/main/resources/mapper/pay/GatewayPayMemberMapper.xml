@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月15日 16时47分13秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.pay.mapper.GatewayPayMemberMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.pay.GatewayPayMember">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="pay_type" jdbcType="VARCHAR" property="payType" />
+	<result column="mem_code" jdbcType="VARCHAR" property="memCode" />
+	<result column="mem_name" jdbcType="VARCHAR" property="memName" />
+	<result column="mem_type" jdbcType="VARCHAR" property="memType" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, pay_type, mem_code, mem_name, mem_type, status, 
+	create_time, update_time, msg
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_pay_member
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.pay.GatewayPayMemberCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_pay_member
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="memCode != null">
+        AND mem_code = #{memCode,jdbcType=VARCHAR}
+      </if>
+      <if test="memName != null">
+        AND mem_name = #{memName,jdbcType=VARCHAR}
+      </if>
+      <if test="memType != null">
+        AND mem_type = #{memType,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.pay.GatewayPayMember">
+    insert into zeus.gateway_pay_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="payType != null">
+        pay_type, 
+      </if>
+      <if test="memCode != null">
+        mem_code, 
+      </if>
+      <if test="memName != null">
+        mem_name, 
+      </if>
+      <if test="memType != null">
+        mem_type, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null">
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memName != null">
+        #{memName,jdbcType=VARCHAR},
+      </if>
+      <if test="memType != null">
+        #{memType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.pay.GatewayPayMember">
+    update zeus.gateway_pay_member
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null">
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memName != null">
+        mem_name = #{memName,jdbcType=VARCHAR},
+      </if>
+      <if test="memType != null">
+        mem_type = #{memType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

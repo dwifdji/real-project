@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月08日 13时24分35秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.THallMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.THall">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="hall_name" jdbcType="VARCHAR" property="hallName" />
+	<result column="hall_type" jdbcType="INTEGER" property="hallType" />
+	<result column="order_num" jdbcType="INTEGER" property="orderNum" />
+	<result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+	<result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, hall_name, hall_type, order_num, del_flag, type
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_hall
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.THallCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_hall
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="hallName != null">
+        AND hall_name = #{hallName,jdbcType=VARCHAR}
+      </if>
+      <if test="hallType != null">
+        AND hall_type = #{hallType,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.THall">
+    insert into zeus.t_hall
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="hallName != null">
+        hall_name, 
+      </if>
+      <if test="hallType != null">
+        hall_type, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hallName != null">
+        #{hallName,jdbcType=VARCHAR},
+      </if>
+      <if test="hallType != null">
+        #{hallType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.THall">
+    update zeus.t_hall
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hallName != null">
+        hall_name = #{hallName,jdbcType=VARCHAR},
+      </if>
+      <if test="hallType != null">
+        hall_type = #{hallType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月29日 15时57分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TBankAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TBankAccount">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="acct_id" jdbcType="INTEGER" property="acctId" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account_no" jdbcType="VARCHAR" property="bankAccountNo" />
+    <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="sub_bank_name" jdbcType="VARCHAR" property="subBankName" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, acct_id, bank_code, bank_name, bank_account_no, bank_account_name,
+    sub_bank_name, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_bank_account
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TBankAccountCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_bank_account
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="acctId != null">
+        AND acct_id = #{acctId,jdbcType=INTEGER}
+      </if>
+      <if test="bankCode != null">
+        AND bank_code = #{bankCode,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountNo != null">
+        AND bank_account_no = #{bankAccountNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountName != null">
+        AND bank_account_name = #{bankAccountName,jdbcType=VARCHAR}
+      </if>
+      <if test="subBankName != null">
+        AND sub_bank_name = #{subBankName,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TBankAccount">
+    insert into zeus.t_bank_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="acctId != null">
+        acct_id,
+      </if>
+      <if test="bankCode != null">
+        bank_code,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankAccountNo != null">
+        bank_account_no,
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name,
+      </if>
+      <if test="subBankName != null">
+        sub_bank_name,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acctId != null">
+        #{acctId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null">
+        #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="subBankName != null">
+        #{subBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TBankAccount">
+    update zeus.t_bank_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acctId != null">
+        acct_id = #{acctId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCode != null">
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null">
+        bank_account_no = #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="subBankName != null">
+        sub_bank_name = #{subBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

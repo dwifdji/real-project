@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.PlatformChannelPayActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.PlatformChannelPayAction">
+	<result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="number" jdbcType="INTEGER" property="number" />
+	<result column="count" jdbcType="INTEGER" property="count" />
+	<result column="pay_order_action_id" jdbcType="VARCHAR" property="payOrderActionId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, amount, number, count, pay_order_action_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.platform_channel_pay_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.PlatformChannelPayActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.platform_channel_pay_action
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="number != null">
+        AND number = #{number,jdbcType=INTEGER}
+      </if>
+      <if test="count != null">
+        AND count = #{count,jdbcType=INTEGER}
+      </if>
+      <if test="payOrderActionId != null">
+        AND pay_order_action_id = #{payOrderActionId,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.payment.PlatformChannelPayAction">
+    insert into zeus.platform_channel_pay_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="number != null">
+        number, 
+      </if>
+      <if test="count != null">
+        count, 
+      </if>
+      <if test="payOrderActionId != null">
+        pay_order_action_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="payOrderActionId != null">
+        #{payOrderActionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.payment.PlatformChannelPayAction">
+    update zeus.platform_channel_pay_action
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="payOrderActionId != null">
+        pay_order_action_id = #{payOrderActionId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

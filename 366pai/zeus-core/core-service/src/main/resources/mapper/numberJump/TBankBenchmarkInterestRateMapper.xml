@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月29日 14时56分33秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.numberJump.mapper.TBankBenchmarkInterestRateMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.numberJump.TBankBenchmarkInterestRate">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="first_section" jdbcType="DECIMAL" property="firstSection" />
+    <result column="second_section" jdbcType="DECIMAL" property="secondSection" />
+    <result column="third_section" jdbcType="DECIMAL" property="thirdSection" />
+    <result column="fourth_section" jdbcType="DECIMAL" property="fourthSection" />
+    <result column="fifth_section" jdbcType="DECIMAL" property="fifthSection" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, start_date, end_date, first_section, second_section, third_section,
+    fourth_section, fifth_section, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_bank_benchmark_interest_rate
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.numberJump.TBankBenchmarkInterestRateCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_bank_benchmark_interest_rate
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="startDate != null">
+        AND start_date = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="firstSection != null">
+        AND first_section = #{firstSection,jdbcType=DECIMAL}
+      </if>
+      <if test="secondSection != null">
+        AND second_section = #{secondSection,jdbcType=DECIMAL}
+      </if>
+      <if test="thirdSection != null">
+        AND third_section = #{thirdSection,jdbcType=DECIMAL}
+      </if>
+      <if test="fourthSection != null">
+        AND fourth_section = #{fourthSection,jdbcType=DECIMAL}
+      </if>
+      <if test="fifthSection != null">
+        AND fifth_section = #{fifthSection,jdbcType=DECIMAL}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+    <select id="getByDateDuration" resultType="com._360pai.core.model.numberJump.TBankBenchmarkInterestRate">
+      select DISTINCT b.* FROM (
+      (select * from zeus.t_bank_benchmark_interest_rate t where t.start_date &lt;= #{startDate} order by t.start_date desc limit 1)
+
+      union  all
+
+      (select * from zeus.t_bank_benchmark_interest_rate t where t.end_date >= #{endDate} order by t.end_date asc limit 1)
+      union all
+
+      (select * from zeus.t_bank_benchmark_interest_rate t where t.start_date >= #{startDate} and  t.end_date &lt;= #{endDate})
+
+      ORDER BY start_date ) as b
+    </select>
+    <select id="getByDate" resultType="com._360pai.core.model.numberJump.TBankBenchmarkInterestRate">
+      select * from t_bank_benchmark_interest_rate t where t.start_date &lt;= #{date} and t.end_date >= #{date} limit 1
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.numberJump.TBankBenchmarkInterestRate">
+    insert into zeus.t_bank_benchmark_interest_rate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="firstSection != null">
+        first_section,
+      </if>
+      <if test="secondSection != null">
+        second_section,
+      </if>
+      <if test="thirdSection != null">
+        third_section,
+      </if>
+      <if test="fourthSection != null">
+        fourth_section,
+      </if>
+      <if test="fifthSection != null">
+        fifth_section,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="firstSection != null">
+        #{firstSection,jdbcType=DECIMAL},
+      </if>
+      <if test="secondSection != null">
+        #{secondSection,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdSection != null">
+        #{thirdSection,jdbcType=DECIMAL},
+      </if>
+      <if test="fourthSection != null">
+        #{fourthSection,jdbcType=DECIMAL},
+      </if>
+      <if test="fifthSection != null">
+        #{fifthSection,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.numberJump.TBankBenchmarkInterestRate">
+    update zeus.t_bank_benchmark_interest_rate
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="firstSection != null">
+        first_section = #{firstSection,jdbcType=DECIMAL},
+      </if>
+      <if test="secondSection != null">
+        second_section = #{secondSection,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdSection != null">
+        third_section = #{thirdSection,jdbcType=DECIMAL},
+      </if>
+      <if test="fourthSection != null">
+        fourth_section = #{fourthSection,jdbcType=DECIMAL},
+      </if>
+      <if test="fifthSection != null">
+        fifth_section = #{fifthSection,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

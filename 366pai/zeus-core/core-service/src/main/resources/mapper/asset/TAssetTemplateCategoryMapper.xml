@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月26日 16时47分58秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetTemplateCategoryMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetTemplateCategory">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="is_group_default" jdbcType="TINYINT" property="isGroupDefault" />
+    <result column="category_option_id" jdbcType="INTEGER" property="categoryOptionId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, template_name,
+	category_id, is_group_default, category_option_id
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_asset_template_category
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetTemplateCategoryCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_asset_template_category
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="templateName != null">
+        AND template_name = #{templateName,jdbcType=VARCHAR}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="isGroupDefault != null">
+        AND is_group_default = #{isGroupDefault,jdbcType=TINYINT}
+      </if>
+      <if test="categoryOptionId != null">
+        AND category_option_id = #{categoryOptionId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetTemplateCategory">
+    insert into zeus.t_asset_template_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="isGroupDefault != null">
+        is_group_default,
+      </if>
+      <if test="categoryOptionId != null">
+        category_option_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateName != null">
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="isGroupDefault != null">
+        #{isGroupDefault,jdbcType=TINYINT},
+      </if>
+      <if test="categoryOptionId != null">
+        #{categoryOptionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetTemplateCategory">
+    update zeus.t_asset_template_category
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateName != null">
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="isGroupDefault != null">
+        is_group_default = #{isGroupDefault,jdbcType=TINYINT},
+      </if>
+      <if test="categoryOptionId != null">
+        category_option_id = #{categoryOptionId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

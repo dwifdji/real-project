@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月02日 11时38分38秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.fdd.mapper.GatewayFddSignContractMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.fdd.GatewayFddSignContract">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="buyer_signed" jdbcType="BIT" property="buyerSigned" />
+	<result column="seller_signed" jdbcType="BIT" property="sellerSigned" />
+	<result column="all_signed" jdbcType="BIT" property="allSigned" />
+	<result column="activity_id" jdbcType="VARCHAR" property="activityId" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+	<result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="sign_type" jdbcType="VARCHAR" property="signType" />
+	<result column="auto_sign_param" jdbcType="VARCHAR" property="autoSignParam" />
+	<result column="seller_sign_param" jdbcType="VARCHAR" property="sellerSignParam" />
+	<result column="buyer_sign_param" jdbcType="VARCHAR" property="buyerSignParam" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, buyer_signed, seller_signed, all_signed, activity_id, contract_id, 
+	download_url, viewpdf_url, msg, create_time, update_time, sign_type, 
+	auto_sign_param, seller_sign_param, buyer_sign_param
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_fdd_sign_contract
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.fdd.GatewayFddSignContractCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_fdd_sign_contract
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="buyerSigned != null">
+        AND buyer_signed = #{buyerSigned,jdbcType=BIT}
+      </if>
+      <if test="sellerSigned != null">
+        AND seller_signed = #{sellerSigned,jdbcType=BIT}
+      </if>
+      <if test="allSigned != null">
+        AND all_signed = #{allSigned,jdbcType=BIT}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="signType != null">
+        AND sign_type = #{signType,jdbcType=VARCHAR}
+      </if>
+      <if test="autoSignParam != null">
+        AND auto_sign_param = #{autoSignParam,jdbcType=VARCHAR}
+      </if>
+      <if test="sellerSignParam != null">
+        AND seller_sign_param = #{sellerSignParam,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerSignParam != null">
+        AND buyer_sign_param = #{buyerSignParam,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.fdd.GatewayFddSignContract">
+    insert into zeus.gateway_fdd_sign_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="buyerSigned != null">
+        buyer_signed, 
+      </if>
+      <if test="sellerSigned != null">
+        seller_signed, 
+      </if>
+      <if test="allSigned != null">
+        all_signed, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="downloadUrl != null">
+        download_url, 
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="signType != null">
+        sign_type, 
+      </if>
+      <if test="autoSignParam != null">
+        auto_sign_param, 
+      </if>
+      <if test="sellerSignParam != null">
+        seller_sign_param, 
+      </if>
+      <if test="buyerSignParam != null">
+        buyer_sign_param, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buyerSigned != null">
+        #{buyerSigned,jdbcType=BIT},
+      </if>
+      <if test="sellerSigned != null">
+        #{sellerSigned,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signType != null">
+        #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="autoSignParam != null">
+        #{autoSignParam,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerSignParam != null">
+        #{sellerSignParam,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerSignParam != null">
+        #{buyerSignParam,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.fdd.GatewayFddSignContract">
+    update zeus.gateway_fdd_sign_contract
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buyerSigned != null">
+        buyer_signed = #{buyerSigned,jdbcType=BIT},
+      </if>
+      <if test="sellerSigned != null">
+        seller_signed = #{sellerSigned,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        all_signed = #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signType != null">
+        sign_type = #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="autoSignParam != null">
+        auto_sign_param = #{autoSignParam,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerSignParam != null">
+        seller_sign_param = #{sellerSignParam,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerSignParam != null">
+        buyer_sign_param = #{buyerSignParam,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <select id="queryNotSignConTract" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.gateway_fdd_sign_contract
+    where 1=1
+    and ( seller_signed != '1'
+    OR ( sign_type in ('3','15','16','17') AND buyer_signed != '1' ))
+    and ( create_time > date_sub(now(), interval 1 hour) or
+    update_time > date_sub(now(), interval 1 hour))
+  </select>
+
+</mapper>

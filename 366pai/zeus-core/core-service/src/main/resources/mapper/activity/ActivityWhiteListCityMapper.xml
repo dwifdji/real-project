@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分49秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.ActivityWhiteListCityMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.ActivityWhiteListCity">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, city_id, activity_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.activity_white_list_city
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.ActivityWhiteListCityCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.activity_white_list_city
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.ActivityWhiteListCity">
+    insert into zeus.activity_white_list_city
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.ActivityWhiteListCity">
+    update zeus.activity_white_list_city
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getIdListByActivityId" resultType="java.lang.Integer">
+    select id from zeus.activity_white_list_city where activity_id=#{activityId}
+  </select>
+
+  <delete id="deleteById">
+    delete from zeus.activity_white_list_city where id=#{id}
+  </delete>
+</mapper>

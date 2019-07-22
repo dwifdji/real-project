@@ -1,0 +1,18 @@
+
+## Dubbo 服务消费者配置
+spring:
+  profiles:
+    active: biz
+  application:
+    name: rest-applet
+dubbo:
+  application:
+    id: rest-applet
+    name: rest-applet
+  scan:
+    basePackages: com._360pai.applet.controller
+  protocol:
+      port: -1
+server:
+  port: 8066
+  context-path: /rest-applet

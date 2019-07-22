@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月22日 18时25分08秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetFieldMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetField">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="label" jdbcType="VARCHAR" property="label"/>
+        <result column="hint" jdbcType="VARCHAR" property="hint"/>
+        <result column="type" jdbcType="CHAR" property="type"/>
+        <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+        <result column="front_show" jdbcType="BIT" property="frontShow"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+        <result column="temp_option_id" jdbcType="INTEGER" property="tempOptionId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, name, label, hint, type, group_id, 
+	front_show, order_num, temp_option_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_field
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetFieldCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_field
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="label != null">
+                AND label = #{label,jdbcType=VARCHAR}
+            </if>
+            <if test="hint != null">
+                AND hint = #{hint,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                AND type = #{type,jdbcType=CHAR}
+            </if>
+            <if test="groupId != null">
+                AND group_id = #{groupId,jdbcType=INTEGER}
+            </if>
+            <if test="frontShow != null">
+                AND front_show = #{frontShow,jdbcType=BIT}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="tempOptionId != null">
+                AND temp_option_id = #{tempOptionId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetField">
+        insert into zeus.asset_field
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="label != null">
+                label,
+            </if>
+            <if test="hint != null">
+                hint,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="groupId != null">
+                group_id,
+            </if>
+            <if test="frontShow != null">
+                front_show,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="tempOptionId != null">
+                temp_option_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=CHAR},
+            </if>
+            <if test="groupId != null">
+                #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="frontShow != null">
+                #{frontShow,jdbcType=BIT},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="tempOptionId != null">
+                #{tempOptionId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetField">
+        update zeus.asset_field
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                label = #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                hint = #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=CHAR},
+            </if>
+            <if test="groupId != null">
+                group_id = #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="frontShow != null">
+                front_show = #{frontShow,jdbcType=BIT},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="tempOptionId != null">
+                temp_option_id = #{tempOptionId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="selectAssetFieldAndGroup" parameterType="com._360pai.core.dto.AssetFieldDto"
+            resultType="com._360pai.core.vo.asset.AssetFieldVo">
+        select afg.`name` as groupName,
+        af.front_show AS frontShow,
+        af.hint AS hint,
+        af.id AS id,
+        af.group_id AS groupId,
+        af.label AS label,
+        af.`name` AS name,
+        af.order_num AS orderNum,
+        af.type AS type
+        from asset_field af
+        LEFT JOIN asset_field_group afg on af.group_id = afg.id
+        <where>
+            <if test="groupId != null">and af.group_id = #{groupId}</if>
+            <if test="label != null">and af.label like CONCAT('%',#{label},'%')</if>
+        </where>
+    </select>
+
+</mapper>

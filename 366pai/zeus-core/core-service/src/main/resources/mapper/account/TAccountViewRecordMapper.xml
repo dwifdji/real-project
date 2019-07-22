@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月14日 09时48分08秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAccountViewRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAccountViewRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+	<result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, party_id, activity_id, type, create_at, update_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_account_view_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAccountViewRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_account_view_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="createAt != null">
+        AND create_at = #{createAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateAt != null">
+        AND update_at = #{updateAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TAccountViewRecord">
+    insert into zeus.t_account_view_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="createAt != null">
+        create_at, 
+      </if>
+      <if test="updateAt != null">
+        update_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TAccountViewRecord">
+    update zeus.t_account_view_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <update id="updateActivityByPartyId" parameterType="Integer">
+      update t_account_view_record set party_id = #{partyId} where account_id = #{accountId} and party_id is null
+  </update>
+
+</mapper>

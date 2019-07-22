@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月03日 18时23分49秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TJobFocusReminderCountRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TJobFocusReminderCountRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="activity_type" jdbcType="INTEGER" property="activityType" />
+	<result column="recode_type" jdbcType="INTEGER" property="recodeType" />
+	<result column="create_date" jdbcType="VARCHAR" property="createDate" />
+	<result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+	<result column="count_num" jdbcType="INTEGER" property="countNum" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id, activity_type, recode_type, create_date, create_at, 
+	count_num
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_job_focus_reminder_count_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TJobFocusReminderCountRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_job_focus_reminder_count_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="activityType != null">
+        AND activity_type = #{activityType,jdbcType=INTEGER}
+      </if>
+      <if test="recodeType != null">
+        AND recode_type = #{recodeType,jdbcType=INTEGER}
+      </if>
+      <if test="createDate != null">
+        AND create_date = #{createDate,jdbcType=VARCHAR}
+      </if>
+      <if test="createAt != null">
+        AND create_at = #{createAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="countNum != null">
+        AND count_num = #{countNum,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TJobFocusReminderCountRecord">
+    insert into zeus.t_job_focus_reminder_count_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="activityType != null">
+        activity_type, 
+      </if>
+      <if test="recodeType != null">
+        recode_type, 
+      </if>
+      <if test="createDate != null">
+        create_date, 
+      </if>
+      <if test="createAt != null">
+        create_at, 
+      </if>
+      <if test="countNum != null">
+        count_num, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityType != null">
+        #{activityType,jdbcType=INTEGER},
+      </if>
+      <if test="recodeType != null">
+        #{recodeType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countNum != null">
+        #{countNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TJobFocusReminderCountRecord">
+    update zeus.t_job_focus_reminder_count_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityType != null">
+        activity_type = #{activityType,jdbcType=INTEGER},
+      </if>
+      <if test="recodeType != null">
+        recode_type = #{recodeType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countNum != null">
+        count_num = #{countNum,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

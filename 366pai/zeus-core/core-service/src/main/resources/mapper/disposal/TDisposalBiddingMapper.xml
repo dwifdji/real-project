@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月14日 10时33分09秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.disposal.mapper.TDisposalBiddingMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.disposal.TDisposalBidding">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="disposal_id" jdbcType="INTEGER" property="disposalId" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="bid_no" jdbcType="VARCHAR" property="bidNo" />
+	<result column="bid_cost" jdbcType="VARCHAR" property="bidCost" />
+	<result column="require_description" jdbcType="LONGVARCHAR" property="requireDescription" />
+	<result column="special_description" jdbcType="LONGVARCHAR" property="specialDescription" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="communicat_content" jdbcType="LONGVARCHAR" property="communicatContent" />
+	<result column="bid_status" jdbcType="CHAR" property="bidStatus" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="is_del" jdbcType="TINYINT" property="isDel" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, disposal_id, account_id,party_id, bid_no, bid_cost, require_description,
+	special_description, operator_id, communicat_content, bid_status, update_time, create_time,
+	is_del
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_disposal_bidding
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.disposal.TDisposalBiddingCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_disposal_bidding
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="disposalId != null">
+        AND disposal_id = #{disposalId,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null  and partyId != ''">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+
+      <if test="bidNo != null">
+        AND bid_no = #{bidNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bidCost != null">
+        AND bid_cost = #{bidCost,jdbcType=VARCHAR}
+      </if>
+      <if test="requireDescription != null">
+        AND require_description = #{requireDescription,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="specialDescription != null">
+        AND special_description = #{specialDescription,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="communicatContent != null">
+        AND communicat_content = #{communicatContent,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="bidStatus != null">
+        AND bid_status = #{bidStatus,jdbcType=CHAR}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=TINYINT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.disposal.TDisposalBidding">
+    insert into zeus.t_disposal_bidding
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="disposalId != null">
+        disposal_id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="bidNo != null">
+        bid_no,
+      </if>
+      <if test="bidCost != null">
+        bid_cost, 
+      </if>
+      <if test="requireDescription != null">
+        require_description, 
+      </if>
+      <if test="specialDescription != null">
+        special_description, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="communicatContent != null">
+        communicat_content, 
+      </if>
+      <if test="bidStatus != null">
+        bid_status,
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="disposalId != null">
+        #{disposalId,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="bidNo != null">
+        #{bidNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCost != null">
+        #{bidCost,jdbcType=VARCHAR},
+      </if>
+      <if test="requireDescription != null">
+        #{requireDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="specialDescription != null">
+        #{specialDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="communicatContent != null">
+        #{communicatContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bidStatus != null">
+        #{bidStatus,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.disposal.TDisposalBidding">
+    update zeus.t_disposal_bidding
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="disposalId != null">
+        disposal_id = #{disposalId,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+
+      <if test="bidNo != null">
+        bid_no = #{bidNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCost != null">
+        bid_cost = #{bidCost,jdbcType=VARCHAR},
+      </if>
+      <if test="requireDescription != null">
+        require_description = #{requireDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="specialDescription != null">
+        special_description = #{specialDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="communicatContent != null">
+        communicat_content = #{communicatContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bidStatus != null">
+        bid_status = #{bidStatus,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=TINYINT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findBiddingInfoList" parameterType="java.lang.Integer" resultType="com._360pai.core.model.disposal.TDisposalBidding">
+    SELECT
+    t2.disposal_no disposalNo,
+    if(t2.is_platform = 0, t2.disposal_name, t2.platform_no) as disposalName,
+    t2.disposal_type disposalType,
+    t2.is_platform isPlatform,
+    t1.id id,
+    t1.bid_no bidNo,
+    t1.create_time createTime,
+    t1.bid_status bidStatus,
+    t1.bid_cost bidCost,
+    t1.require_description requireDescription,
+    t1.special_description specialDescription
+    FROM zeus.t_disposal_bidding t1 LEFT JOIN zeus.t_disposal_requirement t2
+    ON t1.disposal_id = t2.id WHERE t1.party_id = #{partyId} AND t1.is_del = 0
+    ORDER BY t1.create_time DESC
+  </select>
+
+  <select id="findInvestmentInfo" resultType="com._360pai.core.model.disposal.TDisposalBidding">
+    SELECT
+        t3.update_time AS biddingTime,
+        t1.company_name AS companyName,
+    IF
+        ( t4.is_platform = 0, t4.disposal_name, t4.platform_no ) AS disposalName,
+        t1.party_id AS partyId
+    FROM
+        zeus.t_dispose_provider t1
+        LEFT JOIN zeus.t_disposal_bidding t3 ON t1.party_id = t3.party_id
+        LEFT JOIN zeus.t_disposal_requirement t4 ON t3.disposal_id = t4.id
+    WHERE
+        t3.bid_status = '30'
+        AND t3.is_del = '0'
+    ORDER BY
+        t3.update_time DESC
+  </select>
+
+  <update id="updateManuallyFinished" parameterType="com._360pai.core.model.disposal.TDisposalBidding">
+    UPDATE zeus.t_disposal_bidding
+    <set>
+      <if test="bidStatus != null">bid_status=#{bidStatus},</if>
+      <if test="operatorId != null">operator_id = #{operatorId},</if>
+      <if test="updateTime != null">update_time = #{updateTime},</if>
+    </set>
+    <where>
+      <if test="disposalId != null">and disposal_id = #{disposalId}</if>
+      <if test="id != null">and id = #{id}</if>
+      AND bid_status = '10'
+    </where>
+  </update>
+
+  <select id="findBiddingInfoListByCondition" parameterType="com._360pai.core.condition.disposal.TDisposalBiddingCondition"
+            resultType="com._360pai.core.model.disposal.TDisposalBidding">
+    SELECT
+      t3.id biddingId,
+      t3.create_time createTime,
+      t3.bid_no bidNo,
+      t3.bid_cost bidCost,
+      t3.bid_status bidStatus,
+      t3.require_description requireDescription,
+      t3.special_description specialDescription,
+      t1.company_name companyName,
+      t1.contact_mobile contactMobile,
+      t1.contact_name contactName,
+      t1.dispose_type disposeType,
+      t1.party_id     partyId
+    FROM
+      zeus.t_dispose_provider t1
+      LEFT JOIN zeus.t_disposal_bidding t3 ON t1.party_id = t3.party_id
+    <where>
+      t3.disposal_id = #{disposalId}
+      <if test="createTime != null"> AND t3.create_time = #{createTime}</if>
+      <if test="bidStatus != null">  AND t3.bid_status = #{bidStatus}</if>
+      <if test="companyName != null">AND t1.company_name = #{companyName}</if>
+    </where>
+    ORDER BY
+      createTime DESC
+  </select>
+
+</mapper>

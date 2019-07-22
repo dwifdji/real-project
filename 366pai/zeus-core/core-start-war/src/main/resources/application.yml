@@ -1,0 +1,28 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: core
+dubbo:
+    application:
+        id: core
+        name: core
+    scan:
+        basePackages: com._360pai.core.provider
+    protocol:
+        port: -1
+
+server:
+  port: 8085
+
+xxl:
+  job:
+    executor:
+      appname: zeus-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:
+
+

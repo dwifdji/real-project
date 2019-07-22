@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月21日 09时08分43秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.BannerMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.Banner">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="link_url" jdbcType="VARCHAR" property="linkUrl" />
+        <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+        <result column="is_agency" jdbcType="BIT" property="isAgency" />
+        <result column="is_online" jdbcType="BIT" property="isOnline" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, link_url, img_url, is_agency, is_online, name,
+	order_num, type
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.banner
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.BannerCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.banner
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="linkUrl != null">
+                AND link_url = #{linkUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="imgUrl != null">
+                AND img_url = #{imgUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="isAgency != null">
+                AND is_agency = #{isAgency,jdbcType=BIT}
+            </if>
+            <if test="isOnline != null">
+                AND is_online = #{isOnline,jdbcType=BIT}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="type != null">
+                AND type = #{type,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.Banner">
+        insert into zeus.banner
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="linkUrl != null">
+                link_url,
+            </if>
+            <if test="imgUrl != null">
+                img_url,
+            </if>
+            <if test="isAgency != null">
+                is_agency,
+            </if>
+            <if test="isOnline != null">
+                is_online,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="linkUrl != null">
+                #{linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null">
+                #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="isAgency != null">
+                #{isAgency,jdbcType=BIT},
+            </if>
+            <if test="isOnline != null">
+                #{isOnline,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.Banner">
+        update zeus.banner
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="linkUrl != null">
+                link_url = #{linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null">
+                img_url = #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="isAgency != null">
+                is_agency = #{isAgency,jdbcType=BIT},
+            </if>
+            <if test="isOnline != null">
+                is_online = #{isOnline,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <delete id="deleteBanner">
+      delete from zeus.banner where id = #{paramsId};
+    </delete>
+
+</mapper>

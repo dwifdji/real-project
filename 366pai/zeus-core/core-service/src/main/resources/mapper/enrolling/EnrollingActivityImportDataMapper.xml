@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月14日 13时27分22秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingActivityImportDataMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingActivityImportData">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="branch_com_name" jdbcType="VARCHAR" property="branchComName" />
+	<result column="debtor" jdbcType="VARCHAR" property="debtor" />
+	<result column="debtor_bus" jdbcType="VARCHAR" property="debtorBus" />
+	<result column="bus_states" jdbcType="VARCHAR" property="busStates" />
+	<result column="debtor_pro" jdbcType="VARCHAR" property="debtorPro" />
+	<result column="debtor_city" jdbcType="VARCHAR" property="debtorCity" />
+	<result column="debtor_area" jdbcType="VARCHAR" property="debtorArea" />
+	<result column="debt_location" jdbcType="VARCHAR" property="debtLocation" />
+	<result column="pawn_location" jdbcType="VARCHAR" property="pawnLocation" />
+	<result column="pawn_pro" jdbcType="VARCHAR" property="pawnPro" />
+	<result column="pawn_city" jdbcType="VARCHAR" property="pawnCity" />
+	<result column="pawn_area" jdbcType="VARCHAR" property="pawnArea" />
+	<result column="base_date" jdbcType="VARCHAR" property="baseDate" />
+	<result column="outstanding_principal" jdbcType="VARCHAR" property="outstandingPrincipal" />
+	<result column="outstanding_interest" jdbcType="VARCHAR" property="outstandingInterest" />
+	<result column="dedit" jdbcType="VARCHAR" property="dedit" />
+	<result column="other_info" jdbcType="VARCHAR" property="otherInfo" />
+	<result column="total_debt" jdbcType="VARCHAR" property="totalDebt" />
+	<result column="asset_num" jdbcType="VARCHAR" property="assetNum" />
+	<result column="asset_source" jdbcType="VARCHAR" property="assetSource" />
+	<result column="asset_value" jdbcType="VARCHAR" property="assetValue" />
+	<result column="asset_base_date" jdbcType="VARCHAR" property="assetBaseDate" />
+	<result column="report_date" jdbcType="VARCHAR" property="reportDate" />
+	<result column="assure_means" jdbcType="VARCHAR" property="assureMeans" />
+	<result column="assure_name" jdbcType="VARCHAR" property="assureName" />
+	<result column="specific_assure_means" jdbcType="VARCHAR" property="specificAssureMeans" />
+	<result column="realty_character" jdbcType="VARCHAR" property="realtyCharacter" />
+	<result column="land_area" jdbcType="VARCHAR" property="landArea" />
+	<result column="building_area" jdbcType="VARCHAR" property="buildingArea" />
+	<result column="pledge_sequence" jdbcType="VARCHAR" property="pledgeSequence" />
+	<result column="guarantee_that" jdbcType="VARCHAR" property="guaranteeThat" />
+	<result column="litigation_link" jdbcType="VARCHAR" property="litigationLink" />
+	<result column="has_guarantee" jdbcType="VARCHAR" property="hasGuarantee" />
+	<result column="if_guarantee" jdbcType="VARCHAR" property="ifGuarantee" />
+	<result column="project_window" jdbcType="VARCHAR" property="projectWindow" />
+	<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+	<result column="asset_desc" jdbcType="VARCHAR" property="assetDesc" />
+	<result column="contact_person" jdbcType="VARCHAR" property="contactPerson" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="disposal_service" jdbcType="VARCHAR" property="disposalService" />
+	<result column="fund_provider" jdbcType="VARCHAR" property="fundProvider" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+      <result column="debtor_area_id" jdbcType="VARCHAR" property="debtorAreaId" />
+      <result column="pawn_area_id" jdbcType="VARCHAR" property="pawnAreaId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id, name, branch_com_name, debtor, debtor_bus, 
+	bus_states, debtor_pro, debtor_city, debtor_area, debt_location, pawn_location, 
+	pawn_pro, pawn_city, pawn_area, base_date, outstanding_principal, outstanding_interest, 
+	dedit, other_info, total_debt, asset_num, asset_source, asset_value, 
+	asset_base_date, report_date, assure_means, assure_name, specific_assure_means, realty_character, 
+	land_area, building_area, pledge_sequence, guarantee_that, litigation_link, has_guarantee, 
+	if_guarantee, project_window, remarks, asset_desc, contact_person, contact_phone, 
+	disposal_service, fund_provider,create_time,operator_id,delete_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.enrolling_activity_import_data
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingActivityImportDataCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.enrolling_activity_import_data
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="branchComName != null">
+        AND branch_com_name = #{branchComName,jdbcType=VARCHAR}
+      </if>
+      <if test="debtor != null">
+        AND debtor = #{debtor,jdbcType=VARCHAR}
+      </if>
+      <if test="debtorBus != null">
+        AND debtor_bus = #{debtorBus,jdbcType=VARCHAR}
+      </if>
+      <if test="busStates != null">
+        AND bus_states = #{busStates,jdbcType=VARCHAR}
+      </if>
+      <if test="debtorPro != null">
+        AND debtor_pro = #{debtorPro,jdbcType=VARCHAR}
+      </if>
+      <if test="debtorCity != null">
+        AND debtor_city = #{debtorCity,jdbcType=VARCHAR}
+      </if>
+      <if test="debtorArea != null">
+        AND debtor_area = #{debtorArea,jdbcType=VARCHAR}
+      </if>
+      <if test="debtLocation != null">
+        AND debt_location = #{debtLocation,jdbcType=VARCHAR}
+      </if>
+      <if test="pawnLocation != null">
+        AND pawn_location = #{pawnLocation,jdbcType=VARCHAR}
+      </if>
+      <if test="pawnPro != null">
+        AND pawn_pro = #{pawnPro,jdbcType=VARCHAR}
+      </if>
+      <if test="pawnCity != null">
+        AND pawn_city = #{pawnCity,jdbcType=VARCHAR}
+      </if>
+      <if test="pawnArea != null">
+        AND pawn_area = #{pawnArea,jdbcType=VARCHAR}
+      </if>
+      <if test="baseDate != null">
+        AND base_date = #{baseDate,jdbcType=VARCHAR}
+      </if>
+      <if test="outstandingPrincipal != null">
+        AND outstanding_principal = #{outstandingPrincipal,jdbcType=VARCHAR}
+      </if>
+      <if test="outstandingInterest != null">
+        AND outstanding_interest = #{outstandingInterest,jdbcType=VARCHAR}
+      </if>
+      <if test="dedit != null">
+        AND dedit = #{dedit,jdbcType=VARCHAR}
+      </if>
+      <if test="otherInfo != null">
+        AND other_info = #{otherInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="totalDebt != null">
+        AND total_debt = #{totalDebt,jdbcType=VARCHAR}
+      </if>
+      <if test="assetNum != null">
+        AND asset_num = #{assetNum,jdbcType=VARCHAR}
+      </if>
+      <if test="assetSource != null">
+        AND asset_source = #{assetSource,jdbcType=VARCHAR}
+      </if>
+      <if test="assetValue != null">
+        AND asset_value = #{assetValue,jdbcType=VARCHAR}
+      </if>
+      <if test="assetBaseDate != null">
+        AND asset_base_date = #{assetBaseDate,jdbcType=VARCHAR}
+      </if>
+      <if test="reportDate != null">
+        AND report_date = #{reportDate,jdbcType=VARCHAR}
+      </if>
+      <if test="assureMeans != null">
+        AND assure_means = #{assureMeans,jdbcType=VARCHAR}
+      </if>
+      <if test="assureName != null">
+        AND assure_name = #{assureName,jdbcType=VARCHAR}
+      </if>
+      <if test="specificAssureMeans != null">
+        AND specific_assure_means = #{specificAssureMeans,jdbcType=VARCHAR}
+      </if>
+      <if test="realtyCharacter != null">
+        AND realty_character = #{realtyCharacter,jdbcType=VARCHAR}
+      </if>
+      <if test="landArea != null">
+        AND land_area = #{landArea,jdbcType=VARCHAR}
+      </if>
+      <if test="buildingArea != null">
+        AND building_area = #{buildingArea,jdbcType=VARCHAR}
+      </if>
+      <if test="pledgeSequence != null">
+        AND pledge_sequence = #{pledgeSequence,jdbcType=VARCHAR}
+      </if>
+      <if test="guaranteeThat != null">
+        AND guarantee_that = #{guaranteeThat,jdbcType=VARCHAR}
+      </if>
+      <if test="litigationLink != null">
+        AND litigation_link = #{litigationLink,jdbcType=VARCHAR}
+      </if>
+      <if test="hasGuarantee != null">
+        AND has_guarantee = #{hasGuarantee,jdbcType=VARCHAR}
+      </if>
+      <if test="ifGuarantee != null">
+        AND if_guarantee = #{ifGuarantee,jdbcType=VARCHAR}
+      </if>
+      <if test="projectWindow != null">
+        AND project_window = #{projectWindow,jdbcType=VARCHAR}
+      </if>
+      <if test="remarks != null">
+        AND remarks = #{remarks,jdbcType=VARCHAR}
+      </if>
+      <if test="assetDesc != null">
+        AND asset_desc = #{assetDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPerson != null">
+        AND contact_person = #{contactPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="disposalService != null">
+        AND disposal_service = #{disposalService,jdbcType=VARCHAR}
+      </if>
+      <if test="fundProvider != null">
+        AND fund_provider = #{fundProvider,jdbcType=VARCHAR}
+      </if>
+
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+            AND delete_flag = #{deleteFlag,jdbcType=BIT}
+       </if>
+
+
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.EnrollingActivityImportData">
+    insert into zeus.enrolling_activity_import_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="branchComName != null">
+        branch_com_name, 
+      </if>
+      <if test="debtor != null">
+        debtor, 
+      </if>
+      <if test="debtorBus != null">
+        debtor_bus, 
+      </if>
+      <if test="busStates != null">
+        bus_states, 
+      </if>
+      <if test="debtorPro != null">
+        debtor_pro, 
+      </if>
+      <if test="debtorCity != null">
+        debtor_city, 
+      </if>
+      <if test="debtorArea != null">
+        debtor_area, 
+      </if>
+      <if test="debtLocation != null">
+        debt_location, 
+      </if>
+      <if test="pawnLocation != null">
+        pawn_location, 
+      </if>
+      <if test="pawnPro != null">
+        pawn_pro, 
+      </if>
+      <if test="pawnCity != null">
+        pawn_city, 
+      </if>
+      <if test="pawnArea != null">
+        pawn_area, 
+      </if>
+      <if test="baseDate != null">
+        base_date, 
+      </if>
+      <if test="outstandingPrincipal != null">
+        outstanding_principal, 
+      </if>
+      <if test="outstandingInterest != null">
+        outstanding_interest, 
+      </if>
+      <if test="dedit != null">
+        dedit, 
+      </if>
+      <if test="otherInfo != null">
+        other_info, 
+      </if>
+      <if test="totalDebt != null">
+        total_debt, 
+      </if>
+      <if test="assetNum != null">
+        asset_num, 
+      </if>
+      <if test="assetSource != null">
+        asset_source, 
+      </if>
+      <if test="assetValue != null">
+        asset_value, 
+      </if>
+      <if test="assetBaseDate != null">
+        asset_base_date, 
+      </if>
+      <if test="reportDate != null">
+        report_date, 
+      </if>
+      <if test="assureMeans != null">
+        assure_means, 
+      </if>
+      <if test="assureName != null">
+        assure_name, 
+      </if>
+      <if test="specificAssureMeans != null">
+        specific_assure_means, 
+      </if>
+      <if test="realtyCharacter != null">
+        realty_character, 
+      </if>
+      <if test="landArea != null">
+        land_area, 
+      </if>
+      <if test="buildingArea != null">
+        building_area, 
+      </if>
+      <if test="pledgeSequence != null">
+        pledge_sequence, 
+      </if>
+      <if test="guaranteeThat != null">
+        guarantee_that, 
+      </if>
+      <if test="litigationLink != null">
+        litigation_link, 
+      </if>
+      <if test="hasGuarantee != null">
+        has_guarantee, 
+      </if>
+      <if test="ifGuarantee != null">
+        if_guarantee, 
+      </if>
+      <if test="projectWindow != null">
+        project_window, 
+      </if>
+      <if test="remarks != null">
+        remarks, 
+      </if>
+      <if test="assetDesc != null">
+        asset_desc, 
+      </if>
+      <if test="contactPerson != null">
+        contact_person, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="disposalService != null">
+        disposal_service, 
+      </if>
+      <if test="fundProvider != null">
+        fund_provider, 
+      </if>
+        <if test="operatorId != null">
+            operator_id,
+        </if>
+        <if test="deleteFlag != null">
+            delete_flag,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="branchComName != null">
+        #{branchComName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtor != null">
+        #{debtor,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorBus != null">
+        #{debtorBus,jdbcType=VARCHAR},
+      </if>
+      <if test="busStates != null">
+        #{busStates,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorPro != null">
+        #{debtorPro,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorCity != null">
+        #{debtorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorArea != null">
+        #{debtorArea,jdbcType=VARCHAR},
+      </if>
+      <if test="debtLocation != null">
+        #{debtLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnLocation != null">
+        #{pawnLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnPro != null">
+        #{pawnPro,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnCity != null">
+        #{pawnCity,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnArea != null">
+        #{pawnArea,jdbcType=VARCHAR},
+      </if>
+      <if test="baseDate != null">
+        #{baseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingPrincipal != null">
+        #{outstandingPrincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingInterest != null">
+        #{outstandingInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="dedit != null">
+        #{dedit,jdbcType=VARCHAR},
+      </if>
+      <if test="otherInfo != null">
+        #{otherInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDebt != null">
+        #{totalDebt,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNum != null">
+        #{assetNum,jdbcType=VARCHAR},
+      </if>
+      <if test="assetSource != null">
+        #{assetSource,jdbcType=VARCHAR},
+      </if>
+      <if test="assetValue != null">
+        #{assetValue,jdbcType=VARCHAR},
+      </if>
+      <if test="assetBaseDate != null">
+        #{assetBaseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDate != null">
+        #{reportDate,jdbcType=VARCHAR},
+      </if>
+      <if test="assureMeans != null">
+        #{assureMeans,jdbcType=VARCHAR},
+      </if>
+      <if test="assureName != null">
+        #{assureName,jdbcType=VARCHAR},
+      </if>
+      <if test="specificAssureMeans != null">
+        #{specificAssureMeans,jdbcType=VARCHAR},
+      </if>
+      <if test="realtyCharacter != null">
+        #{realtyCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="landArea != null">
+        #{landArea,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingArea != null">
+        #{buildingArea,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeSequence != null">
+        #{pledgeSequence,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeThat != null">
+        #{guaranteeThat,jdbcType=VARCHAR},
+      </if>
+      <if test="litigationLink != null">
+        #{litigationLink,jdbcType=VARCHAR},
+      </if>
+      <if test="hasGuarantee != null">
+        #{hasGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="ifGuarantee != null">
+        #{ifGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="projectWindow != null">
+        #{projectWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="assetDesc != null">
+        #{assetDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="disposalService != null">
+        #{disposalService,jdbcType=VARCHAR},
+      </if>
+      <if test="fundProvider != null">
+        #{fundProvider,jdbcType=VARCHAR},
+      </if>
+        <if test="operatorId != null">
+            #{operatorId,jdbcType=INTEGER},
+        </if>
+        <if test="deleteFlag != null">
+            #{deleteFlag,jdbcType=BIT},
+        </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingActivityImportData">
+    update zeus.enrolling_activity_import_data
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="branchComName != null">
+        branch_com_name = #{branchComName,jdbcType=VARCHAR},
+      </if>
+      <if test="debtor != null">
+        debtor = #{debtor,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorBus != null">
+        debtor_bus = #{debtorBus,jdbcType=VARCHAR},
+      </if>
+      <if test="busStates != null">
+        bus_states = #{busStates,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorPro != null">
+        debtor_pro = #{debtorPro,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorCity != null">
+        debtor_city = #{debtorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="debtorArea != null">
+        debtor_area = #{debtorArea,jdbcType=VARCHAR},
+      </if>
+      <if test="debtLocation != null">
+        debt_location = #{debtLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnLocation != null">
+        pawn_location = #{pawnLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnPro != null">
+        pawn_pro = #{pawnPro,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnCity != null">
+        pawn_city = #{pawnCity,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnArea != null">
+        pawn_area = #{pawnArea,jdbcType=VARCHAR},
+      </if>
+      <if test="baseDate != null">
+        base_date = #{baseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingPrincipal != null">
+        outstanding_principal = #{outstandingPrincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingInterest != null">
+        outstanding_interest = #{outstandingInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="dedit != null">
+        dedit = #{dedit,jdbcType=VARCHAR},
+      </if>
+      <if test="otherInfo != null">
+        other_info = #{otherInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDebt != null">
+        total_debt = #{totalDebt,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNum != null">
+        asset_num = #{assetNum,jdbcType=VARCHAR},
+      </if>
+      <if test="assetSource != null">
+        asset_source = #{assetSource,jdbcType=VARCHAR},
+      </if>
+      <if test="assetValue != null">
+        asset_value = #{assetValue,jdbcType=VARCHAR},
+      </if>
+      <if test="assetBaseDate != null">
+        asset_base_date = #{assetBaseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="reportDate != null">
+        report_date = #{reportDate,jdbcType=VARCHAR},
+      </if>
+      <if test="assureMeans != null">
+        assure_means = #{assureMeans,jdbcType=VARCHAR},
+      </if>
+      <if test="assureName != null">
+        assure_name = #{assureName,jdbcType=VARCHAR},
+      </if>
+      <if test="specificAssureMeans != null">
+        specific_assure_means = #{specificAssureMeans,jdbcType=VARCHAR},
+      </if>
+      <if test="realtyCharacter != null">
+        realty_character = #{realtyCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="landArea != null">
+        land_area = #{landArea,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingArea != null">
+        building_area = #{buildingArea,jdbcType=VARCHAR},
+      </if>
+      <if test="pledgeSequence != null">
+        pledge_sequence = #{pledgeSequence,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeThat != null">
+        guarantee_that = #{guaranteeThat,jdbcType=VARCHAR},
+      </if>
+      <if test="litigationLink != null">
+        litigation_link = #{litigationLink,jdbcType=VARCHAR},
+      </if>
+      <if test="hasGuarantee != null">
+        has_guarantee = #{hasGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="ifGuarantee != null">
+        if_guarantee = #{ifGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="projectWindow != null">
+        project_window = #{projectWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="assetDesc != null">
+        asset_desc = #{assetDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="disposalService != null">
+        disposal_service = #{disposalService,jdbcType=VARCHAR},
+      </if>
+      <if test="fundProvider != null">
+        fund_provider = #{fundProvider,jdbcType=VARCHAR},
+      </if>
+
+        <if test="debtorProId != null">
+            debtor_pro_id = #{debtorProId,jdbcType=VARCHAR},
+        </if>
+        <if test="debtorCityId != null">
+            debtor_city_id = #{debtorCityId,jdbcType=VARCHAR},
+        </if>
+        <if test="debtorAreaId != null">
+            debtor_area_id = #{debtorAreaId,jdbcType=VARCHAR},
+        </if>
+        <if test="pawnProId != null">
+            pawn_pro_id = #{pawnProId,jdbcType=VARCHAR},
+        </if>
+        <if test="pawnCityId != null">
+            pawn_city_id = #{pawnCityId,jdbcType=VARCHAR},
+        </if>
+        <if test="pawnAreaId != null">
+            pawn_area_id = #{pawnAreaId,jdbcType=VARCHAR},
+        </if>
+        <if test="deleteFlag != null">
+            delete_flag = #{deleteFlag,jdbcType=BIT},
+        </if>
+
+
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+    <insert id="batchSaveImportData" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id" parameterType="java.util.List">
+        INSERT INTO enrolling_activity_import_data (
+        id, activity_id, name, branch_com_name, debtor, debtor_bus, bus_states, debtor_pro, debtor_city, debtor_area
+        ,debt_location, pawn_location, pawn_pro, pawn_city, pawn_area, base_date, outstanding_principal, outstanding_interest, dedit
+        ,other_info, total_debt, asset_num, asset_source, asset_value, asset_base_date, report_date, assure_means
+        ,assure_name, specific_assure_means, realty_character, land_area, building_area, pledge_sequence, guarantee_that, litigation_link
+        ,has_guarantee, if_guarantee, project_window, remarks, asset_desc, contact_person, contact_phone, disposal_service
+        ,fund_provider,create_time,operator_id,debtor_pro_id,debtor_city_id,debtor_area_id,pawn_pro_id,pawn_city_id,pawn_area_id
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id},#{item.activityId},#{item.name},#{item.branchComName},#{item.debtor},#{item.debtorBus},#{item.busStates},#{item.debtorPro}, #{item.debtorCity}, #{item.debtorArea}
+            , #{item.debtLocation}, #{item.pawnLocation}, #{item.pawnPro}, #{item.pawnCity},#{item.pawnArea}, #{item.baseDate}, #{item.outstandingPrincipal}, #{item.outstandingInterest}, #{item.dedit}
+            , #{item.otherInfo}, #{item.totalDebt}, #{item.assetNum}, #{item.assetSource}, #{item.assetValue}, #{item.assetBaseDate}, #{item.reportDate}, #{item.assureMeans}
+            , #{item.assureName}, #{item.specificAssureMeans}, #{item.realtyCharacter}, #{item.landArea}, #{item.buildingArea}, #{item.pledgeSequence}, #{item.guaranteeThat}, #{item.litigationLink}
+            , #{item.hasGuarantee}, #{item.ifGuarantee}, #{item.projectWindow}, #{item.remarks}, #{item.assetDesc}, #{item.contactPerson}, #{item.contactPhone}, #{item.disposalService}
+            , #{item.fundProvider}, #{item.createTime},#{item.operatorId} ,#{item.debtorProId},#{item.debtorCityId},#{item.debtorAreaId},#{item.pawnProId},#{item.pawnCityId},#{item.pawnAreaId}
+            )
+        </foreach>
+    </insert>
+
+
+
+
+
+    <insert id="batchSaveEnrollingActivity" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id" parameterType="java.util.List">
+        INSERT INTO enrolling_activity (
+        id, status, name, province_id, city_id, area_id, agency_id, property_id,
+        category_id, ref_price, deposit, begin_at, end_at, party_id,
+        expire_at, remark, description_doc, detail, code,
+        created_at, participant_number, commission_percent, reject_reason, asset_category_group_id, contact_name,
+        contact_phone, contact_qq, options, end_notified, visibility_level,browse_number,focus_number,reminder_number,apply_number,type
+        ,city_name,guarantee,bright_spot, operator_at, operator_id,end_pay_time,release_amount,third_party_status, third_party_title, third_party_url, delete_flag,bus_type_name,branch_com_name,disposal_service,fund_provider
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id},#{item.status},#{item.name},#{item.provinceId},#{item.cityId},#{item.areaId},#{item.agencyId},#{item.propertyId}
+            ,#{item.categoryId}, #{item.refPrice}, #{item.deposit} , #{item.beginAt}, #{item.endAt}, #{item.partyId}
+            , #{item.expireAt}, #{item.remark}, #{item.descriptionDoc}, #{item.detail}, #{item.code}
+            , #{item.createdAt}, #{item.participantNumber}, #{item.commissionPercent}, #{item.rejectReason}, #{item.assetCategoryGroupId}, #{item.contactName}
+            , #{item.contactPhone}, #{item.contactQq}, #{item.options}, #{item.endNotified}, #{item.visibilityLevel}, #{item.browseNumber}, #{item.focusNumber}, #{item.reminderNumber}, #{item.applyNumber}, #{item.type}
+            , #{item.cityName}, #{item.guarantee}, #{item.brightSpot}, #{item.operatorAt}, #{item.operatorId}, #{item.endPayTime}, #{item.releaseAmount}, #{item.thirdPartyStatus} , #{item.thirdPartyTitle}, #{item.thirdPartyUrl}, #{item.deleteFlag},#{item.busTypeName},#{item.branchComName},#{item.disposalService},#{item.fundProvider}
+            )
+        </foreach>
+    </insert>
+
+
+    <select id="getApplyUserList" parameterType="com._360pai.core.facade.enrolling.req.EnrollingActivityImportUserReq" resultType="com._360pai.core.facade.enrolling.req.EnrollingActivityImportUserVo">
+      select * from
+        (select id , name ,certificate_number  as certificate from t_user  where delete_flag = '0'
+          union all
+        select id , name,license as certificate from t_company  where delete_flag = '0') t
+        <where>
+        <if test="name != null and name != ''">
+            AND t.name like concat(concat('%', #{name}), '%')
+         </if>
+        </where>
+
+    </select>
+
+
+    <select id="getImportDateList" parameterType="com._360pai.core.facade.enrolling.req.EnrollingActivityImportDataListReq" resultType="com._360pai.core.facade.enrolling.req.EnrollingActivityImportDataListVo">
+        SELECT
+        a.id AS id,
+        a.NAME AS NAME,
+        t.NAME AS userName,
+        a.contact_name AS contactPerson,
+        a.contact_phone AS contactPhone,
+        d.disposal_service AS disposalService,
+        d.fund_provider AS fundProvider,
+        d.debtor_pro as debtorPro,
+        d.debtor_city as debtorCity,
+        d.debtor_area as debtorArea,
+        a.ref_price as refPrice,
+        a.extra AS image,
+        a.reject_reason as rejectReason
+        FROM
+        enrolling_activity a
+        LEFT JOIN enrolling_activity_import_data d ON a.id = d.activity_id
+        LEFT JOIN (
+        SELECT
+        id,
+        NAME,
+        certificate_number AS certificate
+        FROM
+        t_user
+        WHERE
+        delete_flag = '0' UNION ALL
+        SELECT
+        id,
+        NAME,
+        license AS certificate
+        FROM
+        t_company
+        WHERE
+        delete_flag = '0'
+        ) t ON a.party_id = t.id
+        WHERE
+        a.delete_flag = '0'
+        AND d.delete_flag = '0'
+        AND third_party_status = '3'
+
+        <if test="status != null">
+            AND a.status = #{status,jdbcType=VARCHAR}
+        </if>
+
+        <if test=" operatorId!= null">
+            AND d.operator_id = #{operatorId}
+        </if>
+
+        <if test=" userName!= null and userName!= ''">
+            AND t.name like concat(concat('%', #{userName}), '%')
+         </if>
+
+        <if test="name!= null and name!= ''">
+            AND a.name like concat(concat('%', #{name}), '%')
+        </if>
+
+        <if test="contactPerson!= null and contactPerson!= ''">
+            AND d.contact_person like concat(concat('%', #{contactPerson}), '%')
+        </if>
+
+
+        order by a.created_at desc
+
+    </select>
+
+
+    <update id="batchAuditActivity" >
+        update  enrolling_activity
+
+        <set>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="beginAt != null">
+                begin_at = #{beginAt,jdbcType=VARCHAR},
+            </if>
+
+            <if test="endAt != null">
+                end_at = #{endAt,jdbcType=VARCHAR},
+            </if>
+
+            <if test="refuseReason != null">
+                reject_reason = #{refuseReason,jdbcType=VARCHAR},
+            </if>
+            <if test="operatorId != null">
+                operator_id = #{operatorId},
+            </if>
+
+            <if test="operatorAt != null">
+                operator_at = #{operatorAt,jdbcType=VARCHAR},
+            </if>
+
+        </set>
+
+          where  id in
+        <foreach item="empnoItem" collection="activityIdList" open="(" separator="," close=")">
+            #{empnoItem}
+        </foreach>
+    </update>
+
+
+
+
+
+    <select id="getImportDataDetail"  resultType="com._360pai.core.facade.enrolling.resp.EnrollingActivityImportDataResp">
+    SELECT
+	a.id AS id,
+	a.activity_id AS activityId,
+	a.NAME AS NAME,
+	a.branch_com_name AS branchComName,
+	a.debtor AS debtor,
+	a.debtor_bus AS debtorBus,
+	a.bus_states AS busStates,
+	a.debtor_pro AS debtorPro,
+	a.debtor_city AS debtorCity,
+	a.debtor_pro_id AS debtorProId,
+	a.debtor_city_id AS debtorCityId,
+    a.debtor_area_id AS debtorAreaId,
+	a.debtor_area AS debtorArea,
+	CONCAT(a.debtor_pro, a.debtor_city, a.debtor_area) AS debtLocation,
+	CONCAT(a.pawn_pro, a.pawn_city) AS pawnLocation,
+	a.pawn_pro AS pawnPro,
+	a.pawn_city AS pawnCity,
+	a.pawn_pro_id AS pawnProId,
+	a.pawn_city_id AS pawnCityId,
+    a.pawn_area_id AS pawnAreaId,
+	a.pawn_area AS pawnArea,
+	a.base_date AS baseDate,
+	a.outstanding_principal AS outstandingPrincipal,
+	a.outstanding_interest AS outstandingInterest,
+	a.dedit AS dedit,
+	a.other_info AS otherInfo,
+	a.total_debt AS totalDebt,
+	a.asset_num AS assetNum,
+	a.asset_source AS assetSource,
+	a.asset_value AS assetValue,
+	a.asset_base_date AS assetBaseDate,
+	a.report_date AS reportDate,
+	a.assure_means AS assureMeans,
+	a.assure_name AS assureName,
+	a.specific_assure_means AS specificAssureMeans,
+	a.realty_character AS realtyCharacter,
+	a.land_area AS landArea,
+	a.building_area AS buildingArea,
+	a.pledge_sequence AS pledgeSequence,
+	a.guarantee_that AS guaranteeThat,
+	a.litigation_link AS litigationLink,
+	a.has_guarantee AS hasGuarantee,
+	a.if_guarantee AS ifGuarantee,
+	a.project_window AS projectWindow,
+	a.remarks AS remarks,
+	a.asset_desc AS assetDesc,
+	a.contact_person AS contactPerson,
+	a.contact_phone AS contactphone,
+	a.disposal_service AS disposalService,
+	a.fund_provider AS fundProvider,
+	a.create_time AS createTime,
+	a.operator_id AS operatorId
+FROM
+	enrolling_activity_import_data a left join enrolling_activity e
+
+	on a.activity_id = e.id
+
+	where a.activity_id = #{activityId}
+    </select>
+
+</mapper>

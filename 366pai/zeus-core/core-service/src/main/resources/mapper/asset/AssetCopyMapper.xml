@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月16日 13时08分26秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetCopyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetCopy">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="quantity" jdbcType="INTEGER" property="quantity" />
+	<result column="remain" jdbcType="INTEGER" property="remain" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="reserve_price" jdbcType="DECIMAL" property="reservePrice" />
+	<result column="description_doc" jdbcType="VARCHAR" property="descriptionDoc" />
+	<result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="contact_qq" jdbcType="VARCHAR" property="contactQq" />
+	<result column="extra" jdbcType="VARCHAR" property="extra"
+            typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+	<result column="expected_mode" jdbcType="CHAR" property="expectedMode" />
+	<result column="ref_price" jdbcType="DECIMAL" property="refPrice" />
+	<result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="property_id" jdbcType="INTEGER" property="propertyId" />
+	<result column="category_id" jdbcType="INTEGER" property="categoryId" />
+	<result column="options" jdbcType="VARCHAR" property="options" />
+	<result column="handover_days" jdbcType="INTEGER" property="handoverDays" />
+	<result column="pay_days" jdbcType="INTEGER" property="payDays" />
+	<result column="special_detail" jdbcType="LONGVARCHAR" property="specialDetail" />
+	<result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+	<result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+	<result column="bank_id" jdbcType="INTEGER" property="bankId" />
+	<result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, status, created_at, code, name, city_id, 
+	party_id, quantity, remain, asset_type, remark, agency_id, 
+	reserve_price, description_doc, detail, contact_name, contact_phone, contact_qq, 
+	extra, expected_mode, ref_price, starting_price, begin_at, end_at, 
+	property_id, category_id, options, handover_days, pay_days, special_detail, 
+	bank_account_name, bank_account_number, bank_id, bank_name
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.asset_copy1
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetCopyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.asset_copy1
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="quantity != null">
+        AND quantity = #{quantity,jdbcType=INTEGER}
+      </if>
+      <if test="remain != null">
+        AND remain = #{remain,jdbcType=INTEGER}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="reservePrice != null">
+        AND reserve_price = #{reservePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="descriptionDoc != null">
+        AND description_doc = #{descriptionDoc,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactQq != null">
+        AND contact_qq = #{contactQq,jdbcType=VARCHAR}
+      </if>
+      <if test="extra != null">
+        AND extra = #{extra,jdbcType=VARCHAR}
+      </if>
+      <if test="expectedMode != null">
+        AND expected_mode = #{expectedMode,jdbcType=CHAR}
+      </if>
+      <if test="refPrice != null">
+        AND ref_price = #{refPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="startingPrice != null">
+        AND starting_price = #{startingPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="propertyId != null">
+        AND property_id = #{propertyId,jdbcType=INTEGER}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="options != null">
+        AND options = #{options,jdbcType=VARCHAR}
+      </if>
+      <if test="handoverDays != null">
+        AND handover_days = #{handoverDays,jdbcType=INTEGER}
+      </if>
+      <if test="payDays != null">
+        AND pay_days = #{payDays,jdbcType=INTEGER}
+      </if>
+      <if test="specialDetail != null">
+        AND special_detail = #{specialDetail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="bankAccountName != null">
+        AND bank_account_name = #{bankAccountName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountNumber != null">
+        AND bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="bankId != null">
+        AND bank_id = #{bankId,jdbcType=INTEGER}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.AssetCopy">
+    insert into zeus.asset_copy1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="quantity != null">
+        quantity, 
+      </if>
+      <if test="remain != null">
+        remain, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="reservePrice != null">
+        reserve_price, 
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc, 
+      </if>
+      <if test="detail != null">
+        detail, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="contactQq != null">
+        contact_qq, 
+      </if>
+      <if test="extra != null">
+        extra, 
+      </if>
+      <if test="expectedMode != null">
+        expected_mode, 
+      </if>
+      <if test="refPrice != null">
+        ref_price, 
+      </if>
+      <if test="startingPrice != null">
+        starting_price, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="propertyId != null">
+        property_id, 
+      </if>
+      <if test="categoryId != null">
+        category_id, 
+      </if>
+      <if test="options != null">
+        options, 
+      </if>
+      <if test="handoverDays != null">
+        handover_days, 
+      </if>
+      <if test="payDays != null">
+        pay_days, 
+      </if>
+      <if test="specialDetail != null">
+        special_detail, 
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name, 
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number, 
+      </if>
+      <if test="bankId != null">
+        bank_id, 
+      </if>
+      <if test="bankName != null">
+        bank_name, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remain != null">
+        #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="descriptionDoc != null">
+        #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedMode != null">
+        #{expectedMode,jdbcType=CHAR},
+      </if>
+      <if test="refPrice != null">
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="handoverDays != null">
+        #{handoverDays,jdbcType=INTEGER},
+      </if>
+      <if test="payDays != null">
+        #{payDays,jdbcType=INTEGER},
+      </if>
+      <if test="specialDetail != null">
+        #{specialDetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.AssetCopy">
+    update zeus.asset_copy1
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remain != null">
+        remain = #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        reserve_price = #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc = #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        contact_qq = #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedMode != null">
+        expected_mode = #{expectedMode,jdbcType=CHAR},
+      </if>
+      <if test="refPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        starting_price = #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="handoverDays != null">
+        handover_days = #{handoverDays,jdbcType=INTEGER},
+      </if>
+      <if test="payDays != null">
+        pay_days = #{payDays,jdbcType=INTEGER},
+      </if>
+      <if test="specialDetail != null">
+        special_detail = #{specialDetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

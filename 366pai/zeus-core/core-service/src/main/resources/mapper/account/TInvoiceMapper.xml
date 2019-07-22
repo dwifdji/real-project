@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月29日 15时57分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TInvoiceMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TInvoice">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="acct_id" jdbcType="INTEGER" property="acctId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="logistics_company" jdbcType="VARCHAR" property="logisticsCompany" />
+	<result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
+	<result column="logistics_no" jdbcType="VARCHAR" property="logisticsNo" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="num" jdbcType="VARCHAR" property="num" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, logistics_company, imgurl, logistics_no, code, 
+	num, create_time, update_time,acct_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_invoice
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TInvoiceCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_invoice
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="acctId != null">
+        AND acct_id = #{acctId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="logisticsCompany != null">
+        AND logistics_company = #{logisticsCompany,jdbcType=VARCHAR}
+      </if>
+      <if test="imgurl != null">
+        AND imgurl = #{imgurl,jdbcType=VARCHAR}
+      </if>
+      <if test="logisticsNo != null">
+        AND logistics_no = #{logisticsNo,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null">
+        AND num = #{num,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com._360pai.core.model.account.TInvoice">
+    insert into zeus.t_invoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company, 
+      </if>
+      <if test="imgurl != null">
+        imgurl, 
+      </if>
+      <if test="logisticsNo != null">
+        logistics_no, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="num != null">
+        num, 
+      </if>
+      <if test="acctId != null">
+        acct_id,
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null">
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNo != null">
+        #{logisticsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null">
+        #{acctId,jdbcType=INTEGER},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TInvoice">
+    update zeus.t_invoice
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null">
+        imgurl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNo != null">
+        logistics_no = #{logisticsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

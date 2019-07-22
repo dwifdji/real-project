@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月07日 13时51分18秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.disposal.mapper.TDisposeLevelMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.disposal.TDisposeLevel">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="provider_id" jdbcType="INTEGER" property="providerId" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="level_flag" jdbcType="VARCHAR" property="levelFlag" />
+	<result column="survey_refuse_num" jdbcType="INTEGER" property="surveyRefuseNum" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="contract_date" jdbcType="TIMESTAMP" property="contractDate" />
+	<result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+	<result column="replace_time" jdbcType="VARCHAR" property="replaceTime" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, provider_id, city_id, level_flag, survey_refuse_num, operator_id,
+	contract_date, contract_no, replace_time, create_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_dispose_level
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.disposal.TDisposeLevelCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_dispose_level
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="providerId != null">
+        AND provider_id = #{providerId,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="levelFlag != null">
+        AND level_flag = #{levelFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="surveyRefuseNum != null">
+        AND survey_refuse_num = #{surveyRefuseNum,jdbcType=INTEGER}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="contractDate != null">
+        AND contract_date = #{contractDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="contractNo != null">
+        AND contract_no = #{contractNo,jdbcType=VARCHAR}
+      </if>
+      <if test="replaceTime != null">
+        AND replace_time = #{replaceTime,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.disposal.TDisposeLevel">
+    insert into zeus.t_dispose_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="providerId != null">
+        provider_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="levelFlag != null">
+        level_flag, 
+      </if>
+      <if test="surveyRefuseNum != null">
+        survey_refuse_num, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="contractDate != null">
+        contract_date, 
+      </if>
+      <if test="contractNo != null">
+        contract_no, 
+      </if>
+      <if test="replaceTime != null">
+        replace_time, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="levelFlag != null">
+        #{levelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyRefuseNum != null">
+        #{surveyRefuseNum,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractDate != null">
+        #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="replaceTime != null">
+        #{replaceTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.disposal.TDisposeLevel">
+    update zeus.t_dispose_level
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="levelFlag != null">
+        level_flag = #{levelFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyRefuseNum != null">
+        survey_refuse_num = #{surveyRefuseNum,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractDate != null">
+        contract_date = #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="replaceTime != null">
+        replace_time = #{replaceTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getRegionLevelProvider" resultMap="BaseResultMap">
+    SELECT
+	  t2.*
+    FROM
+	  zeus.t_dispose_provider t1 LEFT JOIN zeus.t_dispose_level t2 ON t1.id = t2.provider_id
+	<where>
+      t2.replace_time = '0'
+      <if test="disposeType != null and disposeType !=''"> AND t1.dispose_type = #{disposeType}</if>
+      <if test="cityId != null">      AND t2.city_id = #{cityId}</if>
+      <if test="levelFlag != null">   AND t2.level_flag = #{levelFlag}</if>
+    </where>
+  </select>
+
+  <select id="getFirstLevelCityPartnerByParam" resultType="com._360pai.core.model.disposal.TDisposeLevel">
+    select
+      t3.name as cityName,
+      t3.id as cityId,
+      t4.name as provinceName,
+      t1.company_name as companyName,
+      t1.id as providerId,
+      t1.contact_name as contactName,
+      t1.contact_mobile as contactMobile,
+      t2.survey_refuse_num as surveyRefuseNum,
+      t2.id as id,
+      t2.contract_date as contractDate,
+      t2.contract_no as contractNo,
+      t2.level_flag as levelFlag
+    from
+	  zeus.t_dispose_provider t1
+	  left join zeus.t_dispose_level t2 on t1.id = t2.provider_id
+	  left join zeus.city t3 on t2.city_id = t3.id
+	  left join zeus.province t4 on t3.province_id = t4.id
+	<where>
+      t2.replace_time = '0'
+      <if test="disposeType != null and disposeType != ''">and t1.dispose_type = #{disposeType} </if>
+      <if test="cityId != null and cityId != ''">     and t3.id           = #{cityId} </if>
+      <if test="provinceId != null and provinceId != ''">     and t3.province_id = #{provinceId} </if>
+      <if test="companyName != null and companyName != ''">and t1.company_name LIKE CONCAT('%',#{companyName},'%')  </if>
+      <if test="providerId != null and providerId != ''">and  t1.id           = #{providerId} </if>
+    </where>
+    order by t2.survey_refuse_num, t2.id desc
+  </select>
+
+  <select id="getCityPartnerByParam" resultType="com._360pai.core.model.disposal.TDisposeLevel">
+    select * from (
+      select
+         t3.name as cityName,
+         t4.name as provinceName,
+         t2.company_name as companyName,
+         t2.id as providerId,
+         t2.contact_name as contactName,
+         t2.contact_mobile as contactMobile,
+         t1.survey_refuse_num as surveyRefuseNum,
+         t1.level_flag as levelFlag,
+         t1.id as id,
+         t1.contract_date as contractDate,
+         t1.contract_no as contractNo
+      from
+          zeus.t_dispose_level t1
+          left join zeus.t_dispose_provider t2 on t1.provider_id = t2.id
+          left join zeus.city t3 on t1.city_id = t3.id
+          left join zeus.province t4 on t3.province_id = t4.id
+      <where>
+        t1.replace_time = '0'
+        <if test="disposeType != null and disposeType != ''">and t2.dispose_type = #{disposeType} </if>
+        <if test="cityId != null"> and t3.id = #{cityId}</if>
+        <if test="companyName != null and companyName != ''"> and t2.company_name LIKE CONCAT('%', #{companyName}, '%') </if>
+        <if test="levelId != null"> and t1.level_id != #{levelId}</if>
+      </where>
+      union
+      select
+         t2.name as cityName,
+         t3.name as provinceName,
+         t1.company_name as companyName,
+         t1.id as providerId,
+         t1.contact_name as contactName,
+         t1.contact_mobile as contactMobile,
+         0 as surveyRefuseNum,
+         '00' as levelFlag,
+         null as id,
+         null as contractDate,
+         null as contractNo
+      from
+          zeus.t_dispose_provider t1
+          left join zeus.city t2 on t1.region = t2.id
+          left join zeus.province t3 on t2.province_id = t3.id
+      <where>
+        t1.id not in (select provider_id from zeus.t_dispose_level where level_flag ='10' and replace_time = '0' and city_id = #{cityId})
+        <if test="disposeType != null and disposeType != ''">and t1.dispose_type = #{disposeType} </if>
+        <if test="cityId != null"> and t2.id = #{cityId}</if>
+        <if test="companyName != null and companyName !=''"> and t1.company_name LIKE CONCAT('%',#{companyName},'%')</if>
+      </where>
+    ) tmp
+    order by surveyRefuseNum , id desc
+  </select>
+
+    <select id="getCityPartnerByParamWithoutFirstLevel" resultType="com._360pai.core.model.disposal.TDisposeLevel">
+        select
+        t2.name as cityName,
+        t3.name as provinceName,
+        t1.company_name as companyName,
+        t1.id as providerId,
+        t1.contact_name as contactName,
+        t1.contact_mobile as contactMobile,
+        0 as surveyRefuseNum,
+        '00' as levelFlag,
+        null as id,
+        null as contractDate,
+        null as contractNo
+        from
+        zeus.t_dispose_provider t1
+        left join zeus.city t2 on t1.region = t2.id
+        left join zeus.province t3 on t2.province_id = t3.id
+        <where>
+            t1.id not in (select provider_id from zeus.t_dispose_level where level_flag ='10' and replace_time = '0')
+            <if test="disposeType != null and disposeType != ''">and t1.dispose_type = #{disposeType} </if>
+            <if test="cityId != null and cityId != ''"> and t2.id = #{cityId}</if>
+            <if test="provinceId != null and provinceId != ''"> and t2.province_id = #{provinceId}</if>
+            <if test="companyName != null and companyName !=''"> and t1.company_name LIKE CONCAT('%',#{companyName},'%')</if>
+        </where>
+        order by surveyRefuseNum , providerId desc
+    </select>
+
+</mapper>

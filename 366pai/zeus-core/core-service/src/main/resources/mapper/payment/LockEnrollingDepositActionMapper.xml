@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.LockEnrollingDepositActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.LockEnrollingDepositAction">
+	<result column="id" jdbcType="VARCHAR" property="id" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.lock_enrolling_deposit_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.LockEnrollingDepositActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.lock_enrolling_deposit_action
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.payment.LockEnrollingDepositAction">
+    insert into zeus.lock_enrolling_deposit_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.payment.LockEnrollingDepositAction">
+    update zeus.lock_enrolling_deposit_action
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

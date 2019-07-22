@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TUserMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TUser">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="certificate_number" jdbcType="VARCHAR" property="certificateNumber" />
+	<result column="certificate_begin" jdbcType="TIMESTAMP" property="certificateBegin" />
+	<result column="certificate_end" jdbcType="TIMESTAMP" property="certificateEnd" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="certificate_front_img" jdbcType="VARCHAR" property="certificateFrontImg" />
+	<result column="certificate_back_img" jdbcType="VARCHAR" property="certificateBackImg" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="fadada_id" jdbcType="VARCHAR" property="fadadaId" />
+	<result column="dfft_id" jdbcType="VARCHAR" property="dfftId" />
+	<result column="pay_bind" jdbcType="INTEGER" property="payBind" />
+	<result column="status" jdbcType="INTEGER" property="status" />
+	<result column="is_channel" jdbcType="INTEGER" property="isChannel" />
+    <result column="oper_offline" jdbcType="BIT" property="operOffline" />
+    <result column="oper_without_fadada" jdbcType="BIT" property="operWithoutFadada" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, account_id, default_agency_id, name, certificate_number, certificate_begin,
+    certificate_end, province_id, city_id, area_id, address, certificate_front_img, certificate_back_img, mobile,
+    fadada_id, dfft_id, pay_bind, status, is_channel, oper_offline,
+    oper_without_fadada, open_account_operator_id, business_operator_id, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_user
+    where status = 1
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TUserCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_user
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateNumber != null">
+        AND certificate_number = #{certificateNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBegin != null">
+        AND certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificateEnd != null">
+        AND certificate_end = #{certificateEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateFrontImg != null">
+        AND certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBackImg != null">
+        AND certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="fadadaId != null">
+        AND fadada_id = #{fadadaId,jdbcType=VARCHAR}
+      </if>
+      <if test="dfftId != null">
+        AND dfft_id = #{dfftId,jdbcType=VARCHAR}
+      </if>
+      <if test="payBind != null">
+        AND pay_bind = #{payBind,jdbcType=INTEGER}
+      </if>
+      <if test="isChannel != null">
+        AND is_channel = #{isChannel,jdbcType=INTEGER}
+      </if>
+      <if test="operOffline != null">
+        AND oper_offline = #{operOffline,jdbcType=BIT}
+      </if>
+      <if test="operWithoutFadada != null">
+        AND oper_without_fadada = #{operWithoutFadada,jdbcType=BIT}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      AND status = 1
+
+    </where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TUser">
+    insert into zeus.t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number, 
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin, 
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end, 
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img, 
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="fadadaId != null">
+        fadada_id, 
+      </if>
+      <if test="dfftId != null">
+        dfft_id, 
+      </if>
+      <if test="payBind != null">
+        pay_bind,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isChannel != null">
+        is_channel,
+      </if>
+      <if test="operOffline != null">
+        oper_offline,
+      </if>
+      <if test="operWithoutFadada != null">
+        oper_without_fadada,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+        create_time,
+        update_time,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaId != null">
+        #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="dfftId != null">
+        #{dfftId,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        #{payBind,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isChannel != null">
+        #{isChannel,jdbcType=INTEGER},
+      </if>
+      <if test="operOffline != null">
+        #{operOffline,jdbcType=BIT},
+      </if>
+      <if test="operWithoutFadada != null">
+        #{operWithoutFadada,jdbcType=BIT},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+        now(),
+        now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TUser">
+    update zeus.t_user
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end = #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaId != null">
+        fadada_id = #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="dfftId != null">
+        dfft_id = #{dfftId,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        pay_bind = #{payBind,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isChannel != null">
+        is_channel = #{isChannel,jdbcType=INTEGER},
+      </if>
+      <if test="operOffline != null">
+        oper_offline = #{operOffline,jdbcType=BIT},
+      </if>
+      <if test="operWithoutFadada != null">
+        oper_without_fadada = #{operWithoutFadada,jdbcType=BIT},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TUser">
+        select t.*
+        from (
+            select u.*, case when s.id is null then 0 else 1 end `is_staff`
+            from zeus.t_user u
+            left join zeus.city c on c.id=u.city_id
+            inner join zeus.t_party p on p.id=u.id
+            inner join zeus.t_account a on a.id=u.account_id
+            left join zeus.staff s on s.mobile=a.mobile
+            <where>
+              and u.delete_flag='0'
+              <if test="status != null and status != ''"> and u.status=#{status}</if>
+              <if test="isChannelAgent != null and isChannelAgent != ''"> and p.is_channel_agent=#{isChannelAgent}</if>
+              <if test="isInBlackList != null and isInBlackList != ''"> and p.is_in_black_list=#{isInBlackList}</if>
+              <if test="cityId != null and cityId != ''"> and u.city_id=#{cityId}</if>
+              <if test="provinceId != null and provinceId != ''"> and u.province_id=#{provinceId}</if>
+              <if test="areaId != null and areaId != ''"> and u.area_id=#{areaId}</if>
+              <if test="defaultAgencyId != null and defaultAgencyId != ''"> and u.default_agency_id=#{defaultAgencyId}</if>
+              <if test="q != null and q != ''"> and ( u.certificate_number like concat('%',#{q},'%') or  u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+            </where>
+        ) t
+        <where>
+          <if test="isStaff != null and isStaff != ''">
+            and t.is_staff=#{isStaff}
+          </if>
+        </where>
+  </select>
+</mapper>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.PayActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.PayAction">
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="order_id" jdbcType="BIGINT" property="orderId" />
+	<result column="done" jdbcType="BIT" property="done" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	type, id, order_id, done, created_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.pay_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.PayActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.pay_action
+	<where>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="orderId != null">
+        AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="done != null">
+        AND done = #{done,jdbcType=BIT}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.payment.PayAction">
+    insert into zeus.pay_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderId != null">
+        order_id, 
+      </if>
+      <if test="done != null">
+        done, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="done != null">
+        #{done,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.payment.PayAction">
+    update zeus.pay_action
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="done != null">
+        done = #{done,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetPropertyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetProperty">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="search_weight" jdbcType="INTEGER" property="searchWeight" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, search_weight, type
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.asset_property
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetPropertyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.asset_property
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="searchWeight != null">
+        AND search_weight = #{searchWeight,jdbcType=INTEGER}
+      </if>
+       <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.AssetProperty">
+    insert into zeus.asset_property
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="searchWeight != null">
+        search_weight, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="searchWeight != null">
+        #{searchWeight,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.AssetProperty">
+    update zeus.asset_property
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="searchWeight != null">
+        search_weight = #{searchWeight,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+    <select id="getProperties" resultType="com._360pai.core.model.asset.AssetProperty">
+      select id as id , `name` as name from zeus.asset_property order by search_weight
+    </select>
+
+</mapper>

@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月22日 14时40分30秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletAuctionMapMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletAuctionMap">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+	<result column="auction_id" jdbcType="INTEGER" property="auctionId" />
+	<result column="push_desc" jdbcType="INTEGER" property="pushDesc" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="is_del" jdbcType="VARCHAR" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, shop_id, auction_id, push_desc, status, is_del,
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_applet_auction_map
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletAuctionMapCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_applet_auction_map
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=VARCHAR}
+      </if>
+      <if test="auctionId != null">
+        AND auction_id = #{auctionId,jdbcType=INTEGER}
+      </if>
+      <if test="pushDesc != null">
+        AND push_desc = #{pushDesc,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletAuctionMap">
+    insert into zeus.t_applet_auction_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="auctionId != null">
+        auction_id, 
+      </if>
+      <if test="pushDesc != null">
+        push_desc, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionId != null">
+        #{auctionId,jdbcType=INTEGER},
+      </if>
+      <if test="pushDesc != null">
+        #{pushDesc,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletAuctionMap">
+    update zeus.t_applet_auction_map
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionId != null">
+        auction_id = #{auctionId,jdbcType=INTEGER},
+      </if>
+      <if test="pushDesc != null">
+        push_desc = #{pushDesc,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getFilterIds" parameterType="com._360pai.core.condition.applet.TAppletAuctionMapCondition" resultType="Integer">
+      SELECT
+          taam.id
+      FROM
+          t_applet_auction_map taam
+      WHERE 1 = 1
+        <if test="shopId != null and '' != shopId">
+          AND taam.shop_id = #{shopId}
+        </if>
+  </select>
+
+  <update id="updateAllAuciton" parameterType="String">
+    update t_applet_auction_map set push_desc = 0 where shop_id = #{shopId} and is_del = 0
+  </update>
+
+
+  <update id="batchDeleteStocks" parameterType="map">
+    update t_applet_auction_map set status = 1 ,push_desc = '0' where shop_id = #{shopId}
+    and auction_id in
+    <foreach collection="outOfStocks" item="item" index="index" open="(" separator="," close=")" >
+      #{item}
+    </foreach>
+  </update>
+
+  <update id="batchUpdateStocks" parameterType="map">
+    update t_applet_auction_map set status = 0, is_del = 0, update_time = now()  where shop_id = #{shopId}
+    and auction_id in
+    <foreach collection="upOfStocks" item="item" index="index" open="(" separator="," close=")" >
+      #{item}
+    </foreach>
+  </update>
+
+  <insert id="batchUpOfAuction" useGeneratedKeys="true" keyProperty="id"
+          keyColumn="id" parameterType="java.util.List">
+    INSERT INTO t_applet_auction_map (id, shop_id, auction_id, push_desc, `status`, is_del, create_time, update_time)
+      VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.id},#{item.shopId},#{item.auctionId},#{item.pushDesc},#{item.status},#{item.isDel},#{item.createTime},#{item.updateTime})
+      </foreach>
+  </insert>
+
+  <select id="getActivityListByPage" parameterType="java.util.Map" resultType="com._360pai.core.model.activity.AuctionActivity">
+      select aa.*,a.extra ->> '$.images[0]' AS imageUrl
+      from zeus.t_applet_auction_map m
+      inner join zeus.auction_activity aa on aa.id=m.auction_id and aa.status in ('ONLINE','UNCONFIRMED','SUCCESS','FAILED')
+      inner join zeus.asset a on a.id=aa.asset_id
+      where m.is_del='0' and m.status='0' and m.shop_id=#{shopId}
+      order by m.push_desc desc
+  </select>
+
+  <select id="searchShopAuctionList" parameterType="com._360pai.core.facade.shop.dto.ShopAuctionSearchDto" resultType="com._360pai.core.facade.applet.vo.AppletSearchAuctionActivityVo">
+
+    SELECT
+      ac.id AS activityId,
+      ac.asset_name AS activityName,
+      ac.deposit AS deposit,
+      ac.STATUS AS STATUS,
+      ac.begin_at AS beginAt,
+      ac.end_at AS endAt,
+      ac.preview_at AS previewAt,
+      ac.MODE AS MODE,
+      ac.starting_price AS startingPrice,
+      ass.extra ->> '$.images[0]' AS imageUrl,
+      ac.asset_category_group_id AS assetCategoryGroupId,
+      c.NAME AS cityName,
+      if(map.push_desc = 0, 0, 1) AS pushFlag,
+      ass.city_id as cityId,
+      ac.increment_at as incrementAt,
+      if(IFNULL(map.push_desc, 0) = 0, 0, 1) AS choseFlag,
+      CASE
+      WHEN ac.`status` = 'ONLINE' AND ac.begin_at &lt; now() THEN 1
+      WHEN ac.`status` = 'ONLINE' AND ac.begin_at > now()  THEN 2
+      WHEN ac.`status` = 'SUCCESS' THEN 3
+      WHEN ac.`status` = 'FAILED' THEN 4
+      ELSE 99 END AS statusSortBy,
+      ac.reserve_price as reservePrice
+
+      FROM
+      t_applet_auction_map map
+      LEFT JOIN auction_activity ac ON map.auction_id = ac.id
+      LEFT JOIN asset ass ON ac.asset_id = ass.id
+      LEFT JOIN city c ON c.id = ass.city_id
+      LEFT JOIN auction_activity_view_count aavc ON aavc.activity_id = ac.id
+
+      <where>
+
+      <if test="shopId != null and '' != shopId">
+        AND map.shop_id = #{shopId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="query != null and '' != query">
+        AND ac.asset_name like concat('%',#{query},'%')
+      </if>
+
+      <if test="beginPrice != null and '' != beginPrice">
+        AND ac.starting_price &gt;= #{beginPrice,jdbcType=VARCHAR}
+      </if>
+
+      <if test="endPrice != null and '' != endPrice">
+        AND ac.starting_price &lt;= #{endPrice,jdbcType=VARCHAR}
+      </if>
+
+      <if test="outFlag != null and '' != outFlag">
+        AND map.status = #{outFlag }
+      </if>
+
+      <if test="cityId != null and '' != cityId">
+          AND FIND_IN_SET(#{cityId},ass.city_id)
+      </if>
+
+      <if test="provinceId!=null and provinceId !=''">
+          AND find_in_set(#{provinceId}, ass.province_id)
+      </if>
+
+      <if test="categoryId != null and '' != categoryId">
+        AND ac.asset_category_group_id = #{categoryId}
+      </if>
+
+      <if test="activityStatus != null and 'UPCOMING' == activityStatus">
+        AND now( ) &gt;= ac.preview_at
+        AND now( ) &lt;= ac.begin_at
+        AND ac.`status` = 'ONLINE'
+      </if>
+
+      <if test="activityStatus != null and 'SALE' == activityStatus">
+        AND now( ) &gt; ac.begin_at
+        AND ac.`status` = 'ONLINE'
+      </if>
+
+      <if test="activityStatus != null and 'UPCOMING' != activityStatus and 'SALE' != activityStatus and '' != activityStatus">
+        AND ac.status = #{activityStatus}
+      </if>
+          AND ac.visibility_level = 'PLATFORM_DEFAULT'
+          AND ac.category_id != -1
+          AND NOW() > ac.preview_at
+          AND map.is_del = 0
+    </where>
+    order by map.push_desc desc,statusSortBy ASC ,ac.participant_number DESC , aavc.view_count DESC , ac.preview_At DESC
+
+
+  </select>
+
+
+    <select id="searchWebShopAuctionList" parameterType="com._360pai.core.facade.shop.dto.ShopAuctionSearchDto" resultType="com._360pai.core.facade.applet.vo.AppletSearchAuctionActivityVo">
+          SELECT
+            ac.id AS activityId,
+            ac.asset_name AS activityName,
+            ac.deposit AS deposit,
+            ac.STATUS AS STATUS,
+            ac.begin_at AS beginAt,
+            ac.end_at AS endAt,
+            ac.preview_at AS previewAt,
+            ac.MODE AS MODE,
+            ac.starting_price AS startingPrice,
+            ass.extra ->> '$.images[0]' AS imageUrl,
+            ac.asset_category_group_id AS assetCategoryGroupId,
+            c.NAME AS cityName,
+            ass.city_id as cityId,
+            ac.increment_at as incrementAt,
+            if(IFNULL(taam.id, 0) = 0, 0, 1) AS choseFlag,
+            CASE
+            WHEN ac.`status` = 'ONLINE' AND ac.begin_at &lt; now() THEN 1
+            WHEN ac.`status` = 'ONLINE' AND ac.begin_at > now()  THEN 2
+            WHEN ac.`status` = 'SUCCESS' THEN 3
+            WHEN ac.`status` = 'FAILED' THEN 4
+            ELSE 99 END AS statusSortBy,
+            ac.reserve_price as reservePrice
+
+        FROM
+        auction_activity ac
+        LEFT JOIN asset ass ON ac.asset_id = ass.id
+        LEFT JOIN city c ON c.id = ass.city_id
+        LEFT JOIN auction_activity_view_count aavc ON aavc.activity_id = ac.id
+        LEFT JOIN t_party pa ON pa.id = ass.party_id
+        LEFT JOIN (select id, auction_id from t_applet_auction_map where 1 = 1
+            <if test="shopId != null and '' != shopId">
+               and shop_id = #{shopId}
+            </if>
+               and is_del = 0
+        ) taam
+        on taam.auction_id = ac.id
+
+        <where>
+
+            <if test="beginPrice != null and beginPrice != ''">
+                AND ac.starting_price &gt;= #{beginPrice,jdbcType=VARCHAR}
+            </if>
+
+            <if test="query != null and query != ''">
+                AND ac.asset_name like concat('%',#{query},'%')
+            </if>
+
+            <if test="endPrice != null and endPrice != ''">
+                AND ac.starting_price &lt;= #{endPrice,jdbcType=VARCHAR}
+            </if>
+
+            <if test="partyCategoryId != null and partyCategoryId != ''">
+                AND pa.category = #{partyCategoryId}
+            </if>
+
+
+            <if test="cityId != null and cityId != ''">
+                AND FIND_IN_SET(#{cityId},ass.city_id)
+            </if>
+            <if test="provinceId!=null and provinceId !=''">
+                AND find_in_set(#{provinceId}, ass.province_id)
+            </if>
+            <if test="categoryId != null and categoryId != ''">
+                AND ac.asset_category_group_id = #{categoryId}
+            </if>
+
+            <if test="activityStatus != null and '' != activityStatus and 'UPCOMING' == activityStatus">
+                AND now( ) &gt;= ac.preview_at
+                AND now( ) &lt;= ac.begin_at
+                AND ac.`status` = 'ONLINE'
+            </if>
+
+            <if test="activityStatus != null and '' != activityStatus and  'SALE' == activityStatus">
+                AND now() &gt; ac.begin_at
+                AND ac.`status` = 'ONLINE'
+            </if>
+
+            <if test="activityStatus != null and '' != activityStatus and 'UPCOMING' != activityStatus and 'SALE' != activityStatus">
+                AND ac.status = #{activityStatus}
+            </if>
+            AND ac.visibility_level = 'PLATFORM_DEFAULT'
+            AND NOW() > ac.preview_at
+            AND ac.category_id != -1
+            AND ac.status not in
+            ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+        </where>
+          order by statusSortBy ASC  ,ac.participant_number DESC , aavc.view_count DESC , ac.preview_At DESC
+
+
+    </select>
+
+
+
+  <update id="batchUpdateAuctionMap" parameterType="java.util.List">
+
+    update t_applet_auction_map
+
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="push_desc =case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.pushDesc!=null and 0 != item.pushDesc">
+            when auction_id = #{item.auctionId} then #{item.pushDesc}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time =case" suffix="end,">
+        <foreach collection="list" item="item"  index="index">
+          <if test="item.updateTime!=null">
+            when auction_id = #{item.auctionId} then #{item.updateTime}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+
+    where
+
+    <foreach collection="list" separator="or" item="item" index="index" >
+      id = #{item.id}
+    </foreach>
+  </update>
+
+  <select id="getHotPushIds" parameterType="com._360pai.core.facade.shop.dto.ShopAuctionSearchDto" resultType="String">
+      SELECT
+          auction_id AS aucionId
+      FROM
+          t_applet_auction_map
+      WHERE
+          shop_id = #{shopId}
+          AND push_desc != 0
+          AND is_del = 0
+  </select>
+
+
+
+
+  <select id="getAppletAuctionDetail" parameterType="java.util.Map" resultType="com._360pai.core.facade.applet.vo.AuctionDetailVo">
+
+            SELECT
+
+                  ass.`id` AS assetId,
+                  ass.`detail` AS detail,
+                  ass.`extra` AS images,
+                  ass.handover_days AS handoverDays,
+                  ass.detail as detail,
+                  aa.asset_name AS assetName,
+				  ass.city_id as cityId,
+				  aa.asset_category_group_id as assetCategoryGroupId,
+                  ag.id AS id,
+                  ag.`name` AS agencyName,
+                  ass.party_id AS party_id,
+                  ass.pay_days AS payDays,
+                  aa.begin_at AS beginAt,
+                  aa.end_at AS endAt,
+                  aa.bid_count AS bidCount,
+                  aa.bidding_extension AS biddingExtension,
+                  ass.`code` AS assetCode,
+                  aa.commission_buyer AS commissionBuyer,
+                  aa.commission_seller AS commissionSeller,
+                  aa.commission_percent_buyer AS commissionPercentBuyer,
+                  aa.current_price AS currentPrice,
+                  aa.deposit AS deposit,
+                  aa.display_name AS displayName,
+                  aa.finish_at AS finishAt,
+                  aa.increment AS increment,
+                  aa.lock_end_at AS lockEndAt,
+                  aa.`mode` AS activityMode,
+                  aa.participant_number AS participantNumber,
+                  aa.preview_at AS previewAt,
+                  aa.reduced_at AS reducedAt,
+                  aa.increment_at AS incrementAt,
+                  aa.reduction AS reduction,
+                  aa.reduction_period AS reductionPeriod,
+                  aa.ref_price AS refPrice,
+                  aa.reserve_price AS reservePrice,
+                  aa.`restrict` AS activityRestrict,
+                  sta.mobile AS pmPhone,
+                  sta.`name` AS staffName,
+                  aa.starting_price AS startingPrice,
+                  aa.`status` AS status ,
+                  aavc.view_count AS viewCount,
+                  aa.preemptive_person as preemptivePerson,
+                  ass.onlined,
+				  ao.buyer_id as buyerId,
+				  aa.reduced_at AS reducedAt,
+                  aa.reduction AS reduction,
+                  aa.reduction_period AS reductionPeriod,
+                  aa.current_price AS currentPrice
+                 FROM
+                  `auction_activity` aa
+                  LEFT JOIN asset ass
+                    ON ass.`id` = aa.`asset_id`
+                  LEFT JOIN `t_agency` ag
+                    ON ag.`id` = aa.`agency_id`
+                  LEFT JOIN `staff` sta
+                    ON sta.id = aa.staff_id
+                  LEFT JOIN auction_activity_view_count aavc
+                    ON aavc.activity_id = aa.id
+                  LEFT JOIN auction_order ao
+                  ON  aa.id = ao.id
+
+
+                WHERE aa.id = #{activityId} AND NOW() > aa.preview_at AND aa.visibility_level = 'PLATFORM_DEFAULT'
+
+  </select>
+
+    <select id="batchSetDeleteStocks" parameterType="map" >
+        update t_applet_auction_map set is_del = 1 ,push_desc= '0' where shop_id = #{shopId}
+        and auction_id in
+        <foreach collection="outOfStocks" item="item" index="index" open="(" separator="," close=")" >
+            #{item}
+        </foreach>
+    </select>
+
+
+    <select id="countProduct" resultType="int">
+    select count(0)
+    from zeus.t_applet_auction_map m
+    inner join zeus.auction_activity aa on aa.id=m.auction_id and aa.visibility_level = 'PLATFORM_DEFAULT' and now() > aa.preview_at and aa.status not in ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+    where m.shop_id=#{shopId} and m.status=0 and m.is_del=0
+  </select>
+</mapper>

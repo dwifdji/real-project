@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月29日 13时21分37秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersona">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="user_type" jdbcType="CHAR" property="userType" />
+	<result column="user_status" jdbcType="CHAR" property="userStatus" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="contact_wechat" jdbcType="VARCHAR" property="contactWechat" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="company_name" jdbcType="VARCHAR" property="companyName" />
+	<result column="company_director" jdbcType="VARCHAR" property="companyDirector" />
+	<result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+	<result column="company_business_area" jdbcType="VARCHAR" property="companyBusinessArea" />
+	<result column="company_type" jdbcType="CHAR" property="companyType" />
+	<result column="data_entry_staff" jdbcType="VARCHAR" property="dataEntryStaff" />
+	<result column="customer_type" jdbcType="CHAR" property="customerType" />
+    <result column="memo" jdbcType="LONGVARCHAR" property="memo" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, user_type, user_status, contact_name, contact_phone, contact_wechat, 
+	title, company_name, company_director, company_address, company_business_area, company_type, 
+	data_entry_staff, customer_type, memo, is_delete, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_persona
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_persona
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="userType != null">
+        AND user_type = #{userType,jdbcType=CHAR}
+      </if>
+      <if test="userStatus != null">
+        AND user_status = #{userStatus,jdbcType=CHAR}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactWechat != null">
+        AND contact_wechat = #{contactWechat,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null">
+        AND company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyDirector != null">
+        AND company_director = #{companyDirector,jdbcType=VARCHAR}
+      </if>
+      <if test="companyAddress != null">
+        AND company_address = #{companyAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="companyBusinessArea != null">
+        AND company_business_area = #{companyBusinessArea,jdbcType=VARCHAR}
+      </if>
+      <if test="companyType != null">
+        AND company_type = #{companyType,jdbcType=CHAR}
+      </if>
+      <if test="dataEntryStaff != null">
+        AND data_entry_staff = #{dataEntryStaff,jdbcType=VARCHAR}
+      </if>
+      <if test="customerType != null">
+        AND customer_type = #{customerType,jdbcType=CHAR}
+      </if>
+      <if test="memo != null">
+        AND memo = #{memo,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="dataEntryStaffLike != null">
+        AND data_entry_staff LIKE CONCAT('%',#{dataEntryStaffLike},'%')
+      </if>
+      <if test="contactPhoneLike != null">
+        AND contact_phone LIKE CONCAT('%',#{contactPhoneLike},'%')
+      </if>
+      <if test="companyNameLike != null">
+        AND company_name LIKE CONCAT('%',#{companyNameLike},'%')
+      </if>
+	</where>
+
+    <if test="sortBy != null">
+      order by ${sortBy}
+    </if>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersona" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_persona
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="userType != null">
+        user_type, 
+      </if>
+      <if test="userStatus != null">
+        user_status, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="contactWechat != null">
+        contact_wechat, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="companyName != null">
+        company_name, 
+      </if>
+      <if test="companyDirector != null">
+        company_director, 
+      </if>
+      <if test="companyAddress != null">
+        company_address, 
+      </if>
+      <if test="companyBusinessArea != null">
+        company_business_area, 
+      </if>
+      <if test="companyType != null">
+        company_type, 
+      </if>
+      <if test="dataEntryStaff != null">
+        data_entry_staff, 
+      </if>
+      <if test="customerType != null">
+        customer_type, 
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactWechat != null">
+        #{contactWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDirector != null">
+        #{companyDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBusinessArea != null">
+        #{companyBusinessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        #{companyType,jdbcType=CHAR},
+      </if>
+      <if test="dataEntryStaff != null">
+        #{dataEntryStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        #{customerType,jdbcType=CHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersona">
+    update zeus.t_persona
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=CHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactWechat != null">
+        contact_wechat = #{contactWechat,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDirector != null">
+        company_director = #{companyDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBusinessArea != null">
+        company_business_area = #{companyBusinessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        company_type = #{companyType,jdbcType=CHAR},
+      </if>
+      <if test="dataEntryStaff != null">
+        data_entry_staff = #{dataEntryStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        customer_type = #{customerType,jdbcType=CHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select p.*
+      from zeus.t_persona p
+      inner join zeus.staff s on s.mobile = p.data_entry_staff
+      <where>
+        <if test="q != null"> and (s.mobile like concat('%',#{q},'%') or s.name like concat('%',#{q},'%'))</if>
+        <if test="dataEntryStaff != null"> and p.data_entry_staff=#{dataEntryStaff}</if>
+        <if test="contactPhone != null"> and p.contact_phone like concat('%',#{contactPhone},'%')</if>
+        <if test="contactName != null"> and p.contact_name like concat('%',#{contactName},'%')</if>
+        <if test="companyName != null"> and p.company_name like concat('%',#{companyName},'%')</if>
+      </where>
+  </select>
+</mapper>

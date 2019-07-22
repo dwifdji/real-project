@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月29日 13时21分37秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaAssetPartyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersonaAssetParty">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="persona_id" jdbcType="INTEGER" property="personaId" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="asset_volume" jdbcType="DECIMAL" property="assetVolume" />
+	<result column="asset_distribution_area" jdbcType="VARCHAR" property="assetDistributionArea" />
+	<result column="last_year_disposal_asset_volume" jdbcType="DECIMAL" property="lastYearDisposalAssetVolume" />
+	<result column="asset_average_price_range" jdbcType="VARCHAR" property="assetAveragePriceRange" />
+	<result column="asset_package_source" jdbcType="VARCHAR" property="assetPackageSource" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, persona_id, asset_type, asset_volume, asset_distribution_area, last_year_disposal_asset_volume, 
+	asset_average_price_range, asset_package_source, is_delete, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_persona_asset_party
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaAssetPartyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_persona_asset_party
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="personaId != null">
+        AND persona_id = #{personaId,jdbcType=INTEGER}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="assetVolume != null">
+        AND asset_volume = #{assetVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="assetDistributionArea != null">
+        AND asset_distribution_area = #{assetDistributionArea,jdbcType=VARCHAR}
+      </if>
+      <if test="lastYearDisposalAssetVolume != null">
+        AND last_year_disposal_asset_volume = #{lastYearDisposalAssetVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="assetAveragePriceRange != null">
+        AND asset_average_price_range = #{assetAveragePriceRange,jdbcType=VARCHAR}
+      </if>
+      <if test="assetPackageSource != null">
+        AND asset_package_source = #{assetPackageSource,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersonaAssetParty">
+    insert into zeus.t_persona_asset_party
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="personaId != null">
+        persona_id, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="assetVolume != null">
+        asset_volume, 
+      </if>
+      <if test="assetDistributionArea != null">
+        asset_distribution_area, 
+      </if>
+      <if test="lastYearDisposalAssetVolume != null">
+        last_year_disposal_asset_volume, 
+      </if>
+      <if test="assetAveragePriceRange != null">
+        asset_average_price_range, 
+      </if>
+      <if test="assetPackageSource != null">
+        asset_package_source, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetVolume != null">
+        #{assetVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="assetDistributionArea != null">
+        #{assetDistributionArea,jdbcType=VARCHAR},
+      </if>
+      <if test="lastYearDisposalAssetVolume != null">
+        #{lastYearDisposalAssetVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="assetAveragePriceRange != null">
+        #{assetAveragePriceRange,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPackageSource != null">
+        #{assetPackageSource,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersonaAssetParty">
+    update zeus.t_persona_asset_party
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        persona_id = #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetVolume != null">
+        asset_volume = #{assetVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="assetDistributionArea != null">
+        asset_distribution_area = #{assetDistributionArea,jdbcType=VARCHAR},
+      </if>
+      <if test="lastYearDisposalAssetVolume != null">
+        last_year_disposal_asset_volume = #{lastYearDisposalAssetVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="assetAveragePriceRange != null">
+        asset_average_price_range = #{assetAveragePriceRange,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPackageSource != null">
+        asset_package_source = #{assetPackageSource,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

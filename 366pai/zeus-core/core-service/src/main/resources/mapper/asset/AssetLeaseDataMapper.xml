@@ -1,0 +1,1537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月23日 15时22分01秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetLeaseDataMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetLeaseData">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+	<result column="city_id" jdbcType="VARCHAR" property="cityId" />
+	<result column="area_id" jdbcType="VARCHAR" property="areaId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="quantity" jdbcType="INTEGER" property="quantity" />
+	<result column="remain" jdbcType="INTEGER" property="remain" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="reserve_price" jdbcType="DECIMAL" property="reservePrice" />
+	<result column="description_doc" jdbcType="VARCHAR" property="descriptionDoc" />
+	<result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="contact_qq" jdbcType="VARCHAR" property="contactQq" />
+	<result column="extra" jdbcType="VARCHAR" property="extra"
+    typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+	<result column="expected_mode" jdbcType="CHAR" property="expectedMode" />
+	<result column="ref_price" jdbcType="DECIMAL" property="refPrice" />
+	<result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="property_id" jdbcType="INTEGER" property="propertyId" />
+	<result column="category_id" jdbcType="INTEGER" property="categoryId" />
+	<result column="options" jdbcType="VARCHAR" property="options" />
+	<result column="handover_days" jdbcType="INTEGER" property="handoverDays" />
+	<result column="pay_days" jdbcType="INTEGER" property="payDays" />
+	<result column="special_detail" jdbcType="LONGVARCHAR" property="specialDetail" />
+	<result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+	<result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+	<result column="bank_id" jdbcType="INTEGER" property="bankId" />
+	<result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+	<result column="tune_report" jdbcType="DECIMAL" property="tuneReport" />
+	<result column="tune_report_url" jdbcType="VARCHAR" property="tuneReportUrl"
+            typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" />
+    <result column="asset_lease_area" jdbcType="VARCHAR" property="assetLeaseArea"
+              typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" />
+	<result column="tune_report_authorization" jdbcType="TINYINT" property="tuneReportAuthorization" />
+	<result column="evaluation_report" jdbcType="DECIMAL" property="evaluationReport" />
+	<result column="evaluation_report_url" jdbcType="VARCHAR" property="evaluationReportUrl"
+            typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+	<result column="claims_transfer_url" jdbcType="VARCHAR" property="claimsTransferUrl" />
+	<result column="transfer_announcement_url" jdbcType="VARCHAR" property="transferAnnouncementUrl" />
+	<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+	<result column="onlined" jdbcType="INTEGER" property="onlined" />
+	<result column="bus_type" jdbcType="INTEGER" property="busType" />
+	<result column="debt_principal" jdbcType="DECIMAL" property="debtPrincipal" />
+	<result column="debt_interest" jdbcType="DECIMAL" property="debtInterest" />
+	<result column="come_from" jdbcType="CHAR" property="comeFrom" />
+	<result column="joint_status" jdbcType="INTEGER" property="jointStatus" />
+	<result column="old_data" jdbcType="BIT" property="oldData" />
+	<result column="spv_id" jdbcType="INTEGER" property="spvId" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="sub_status" jdbcType="CHAR" property="subStatus" />
+	<result column="lease_type" jdbcType="CHAR" property="leaseType" />
+	<result column="area_type" jdbcType="CHAR" property="areaType" />
+	<result column="lease_area" jdbcType="INTEGER" property="leaseArea" />
+	<result column="lease_room_number" jdbcType="INTEGER" property="leaseRoomNumber" />
+	<result column="lease_address" jdbcType="VARCHAR" property="leaseAddress" />
+	<result column="power_situation" jdbcType="VARCHAR" property="powerSituation" />
+	<result column="legal_purposes" jdbcType="VARCHAR" property="legalPurposes" />
+	<result column="current_desc" jdbcType="VARCHAR" property="currentDesc" />
+	<result column="lessor_name" jdbcType="VARCHAR" property="lessorName" />
+	<result column="lessor_address" jdbcType="VARCHAR" property="lessorAddress" />
+	<result column="lessor_contact" jdbcType="VARCHAR" property="lessorContact" />
+	<result column="lessor_contact_number" jdbcType="VARCHAR" property="lessorContactNumber" />
+	<result column="bidder_qualification" jdbcType="CHAR" property="bidderQualification" />
+	<result column="deed_flag" jdbcType="BIT" property="deedFlag" />
+	<result column="pre_audit_method" jdbcType="CHAR" property="preAuditMethod" />
+	<result column="original_tenant_name" jdbcType="VARCHAR" property="originalTenantName" />
+	<result column="original_tenant_number" jdbcType="VARCHAR" property="originalTenantNumber" />
+	<result column="priority_qualification" jdbcType="VARCHAR" property="priorityQualification" />
+	<result column="management_capacity" jdbcType="VARCHAR" property="managementCapacity" />
+	<result column="registered_address" jdbcType="VARCHAR" property="registeredAddress" />
+	<result column="business_now" jdbcType="VARCHAR" property="businessNow" />
+	<result column="lease_start_time" jdbcType="TIMESTAMP" property="leaseStartTime" />
+	<result column="lease_end_time" jdbcType="TIMESTAMP" property="leaseEndTime" />
+	<result column="operating_type" jdbcType="CHAR" property="operatingType" />
+	<result column="business_agreement" jdbcType="VARCHAR" property="businessAgreement" />
+	<result column="rent_agreement" jdbcType="VARCHAR" property="rentAgreement" />
+	<result column="house_structure_agreement" jdbcType="VARCHAR" property="houseStructureAgreement" />
+	<result column="maintain_agreement" jdbcType="VARCHAR" property="maintainAgreement" />
+	<result column="safety_agreement" jdbcType="VARCHAR" property="safetyAgreement" />
+	<result column="lessee_other_agreement" jdbcType="VARCHAR" property="lesseeOtherAgreement" />
+	<result column="levy_agreement" jdbcType="VARCHAR" property="levyAgreement" />
+	<result column="renewal_agreement" jdbcType="VARCHAR" property="renewalAgreement" />
+	<result column="termination_contract_agreement" jdbcType="VARCHAR" property="terminationContractAgreement" />
+	<result column="dispute_resolution_agreement" jdbcType="VARCHAR" property="disputeResolutionAgreement" />
+	<result column="default_liability_agreement" jdbcType="VARCHAR" property="defaultLiabilityAgreement" />
+	<result column="contract_other_agreement" jdbcType="VARCHAR" property="contractOtherAgreement" />
+	<result column="lessor_commission_rate" jdbcType="VARCHAR" property="lessorCommissionRate" />
+	<result column="lessee_commission_rate" jdbcType="VARCHAR" property="lesseeCommissionRate" />
+	<result column="apply_end_time" jdbcType="TIMESTAMP" property="applyEndTime" />
+	<result column="approval_end_time" jdbcType="TIMESTAMP" property="approvalEndTime" />
+	<result column="annual_increment_rate" jdbcType="VARCHAR" property="annualIncrementRate" />
+	<result column="asset_id" jdbcType="INTEGER" property="assetId" />
+	<result column="deposit" jdbcType="DECIMAL" property="deposit" />
+	<result column="increment" jdbcType="DECIMAL" property="increment" />
+	<result column="reduction" jdbcType="DECIMAL" property="reduction" />
+	<result column="reduction_period" jdbcType="INTEGER" property="reductionPeriod" />
+	<result column="preview_at" jdbcType="TIMESTAMP" property="previewAt" />
+	<result column="bright_spot" jdbcType="VARCHAR" property="brightSpot" />
+	<result column="server_agency_id" jdbcType="INTEGER" property="serverAgencyId" />
+    <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason"/>
+    <result column="town_id" jdbcType="VARCHAR" property="townId"/>
+    <result column="payment_cycle" jdbcType="VARCHAR" property="paymentCycle"/>
+    <result column="cost_bearer" jdbcType="VARCHAR" property="costBearer"/>
+    <result column="house_structure" jdbcType="VARCHAR" property="houseStructure"/>
+    <result column="view_begin_time" jdbcType="TIMESTAMP" property="viewBeginTime" />
+    <result column="view_end_time" jdbcType="TIMESTAMP" property="viewEndTime" />
+    <result column="actual_use" jdbcType="VARCHAR" property="actualUse"/>
+    <result column="lease_code" jdbcType="VARCHAR" property="leaseCode"/>
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, status, created_at, code, name, province_id, 
+	city_id, area_id, party_id, quantity, remain, asset_type, 
+	remark, agency_id, reserve_price, description_doc, detail, contact_name, 
+	contact_phone, contact_qq, extra, expected_mode, ref_price, starting_price, 
+	begin_at, end_at, property_id, category_id, options, handover_days, 
+	pay_days, special_detail, bank_account_name, bank_account_number, bank_id, bank_name, 
+	tune_report, tune_report_url, asset_lease_area, tune_report_authorization, evaluation_report, evaluation_report_url, claims_transfer_url,
+	transfer_announcement_url, updated_at, onlined, bus_type, debt_principal, debt_interest, 
+	come_from, joint_status, old_data, spv_id, delete_flag, sub_status, 
+	lease_type, area_type, lease_area, lease_room_number, lease_address, power_situation, 
+	legal_purposes, current_desc, lessor_name, lessor_address, lessor_contact, lessor_contact_number, 
+	bidder_qualification, deed_flag, pre_audit_method, original_tenant_name, original_tenant_number, priority_qualification, 
+	management_capacity, registered_address, business_now, lease_start_time, lease_end_time, operating_type, 
+	business_agreement, rent_agreement, house_structure_agreement, maintain_agreement, safety_agreement, lessee_other_agreement, 
+	levy_agreement, renewal_agreement, termination_contract_agreement, dispute_resolution_agreement, default_liability_agreement, contract_other_agreement, 
+	lessor_commission_rate, lessee_commission_rate, apply_end_time, approval_end_time, annual_increment_rate, asset_id, 
+	deposit, increment, reduction, reduction_period, preview_at, bright_spot, 
+	server_agency_id, reject_reason, town_id, payment_cycle, cost_bearer, house_structure, view_begin_time, view_end_time, actual_use, lease_code
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.asset_lease_data
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetLeaseDataCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.asset_lease_data
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="quantity != null">
+        AND quantity = #{quantity,jdbcType=INTEGER}
+      </if>
+      <if test="remain != null">
+        AND remain = #{remain,jdbcType=INTEGER}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="reservePrice != null">
+        AND reserve_price = #{reservePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="descriptionDoc != null">
+        AND description_doc = #{descriptionDoc,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactQq != null">
+        AND contact_qq = #{contactQq,jdbcType=VARCHAR}
+      </if>
+      <if test="extra != null">
+        AND extra = #{extra,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="expectedMode != null">
+        AND expected_mode = #{expectedMode,jdbcType=CHAR}
+      </if>
+      <if test="refPrice != null">
+        AND ref_price = #{refPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="startingPrice != null">
+        AND starting_price = #{startingPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="propertyId != null">
+        AND property_id = #{propertyId,jdbcType=INTEGER}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="options != null">
+        AND options = #{options,jdbcType=VARCHAR}
+      </if>
+      <if test="handoverDays != null">
+        AND handover_days = #{handoverDays,jdbcType=INTEGER}
+      </if>
+      <if test="payDays != null">
+        AND pay_days = #{payDays,jdbcType=INTEGER}
+      </if>
+      <if test="specialDetail != null">
+        AND special_detail = #{specialDetail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="bankAccountName != null">
+        AND bank_account_name = #{bankAccountName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountNumber != null">
+        AND bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="bankId != null">
+        AND bank_id = #{bankId,jdbcType=INTEGER}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="tuneReport != null">
+        AND tune_report = #{tuneReport,jdbcType=DECIMAL}
+      </if>
+      <if test="tuneReportUrl != null">
+        AND tune_report_url = #{tuneReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="assetLeaseArea != null">
+        AND asset_lease_area = #{assetLeaseArea,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="tuneReportAuthorization != null">
+        AND tune_report_authorization = #{tuneReportAuthorization,jdbcType=TINYINT}
+      </if>
+      <if test="evaluationReport != null">
+        AND evaluation_report = #{evaluationReport,jdbcType=DECIMAL}
+      </if>
+      <if test="evaluationReportUrl != null">
+        AND evaluation_report_url = #{evaluationReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="claimsTransferUrl != null">
+        AND claims_transfer_url = #{claimsTransferUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="transferAnnouncementUrl != null">
+        AND transfer_announcement_url = #{transferAnnouncementUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="updatedAt != null">
+        AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="onlined != null">
+        AND onlined = #{onlined,jdbcType=INTEGER}
+      </if>
+      <if test="busType != null">
+        AND bus_type = #{busType,jdbcType=INTEGER}
+      </if>
+      <if test="debtPrincipal != null">
+        AND debt_principal = #{debtPrincipal,jdbcType=DECIMAL}
+      </if>
+      <if test="debtInterest != null">
+        AND debt_interest = #{debtInterest,jdbcType=DECIMAL}
+      </if>
+      <if test="comeFrom != null">
+        AND come_from = #{comeFrom,jdbcType=CHAR}
+      </if>
+      <if test="jointStatus != null">
+        AND joint_status = #{jointStatus,jdbcType=INTEGER}
+      </if>
+      <if test="oldData != null">
+        AND old_data = #{oldData,jdbcType=BIT}
+      </if>
+      <if test="spvId != null">
+        AND spv_id = #{spvId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="subStatus != null">
+        AND sub_status = #{subStatus,jdbcType=CHAR}
+      </if>
+      <if test="leaseType != null">
+        AND lease_type = #{leaseType,jdbcType=CHAR}
+      </if>
+      <if test="areaType != null">
+        AND area_type = #{areaType,jdbcType=CHAR}
+      </if>
+      <if test="leaseArea != null">
+        AND lease_area = #{leaseArea,jdbcType=INTEGER}
+      </if>
+      <if test="leaseRoomNumber != null">
+        AND lease_room_number = #{leaseRoomNumber,jdbcType=INTEGER}
+      </if>
+      <if test="leaseAddress != null">
+        AND lease_address = #{leaseAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="powerSituation != null">
+        AND power_situation = #{powerSituation,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPurposes != null">
+        AND legal_purposes = #{legalPurposes,jdbcType=VARCHAR}
+      </if>
+      <if test="currentDesc != null">
+        AND current_desc = #{currentDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="lessorName != null">
+        AND lessor_name = #{lessorName,jdbcType=VARCHAR}
+      </if>
+      <if test="lessorAddress != null">
+        AND lessor_address = #{lessorAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="lessorContact != null">
+        AND lessor_contact = #{lessorContact,jdbcType=VARCHAR}
+      </if>
+      <if test="lessorContactNumber != null">
+        AND lessor_contact_number = #{lessorContactNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="bidderQualification != null">
+        AND bidder_qualification = #{bidderQualification,jdbcType=CHAR}
+      </if>
+      <if test="deedFlag != null">
+        AND deed_flag = #{deedFlag,jdbcType=BIT}
+      </if>
+      <if test="preAuditMethod != null">
+        AND pre_audit_method = #{preAuditMethod,jdbcType=CHAR}
+      </if>
+      <if test="originalTenantName != null">
+        AND original_tenant_name = #{originalTenantName,jdbcType=VARCHAR}
+      </if>
+      <if test="originalTenantNumber != null">
+        AND original_tenant_number = #{originalTenantNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="priorityQualification != null">
+        AND priority_qualification = #{priorityQualification,jdbcType=VARCHAR}
+      </if>
+      <if test="managementCapacity != null">
+        AND management_capacity = #{managementCapacity,jdbcType=VARCHAR}
+      </if>
+      <if test="registeredAddress != null">
+        AND registered_address = #{registeredAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessNow != null">
+        AND business_now = #{businessNow,jdbcType=VARCHAR}
+      </if>
+      <if test="leaseStartTime != null">
+        AND lease_start_time = #{leaseStartTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="leaseEndTime != null">
+        AND lease_end_time = #{leaseEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatingType != null">
+        AND operating_type = #{operatingType,jdbcType=CHAR}
+      </if>
+      <if test="businessAgreement != null">
+        AND business_agreement = #{businessAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="rentAgreement != null">
+        AND rent_agreement = #{rentAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="houseStructureAgreement != null">
+        AND house_structure_agreement = #{houseStructureAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="maintainAgreement != null">
+        AND maintain_agreement = #{maintainAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="safetyAgreement != null">
+        AND safety_agreement = #{safetyAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="lesseeOtherAgreement != null">
+        AND lessee_other_agreement = #{lesseeOtherAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="levyAgreement != null">
+        AND levy_agreement = #{levyAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="renewalAgreement != null">
+        AND renewal_agreement = #{renewalAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="terminationContractAgreement != null">
+        AND termination_contract_agreement = #{terminationContractAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="disputeResolutionAgreement != null">
+        AND dispute_resolution_agreement = #{disputeResolutionAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="defaultLiabilityAgreement != null">
+        AND default_liability_agreement = #{defaultLiabilityAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="contractOtherAgreement != null">
+        AND contract_other_agreement = #{contractOtherAgreement,jdbcType=VARCHAR}
+      </if>
+      <if test="lessorCommissionRate != null">
+        AND lessor_commission_rate = #{lessorCommissionRate,jdbcType=VARCHAR}
+      </if>
+      <if test="lesseeCommissionRate != null">
+        AND lessee_commission_rate = #{lesseeCommissionRate,jdbcType=VARCHAR}
+      </if>
+      <if test="applyEndTime != null">
+        AND apply_end_time = #{applyEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="approvalEndTime != null">
+        AND approval_end_time = #{approvalEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="annualIncrementRate != null">
+        AND annual_increment_rate = #{annualIncrementRate,jdbcType=VARCHAR}
+      </if>
+      <if test="assetId != null">
+        AND asset_id = #{assetId,jdbcType=INTEGER}
+      </if>
+      <if test="deposit != null">
+        AND deposit = #{deposit,jdbcType=DECIMAL}
+      </if>
+      <if test="increment != null">
+        AND increment = #{increment,jdbcType=DECIMAL}
+      </if>
+      <if test="reduction != null">
+        AND reduction = #{reduction,jdbcType=DECIMAL}
+      </if>
+      <if test="reductionPeriod != null">
+        AND reduction_period = #{reductionPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="previewAt != null">
+        AND preview_at = #{previewAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="brightSpot != null">
+        AND bright_spot = #{brightSpot,jdbcType=VARCHAR}
+      </if>
+      <if test="serverAgencyId != null">
+        AND server_agency_id = #{serverAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="rejectReason != null">
+        AND reject_reason = #{rejectReason,jdbcType=VARCHAR}
+      </if>
+      <if test="townId != null">
+        AND town_id = #{townId,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCycle != null">
+        AND payment_cycle = #{paymentCycle,jdbcType=VARCHAR}
+      </if>
+      <if test="costBearer != null">
+        AND cost_bearer = #{costBearer,jdbcType=VARCHAR}
+      </if>
+      <if test="houseStructure != null">
+        AND house_structure = #{houseStructure,jdbcType=VARCHAR}
+      </if>
+      <if test="viewBeginTime != null">
+        AND view_begin_time = #{viewBeginTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="viewEndTime != null">
+        AND view_end_time = #{viewEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="actualUse != null">
+        AND actual_use = #{actualUse,jdbcType=VARCHAR}
+      </if>
+      <if test="leaseCode != null">
+        AND lease_code = #{leaseCode,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.AssetLeaseData">
+    insert into zeus.asset_lease_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="provinceId != null">
+        province_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="areaId != null">
+        area_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="quantity != null">
+        quantity, 
+      </if>
+      <if test="remain != null">
+        remain, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="reservePrice != null">
+        reserve_price, 
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc, 
+      </if>
+      <if test="detail != null">
+        detail, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="contactQq != null">
+        contact_qq, 
+      </if>
+      <if test="extra != null">
+        extra, 
+      </if>
+      <if test="expectedMode != null">
+        expected_mode, 
+      </if>
+      <if test="refPrice != null">
+        ref_price, 
+      </if>
+      <if test="startingPrice != null">
+        starting_price, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="propertyId != null">
+        property_id, 
+      </if>
+      <if test="categoryId != null">
+        category_id, 
+      </if>
+      <if test="options != null">
+        options, 
+      </if>
+      <if test="handoverDays != null">
+        handover_days, 
+      </if>
+      <if test="payDays != null">
+        pay_days, 
+      </if>
+      <if test="specialDetail != null">
+        special_detail, 
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name, 
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number, 
+      </if>
+      <if test="bankId != null">
+        bank_id, 
+      </if>
+      <if test="bankName != null">
+        bank_name, 
+      </if>
+      <if test="tuneReport != null">
+        tune_report, 
+      </if>
+      <if test="tuneReportUrl != null">
+        tune_report_url, 
+      </if>
+      <if test="assetLeaseArea != null">
+          asset_lease_area,
+      </if>
+      <if test="tuneReportAuthorization != null">
+        tune_report_authorization, 
+      </if>
+      <if test="evaluationReport != null">
+        evaluation_report, 
+      </if>
+      <if test="evaluationReportUrl != null">
+        evaluation_report_url, 
+      </if>
+      <if test="claimsTransferUrl != null">
+        claims_transfer_url, 
+      </if>
+      <if test="transferAnnouncementUrl != null">
+        transfer_announcement_url, 
+      </if>
+      <if test="updatedAt != null">
+        updated_at, 
+      </if>
+      <if test="onlined != null">
+        onlined, 
+      </if>
+      <if test="busType != null">
+        bus_type, 
+      </if>
+      <if test="debtPrincipal != null">
+        debt_principal, 
+      </if>
+      <if test="debtInterest != null">
+        debt_interest, 
+      </if>
+      <if test="comeFrom != null">
+        come_from, 
+      </if>
+      <if test="jointStatus != null">
+        joint_status, 
+      </if>
+      <if test="oldData != null">
+        old_data, 
+      </if>
+      <if test="spvId != null">
+        spv_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="subStatus != null">
+        sub_status, 
+      </if>
+      <if test="leaseType != null">
+        lease_type, 
+      </if>
+      <if test="areaType != null">
+        area_type, 
+      </if>
+      <if test="leaseArea != null">
+        lease_area, 
+      </if>
+      <if test="leaseRoomNumber != null">
+        lease_room_number, 
+      </if>
+      <if test="leaseAddress != null">
+        lease_address, 
+      </if>
+      <if test="powerSituation != null">
+        power_situation, 
+      </if>
+      <if test="legalPurposes != null">
+        legal_purposes, 
+      </if>
+      <if test="currentDesc != null">
+        current_desc, 
+      </if>
+      <if test="lessorName != null">
+        lessor_name, 
+      </if>
+      <if test="lessorAddress != null">
+        lessor_address, 
+      </if>
+      <if test="lessorContact != null">
+        lessor_contact, 
+      </if>
+      <if test="lessorContactNumber != null">
+        lessor_contact_number, 
+      </if>
+      <if test="bidderQualification != null">
+        bidder_qualification, 
+      </if>
+      <if test="deedFlag != null">
+        deed_flag, 
+      </if>
+      <if test="preAuditMethod != null">
+        pre_audit_method, 
+      </if>
+      <if test="originalTenantName != null">
+        original_tenant_name, 
+      </if>
+      <if test="originalTenantNumber != null">
+        original_tenant_number, 
+      </if>
+      <if test="priorityQualification != null">
+        priority_qualification, 
+      </if>
+      <if test="managementCapacity != null">
+        management_capacity, 
+      </if>
+      <if test="registeredAddress != null">
+        registered_address, 
+      </if>
+      <if test="businessNow != null">
+        business_now, 
+      </if>
+      <if test="leaseStartTime != null">
+        lease_start_time, 
+      </if>
+      <if test="leaseEndTime != null">
+        lease_end_time, 
+      </if>
+      <if test="operatingType != null">
+        operating_type, 
+      </if>
+      <if test="businessAgreement != null">
+        business_agreement, 
+      </if>
+      <if test="rentAgreement != null">
+        rent_agreement, 
+      </if>
+      <if test="houseStructureAgreement != null">
+        house_structure_agreement, 
+      </if>
+      <if test="maintainAgreement != null">
+        maintain_agreement, 
+      </if>
+      <if test="safetyAgreement != null">
+        safety_agreement, 
+      </if>
+      <if test="lesseeOtherAgreement != null">
+        lessee_other_agreement, 
+      </if>
+      <if test="levyAgreement != null">
+        levy_agreement, 
+      </if>
+      <if test="renewalAgreement != null">
+        renewal_agreement, 
+      </if>
+      <if test="terminationContractAgreement != null">
+        termination_contract_agreement, 
+      </if>
+      <if test="disputeResolutionAgreement != null">
+        dispute_resolution_agreement, 
+      </if>
+      <if test="defaultLiabilityAgreement != null">
+        default_liability_agreement, 
+      </if>
+      <if test="contractOtherAgreement != null">
+        contract_other_agreement, 
+      </if>
+      <if test="lessorCommissionRate != null">
+        lessor_commission_rate, 
+      </if>
+      <if test="lesseeCommissionRate != null">
+        lessee_commission_rate, 
+      </if>
+      <if test="applyEndTime != null">
+        apply_end_time, 
+      </if>
+      <if test="approvalEndTime != null">
+        approval_end_time, 
+      </if>
+      <if test="annualIncrementRate != null">
+        annual_increment_rate, 
+      </if>
+      <if test="assetId != null">
+        asset_id, 
+      </if>
+      <if test="deposit != null">
+        deposit, 
+      </if>
+      <if test="increment != null">
+        increment, 
+      </if>
+      <if test="reduction != null">
+        reduction, 
+      </if>
+      <if test="reductionPeriod != null">
+        reduction_period, 
+      </if>
+      <if test="previewAt != null">
+        preview_at, 
+      </if>
+      <if test="brightSpot != null">
+        bright_spot, 
+      </if>
+      <if test="serverAgencyId != null">
+        server_agency_id, 
+      </if>
+      <if test="rejectReason != null">
+        reject_reason,
+      </if>
+      <if test="townId != null">
+        town_id,
+      </if>
+      <if test="paymentCycle != null">
+        payment_cycle,
+      </if>
+      <if test="costBearer != null">
+        cost_bearer,
+      </if>
+      <if test="houseStructure != null">
+          house_structure,
+      </if>
+      <if test="viewBeginTime != null">
+          view_begin_time,
+      </if>
+      <if test="viewEndTime != null">
+          view_end_time,
+      </if>
+      <if test="actualUse != null">
+          actual_use,
+      </if>
+
+      <if test="leaseCode != null">
+          lease_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remain != null">
+        #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="descriptionDoc != null">
+        #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="expectedMode != null">
+        #{expectedMode,jdbcType=CHAR},
+      </if>
+      <if test="refPrice != null">
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="handoverDays != null">
+        #{handoverDays,jdbcType=INTEGER},
+      </if>
+      <if test="payDays != null">
+        #{payDays,jdbcType=INTEGER},
+      </if>
+      <if test="specialDetail != null">
+        #{specialDetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="tuneReport != null">
+        #{tuneReport,jdbcType=DECIMAL},
+      </if>
+      <if test="tuneReportUrl != null">
+        #{tuneReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="assetLeaseArea != null">
+         #{assetLeaseArea,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="tuneReportAuthorization != null">
+        #{tuneReportAuthorization,jdbcType=TINYINT},
+      </if>
+      <if test="evaluationReport != null">
+        #{evaluationReport,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationReportUrl != null">
+        #{evaluationReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="claimsTransferUrl != null">
+        #{claimsTransferUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="transferAnnouncementUrl != null">
+        #{transferAnnouncementUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlined != null">
+        #{onlined,jdbcType=INTEGER},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=INTEGER},
+      </if>
+      <if test="debtPrincipal != null">
+        #{debtPrincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="debtInterest != null">
+        #{debtInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="comeFrom != null">
+        #{comeFrom,jdbcType=CHAR},
+      </if>
+      <if test="jointStatus != null">
+        #{jointStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oldData != null">
+        #{oldData,jdbcType=BIT},
+      </if>
+      <if test="spvId != null">
+        #{spvId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="subStatus != null">
+        #{subStatus,jdbcType=CHAR},
+      </if>
+      <if test="leaseType != null">
+        #{leaseType,jdbcType=CHAR},
+      </if>
+      <if test="areaType != null">
+        #{areaType,jdbcType=CHAR},
+      </if>
+      <if test="leaseArea != null">
+        #{leaseArea,jdbcType=INTEGER},
+      </if>
+      <if test="leaseRoomNumber != null">
+        #{leaseRoomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="leaseAddress != null">
+        #{leaseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="powerSituation != null">
+        #{powerSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPurposes != null">
+        #{legalPurposes,jdbcType=VARCHAR},
+      </if>
+      <if test="currentDesc != null">
+        #{currentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorName != null">
+        #{lessorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorAddress != null">
+        #{lessorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorContact != null">
+        #{lessorContact,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorContactNumber != null">
+        #{lessorContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bidderQualification != null">
+        #{bidderQualification,jdbcType=CHAR},
+      </if>
+      <if test="deedFlag != null">
+        #{deedFlag,jdbcType=BIT},
+      </if>
+      <if test="preAuditMethod != null">
+        #{preAuditMethod,jdbcType=CHAR},
+      </if>
+      <if test="originalTenantName != null">
+        #{originalTenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="originalTenantNumber != null">
+        #{originalTenantNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priorityQualification != null">
+        #{priorityQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="managementCapacity != null">
+        #{managementCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAddress != null">
+        #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNow != null">
+        #{businessNow,jdbcType=VARCHAR},
+      </if>
+      <if test="leaseStartTime != null">
+        #{leaseStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaseEndTime != null">
+        #{leaseEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatingType != null">
+        #{operatingType,jdbcType=CHAR},
+      </if>
+      <if test="businessAgreement != null">
+        #{businessAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="rentAgreement != null">
+        #{rentAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructureAgreement != null">
+        #{houseStructureAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainAgreement != null">
+        #{maintainAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyAgreement != null">
+        #{safetyAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="lesseeOtherAgreement != null">
+        #{lesseeOtherAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="levyAgreement != null">
+        #{levyAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalAgreement != null">
+        #{renewalAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="terminationContractAgreement != null">
+        #{terminationContractAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeResolutionAgreement != null">
+        #{disputeResolutionAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultLiabilityAgreement != null">
+        #{defaultLiabilityAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="contractOtherAgreement != null">
+        #{contractOtherAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorCommissionRate != null">
+        #{lessorCommissionRate,jdbcType=VARCHAR},
+      </if>
+      <if test="lesseeCommissionRate != null">
+        #{lesseeCommissionRate,jdbcType=VARCHAR},
+      </if>
+      <if test="applyEndTime != null">
+        #{applyEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalEndTime != null">
+        #{approvalEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="annualIncrementRate != null">
+        #{annualIncrementRate,jdbcType=VARCHAR},
+      </if>
+      <if test="assetId != null">
+        #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="increment != null">
+        #{increment,jdbcType=DECIMAL},
+      </if>
+      <if test="reduction != null">
+        #{reduction,jdbcType=DECIMAL},
+      </if>
+      <if test="reductionPeriod != null">
+        #{reductionPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="previewAt != null">
+        #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brightSpot != null">
+        #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAgencyId != null">
+        #{serverAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="townId != null">
+        #{townId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCycle != null">
+        #{paymentCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="costBearer != null">
+        #{costBearer,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructure != null">
+        #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="viewBeginTime != null">
+        #{viewBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewEndTime != null">
+        #{viewEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualUse != null">
+        #{actualUse,jdbcType=VARCHAR},
+      </if>
+      <if test="leaseCode != null">
+        #{leaseCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.AssetLeaseData">
+    update zeus.asset_lease_data
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remain != null">
+        remain = #{remain,jdbcType=INTEGER},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        reserve_price = #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc = #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        contact_qq = #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="expectedMode != null">
+        expected_mode = #{expectedMode,jdbcType=CHAR},
+      </if>
+      <if test="refPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        starting_price = #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="handoverDays != null">
+        handover_days = #{handoverDays,jdbcType=INTEGER},
+      </if>
+      <if test="payDays != null">
+        pay_days = #{payDays,jdbcType=INTEGER},
+      </if>
+      <if test="specialDetail != null">
+        special_detail = #{specialDetail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="tuneReport != null">
+        tune_report = #{tuneReport,jdbcType=DECIMAL},
+      </if>
+      <if test="tuneReportUrl != null">
+        tune_report_url = #{tuneReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="assetLeaseArea != null">
+          asset_lease_area = #{assetLeaseArea,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="tuneReportAuthorization != null">
+        tune_report_authorization = #{tuneReportAuthorization,jdbcType=TINYINT},
+      </if>
+      <if test="evaluationReport != null">
+        evaluation_report = #{evaluationReport,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluationReportUrl != null">
+        evaluation_report_url = #{evaluationReportUrl,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="claimsTransferUrl != null">
+        claims_transfer_url = #{claimsTransferUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="transferAnnouncementUrl != null">
+        transfer_announcement_url = #{transferAnnouncementUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlined != null">
+        onlined = #{onlined,jdbcType=INTEGER},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=INTEGER},
+      </if>
+      <if test="debtPrincipal != null">
+        debt_principal = #{debtPrincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="debtInterest != null">
+        debt_interest = #{debtInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="comeFrom != null">
+        come_from = #{comeFrom,jdbcType=CHAR},
+      </if>
+      <if test="jointStatus != null">
+        joint_status = #{jointStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oldData != null">
+        old_data = #{oldData,jdbcType=BIT},
+      </if>
+      <if test="spvId != null">
+        spv_id = #{spvId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="subStatus != null">
+        sub_status = #{subStatus,jdbcType=CHAR},
+      </if>
+      <if test="leaseType != null">
+        lease_type = #{leaseType,jdbcType=CHAR},
+      </if>
+      <if test="areaType != null">
+        area_type = #{areaType,jdbcType=CHAR},
+      </if>
+      <if test="leaseArea != null">
+        lease_area = #{leaseArea,jdbcType=INTEGER},
+      </if>
+      <if test="leaseRoomNumber != null">
+        lease_room_number = #{leaseRoomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="leaseAddress != null">
+        lease_address = #{leaseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="powerSituation != null">
+        power_situation = #{powerSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPurposes != null">
+        legal_purposes = #{legalPurposes,jdbcType=VARCHAR},
+      </if>
+      <if test="currentDesc != null">
+        current_desc = #{currentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorName != null">
+        lessor_name = #{lessorName,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorAddress != null">
+        lessor_address = #{lessorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorContact != null">
+        lessor_contact = #{lessorContact,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorContactNumber != null">
+        lessor_contact_number = #{lessorContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bidderQualification != null">
+        bidder_qualification = #{bidderQualification,jdbcType=CHAR},
+      </if>
+      <if test="deedFlag != null">
+        deed_flag = #{deedFlag,jdbcType=BIT},
+      </if>
+      <if test="preAuditMethod != null">
+        pre_audit_method = #{preAuditMethod,jdbcType=CHAR},
+      </if>
+      <if test="originalTenantName != null">
+        original_tenant_name = #{originalTenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="originalTenantNumber != null">
+        original_tenant_number = #{originalTenantNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priorityQualification != null">
+        priority_qualification = #{priorityQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="managementCapacity != null">
+        management_capacity = #{managementCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAddress != null">
+        registered_address = #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNow != null">
+        business_now = #{businessNow,jdbcType=VARCHAR},
+      </if>
+      <if test="leaseStartTime != null">
+        lease_start_time = #{leaseStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaseEndTime != null">
+        lease_end_time = #{leaseEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatingType != null">
+        operating_type = #{operatingType,jdbcType=CHAR},
+      </if>
+      <if test="businessAgreement != null">
+        business_agreement = #{businessAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="rentAgreement != null">
+        rent_agreement = #{rentAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructureAgreement != null">
+        house_structure_agreement = #{houseStructureAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainAgreement != null">
+        maintain_agreement = #{maintainAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyAgreement != null">
+        safety_agreement = #{safetyAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="lesseeOtherAgreement != null">
+        lessee_other_agreement = #{lesseeOtherAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="levyAgreement != null">
+        levy_agreement = #{levyAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalAgreement != null">
+        renewal_agreement = #{renewalAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="terminationContractAgreement != null">
+        termination_contract_agreement = #{terminationContractAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeResolutionAgreement != null">
+        dispute_resolution_agreement = #{disputeResolutionAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultLiabilityAgreement != null">
+        default_liability_agreement = #{defaultLiabilityAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="contractOtherAgreement != null">
+        contract_other_agreement = #{contractOtherAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="lessorCommissionRate != null">
+        lessor_commission_rate = #{lessorCommissionRate,jdbcType=VARCHAR},
+      </if>
+      <if test="lesseeCommissionRate != null">
+        lessee_commission_rate = #{lesseeCommissionRate,jdbcType=VARCHAR},
+      </if>
+      <if test="applyEndTime != null">
+        apply_end_time = #{applyEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalEndTime != null">
+        approval_end_time = #{approvalEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="annualIncrementRate != null">
+        annual_increment_rate = #{annualIncrementRate,jdbcType=VARCHAR},
+      </if>
+      <if test="assetId != null">
+        asset_id = #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="increment != null">
+        increment = #{increment,jdbcType=DECIMAL},
+      </if>
+      <if test="reduction != null">
+        reduction = #{reduction,jdbcType=DECIMAL},
+      </if>
+      <if test="reductionPeriod != null">
+        reduction_period = #{reductionPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="previewAt != null">
+        preview_at = #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brightSpot != null">
+        bright_spot = #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAgencyId != null">
+        server_agency_id = #{serverAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="townId != null">
+          town_id = #{townId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCycle != null">
+          payment_cycle = #{paymentCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="costBearer != null">
+          cost_bearer = #{costBearer,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructure != null">
+          house_structure = #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="viewBeginTime != null">
+          view_begin_time = #{viewBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewEndTime != null">
+          view_end_time = #{viewEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualUse != null">
+          actual_use = #{actualUse,jdbcType=VARCHAR},
+      </if>
+      <if test="leaseCode != null">
+          lease_code = #{leaseCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

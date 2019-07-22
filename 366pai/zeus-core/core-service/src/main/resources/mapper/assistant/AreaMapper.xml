@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月28日 11时25分12秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.AreaMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.Area">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+	<result column="code" jdbcType="INTEGER" property="code" />
+	<result column="lat" jdbcType="FLOAT" property="lat" />
+	<result column="level_type" jdbcType="INTEGER" property="levelType" />
+	<result column="lng" jdbcType="FLOAT" property="lng" />
+	<result column="merger_name" jdbcType="VARCHAR" property="mergerName" />
+	<result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+	<result column="short_name" jdbcType="VARCHAR" property="shortName" />
+	<result column="zip_code" jdbcType="VARCHAR" property="zipCode" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, city_id, city_code, code, lat, 
+	level_type, lng, merger_name, pinyin, short_name, zip_code
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.area
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.AreaCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.area
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="cityCode != null">
+        AND city_code = #{cityCode,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=INTEGER}
+      </if>
+      <if test="lat != null">
+        AND lat = #{lat,jdbcType=FLOAT}
+      </if>
+      <if test="levelType != null">
+        AND level_type = #{levelType,jdbcType=INTEGER}
+      </if>
+      <if test="lng != null">
+        AND lng = #{lng,jdbcType=FLOAT}
+      </if>
+      <if test="mergerName != null">
+        AND merger_name = #{mergerName,jdbcType=VARCHAR}
+      </if>
+      <if test="pinyin != null">
+        AND pinyin = #{pinyin,jdbcType=VARCHAR}
+      </if>
+      <if test="shortName != null">
+        AND short_name = #{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="zipCode != null">
+        AND zip_code = #{zipCode,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.Area">
+    insert into zeus.area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="cityCode != null">
+        city_code, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="lat != null">
+        lat, 
+      </if>
+      <if test="levelType != null">
+        level_type, 
+      </if>
+      <if test="lng != null">
+        lng, 
+      </if>
+      <if test="mergerName != null">
+        merger_name, 
+      </if>
+      <if test="pinyin != null">
+        pinyin, 
+      </if>
+      <if test="shortName != null">
+        short_name, 
+      </if>
+      <if test="zipCode != null">
+        zip_code, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=FLOAT},
+      </if>
+      <if test="levelType != null">
+        #{levelType,jdbcType=INTEGER},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=FLOAT},
+      </if>
+      <if test="mergerName != null">
+        #{mergerName,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.Area">
+    update zeus.area
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=FLOAT},
+      </if>
+      <if test="levelType != null">
+        level_type = #{levelType,jdbcType=INTEGER},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=FLOAT},
+      </if>
+      <if test="mergerName != null">
+        merger_name = #{mergerName,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        zip_code = #{zipCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

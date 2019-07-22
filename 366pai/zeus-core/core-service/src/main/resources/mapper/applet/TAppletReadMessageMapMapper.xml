@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月22日 14时40分30秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletReadMessageMapMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletReadMessageMap">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="open_id" jdbcType="VARCHAR" property="openId" />
+	<result column="shop_id" jdbcType="INTEGER" property="shopId" />
+	<result column="message_id" jdbcType="INTEGER" property="messageId" />
+	<result column="type" jdbcType="TINYINT" property="type" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, open_id, shop_id, message_id, type, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_applet_read_message_map
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletReadMessageMapCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_applet_read_message_map
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="openId != null">
+        AND open_id = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="messageId != null">
+        AND message_id = #{messageId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=TINYINT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletReadMessageMap">
+    insert into zeus.t_applet_read_message_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="openId != null">
+        open_id, 
+      </if>
+      <if test="shopId != null">
+        shop_id, 
+      </if>
+      <if test="messageId != null">
+        message_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="messageId != null">
+        #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletReadMessageMap">
+    update zeus.t_applet_read_message_map
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="messageId != null">
+        message_id = #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

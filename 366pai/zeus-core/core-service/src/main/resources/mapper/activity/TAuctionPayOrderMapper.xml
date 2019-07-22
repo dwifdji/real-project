@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月14日 16时50分02秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.TAuctionPayOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.TAuctionPayOrder">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_id" jdbcType="BIGINT" property="orderId" />
+	<result column="deposit_pay_id" jdbcType="VARCHAR" property="depositPayId" />
+	<result column="deposit_pay_amount" jdbcType="DECIMAL" property="depositPayAmount" />
+	<result column="buyer_remain_pay_id" jdbcType="VARCHAR" property="buyerRemainPayId" />
+	<result column="buyer_remain_pay_amount" jdbcType="DECIMAL" property="buyerRemainPayAmount" />
+	<result column="buyer_commission_pay_id" jdbcType="VARCHAR" property="buyerCommissionPayId" />
+	<result column="buyer_commission_pay_amount" jdbcType="DECIMAL" property="buyerCommissionPayAmount" />
+	<result column="seller_commission_pay_id" jdbcType="VARCHAR" property="sellerCommissionPayId" />
+	<result column="seller_commission_pay_amount" jdbcType="DECIMAL" property="sellerCommissionPayAmount" />
+	<result column="buyer_agency_commission_pay_id" jdbcType="VARCHAR" property="buyerAgencyCommissionPayId" />
+	<result column="buyer_agency_commission_pay_amount" jdbcType="DECIMAL" property="buyerAgencyCommissionPayAmount" />
+	<result column="seller_agency_commission_pay_id" jdbcType="VARCHAR" property="sellerAgencyCommissionPayId" />
+	<result column="seller_agency_commission_pay_amount" jdbcType="DECIMAL" property="sellerAgencyCommissionPayAmount" />
+	<result column="platform_commission_pay_id" jdbcType="VARCHAR" property="platformCommissionPayId" />
+	<result column="platform_commission_pay_amount" jdbcType="DECIMAL" property="platformCommissionPayAmount" />
+	<result column="buyer_channel_commission_pay_id" jdbcType="VARCHAR" property="buyerChannelCommissionPayId" />
+	<result column="buyer_channel_commission_pay_amount" jdbcType="DECIMAL" property="buyerChannelCommissionPayAmount" />
+	<result column="seller_channel_commission_pay_id" jdbcType="VARCHAR" property="sellerChannelCommissionPayId" />
+	<result column="seller_channel_commission_pay_amount" jdbcType="DECIMAL" property="sellerChannelCommissionPayAmount" />
+
+    <result column="belong_shop_code" jdbcType="VARCHAR" property="belongShopCode" />
+    <result column="belong_shop_type" jdbcType="VARCHAR" property="belongShopType" />
+    <result column="belong_shop_commission" jdbcType="DECIMAL" property="belongShopCommission" />
+    <result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
+    <result column="parent_commission" jdbcType="DECIMAL" property="parentCommission" />
+    <result column="buyer_agency_id" jdbcType="INTEGER" property="buyerAgencyId" />
+    <result column="buyer_party_id" jdbcType="INTEGER" property="buyerPartyId" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="parent_type" jdbcType="VARCHAR" property="parentType" />
+    <result column="buyer_from_applet" jdbcType="INTEGER" property="buyerFromApplet" />
+
+    <result column="belong_acct_id" jdbcType="INTEGER" property="belongAcctId" />
+    <result column="parent_acct_id" jdbcType="INTEGER" property="parentAcctId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_id, deposit_pay_id, deposit_pay_amount, buyer_remain_pay_id, buyer_remain_pay_amount, 
+	buyer_commission_pay_id, buyer_commission_pay_amount, seller_commission_pay_id, seller_commission_pay_amount, buyer_agency_commission_pay_id, buyer_agency_commission_pay_amount, 
+	seller_agency_commission_pay_id, seller_agency_commission_pay_amount, platform_commission_pay_id, platform_commission_pay_amount, buyer_channel_commission_pay_id, buyer_channel_commission_pay_amount, 
+	seller_channel_commission_pay_id, seller_channel_commission_pay_amount,
+	belong_shop_code,belong_shop_commission,parent_code,parent_commission,buyer_agency_id,buyer_party_id,parent_type,channel,buyer_from_applet,belong_shop_type,belong_acct_id, parent_acct_id,
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_auction_pay_order
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.TAuctionPayOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_auction_pay_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderId != null">
+        AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="depositPayId != null">
+        AND deposit_pay_id = #{depositPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="depositPayAmount != null">
+        AND deposit_pay_amount = #{depositPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="buyerRemainPayId != null">
+        AND buyer_remain_pay_id = #{buyerRemainPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerRemainPayAmount != null">
+        AND buyer_remain_pay_amount = #{buyerRemainPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="buyerCommissionPayId != null">
+        AND buyer_commission_pay_id = #{buyerCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerCommissionPayAmount != null">
+        AND buyer_commission_pay_amount = #{buyerCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="sellerCommissionPayId != null">
+        AND seller_commission_pay_id = #{sellerCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="sellerCommissionPayAmount != null">
+        AND seller_commission_pay_amount = #{sellerCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="buyerAgencyCommissionPayId != null">
+        AND buyer_agency_commission_pay_id = #{buyerAgencyCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerAgencyCommissionPayAmount != null">
+        AND buyer_agency_commission_pay_amount = #{buyerAgencyCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="sellerAgencyCommissionPayId != null">
+        AND seller_agency_commission_pay_id = #{sellerAgencyCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="sellerAgencyCommissionPayAmount != null">
+        AND seller_agency_commission_pay_amount = #{sellerAgencyCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="platformCommissionPayId != null">
+        AND platform_commission_pay_id = #{platformCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="platformCommissionPayAmount != null">
+        AND platform_commission_pay_amount = #{platformCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="buyerChannelCommissionPayId != null">
+        AND buyer_channel_commission_pay_id = #{buyerChannelCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerChannelCommissionPayAmount != null">
+        AND buyer_channel_commission_pay_amount = #{buyerChannelCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="sellerChannelCommissionPayId != null">
+        AND seller_channel_commission_pay_id = #{sellerChannelCommissionPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="sellerChannelCommissionPayAmount != null">
+        AND seller_channel_commission_pay_amount = #{sellerChannelCommissionPayAmount,jdbcType=DECIMAL}
+      </if>
+
+      <if test="channel != null">
+        AND channel = #{channel,jdbcType=VARCHAR}
+      </if>
+      <if test="belongAcctId != null">
+        AND belong_acct_id = #{belongAcctId,jdbcType=INTEGER}
+      </if>
+      <if test="parentAcctId != null">
+        AND parent_acct_id = #{parentAcctId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.TAuctionPayOrder">
+    insert into zeus.t_auction_pay_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderId != null">
+        order_id, 
+      </if>
+      <if test="depositPayId != null">
+        deposit_pay_id, 
+      </if>
+      <if test="depositPayAmount != null">
+        deposit_pay_amount, 
+      </if>
+      <if test="buyerRemainPayId != null">
+        buyer_remain_pay_id, 
+      </if>
+      <if test="buyerRemainPayAmount != null">
+        buyer_remain_pay_amount, 
+      </if>
+      <if test="buyerCommissionPayId != null">
+        buyer_commission_pay_id, 
+      </if>
+      <if test="buyerCommissionPayAmount != null">
+        buyer_commission_pay_amount, 
+      </if>
+      <if test="sellerCommissionPayId != null">
+        seller_commission_pay_id, 
+      </if>
+      <if test="sellerCommissionPayAmount != null">
+        seller_commission_pay_amount, 
+      </if>
+      <if test="buyerAgencyCommissionPayId != null">
+        buyer_agency_commission_pay_id, 
+      </if>
+      <if test="buyerAgencyCommissionPayAmount != null">
+        buyer_agency_commission_pay_amount, 
+      </if>
+      <if test="sellerAgencyCommissionPayId != null">
+        seller_agency_commission_pay_id, 
+      </if>
+      <if test="sellerAgencyCommissionPayAmount != null">
+        seller_agency_commission_pay_amount, 
+      </if>
+      <if test="platformCommissionPayId != null">
+        platform_commission_pay_id, 
+      </if>
+      <if test="platformCommissionPayAmount != null">
+        platform_commission_pay_amount, 
+      </if>
+      <if test="buyerChannelCommissionPayId != null">
+        buyer_channel_commission_pay_id, 
+      </if>
+      <if test="buyerChannelCommissionPayAmount != null">
+        buyer_channel_commission_pay_amount, 
+      </if>
+      <if test="sellerChannelCommissionPayId != null">
+        seller_channel_commission_pay_id, 
+      </if>
+      <if test="sellerChannelCommissionPayAmount != null">
+        seller_channel_commission_pay_amount, 
+      </if>
+
+      <if test="belongShopCode != null">
+        belong_shop_code,
+      </if>
+      <if test="belongShopType != null">
+        belong_shop_type,
+      </if>
+      <if test="belongShopCommission != null">
+        belong_shop_commission,
+      </if>
+      <if test="parentCode != null">
+        parent_code,
+      </if>
+      <if test="parentType != null">
+        parent_type,
+      </if>
+      <if test="parentCommission != null">
+        parent_commission,
+      </if>
+      <if test="buyerAgencyId != null">
+        buyer_agency_id,
+      </if>
+      <if test="buyerPartyId != null">
+        buyer_party_id,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="buyerFromApplet != null">
+        buyer_from_applet,
+      </if>
+      <if test="belongAcctId != null">
+        belong_acct_id,
+      </if>
+      <if test="parentAcctId != null">
+        parent_acct_id,
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="depositPayId != null">
+        #{depositPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="depositPayAmount != null">
+        #{depositPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerRemainPayId != null">
+        #{buyerRemainPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerRemainPayAmount != null">
+        #{buyerRemainPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerCommissionPayId != null">
+        #{buyerCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerCommissionPayAmount != null">
+        #{buyerCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerCommissionPayId != null">
+        #{sellerCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerCommissionPayAmount != null">
+        #{sellerCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAgencyCommissionPayId != null">
+        #{buyerAgencyCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerAgencyCommissionPayAmount != null">
+        #{buyerAgencyCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerAgencyCommissionPayId != null">
+        #{sellerAgencyCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerAgencyCommissionPayAmount != null">
+        #{sellerAgencyCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="platformCommissionPayId != null">
+        #{platformCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="platformCommissionPayAmount != null">
+        #{platformCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerChannelCommissionPayId != null">
+        #{buyerChannelCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerChannelCommissionPayAmount != null">
+        #{buyerChannelCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerChannelCommissionPayId != null">
+        #{sellerChannelCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerChannelCommissionPayAmount != null">
+        #{sellerChannelCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+
+
+      <if test="belongShopCode != null">
+        #{belongShopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="belongShopType != null">
+        #{belongShopType,jdbcType=VARCHAR},
+      </if>
+      <if test="belongShopCommission != null">
+        #{belongShopCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="parentCode != null">
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentType != null">
+        #{parentType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCommission != null">
+        #{parentCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAgencyId != null">
+        #{buyerAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerPartyId != null">
+        #{buyerPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerFromApplet != null">
+        #{buyerFromApplet,jdbcType=INTEGER},
+      </if>
+      <if test="belongAcctId != null">
+        #{belongAcctId,jdbcType=INTEGER},
+      </if>
+      <if test="parentAcctId != null">
+        #{parentAcctId,jdbcType=INTEGER},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.TAuctionPayOrder">
+    update zeus.t_auction_pay_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="depositPayId != null">
+        deposit_pay_id = #{depositPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="depositPayAmount != null">
+        deposit_pay_amount = #{depositPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerRemainPayId != null">
+        buyer_remain_pay_id = #{buyerRemainPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerRemainPayAmount != null">
+        buyer_remain_pay_amount = #{buyerRemainPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerCommissionPayId != null">
+        buyer_commission_pay_id = #{buyerCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerCommissionPayAmount != null">
+        buyer_commission_pay_amount = #{buyerCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerCommissionPayId != null">
+        seller_commission_pay_id = #{sellerCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerCommissionPayAmount != null">
+        seller_commission_pay_amount = #{sellerCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerAgencyCommissionPayId != null">
+        buyer_agency_commission_pay_id = #{buyerAgencyCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerAgencyCommissionPayAmount != null">
+        buyer_agency_commission_pay_amount = #{buyerAgencyCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerAgencyCommissionPayId != null">
+        seller_agency_commission_pay_id = #{sellerAgencyCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerAgencyCommissionPayAmount != null">
+        seller_agency_commission_pay_amount = #{sellerAgencyCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="platformCommissionPayId != null">
+        platform_commission_pay_id = #{platformCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="platformCommissionPayAmount != null">
+        platform_commission_pay_amount = #{platformCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyerChannelCommissionPayId != null">
+        buyer_channel_commission_pay_id = #{buyerChannelCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerChannelCommissionPayAmount != null">
+        buyer_channel_commission_pay_amount = #{buyerChannelCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerChannelCommissionPayId != null">
+        seller_channel_commission_pay_id = #{sellerChannelCommissionPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerChannelCommissionPayAmount != null">
+        seller_channel_commission_pay_amount = #{sellerChannelCommissionPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="belongAcctId != null">
+        belong_acct_id = #{belongAcctId,jdbcType=INTEGER},
+      </if>
+      <if test="parentAcctId != null">
+        parent_acct_id = #{parentAcctId,jdbcType=INTEGER},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+      AND order_id = #{orderId,jdbcType=BIGINT}
+	</where>
+  </update>
+
+</mapper>

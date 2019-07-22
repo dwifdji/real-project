@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年05月21日 13时00分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TActivityServiceProviderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TActivityServiceProvider">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="activity_type" jdbcType="VARCHAR" property="activityType" />
+    <result column="activity_id" jdbcType="INTEGER" property="activityId" />
+    <result column="provider_type" jdbcType="VARCHAR" property="providerType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="provider_id" jdbcType="INTEGER" property="providerId" />
+    <result column="city_partner_flag" jdbcType="BIT" property="cityPartnerFlag" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, activity_type, activity_id, provider_type, name, phone,
+    provider_id, city_partner_flag, source, order_num, delete_flag, create_time,
+    update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_activity_service_provider
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TActivityServiceProviderCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_activity_service_provider
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityType != null">
+        AND activity_type = #{activityType,jdbcType=VARCHAR}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="providerType != null">
+        AND provider_type = #{providerType,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="providerId != null">
+        AND provider_id = #{providerId,jdbcType=INTEGER}
+      </if>
+      <if test="cityPartnerFlag != null">
+        AND city_partner_flag = #{cityPartnerFlag,jdbcType=BIT}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TActivityServiceProvider">
+    insert into zeus.t_activity_service_provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="activityType != null">
+        activity_type,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="providerType != null">
+        provider_type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="providerId != null">
+        provider_id,
+      </if>
+      <if test="cityPartnerFlag != null">
+        city_partner_flag,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityType != null">
+        #{activityType,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="providerType != null">
+        #{providerType,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityPartnerFlag != null">
+        #{cityPartnerFlag,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TActivityServiceProvider">
+    update zeus.t_activity_service_provider
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityType != null">
+        activity_type = #{activityType,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="providerType != null">
+        provider_type = #{providerType,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="cityPartnerFlag != null">
+        city_partner_flag = #{cityPartnerFlag,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getAuctionDisposeProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select p.*,pa.law_office
+    from zeus.t_activity_service_provider sp
+    inner join zeus.t_dispose_provider p on p.id=sp.provider_id
+    left join zeus.t_dispose_provider_apply pa on pa.party_id=p.party_id and pa.status='APPROVED'
+    where sp.delete_flag=0 and sp.activity_id=#{activityId} and sp.activity_type='auction' and sp.provider_type='dispose'
+    order by sp.order_num asc, sp.create_time asc
+  </select>
+
+  <select id="getFirstLevelDisposeProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select p.*
+    from zeus.t_dispose_level l
+    inner join zeus.t_dispose_provider p on l.provider_id = p.id
+    where l.replace_time = '0' and l.city_id = #{cityId} and l.level_flag = '10'
+  </select>
+
+  <select id="getEnrollingDisposeProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select p.*,pa.law_office
+    from zeus.t_activity_service_provider sp
+    inner join zeus.t_dispose_provider p on p.id=sp.provider_id
+    left join zeus.t_dispose_provider_apply pa on pa.party_id=p.party_id and pa.status='APPROVED'
+    where sp.delete_flag=0 and sp.activity_id=#{activityId} and sp.activity_type='enrolling' and sp.provider_type='dispose'
+    order by sp.order_num asc, sp.create_time asc
+  </select>
+
+  <select id="getDisposeProvider" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select p.*
+    from zeus.t_activity_service_provider sp
+    inner join zeus.t_dispose_provider p on p.id=sp.provider_id
+    where sp.delete_flag=0 and sp.activity_id=#{activityId} and sp.activity_type=#{activityType} and sp.provider_type='dispose'
+    order by sp.order_num asc, sp.create_time desc
+  </select>
+
+  <select id="getActivityServiceDisposeProviderEnrollRecord" resultType="com._360pai.core.model.assistant.TActivityServiceProvider">
+    select sp.*
+    from zeus.t_activity_service_provider sp
+    inner join zeus.t_dispose_provider p on p.id=sp.provider_id
+    <where>
+      sp.delete_flag=0 and sp.provider_type='dispose'
+      <if test="activityId != null"> and sp.activity_id=#{activityId} </if>
+      <if test="activityType != null and activityType!=''"> and sp.activity_type=#{activityType} </if>
+      <if test="q != null and q!=''"> and (p.company_name like concat('%',#{q},'%') or p.contact_mobile like concat('%',#{q},'%')) </if>
+    </where>
+    order by sp.city_partner_flag desc,sp.create_time desc
+  </select>
+
+  <select id="getActivityServiceFundProviderEnrollRecord" resultType="com._360pai.core.model.assistant.TActivityServiceProvider">
+    select sp.*
+    from zeus.t_activity_service_provider sp
+    inner join zeus.t_fund_provider p on p.id=sp.provider_id
+    inner join zeus.t_account a on a.id=p.account_id
+    <where>
+      sp.delete_flag=0 and sp.provider_type='fund'
+      <if test="activityId != null"> and sp.activity_id=#{activityId} </if>
+      <if test="activityType != null and activityType!=''"> and sp.activity_type=#{activityType} </if>
+      <if test="q != null and q!=''"> and (p.company_name like concat('%',#{q},'%') or a.mobile like concat('%',#{q},'%')) </if>
+    </where>
+    order by sp.create_time desc
+  </select>
+</mapper>

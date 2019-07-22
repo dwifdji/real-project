@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TUserApplyRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TUserApplyRecord">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="certificate_number" jdbcType="VARCHAR" property="certificateNumber" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="certificate_front_img" jdbcType="VARCHAR" property="certificateFrontImg" />
+	<result column="certificate_back_img" jdbcType="VARCHAR" property="certificateBackImg" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="certificate_begin" jdbcType="TIMESTAMP" property="certificateBegin" />
+	<result column="certificate_end" jdbcType="TIMESTAMP" property="certificateEnd" />
+	<result column="reason" jdbcType="VARCHAR" property="reason" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="apply_source" jdbcType="CHAR" property="applySource" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+	<result column="is_del" jdbcType="INTEGER" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, certificate_number, mobile, account_id, default_agency_id,
+    province_id, city_id, area_id, status, certificate_front_img, certificate_back_img, address, certificate_begin,
+	certificate_end, reason, operator_id,apply_source, open_account_operator_id, business_operator_id, is_del, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_user_apply_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TUserApplyRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_user_apply_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateNumber != null">
+        AND certificate_number = #{certificateNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateFrontImg != null">
+        AND certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBackImg != null">
+        AND certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBegin != null">
+        AND certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificateEnd != null">
+        AND certificate_end = #{certificateEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reason != null">
+        AND reason = #{reason,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="applySource != null">
+        AND apply_source = #{applySource,jdbcType=CHAR}
+      </if>
+
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TUserApplyRecord" keyProperty="id" useGeneratedKeys="true">
+    insert into zeus.t_user_apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img, 
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin, 
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end, 
+      </if>
+      <if test="reason != null">
+        reason, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="applySource != null">
+        apply_source,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="applySource != null">
+        #{applySource,jdbcType=CHAR},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+        now(),
+        now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TUserApplyRecord">
+    update zeus.t_user_apply_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end = #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="applySource != null">
+        apply_source = #{applySource,jdbcType=CHAR},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+       id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select r.*
+    from zeus.t_user_apply_record r
+    <where>
+      r.is_del = 0
+      <if test="status != null"> and r.status=#{status}</if>
+      <if test="q != null"> and (r.name like concat('%',#{q},'%') or r.certificate_number like concat('%',#{q},'%') or r.mobile like concat('%',#{q},'%'))</if>
+      <if test="applySource != null"> and r.apply_source=#{applySource}</if>
+    </where>
+  </select>
+</mapper>

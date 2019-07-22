@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 14时05分16秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.TAuctionOfflineFinanceMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.TAuctionOfflineFinance">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_id" jdbcType="BIGINT" property="orderId" />
+	<result column="finance_type" jdbcType="VARCHAR" property="financeType" />
+	<result column="auction_name" jdbcType="VARCHAR" property="auctionName" />
+	<result column="user_name" jdbcType="VARCHAR" property="userName" />
+	<result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+	<result column="role_type" jdbcType="VARCHAR" property="roleType" />
+	<result column="should_receive_total_amount" jdbcType="VARCHAR" property="shouldReceiveTotalAmount" />
+	<result column="actual_receive_total_amount" jdbcType="VARCHAR" property="actualReceiveTotalAmount" />
+	<result column="remain_amount" jdbcType="VARCHAR" property="remainAmount" />
+	<result column="receive_remain_type" jdbcType="VARCHAR" property="receiveRemainType" />
+	<result column="receive_remain_remark" jdbcType="VARCHAR" property="receiveRemainRemark" />
+	<result column="should_receive_commission_amount" jdbcType="VARCHAR" property="shouldReceiveCommissionAmount" />
+	<result column="actual_receive_commission_amount" jdbcType="VARCHAR" property="actualReceiveCommissionAmount" />
+	<result column="receive_commission_type" jdbcType="VARCHAR" property="receiveCommissionType" />
+	<result column="staus" jdbcType="VARCHAR" property="staus" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_id, finance_type, auction_name, user_name, user_mobile, 
+	role_type, should_receive_total_amount, actual_receive_total_amount, remain_amount, receive_remain_type, receive_remain_remark, 
+	should_receive_commission_amount, actual_receive_commission_amount, receive_commission_type, staus, operator_id, delete_flag, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_auction_offline_finance
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.TAuctionOfflineFinanceCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_auction_offline_finance
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderId != null and orderId!=''">
+        AND order_id=#{orderId}
+      </if>
+      <if test="financeType != null and financeType!=''">
+        AND finance_type = #{financeType,jdbcType=VARCHAR}
+      </if>
+      <if test="auctionName != null and auctionName !=''">
+        AND auction_name like concat('%',#{auctionName},'%')
+      </if>
+      <if test="userName != null and userName !=''">
+        AND user_name like concat('%',#{userName},'%')
+      </if>
+      <if test="userMobile != null and userMobile !=''">
+        AND user_mobile like concat('%',#{userMobile},'%')
+      </if>
+      <if test="roleType != null and roleType !=''">
+        AND role_type = #{roleType,jdbcType=VARCHAR}
+      </if>
+      <if test="shouldReceiveTotalAmount != null">
+        AND should_receive_total_amount = #{shouldReceiveTotalAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="actualReceiveTotalAmount != null">
+        AND actual_receive_total_amount = #{actualReceiveTotalAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="remainAmount != null">
+        AND remain_amount = #{remainAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveRemainType != null">
+        AND receive_remain_type = #{receiveRemainType,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveRemainRemark != null">
+        AND receive_remain_remark = #{receiveRemainRemark,jdbcType=VARCHAR}
+      </if>
+      <if test="shouldReceiveCommissionAmount != null">
+        AND should_receive_commission_amount = #{shouldReceiveCommissionAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="actualReceiveCommissionAmount != null">
+        AND actual_receive_commission_amount = #{actualReceiveCommissionAmount,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveCommissionType != null">
+        AND receive_commission_type = #{receiveCommissionType,jdbcType=VARCHAR}
+      </if>
+      <if test="staus != null and staus !=''">
+        AND staus = #{staus,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="beginTime != null and beginTime!=''">
+        AND create_time >= #{beginTime}
+      </if>
+      <if test="endTime != null and endTime!=''">
+        AND #{endTime} >= create_time
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.TAuctionOfflineFinance">
+    insert into zeus.t_auction_offline_finance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderId != null">
+        order_id, 
+      </if>
+      <if test="financeType != null">
+        finance_type, 
+      </if>
+      <if test="auctionName != null">
+        auction_name, 
+      </if>
+      <if test="userName != null">
+        user_name, 
+      </if>
+      <if test="userMobile != null">
+        user_mobile, 
+      </if>
+      <if test="roleType != null">
+        role_type, 
+      </if>
+      <if test="shouldReceiveTotalAmount != null">
+        should_receive_total_amount, 
+      </if>
+      <if test="actualReceiveTotalAmount != null">
+        actual_receive_total_amount, 
+      </if>
+      <if test="remainAmount != null">
+        remain_amount, 
+      </if>
+      <if test="receiveRemainType != null">
+        receive_remain_type, 
+      </if>
+      <if test="receiveRemainRemark != null">
+        receive_remain_remark, 
+      </if>
+      <if test="shouldReceiveCommissionAmount != null">
+        should_receive_commission_amount, 
+      </if>
+      <if test="actualReceiveCommissionAmount != null">
+        actual_receive_commission_amount, 
+      </if>
+      <if test="receiveCommissionType != null">
+        receive_commission_type, 
+      </if>
+      <if test="staus != null">
+        staus, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="financeType != null">
+        #{financeType,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionName != null">
+        #{auctionName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null">
+        #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveTotalAmount != null">
+        #{shouldReceiveTotalAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="actualReceiveTotalAmount != null">
+        #{actualReceiveTotalAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="remainAmount != null">
+        #{remainAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveRemainType != null">
+        #{receiveRemainType,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveRemainRemark != null">
+        #{receiveRemainRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveCommissionAmount != null">
+        #{shouldReceiveCommissionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="actualReceiveCommissionAmount != null">
+        #{actualReceiveCommissionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCommissionType != null">
+        #{receiveCommissionType,jdbcType=VARCHAR},
+      </if>
+      <if test="staus != null">
+        #{staus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.TAuctionOfflineFinance">
+    update zeus.t_auction_offline_finance
+    <set>
+      <if test="financeType != null">
+        finance_type = #{financeType,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionName != null">
+        auction_name = #{auctionName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobile != null">
+        user_mobile = #{userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        role_type = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveTotalAmount != null">
+        should_receive_total_amount = #{shouldReceiveTotalAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="actualReceiveTotalAmount != null">
+        actual_receive_total_amount = #{actualReceiveTotalAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="remainAmount != null">
+        remain_amount = #{remainAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveRemainType != null">
+        receive_remain_type = #{receiveRemainType,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveRemainRemark != null">
+        receive_remain_remark = #{receiveRemainRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveCommissionAmount != null">
+        should_receive_commission_amount = #{shouldReceiveCommissionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="actualReceiveCommissionAmount != null">
+        actual_receive_commission_amount = #{actualReceiveCommissionAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCommissionType != null">
+        receive_commission_type = #{receiveCommissionType,jdbcType=VARCHAR},
+      </if>
+      <if test="staus != null">
+        staus = #{staus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

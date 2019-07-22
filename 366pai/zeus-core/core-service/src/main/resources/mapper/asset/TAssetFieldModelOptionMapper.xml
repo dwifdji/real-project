@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月13日 17时39分46秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldModelOptionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldModelOption">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="model_id" jdbcType="INTEGER" property="modelId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="extensible" jdbcType="INTEGER" property="extensible" />
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="model_id" jdbcType="INTEGER" property="modelId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="extensible" jdbcType="INTEGER" property="extensible" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, model_id, name, extensible, id, model_id, 
+	name, extensible
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_asset_field_model_option
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldModelOptionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_asset_field_model_option
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="modelId != null">
+        AND model_id = #{modelId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="extensible != null">
+        AND extensible = #{extensible,jdbcType=INTEGER}
+      </if>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="modelId != null">
+        AND model_id = #{modelId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="extensible != null">
+        AND extensible = #{extensible,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldModelOption">
+    insert into zeus.t_asset_field_model_option
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="modelId != null">
+        model_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="extensible != null">
+        extensible, 
+      </if>
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="modelId != null">
+        model_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="extensible != null">
+        extensible, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="extensible != null">
+        #{extensible,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null">
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="extensible != null">
+        #{extensible,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldModelOption">
+    update zeus.t_asset_field_model_option
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="extensible != null">
+        extensible = #{extensible,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="extensible != null">
+        extensible = #{extensible,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

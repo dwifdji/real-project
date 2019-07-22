@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.LockShareCommissionActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.LockShareCommissionAction">
+	<result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="pay_by_buyer" jdbcType="BIT" property="payByBuyer" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="to" jdbcType="INTEGER" property="to" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, pay_by_buyer, amount, to
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.lock_share_commission_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.LockShareCommissionActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.lock_share_commission_action
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="payByBuyer != null">
+        AND pay_by_buyer = #{payByBuyer,jdbcType=BIT}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="to != null">
+        AND to = #{to,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.payment.LockShareCommissionAction">
+    insert into zeus.lock_share_commission_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="payByBuyer != null">
+        pay_by_buyer, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="to != null">
+        to, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="payByBuyer != null">
+        #{payByBuyer,jdbcType=BIT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="to != null">
+        #{to,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.payment.LockShareCommissionAction">
+    update zeus.lock_share_commission_action
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="payByBuyer != null">
+        pay_by_buyer = #{payByBuyer,jdbcType=BIT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="to != null">
+        to = #{to,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

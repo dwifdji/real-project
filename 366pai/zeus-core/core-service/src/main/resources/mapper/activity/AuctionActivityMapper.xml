@@ -1,0 +1,1936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分49秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.AuctionActivityMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.AuctionActivity">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="asset_id" jdbcType="INTEGER" property="assetId"/>
+        <result column="mode" jdbcType="CHAR" property="mode"/>
+        <result column="asset_type" jdbcType="CHAR" property="assetType"/>
+        <result column="asset_name" jdbcType="VARCHAR" property="assetName"/>
+        <result column="sub_category_id" jdbcType="INTEGER" property="subCategoryId"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="agency_id" jdbcType="INTEGER" property="agencyId"/>
+        <result column="preview_at" jdbcType="TIMESTAMP" property="previewAt"/>
+        <result column="begin_at" jdbcType="TIMESTAMP" property="beginAt"/>
+        <result column="end_at" jdbcType="TIMESTAMP" property="endAt"/>
+        <result column="starting_price" jdbcType="DECIMAL" property="startingPrice"/>
+        <result column="reserve_price" jdbcType="DECIMAL" property="reservePrice"/>
+        <result column="ref_price" jdbcType="DECIMAL" property="refPrice"/>
+        <result column="deposit" jdbcType="DECIMAL" property="deposit"/>
+        <result column="commission_seller" jdbcType="DECIMAL" property="commissionSeller"/>
+        <result column="commission_buyer" jdbcType="DECIMAL" property="commissionBuyer"/>
+        <result column="commission_percent_seller" jdbcType="DECIMAL" property="commissionPercentSeller"/>
+        <result column="commission_percent_buyer" jdbcType="DECIMAL" property="commissionPercentBuyer"/>
+        <result column="quantity" jdbcType="INTEGER" property="quantity"/>
+        <result column="bid_count" jdbcType="INTEGER" property="bidCount"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="participant_number" jdbcType="INTEGER" property="participantNumber"/>
+        <result column="bidding_extension" jdbcType="INTEGER" property="biddingExtension"/>
+        <result column="increment" jdbcType="DECIMAL" property="increment"/>
+        <result column="lock_end_at" jdbcType="BIT" property="lockEndAt"/>
+        <result column="reduction" jdbcType="DECIMAL" property="reduction"/>
+        <result column="reduction_period" jdbcType="INTEGER" property="reductionPeriod"/>
+        <result column="paid_by_seller" jdbcType="BIT" property="paidBySeller"/>
+        <result column="extended" jdbcType="BIT" property="extended"/>
+        <result column="current_price" jdbcType="DECIMAL" property="currentPrice"/>
+        <result column="reduced_at" jdbcType="TIMESTAMP" property="reducedAt"/>
+        <result column="increment_at" jdbcType="TIMESTAMP" property="incrementAt"/>
+        <result column="restrict" jdbcType="CHAR" property="restrict"/>
+        <result column="finish_at" jdbcType="TIMESTAMP" property="finishAt"/>
+        <result column="is_force_finished" jdbcType="BIT" property="isForceFinished"/>
+        <result column="asset_category_group_id" jdbcType="INTEGER" property="assetCategoryGroupId"/>
+        <result column="asset_category_id" jdbcType="INTEGER" property="assetCategoryId"/>
+        <result column="asset_property_id" jdbcType="INTEGER" property="assetPropertyId"/>
+        <result column="reference_activity_id" jdbcType="INTEGER" property="referenceActivityId"/>
+        <result column="auctioneer_name" jdbcType="VARCHAR" property="auctioneerName"/>
+        <result column="auctioneer_phone" jdbcType="VARCHAR" property="auctioneerPhone"/>
+        <result column="auctioneer_qq" jdbcType="VARCHAR" property="auctioneerQq"/>
+        <result column="display_name" jdbcType="VARCHAR" property="displayName"/>
+        <result column="begin_notified" jdbcType="BIT" property="beginNotified"/>
+        <result column="end_notified" jdbcType="BIT" property="endNotified"/>
+        <result column="commission_channel_agent" jdbcType="DECIMAL" property="commissionChannelAgent"/>
+        <result column="staff_id" jdbcType="INTEGER" property="staffId"/>
+        <result column="operator_at" jdbcType="TIMESTAMP" property="operatorAt"/>
+        <result column="operator_id" jdbcType="INTEGER" property="operatorId"/>
+        <result column="visibility_level" jdbcType="CHAR" property="visibilityLevel"/>
+        <result column="preemptive_person" jdbcType="VARCHAR" property="preemptivePerson"/>
+        <result column="current_level" jdbcType="INTEGER" property="currentLevel"/>
+        <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+        <result column="bus_type_name" jdbcType="VARCHAR" property="busTypeName" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, status, created_at, updated_at, asset_id, mode,
+        asset_type, asset_name, sub_category_id, category_id, agency_id, preview_at,
+        begin_at, end_at, starting_price, reserve_price, ref_price, deposit,
+        commission_seller, commission_buyer, commission_percent_seller, commission_percent_buyer, quantity, bid_count,
+        code, participant_number, bidding_extension, increment, lock_end_at, reduction,
+        reduction_period, paid_by_seller, extended, current_price, reduced_at, `restrict`,
+        finish_at, is_force_finished, asset_category_group_id, asset_category_id, asset_property_id,
+        reference_activity_id,
+        auctioneer_name, auctioneer_phone, auctioneer_qq, display_name, begin_notified, end_notified,
+        commission_channel_agent, staff_id, operator_at, operator_id, visibility_level, preemptive_person,current_level, delete_flag, bus_type_name
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.auction_activity
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.AuctionActivityCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.auction_activity
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updatedAt != null">
+                AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="assetId != null">
+                AND asset_id = #{assetId,jdbcType=INTEGER}
+            </if>
+            <if test="mode != null">
+                AND mode = #{mode,jdbcType=CHAR}
+            </if>
+            <if test="assetType != null">
+                AND asset_type = #{assetType,jdbcType=CHAR}
+            </if>
+            <if test="assetName != null">
+                AND asset_name = #{assetName,jdbcType=VARCHAR}
+            </if>
+            <if test="subCategoryId != null">
+                AND sub_category_id = #{subCategoryId,jdbcType=INTEGER}
+            </if>
+            <if test="categoryId != null">
+                AND category_id = #{categoryId,jdbcType=INTEGER}
+            </if>
+            <if test="agencyId != null">
+                AND agency_id = #{agencyId,jdbcType=INTEGER}
+            </if>
+            <if test="previewAt != null">
+                AND preview_at = #{previewAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beginAt != null">
+                AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endAt != null">
+                AND end_at = #{endAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="startingPrice != null">
+                AND starting_price = #{startingPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="reservePrice != null">
+                AND reserve_price = #{reservePrice,jdbcType=DECIMAL}
+            </if>
+            <if test="refPrice != null">
+                AND ref_price = #{refPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="deposit != null">
+                AND deposit = #{deposit,jdbcType=DECIMAL}
+            </if>
+            <if test="commissionSeller != null">
+                AND commission_seller = #{commissionSeller,jdbcType=DECIMAL}
+            </if>
+            <if test="commissionBuyer != null">
+                AND commission_buyer = #{commissionBuyer,jdbcType=DECIMAL}
+            </if>
+            <if test="commissionPercentSeller != null">
+                AND commission_percent_seller = #{commissionPercentSeller,jdbcType=DECIMAL}
+            </if>
+            <if test="commissionPercentBuyer != null">
+                AND commission_percent_buyer = #{commissionPercentBuyer,jdbcType=DECIMAL}
+            </if>
+            <if test="quantity != null">
+                AND quantity = #{quantity,jdbcType=INTEGER}
+            </if>
+            <if test="bidCount != null">
+                AND bid_count = #{bidCount,jdbcType=INTEGER}
+            </if>
+            <if test="code != null">
+                AND code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="participantNumber != null">
+                AND participant_number = #{participantNumber,jdbcType=INTEGER}
+            </if>
+            <if test="biddingExtension != null">
+                AND bidding_extension = #{biddingExtension,jdbcType=INTEGER}
+            </if>
+            <if test="increment != null">
+                AND increment = #{increment,jdbcType=DECIMAL}
+            </if>
+            <if test="lockEndAt != null">
+                AND lock_end_at = #{lockEndAt,jdbcType=BIT}
+            </if>
+            <if test="reduction != null">
+                AND reduction = #{reduction,jdbcType=DECIMAL}
+            </if>
+            <if test="reductionPeriod != null">
+                AND reduction_period = #{reductionPeriod,jdbcType=INTEGER}
+            </if>
+            <if test="paidBySeller != null">
+                AND paid_by_seller = #{paidBySeller,jdbcType=BIT}
+            </if>
+            <if test="extended != null">
+                AND extended = #{extended,jdbcType=BIT}
+            </if>
+            <if test="currentPrice != null">
+                AND current_price = #{currentPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="reducedAt != null">
+                AND reduced_at = #{reducedAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="incrementAt != null">
+                AND increment_at = #{incrementAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="restrict != null">
+                AND restrict = #{restrict,jdbcType=CHAR}
+            </if>
+            <if test="finishAt != null">
+                AND finish_at = #{finishAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="isForceFinished != null">
+                AND is_force_finished = #{isForceFinished,jdbcType=BIT}
+            </if>
+            <if test="assetCategoryGroupId != null">
+                AND asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER}
+            </if>
+            <if test="assetCategoryId != null">
+                AND asset_category_id = #{assetCategoryId,jdbcType=INTEGER}
+            </if>
+            <if test="assetPropertyId != null">
+                AND asset_property_id = #{assetPropertyId,jdbcType=INTEGER}
+            </if>
+            <if test="referenceActivityId != null">
+                AND reference_activity_id = #{referenceActivityId,jdbcType=INTEGER}
+            </if>
+            <if test="auctioneerName != null">
+                AND auctioneer_name = #{auctioneerName,jdbcType=VARCHAR}
+            </if>
+            <if test="auctioneerPhone != null">
+                AND auctioneer_phone = #{auctioneerPhone,jdbcType=VARCHAR}
+            </if>
+            <if test="auctioneerQq != null">
+                AND auctioneer_qq = #{auctioneerQq,jdbcType=VARCHAR}
+            </if>
+            <if test="displayName != null">
+                AND display_name = #{displayName,jdbcType=VARCHAR}
+            </if>
+            <if test="beginNotified != null">
+                AND begin_notified = #{beginNotified,jdbcType=BIT}
+            </if>
+            <if test="endNotified != null">
+                AND end_notified = #{endNotified,jdbcType=BIT}
+            </if>
+            <if test="commissionChannelAgent != null">
+                AND commission_channel_agent = #{commissionChannelAgent,jdbcType=DECIMAL}
+            </if>
+            <if test="staffId != null">
+                AND staff_id = #{staffId,jdbcType=INTEGER}
+            </if>
+            <if test="operatorAt != null">
+                AND operator_at = #{operatorAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="operatorId != null">
+                AND operator_id = #{operatorId,jdbcType=INTEGER}
+            </if>
+            <if test="visibilityLevel != null">
+                AND visibility_level = #{visibilityLevel,jdbcType=CHAR}
+            </if>
+
+            <if test="q != null">
+                AND display_name like '%${q}%'
+            </if>
+            <if test="beginAtFrom != null">
+                AND begin_at &gt;= #{beginAtFrom,jdbcType=TIMESTAMP}
+            </if>
+            <if test="beginAtTo != null">
+                AND begin_at &lt;= #{beginAtTo,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdAtFrom != null">
+                AND created_at &gt;= #{createdAtFrom,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdAtTo != null">
+                AND created_at &lt;= #{createdAtTo,jdbcType=TIMESTAMP}
+            </if>
+            <if test="previewAtFrom != null">
+                AND preview_at &gt;= #{previewAtFrom,jdbcType=TIMESTAMP}
+            </if>
+            <if test="previewAtTo != null">
+                AND preview_at &lt;= #{previewAtTo,jdbcType=TIMESTAMP}
+            </if>
+
+            <if test="preemptivePerson != null">
+                AND preemptive_person = #{preemptivePerson,jdbcType=VARCHAR}
+            </if>
+            <if test="currentLevel != null">
+                AND current_level = #{currentLevel,jdbcType=INTEGER}
+            </if>
+            <if test="deleteFlag != null">
+                AND delete_flag = #{deleteFlag,jdbcType=BIT}
+            </if>
+            <if test="busTypeName != null">
+                AND bus_type_name = #{busTypeName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com._360pai.core.model.activity.AuctionActivity">
+        insert into zeus.auction_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            created_at,
+            updated_at,
+            <if test="assetId != null">
+                asset_id,
+            </if>
+            <if test="mode != null">
+                mode,
+            </if>
+            <if test="assetType != null">
+                asset_type,
+            </if>
+            <if test="assetName != null">
+                asset_name,
+            </if>
+            <if test="subCategoryId != null">
+                sub_category_id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="agencyId != null">
+                agency_id,
+            </if>
+            <if test="previewAt != null">
+                preview_at,
+            </if>
+            <if test="beginAt != null">
+                begin_at,
+            </if>
+            <if test="endAt != null">
+                end_at,
+            </if>
+            <if test="startingPrice != null">
+                starting_price,
+            </if>
+            <if test="reservePrice != null">
+                reserve_price,
+            </if>
+            <if test="refPrice != null">
+                ref_price,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="commissionSeller != null">
+                commission_seller,
+            </if>
+            <if test="commissionBuyer != null">
+                commission_buyer,
+            </if>
+            <if test="commissionPercentSeller != null">
+                commission_percent_seller,
+            </if>
+            <if test="commissionPercentBuyer != null">
+                commission_percent_buyer,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="bidCount != null">
+                bid_count,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="participantNumber != null">
+                participant_number,
+            </if>
+            <if test="biddingExtension != null">
+                bidding_extension,
+            </if>
+            <if test="increment != null">
+                increment,
+            </if>
+            <if test="lockEndAt != null">
+                lock_end_at,
+            </if>
+            <if test="reduction != null">
+                reduction,
+            </if>
+            <if test="reductionPeriod != null">
+                reduction_period,
+            </if>
+            <if test="paidBySeller != null">
+                paid_by_seller,
+            </if>
+            <if test="extended != null">
+                extended,
+            </if>
+            <if test="currentPrice != null">
+                current_price,
+            </if>
+            <if test="reducedAt != null">
+                reduced_at,
+            </if>
+            <if test="incrementAt != null">
+                increment_at,
+            </if>
+            <if test="restrict != null">
+                restrict,
+            </if>
+            <if test="finishAt != null">
+                finish_at,
+            </if>
+            <if test="isForceFinished != null">
+                is_force_finished,
+            </if>
+            <if test="assetCategoryGroupId != null">
+                asset_category_group_id,
+            </if>
+            <if test="assetCategoryId != null">
+                asset_category_id,
+            </if>
+            <if test="assetPropertyId != null">
+                asset_property_id,
+            </if>
+            <if test="referenceActivityId != null">
+                reference_activity_id,
+            </if>
+            <if test="auctioneerName != null">
+                auctioneer_name,
+            </if>
+            <if test="auctioneerPhone != null">
+                auctioneer_phone,
+            </if>
+            <if test="auctioneerQq != null">
+                auctioneer_qq,
+            </if>
+            <if test="displayName != null">
+                display_name,
+            </if>
+            <if test="beginNotified != null">
+                begin_notified,
+            </if>
+            <if test="endNotified != null">
+                end_notified,
+            </if>
+            <if test="commissionChannelAgent != null">
+                commission_channel_agent,
+            </if>
+            <if test="staffId != null">
+                staff_id,
+            </if>
+            <if test="operatorAt != null">
+                operator_at,
+            </if>
+            <if test="operatorId != null">
+                operator_id,
+            </if>
+            <if test="visibilityLevel != null">
+                visibility_level,
+            </if>
+            <if test="preemptivePerson != null">
+                preemptive_person,
+            </if>
+            <if test="currentLevel != null">
+                current_level,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="busTypeName != null">
+                bus_type_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            now(),
+            now(),
+            <if test="assetId != null">
+                #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="mode != null">
+                #{mode,jdbcType=CHAR},
+            </if>
+            <if test="assetType != null">
+                #{assetType,jdbcType=CHAR},
+            </if>
+            <if test="assetName != null">
+                #{assetName,jdbcType=VARCHAR},
+            </if>
+            <if test="subCategoryId != null">
+                #{subCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="agencyId != null">
+                #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="previewAt != null">
+                #{previewAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beginAt != null">
+                #{beginAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endAt != null">
+                #{endAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startingPrice != null">
+                #{startingPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="reservePrice != null">
+                #{reservePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="refPrice != null">
+                #{refPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionSeller != null">
+                #{commissionSeller,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionBuyer != null">
+                #{commissionBuyer,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionPercentSeller != null">
+                #{commissionPercentSeller,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionPercentBuyer != null">
+                #{commissionPercentBuyer,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="bidCount != null">
+                #{bidCount,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="participantNumber != null">
+                #{participantNumber,jdbcType=INTEGER},
+            </if>
+            <if test="biddingExtension != null">
+                #{biddingExtension,jdbcType=INTEGER},
+            </if>
+            <if test="increment != null">
+                #{increment,jdbcType=DECIMAL},
+            </if>
+            <if test="lockEndAt != null">
+                #{lockEndAt,jdbcType=BIT},
+            </if>
+            <if test="reduction != null">
+                #{reduction,jdbcType=DECIMAL},
+            </if>
+            <if test="reductionPeriod != null">
+                #{reductionPeriod,jdbcType=INTEGER},
+            </if>
+            <if test="paidBySeller != null">
+                #{paidBySeller,jdbcType=BIT},
+            </if>
+            <if test="extended != null">
+                #{extended,jdbcType=BIT},
+            </if>
+            <if test="currentPrice != null">
+                #{currentPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="reducedAt != null">
+                #{reducedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="incrementAt != null">
+                #{incrementAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="restrict != null">
+                #{restrict,jdbcType=CHAR},
+            </if>
+            <if test="finishAt != null">
+                #{finishAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isForceFinished != null">
+                #{isForceFinished,jdbcType=BIT},
+            </if>
+            <if test="assetCategoryGroupId != null">
+                #{assetCategoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="assetCategoryId != null">
+                #{assetCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="assetPropertyId != null">
+                #{assetPropertyId,jdbcType=INTEGER},
+            </if>
+            <if test="referenceActivityId != null">
+                #{referenceActivityId,jdbcType=INTEGER},
+            </if>
+            <if test="auctioneerName != null">
+                #{auctioneerName,jdbcType=VARCHAR},
+            </if>
+            <if test="auctioneerPhone != null">
+                #{auctioneerPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="auctioneerQq != null">
+                #{auctioneerQq,jdbcType=VARCHAR},
+            </if>
+            <if test="displayName != null">
+                #{displayName,jdbcType=VARCHAR},
+            </if>
+            <if test="beginNotified != null">
+                #{beginNotified,jdbcType=BIT},
+            </if>
+            <if test="endNotified != null">
+                #{endNotified,jdbcType=BIT},
+            </if>
+            <if test="commissionChannelAgent != null">
+                #{commissionChannelAgent,jdbcType=DECIMAL},
+            </if>
+            <if test="staffId != null">
+                #{staffId,jdbcType=INTEGER},
+            </if>
+            <if test="operatorAt != null">
+                #{operatorAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="visibilityLevel != null">
+                #{visibilityLevel,jdbcType=CHAR},
+            </if>
+            <if test="preemptivePerson != null">
+                #{preemptivePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="currentLevel != null">
+                #{currentLevel,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=BIT},
+            </if>
+            <if test="busTypeName != null">
+                #{busTypeName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.activity.AuctionActivity">
+        update zeus.auction_activity
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="mode != null">
+                mode = #{mode,jdbcType=CHAR},
+            </if>
+            <if test="assetType != null">
+                asset_type = #{assetType,jdbcType=CHAR},
+            </if>
+            <if test="assetName != null">
+                asset_name = #{assetName,jdbcType=VARCHAR},
+            </if>
+            <if test="subCategoryId != null">
+                sub_category_id = #{subCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="agencyId != null">
+                agency_id = #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="previewAt != null">
+                preview_at = #{previewAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="beginAt != null">
+                begin_at = #{beginAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endAt != null">
+                end_at = #{endAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startingPrice != null">
+                starting_price = #{startingPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="reservePrice != null">
+                reserve_price = #{reservePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="refPrice != null">
+                ref_price = #{refPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionSeller != null">
+                commission_seller = #{commissionSeller,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionBuyer != null">
+                commission_buyer = #{commissionBuyer,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionPercentSeller != null">
+                commission_percent_seller = #{commissionPercentSeller,jdbcType=DECIMAL},
+            </if>
+            <if test="commissionPercentBuyer != null">
+                commission_percent_buyer = #{commissionPercentBuyer,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="bidCount != null">
+                bid_count = bid_count+#{bidCount,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="participantNumber != null">
+                participant_number = #{participantNumber,jdbcType=INTEGER},
+            </if>
+            <if test="biddingExtension != null">
+                bidding_extension = #{biddingExtension,jdbcType=INTEGER},
+            </if>
+            <if test="increment != null">
+                increment = #{increment,jdbcType=DECIMAL},
+            </if>
+            <if test="lockEndAt != null">
+                lock_end_at = #{lockEndAt,jdbcType=BIT},
+            </if>
+            <if test="reduction != null">
+                reduction = #{reduction,jdbcType=DECIMAL},
+            </if>
+            <if test="reductionPeriod != null">
+                reduction_period = #{reductionPeriod,jdbcType=INTEGER},
+            </if>
+            <if test="paidBySeller != null">
+                paid_by_seller = #{paidBySeller,jdbcType=BIT},
+            </if>
+            <if test="extended != null">
+                extended = #{extended,jdbcType=BIT},
+            </if>
+            <if test="currentPrice != null">
+                current_price = #{currentPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="reducedAt != null">
+                reduced_at = #{reducedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="incrementAt != null">
+                increment_at = #{incrementAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="restrict != null">
+                `restrict` = #{restrict,jdbcType=CHAR},
+            </if>
+            <if test="finishAt != null">
+                finish_at = #{finishAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isForceFinished != null">
+                is_force_finished = #{isForceFinished,jdbcType=BIT},
+            </if>
+            <if test="assetCategoryGroupId != null">
+                asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="assetCategoryId != null">
+                asset_category_id = #{assetCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="assetPropertyId != null">
+                asset_property_id = #{assetPropertyId,jdbcType=INTEGER},
+            </if>
+            <if test="referenceActivityId != null">
+                reference_activity_id = #{referenceActivityId,jdbcType=INTEGER},
+            </if>
+            <if test="auctioneerName != null">
+                auctioneer_name = #{auctioneerName,jdbcType=VARCHAR},
+            </if>
+            <if test="auctioneerPhone != null">
+                auctioneer_phone = #{auctioneerPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="auctioneerQq != null">
+                auctioneer_qq = #{auctioneerQq,jdbcType=VARCHAR},
+            </if>
+            <if test="displayName != null">
+                display_name = #{displayName,jdbcType=VARCHAR},
+            </if>
+            <if test="beginNotified != null">
+                begin_notified = #{beginNotified,jdbcType=BIT},
+            </if>
+            <if test="endNotified != null">
+                end_notified = #{endNotified,jdbcType=BIT},
+            </if>
+            <if test="commissionChannelAgent != null">
+                commission_channel_agent = #{commissionChannelAgent,jdbcType=DECIMAL},
+            </if>
+            <if test="staffId != null">
+                staff_id = #{staffId,jdbcType=INTEGER},
+            </if>
+            <if test="operatorAt != null">
+                operator_at = #{operatorAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operatorId != null">
+                operator_id = #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="currentLevel != null">
+                current_level = #{currentLevel,jdbcType=INTEGER},
+            </if>
+            <if test="visibilityLevel != null">
+                visibility_level = #{visibilityLevel,jdbcType=CHAR},
+            </if>
+            updated_at=now(),
+            <if test="preemptivePerson != null">
+                preemptive_person = #{preemptivePerson,jdbcType=VARCHAR},
+            </if>
+            <if test="currentLevel != null">
+                current_level = #{currentLevel,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=BIT},
+            </if>
+            <if test="busTypeName != null">
+                bus_type_name = #{busTypeName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="specialDetail" resultType="java.lang.String">
+          select ass.special_detail as specialDetail from auction_activity aa
+          LEFT JOIN asset ass on aa.asset_id = ass.id where aa.id = #{activityId};
+    </select>
+
+    <select id="activityList" resultType="java.util.Map">
+        SELECT
+        *
+        FROM
+        (SELECT
+        aa.`asset_name` AS activityName,
+        aa.`begin_at` AS beginAt,
+        aa.`end_at` AS endAt,
+        aa.`id` AS activityId,
+        ci.`name` AS cityName,
+        ag.`name` AS agencyName,
+        ap.`name` AS assetPropertyName,
+        cp.`name` AS userName
+        FROM
+        `auction_activity` aa
+        LEFT JOIN t_agency ag
+        ON ag.`id` = aa.`agency_id`
+        LEFT JOIN city ci
+        ON ci.`id` = ag.`city_id`
+        LEFT JOIN asset_property ap
+        ON ap.`id` = aa.`asset_property_id`
+        LEFT JOIN asset ass
+        ON ass.`id` = aa.`asset_id`
+        LEFT JOIN party pa
+        ON pa.`id` = ass.`party_id`
+        LEFT JOIN company cp
+        ON cp.`id` = pa.`id`
+        WHERE aa.`status` = "ONLINE"
+        AND pa.`type` = "company"
+        UNION
+        SELECT
+        aa.`asset_name` AS activityName,
+        aa.`begin_at` AS beginAt,
+        aa.`end_at` AS endAt,
+        aa.`id` AS activityId,
+        ci.`name` AS cityName,
+        ag.`name` AS agencyName,
+        ap.`name` AS assetPropertyName,
+        us.name AS userName
+        FROM
+        `auction_activity` aa
+        LEFT JOIN t_agency ag
+        ON ag.`id` = aa.`agency_id`
+        LEFT JOIN city ci
+        ON ci.`id` = ag.`city_id`
+        LEFT JOIN asset_property ap
+        ON ap.`id` = aa.`asset_property_id`
+        LEFT JOIN asset ass
+        ON ass.`id` = aa.`asset_id`
+        LEFT JOIN party pa
+        ON pa.`id` = ass.`party_id`
+        LEFT JOIN `user` us
+        ON us.id = pa.`id`
+        WHERE aa.`status` = "ONLINE"
+        AND pa.`type` = "user") AS activity
+        <where>
+            <if test="assetPropertyName !=null and assetPropertyName!=''">AND activity.assetPropertyName LIKE
+                concat('',#{assetPropertyName},'')
+            </if>
+            <if test="activityName !=null and activityName!=''">AND activity.activityName LIKE
+                concat('',#{activityName},'')
+            </if>
+            <if test="agencyName !=null and agencyName!=''">AND activity.agencyName LIKE concat('',#{agencyName},'')
+            </if>
+        </where>
+    </select>
+
+    <select id="getAgencyPortalActivityList" parameterType="java.util.Map"
+            resultType="com._360pai.core.model.activity.AuctionActivity">
+        -- 机构联拍活动
+        select aa.*,c.name as categoryName
+        from zeus.agency_portal_activity pa
+        inner join zeus.auction_activity aa on aa.id=pa.activity_id and aa.status not in
+        <foreach item="item" index="index" collection="hiddenStatus" open="(" separator="," close=")">#{item}</foreach>
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        <where>
+            pa.agency_portal_id=#{agencyPortalId}
+            <if test="status !=null">and aa.status=#{status}</if>
+            <if test="categoryGroupId != null">and c.id=#{categoryGroupId}</if>
+            <if test="q != null">and (aa.display_name like concat('%',#{q},'%') or aa.code like concat('%',#{q},'%'))
+            </if>
+        </where>
+    </select>
+
+    <select id="getAvailablePlatformActivityList" parameterType="java.util.Map"
+            resultType="com._360pai.core.model.activity.AuctionActivity">
+        select t.*
+        from (
+        select aa.*, case when pa.id is null then 0 else 1 end `isUnion`,c.name as categoryName
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        left join zeus.agency_portal_activity pa on pa.activity_id=aa.id and pa.agency_portal_id=#{agencyPortalId}
+        <where>
+            aa.status in ('ONLINE') and aa.preview_at &lt;= now()
+            <if test="q != null">and (aa.display_name like concat('%',#{q},'%') or aa.code like concat('%',#{q},'%'))
+            </if>
+            <if test="categoryGroupId != null">and c.id=#{categoryGroupId}</if>
+            <if test="propertyId != null">and a.property_id=#{propertyId}</if>
+        </where>
+        ) t
+        <where>
+            1=1
+            <if test="unionStatus == '1'">and t.`isUnion`=1</if>
+            <if test="unionStatus == '2'">and t.`isUnion`=0</if>
+        </where>
+    </select>
+
+    <select id="getAuctionActivityList" parameterType="java.util.Map"
+            resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*,IFNULL(c.name, '租赁权拍卖') as categoryName,a.sub_status as subStatus
+        from zeus.auction_activity aa
+        left join zeus.asset a on a.id=aa.asset_id
+        left join zeus.t_asset_template_category atc on atc.id=a.category_id
+        left join zeus.t_asset_category c on c.id=atc.category_id
+        left join zeus.t_agency ta on ta.id=aa.agency_id
+        left join asset_lease_data ald on ald.asset_id = a.id
+        <if test="partyType != null">
+            <if test="partyName != null">
+                <if test='partyType == "user"'>
+                    left join zeus.t_user u on u.id=a.party_id and u.name like concat('%',#{partyName},'%')
+                </if>
+                <if test='partyType == "company"'>
+                    left join zeus.t_company co on co.id=a.party_id and co.name like concat('%',#{partyName},'%')
+                </if>
+            </if>
+        </if>
+        <where>
+            and aa.delete_flag='0' and aa.status in
+            <foreach item="item" index="index" collection="validStatus" open="(" separator="," close=")">#{item}
+            </foreach>
+            <if test="status !=null and status != 'REGISTRATION_PERIOD'
+            and status != 'QUALIFICATION_REVIEW' and status != 'WAITING_RELEASE'">
+                and aa.status=#{status}
+            </if>
+            <if test="status !=null and 'WAITING_RELEASE' == status">
+                AND a.sub_status=#{status}
+                AND aa.`status` != 'ONLINE'
+            </if>
+            <if test="status !=null and 'REGISTRATION_PERIOD' == status">
+                AND aa.preview_at &lt; NOW() AND ald.apply_end_time > NOW( )
+                AND aa.`status` = 'ONLINE'
+            </if>
+            <if test="status !=null and 'QUALIFICATION_REVIEW' == status">
+                and ald.apply_end_time &lt; NOW() and ald.approval_end_time > NOW()
+                and aa.`status` = 'ONLINE'
+            </if>
+            <if test="categoryGroupId != null and '-1' != categoryGroupId">and c.id=#{categoryGroupId}</if>
+            <if test="categoryGroupId != null and '-1' == categoryGroupId">and aa.category_id = #{categoryGroupId}</if>
+            <if test="agencyId !=null">and aa.agency_id=#{agencyId}</if>
+            <if test="agencyName !=null">and ta.name like concat('%',#{agencyName},'%')</if>
+            <if test="mode !=null">and aa.mode=#{mode}</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and aa.created_at>=#{createdAtFrom} and
+                aa.created_at&lt;=#{createdAtTo}
+            </if>
+            <if test="previewAtFrom != null and previewAtTo != null">and aa.preview_at>=#{previewAtFrom} and
+                aa.preview_at&lt;=#{previewAtTo}
+            </if>
+            <if test="beginAtFrom != null and beginAtTo != null">and aa.begin_at>=#{beginAtFrom} and aa.begin_at&lt;=#{beginAtTo}</if>
+            <if test="q != null">and (aa.asset_name like concat('%',#{q},'%') or aa.code like concat('%',#{q},'%'))</if>
+            <if test="name != null">and aa.asset_name like concat('%',#{name},'%')</if>
+            <if test="partyId !=null">
+                and a.party_id=#{partyId}
+            </if>
+            <if test="comeFrom !=null">and a.come_from=#{comeFrom}</if>
+            <if test="categoryId !=null">and aa.asset_category_group_id=#{categoryId}</if>
+            <if test="visibilityLevel !=null">and aa.visibility_level=#{visibilityLevel}</if>
+            <if test="excludeAppletHallActivity != null and excludeAppletHallActivity=='1'.toString()"> and aa.id not in (select activity_id from zeus.t_applet_hall_activity where type=0 and delete_flag=0)</if>
+            <if test="hallId != null"> and aa.id not in (select activity_id from zeus.t_hall_activity where hall_id=#{hallId} and del_flag=0)</if>
+            <if test="excludeAssetPropertyActivity != null"> and aa.id not in (select activity_id from zeus.t_asset_property_activity where asset_property_id=#{excludeAssetPropertyActivity} and activity_type='auction' and del_flag=0)</if>
+            <if test="excludeAlbumActivity != null"> and aa.id not in (select activity_id from zeus.auction_activity_album_map where album_id=#{excludeAlbumActivity} and activity_type='auction')</if>
+            <if test="frontFlag != null and frontFlag=='1'.toString()">
+                and aa.status not in
+                ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED','PENDING')
+                and aa.delete_flag = 0 and now() > aa.preview_at and aa.visibility_level = 'PLATFORM_DEFAULT'
+            </if>
+        </where>
+    </select>
+    <select id="search" resultType="com._360pai.core.facade.activity.vo.SearchAuctionActivityVo"
+            parameterType="java.util.Map">
+        select * from (SELECT
+        aa.id AS activityId,
+        aa.begin_at AS beginAt,
+        aa.preview_at AS previewAt,
+        aa.asset_name AS activityName,
+        aavc.view_count AS viewCount,
+        aa.end_at AS endAt,
+        aa.`status` AS `status`,
+        aa.deposit AS deposit,
+        aa.starting_price AS startingPrice,
+        ifnull(aa.starting_price,0) AS startingPriceOrderBy,
+        CASE
+        aa.`mode`
+        WHEN "ENGLISH" THEN
+        "增价拍"
+        WHEN "DUTCH" THEN
+        "减价拍"
+        WHEN "SEALED" THEN
+        "一口价暗标"
+        WHEN "PUBLIC" THEN
+        "一口价明标"
+        WHEN "FREE" THEN
+        "自由报价"
+        WHEN "FLASH" THEN
+        "限时秒杀"
+        END AS modeStr,
+        CASE
+        WHEN now() >= aa.preview_at AND now() &lt;= aa.begin_at AND aa.`status` = "ONLINE" THEN "即将开拍" WHEN now() >
+        aa.begin_at
+        AND aa.`status` = "ONLINE" THEN "正在拍卖" when aa.status = "success" then "成交" when aa.status = "FAILED" THEN "结束"
+        ELSE "其他"
+        END AS statusStr,
+        aa.`mode` AS `mode`,
+        acg.`name` AS categoryName,
+        ap.`name` AS propertyName,
+        ci.`name` AS cityName,
+        aa.participant_number AS participantNumber,
+        ag.`code` AS agencyCode,
+        ass.extra ->> '$.images[0]' AS imageUrl,
+        ass.province_id provinceId,
+        ca.`name` areaName,
+        cp.`name` provinceName,
+        ass.category_id as categoryId,
+        case when aa.asset_category_group_id = '-1' then ifnull(ald.lease_type, 'OTHER')
+        else ifnull(aa.bus_type_name, '其他') end as busTypeName
+        FROM
+        auction_activity aa
+        LEFT JOIN t_asset_category acg ON acg.id = aa.asset_category_group_id
+        LEFT JOIN asset_property ap ON ap.id = aa.asset_property_id
+        LEFT JOIN asset ass ON ass.id = aa.asset_id
+        LEFT join t_agency ag on ag.id = ass.agency_id
+        LEFT JOIN t_party pa ON pa.id = ass.party_id
+        LEFT JOIN `auction_activity_view_count` aavc ON aavc.activity_id = aa.id
+        LEFT JOIN city ci ON ci.id = ass.city_id
+        LEFT JOIN area ca ON ca.id = ass.area_id
+        LEFT JOIN town town on town.id = ass.town_id
+        LEFT JOIN asset_lease_data ald ON ald.asset_id = ass.id
+        LEFT JOIN province cp ON cp.id = ass.province_id
+        <if test="joint !=null and joint !=''">
+            LEFT JOIN agency_joint_activity_map m ON m.activity_id = aa.id and m.type = #{joint} and m.agency_id = #{jointAgencyId}
+        </if>
+         <where>
+            aa.delete_flag = 0
+            <if test="1 != 0">and aa.status not in
+                ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED','PENDING')
+            </if>
+            <if test="1 != 0">
+                AND NOW() > aa.preview_at
+            </if>
+            <if test="1 != 0">AND aa.visibility_level = 'PLATFORM_DEFAULT' </if>
+            <if test="activityStatus!=null and activityStatus =='ahead'.toString() ">AND now() >= aa.preview_at AND
+                now() &lt;=
+                aa.begin_at AND aa.`status` = "ONLINE"
+            </if>
+            <if test="activityStatus!=null and activityStatus =='beginAuction'.toString() ">AND now() > aa.begin_at AND
+                aa.`status` =
+                "ONLINE"
+            </if>
+            <if test="activityStatus!=null and activityStatus =='success'.toString() ">AND aa.`status` = 'SUCCESS'</if>
+            <if test="activityStatus!=null and activityStatus =='end'.toString() ">AND aa.`status` = 'FAILED'</if>
+            <if test="activityStatus!=null and activityStatus =='online'.toString() ">AND aa.`status` = 'ONLINE'</if>
+            <if test="activityMode!=null and activityMode !=''">AND aa.mode = #{activityMode}</if>
+            <if test="cityId!=null and cityId !=''">AND find_in_set(#{cityId}, ass.city_id)</if>
+            <if test="provinceId !=null and provinceId !=''">AND find_in_set(#{provinceId}, ass.province_id)</if>
+            <if test="areaId !=null and areaId !=''">AND find_in_set(#{areaId}, ass.area_id)</if>
+            <if test="townId !=null and townId !=''">AND find_in_set(#{townId}, ass.town_id)</if>
+            <if test="leaseAreaType !=null and leaseAreaType !=''">AND ald.area_type = #{leaseAreaType}</if>
+            <if test="assetLeaseType !=null and assetLeaseType !=''">AND ald.lease_type = #{assetLeaseType}</if>
+            <if test="propertyNameId!=null and propertyNameId !=''">AND ap.id = #{propertyNameId}</if>
+             <if test="partyCategory!=null and partyCategory !=''">
+                 <choose>
+                     <when test="partyCategory == 'AUCTION_COMPANY'.toString()">AND ((pa.category = #{partyCategory} and  ass.come_from='0') or ass.come_from='1')</when>
+                     <when test="partyCategory == 'NORMAL_COMPANY'.toString() and categoryId== null">
+                         AND ((pa.category = #{partyCategory} AND ass.come_from='0') OR aa.asset_category_group_id = '-1')
+                     </when>
+                     <otherwise>
+                         AND pa.category = #{partyCategory} AND ass.come_from='0'
+                     </otherwise>
+                 </choose>
+             </if>
+
+            <if test="categoryId!=null and categoryId !=''">AND aa.asset_category_group_id = #{categoryId}</if>
+            <if test="todayTime !=null and todayTime =='1'.toString()">AND DATE_SUB(CURDATE(), INTERVAL 6 DAY) &lt;= date(aa.preview_at)</if>
+            <if test="query!=null and query !=''">AND aa.asset_name like concat('%',#{query},'%')</if>
+            <if test="joint !=null and joint !='' and joint == '1'.toString()">
+                and ((m.agency_id = #{jointAgencyId}
+                and m.is_del = '0'
+                and ass.joint_status = '0'
+                and m.type = '1')
+                or (ass.come_from = '1' and ass.party_id = #{jointAgencyId}))
+            </if>
+
+            <if test="joint !=null and joint !='' and joint == '0'.toString()">
+
+                and ((not exists  (SELECT 1 FROM agency_joint_activity_map WHERE agency_id = #{jointAgencyId} AND type = '0' AND is_del = '0'  and id= m.id ) and ass.joint_status = '0')
+
+                or (ass.come_from = '1' and  ass.party_id = #{jointAgencyId}))
+
+            </if>
+            <if test="busTypeName != null and busTypeName != ''">
+              and find_in_set(#{busTypeName}, aa.bus_type_name)
+            </if>
+            <if test="beginPrice != null and beginPrice != ''">
+              AND ifnull(aa.starting_price,0) &gt;= #{beginPrice}
+            </if>
+            <if test="endPrice != null and endPrice != ''">
+              AND ifnull(aa.starting_price,0) &lt;= #{endPrice}
+            </if>
+             <if test="categoryIdList!=null">
+                 AND aa.asset_category_group_id in <foreach item="item" index="index" collection="categoryIdList" open="(" separator="," close=")">#{item}</foreach>
+             </if>
+             <if test="activityIdList!=null">
+                 AND aa.id in <foreach item="item" index="index" collection="activityIdList" open="(" separator="," close=")">#{item}</foreach>
+             </if>
+             <if test="activityPosterCityId!=null and activityPosterCityId !=''">AND find_in_set(#{activityPosterCityId}, ass.city_id)</if>
+             <if test="activityPosterProvinceId !=null and activityPosterProvinceId !=''">AND find_in_set(#{activityPosterProvinceId}, ass.province_id)</if>
+             <if test="activityPosterAreaId !=null and activityPosterAreaId !=''">AND find_in_set(#{activityPosterAreaId}, ass.area_id)</if>
+         </where> ) as temp
+        <where>
+            <if test="busTypeList!=null">
+                AND temp.busTypeName in <foreach item="item" index="index" collection="busTypeList" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+            <if test="statusList!=null">
+                AND temp.statusStr in <foreach item="item" index="index" collection="statusList" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+        </where>
+        ORDER BY
+        <choose>
+            <when test="orderBy != null and orderBy == 'startingPriceOrderBy_asc'.toString()">
+                temp.startingPrice asc,temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.viewCount DESC , temp.previewAt DESC
+                <if test="agencyCode !=null and agencyCode !=''"> , temp.agencyCode = #{agencyCode} desc </if>
+            </when>
+            <when test="orderBy != null and orderBy == 'startingPriceOrderBy_desc'.toString()">
+                temp.startingPrice desc,temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.viewCount DESC , temp.previewAt DESC
+                <if test="agencyCode !=null and agencyCode !=''"> , temp.agencyCode = #{agencyCode} desc </if>
+            </when>
+            <when test="orderBy != null and orderBy == 'viewCount_asc'.toString()">
+                temp.viewCount asc,temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.previewAt DESC
+                <if test="agencyCode !=null and agencyCode !=''"> , temp.agencyCode = #{agencyCode} desc </if>
+            </when>
+            <when test="orderBy != null and orderBy == 'viewCount_desc'.toString()">
+                temp.viewCount desc,temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.previewAt DESC
+                <if test="agencyCode !=null and agencyCode !=''"> , temp.agencyCode = #{agencyCode} desc </if>
+            </when>
+            <when test="orderBy != null and orderBy =='recentUpload'.toString() ">
+                temp.previewAt DESC
+            </when>
+            <otherwise>
+                temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.viewCount DESC , temp.previewAt DESC
+                <if test="agencyCode !=null and agencyCode !=''"> , temp.agencyCode = #{agencyCode} desc </if>
+            </otherwise>
+        </choose>
+
+    </select>
+
+    <select id="activityDetail" resultType="java.util.Map">
+              SELECT
+                  agr.`download_url` as additionalAgreementDownloadUrl,
+                  agr.`viewpdf_url` as additionalAgreementViewpdfUrl,
+                  ass.`id` AS assetId,
+                  ass.`detail` AS detail,
+                  ass.`extra` AS images,
+                  ass.contact_name AS concatName,
+                  ass.contact_phone AS concatPhone,
+                  ass.contact_qq AS concatQq,
+                  ass.handover_days AS handoverDays,
+                  aa.asset_name AS assetName,
+                  ci.name AS cityName,
+                  tac.name AS assetcategoryName,
+                  pa.category AS partyCategory,
+                  ass.`extra` ->> "$.images[0]" AS imageUrl,
+                  ag.id AS id,
+                  ag.`name` AS agencyName,
+                  ass.party_id AS party_id,
+                  us.`name` AS userName,
+                  cp.`name` AS companyName,
+                  ass.pay_days AS payDays,
+                  ap.`name` AS assetProperName,
+                  ass.remark AS assetRemark,
+                  aa.auctioneer_name AS auctioneerName,
+                  aa.auctioneer_phone AS auctioneerPhone,
+                  aa.auctioneer_qq AS auctioneerQq,
+                  aa.begin_at AS beginAt,
+                  aa.end_at AS endAt,
+                  aa.bid_count AS bidCount,
+                  aa.bidding_extension AS biddingExtension,
+                  ass.`code` AS assetCode,
+                  aa.commission_buyer AS commissionBuyer,
+                  aa.commission_seller AS commissionSeller,
+                  aa.commission_percent_buyer AS commissionPercentBuyer,
+                  aa.current_price AS currentPrice,
+                  ao.amount AS dealPrice,
+                  ao.id AS orderId,
+                  aa.deposit AS deposit,
+                  aa.display_name AS displayName,
+                  aa.finish_at AS finishAt,
+                  aa.increment AS increment,
+                  aa.lock_end_at AS lockEndAt,
+                  aa.`mode` AS activityMode,
+                  aa.participant_number AS participantNumber,
+                  aa.preview_at AS previewAt,
+                  aa.reduced_at AS reducedAt,
+                  aa.increment_at AS incrementAt,
+                  aa.reduction AS reduction,
+                  aa.reduction_period AS reductionPeriod,
+                  aa.ref_price AS refPrice,
+                  aa.reserve_price AS reservePrice,
+                  aa.`restrict` AS activityRestrict,
+                  sta.mobile AS staffMobile,
+                  sta.`name` AS staffName,
+                  sta.`qq` AS staffQq,
+                  aa.starting_price AS startingPrice,
+                  aa.`status` AS activityStatus ,
+                  aavc.view_count AS viewCount,
+                  aa.preemptive_person as preemptivePerson,
+                  ass.onlined,
+                  ass.tune_report_authorization as tuneReportAuthorization,
+	              ass.sub_status as subStatus,
+	              ald.lease_area as leaseArea,
+				  ald.apply_end_time as applyEndTime,
+				  aa.category_id as categoryId,
+				  aa.id as activityId,
+				  ass.joint_status as jointStatus
+                FROM
+                  `auction_activity` aa
+                  LEFT JOIN asset ass
+                    ON ass.`id` = aa.`asset_id`
+                  LEFT JOIN additional_agreement agr
+                    ON agr.`activity_id` = aa.`id`
+                  LEFT JOIN `t_agency` ag
+                    ON ag.`id` = aa.`agency_id`
+                  LEFT JOIN `t_asset_category` tac
+                    ON tac.id = aa.asset_category_group_id
+                  LEFT JOIN asset_property ap
+                    ON ap.id = aa.asset_property_id
+                  LEFT JOIN city ci
+                    ON ci.id = ass.city_id
+                  LEFT JOIN party pa
+                    ON pa.id = ass.party_id
+                  LEFT JOIN `user` us
+                    ON us.id = ass.party_id
+                  LEFT JOIN `company` cp
+                    ON cp.id = ass.party_id
+                  LEFT JOIN `auction_order` ao
+                    ON ao.activity_id = aa.id
+                  LEFT JOIN `deal_agreement` da
+                    ON da.order_id = ao.id AND da.contract_type = 'deal'
+                  LEFT JOIN `staff` sta
+                    ON sta.id = aa.staff_id
+                  LEFT JOIN auction_activity_view_count aavc
+                    ON aavc.activity_id = aa.id
+                  LEFT JOIN asset_lease_data ald
+                    ON ald.asset_id = aa.asset_id
+                WHERE aa.id = #{activityId} AND NOW() > aa.preview_at AND aa.visibility_level = 'PLATFORM_DEFAULT'
+    </select>
+
+    <select id="getRankActivity" resultType="com._360pai.core.facade.activity.vo.AuctionActivityVo" parameterType="java.util.Map">
+        SELECT aavc.view_count as viewCount, aa.*,
+        CASE
+        WHEN aa.`status` = 'ONLINE' AND aa.begin_at &lt; now() THEN 1
+        WHEN aa.`status` = 'ONLINE' AND aa.begin_at > now()  THEN 2
+        WHEN aa.`status` = 'SUCCESS' THEN 3
+        WHEN aa.`status` = 'FAILED' THEN 4
+        ELSE 99 END AS statusSortBy
+        FROM auction_activity aa
+        LEFT JOIN auction_activity_view_count aavc on aavc.activity_id = aa.id
+        LEFT JOIN asset ass ON ass.id = aa.asset_id
+        LEFT JOIN t_agency ag ON ass.agency_id = ag.id
+
+
+        <if test="joint !=null and joint !=''">
+            LEFT JOIN agency_joint_activity_map m ON m.activity_id = aa.id and m.type = #{joint} and m.agency_id = #{jointAgencyId}
+
+        </if>
+
+        WHERE aa.status NOT IN
+        ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED','')
+        AND NOW() > aa.preview_at
+        AND aa.visibility_level = 'PLATFORM_DEFAULT' AND aa.delete_flag=0
+
+        <if test="type !=null and type !='' and type == 'LEASE'.toString()">
+            AND aa.category_id = -1
+        </if>
+
+         <if test="joint !=null and joint !='' and joint == '1'.toString()">
+            and ((m.agency_id = #{jointAgencyId}
+            and m.is_del = '0'
+            and ass.joint_status = '0'
+            and m.type = '1')
+            or (ass.come_from = '1' and ass.party_id = #{jointAgencyId}))
+
+        </if>
+
+        <if test="joint !=null and joint !='' and joint == '0'.toString()">
+
+            and ((not exists  (SELECT 1 FROM agency_joint_activity_map WHERE agency_id = #{jointAgencyId} AND type = '0' AND is_del = '0'  and id= m.id ) and ass.joint_status = '0')
+            or (ass.come_from = '1' and  ass.party_id = #{jointAgencyId}))
+
+        </if>
+
+        order by
+        statusSortBy ASC ,aavc.view_count DESC, preview_at DESC
+        <if test="agencyCode !=null and agencyCode !=''">
+            ,ag.code = #{agencyCode} desc
+        </if>
+
+    </select>
+
+    <select id="getCategoryName" resultType="java.lang.String">
+        select c.name as categoryName
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        where aa.id=#{activityId}
+    </select>
+
+    <update id="bindStaff">
+        update zeus . auction_activity
+        set staff_id = #{staffId}
+        where id = #{activityId}
+    </update>
+
+    <update id="unbindStaff">
+        update zeus . auction_activity
+        set staff_id = NULL
+        where id = #{activityId}
+    </update>
+
+    <select id="getNeedRepairList" resultType="java.lang.Integer">
+        select a.id
+        from zeus.auction_activity a
+        where a.status='PLATFORM_APPROVED' and TIMESTAMPDIFF(MINUTE, a.end_at, now()) > 1
+        union all
+        select a.id
+        from zeus.auction_activity a
+        where a.status='ONLINE' and TIMESTAMPDIFF(MINUTE, a.end_at, now()) > 1
+    </select>
+
+    <select id="getUnionDataList" parameterType="java.util.Map"
+            resultType="com._360pai.core.facade.activity.vo.AgencyUnionDataVo">
+        select a.name agencyName, a.`code` as agencyCode,a.logo_url logoUrl,c.name cityName,p.name provinceName,
+        t.participantNumber,t.bidCount,ifnull(pa.view_count, 0) as viewCount
+        from t_agency a
+        inner join zeus.city c on c.id=a.city_id
+        inner join zeus.province p on p.id=c.province_id
+        left join zeus.agency_portal_activity pa on pa.activity_id = #{activityId} and pa.agency_id = a.id
+        inner join (
+            select t.*, count(b.id) bidCount
+            from (
+                select a.id,count(d.id) participantNumber
+                from zeus.t_agency a
+                left join zeus.deposit d on d.agency_id=a.id and d.activity_id= #{activityId}
+                where  a.website_status='ONLINE'
+                group by a.id
+            ) t left join zeus.bid b on b.agency_id = t.id and b.activity_id = #{activityId}
+            group by t.id
+        ) t on t.id = a.id
+        where a.website_status='ONLINE'
+        order by viewCount desc,participantNumber desc,a.id
+    </select>
+
+    <select id="getAgencyUnionDataList" parameterType="java.util.Map"
+            resultType="com._360pai.core.facade.activity.vo.AgencyUnionDataVo">
+        select a.name agencyName, a.`code` as agencyCode,a.logo_url logoUrl,c.name cityName,p.name provinceName,
+        t.participantNumber,t.bidCount,ifnull(pa.view_count, 0) as viewCount
+        from t_agency a
+        inner join zeus.city c on c.id=a.city_id
+        inner join zeus.province p on p.id=c.province_id
+        left join zeus.agency_portal_activity pa on pa.activity_id = #{activityId} and pa.agency_id = a.id
+        inner join (
+            select t.*, count(b.id) bidCount
+            from (
+                select a.id,count(d.id) participantNumber
+                from zeus.t_agency a
+                left join zeus.deposit d on d.agency_id=a.id and d.activity_id=#{activityId}
+                where  a.website_status='ONLINE'
+                group by a.id
+            ) t left join zeus.bid b on b.agency_id = t.id and b.activity_id = #{activityId}
+            group by t.id
+        ) t on t.id = a.id
+        where a.website_status='ONLINE' and a.id=#{agencyId}
+        union all
+        select * from (
+            select a.name agencyName, a.`code` as agencyCode,a.logo_url logoUrl,c.name cityName,p.name provinceName,
+                    t.participantNumber,t.bidCount,ifnull(pa.view_count, 0) as viewCount
+            from t_agency a
+            inner join zeus.city c on c.id=a.city_id
+            inner join zeus.province p on p.id=c.province_id
+            left join zeus.agency_portal_activity pa on pa.activity_id = #{activityId} and pa.agency_id = a.id
+            inner join (
+                select t.*, count(b.id) bidCount
+                from (
+                    select a.id,count(d.id) participantNumber
+                    from zeus.t_agency a
+                    left join zeus.deposit d on d.agency_id=a.id and d.activity_id=#{activityId}
+                    where  a.website_status='ONLINE'
+                    group by a.id
+                ) t left join zeus.bid b on b.agency_id = t.id and b.activity_id = #{activityId}
+                group by t.id
+            ) t on t.id = a.id
+            where a.website_status='ONLINE' and a.id !=#{agencyId} and a.city_id=#{cityId}
+            order by viewCount desc,participantNumber desc,a.id
+        ) t1
+        union all
+        select * from (
+            select a.name agencyName, a.`code` as agencyCode,a.logo_url logoUrl,c.name cityName,p.name provinceName,
+                    t.participantNumber,t.bidCount,ifnull(pa.view_count, 0) as viewCount
+            from t_agency a
+            inner join zeus.city c on c.id=a.city_id
+            inner join zeus.province p on p.id=c.province_id
+            left join zeus.agency_portal_activity pa on pa.activity_id = #{activityId} and pa.agency_id = a.id
+            inner join (
+                select t.*, count(b.id) bidCount
+                from (
+                    select a.id,count(d.id) participantNumber
+                    from zeus.t_agency a
+                    left join zeus.deposit d on d.agency_id=a.id and d.activity_id=#{activityId}
+                    where  a.website_status='ONLINE'
+                group by a.id
+                ) t left join zeus.bid b on b.agency_id = t.id and b.activity_id = #{activityId}
+                group by t.id
+            ) t on t.id = a.id
+            where a.website_status='ONLINE' and a.id !=#{agencyId} and a.city_id!=#{cityId}
+            order by viewCount desc,participantNumber desc,a.id
+        ) t2
+    </select>
+
+    <update id="addParticipantNumber">
+        update zeus.auction_activity set participant_number = participant_number + 1 where id = #{activityId}
+    </update>
+
+    <select id="exportActivityList" resultType="java.util.Map">
+        -- 企业用户上拍
+        select aa.id `活动编号`, aa.created_at `提交审核时间`,aa.preview_at `上拍时间`,u.`name` `委托方名称`,
+            aa.asset_name `活动名称`,
+            c.`name` `拍品类型`,ci.`name` `所在城市`,aa.`mode` `拍卖方式`,
+            ifnull(aa.starting_price,0) `起拍价`,aa.begin_at `拍卖开始时间`,aa.end_at `拍卖结束时间`,
+            ifnull(a.debt_interest,0) `债权利息`,ifnull(a.debt_principal,0) `债权本金`,t.`关注人数`,aa.participant_number `报名人数`,t.`提醒人数`,ifnull(vc.view_count, 0) `浏览次数`,
+            aa.`status` `活动状态`,
+            ag.name`送拍机构`,
+            ad.content
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        inner join zeus.city ci on ci.id=a.city_id
+        left join zeus.auction_activity_view_count vc on vc.activity_id=aa.id
+        inner join zeus.agency ag on ag.id=aa.agency_id
+        inner join zeus.t_party p on p.id=a.party_id and p.`type`='company'
+        inner join zeus.t_company u on u.id=p.id
+        inner join zeus.asset_data ad on ad.asset_id=a.id
+        inner join (
+            select aa.id,count(fa.id) `关注人数`,count(npa.id) `提醒人数`
+            from zeus.auction_activity aa
+            inner join zeus.asset a on a.id=aa.asset_id
+            left join zeus.favorite_activity fa on fa.activity_id=aa.id
+            left join zeus.notify_party_activity npa on npa.activity_id=aa.id
+            where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=0
+            group by aa.id
+        ) t on t.id=aa.id
+        where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=0
+        union all
+        -- 个人用户上拍
+        select aa.id `活动编号`, aa.created_at `提交审核时间`,aa.preview_at `上拍时间`,u.`name` `委托方名称`,
+            aa.asset_name `活动名称`,
+            c.`name` `拍品类型`,ci.`name` `所在城市`,aa.`mode` `拍卖方式`,
+            ifnull(aa.starting_price,0) `起拍价`,aa.begin_at `拍卖开始时间`,aa.end_at `拍卖结束时间`,
+            ifnull(a.debt_interest,0) `债权利息`,ifnull(a.debt_principal,0) `债权本金`,t.`关注人数`,aa.participant_number `报名人数`,t.`提醒人数`,ifnull(vc.view_count, 0) `浏览次数`,
+            aa.`status` `活动状态`,
+            ag.name`送拍机构`,
+            ad.content
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        inner join zeus.city ci on ci.id=a.city_id
+        left join zeus.auction_activity_view_count vc on vc.activity_id=aa.id
+        inner join zeus.agency ag on ag.id=aa.agency_id
+        inner join zeus.t_party p on p.id=a.party_id and p.`type`='user'
+        inner join zeus.t_user u on u.id=p.id
+        inner join zeus.asset_data ad on ad.asset_id=a.id
+        inner join (
+            select aa.id,count(fa.id) `关注人数`,count(npa.id) `提醒人数`
+            from zeus.auction_activity aa
+            inner join zeus.asset a on a.id=aa.asset_id
+            left join zeus.favorite_activity fa on fa.activity_id=aa.id
+            left join zeus.notify_party_activity npa on npa.activity_id=aa.id
+            where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=0
+            group by aa.id
+        ) t on t.id=aa.id
+        where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=0
+        union all
+        -- 机构上拍
+        select aa.id `活动编号`, aa.created_at `提交审核时间`,aa.preview_at `上拍时间`,u.`name` `委托方名称`,
+            aa.asset_name `活动名称`,
+            c.`name` `拍品类型`,ci.`name` `所在城市`,aa.`mode` `拍卖方式`,
+            ifnull(aa.starting_price,0) `起拍价`,aa.begin_at `拍卖开始时间`,aa.end_at `拍卖结束时间`,
+            ifnull(a.debt_interest,0) `债权利息`,ifnull(a.debt_principal,0) `债权本金`,t.`关注人数`,aa.participant_number `报名人数`,t.`提醒人数`,ifnull(vc.view_count, 0) `浏览次数`,
+            aa.`status` `活动状态`,
+            ag.name`送拍机构`,
+            ad.content
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id
+        inner join zeus.city ci on ci.id=a.city_id
+        left join zeus.auction_activity_view_count vc on vc.activity_id=aa.id
+        inner join zeus.agency ag on ag.id=aa.agency_id
+        inner join zeus.t_agency u on u.id=a.party_id
+        inner join zeus.asset_data ad on ad.asset_id=a.id
+        inner join (
+            select aa.id,count(fa.id) `关注人数`,count(npa.id) `提醒人数`
+            from zeus.auction_activity aa
+            inner join zeus.asset a on a.id=aa.asset_id
+            left join zeus.favorite_activity fa on fa.activity_id=aa.id
+            left join zeus.notify_party_activity npa on npa.activity_id=aa.id
+            where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=1
+            group by aa.id
+        ) t on t.id=aa.id
+        where aa.`status` in ('PLATFORM_REVIEWING','PLATFORM_REJECTED','PLATFORM_APPROVED','ONLINE','CANCELLED','UNCONFIRMED','SUCCESS','FAILED') and a.come_from=1
+    </select>
+    <select id="getAheadAndBeginAuction" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select * from auction_activity aa where 1=1 AND now() >= aa.preview_at and aa.`status` = "ONLINE";
+    </select>
+
+    <select id="countPlatformActivityNum" resultType="int">
+        select count(0) cnt
+        from zeus.auction_activity aa
+        where aa.visibility_level = 'PLATFORM_DEFAULT' and now() > aa.preview_at and aa.status not in ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+    </select>
+
+
+
+
+    <select id="getAuctionJointList" resultType="com._360pai.core.facade.activity.vo.AuctionJointVo" parameterType="com._360pai.core.facade.activity.req.ActivityJointReq">
+    SELECT
+	  a.id AS id,
+	  a.asset_name AS assetName,
+	  a.asset_category_group_id AS assetCategoryGroupId,
+	  a.MODE AS auctionType,
+	  ass.city_id AS cityId,
+	  a.starting_price AS startingPrice,
+	  a.preview_at AS previewAt,
+	  a.STATUS AS STATUS,
+	  m.id as jointId,
+      a.begin_at as beginAt,
+      ass.id as assetId,
+      ass.joint_status as jointStatus,
+      ass.party_id as partyId,
+      ass.come_from as comeFrom
+        FROM
+	  auction_activity a
+    LEFT JOIN asset ass ON a.asset_id = ass.id
+
+	LEFT JOIN agency_joint_activity_map m ON m.activity_id = a.id
+        and m.type = #{isJoint} and m.agency_id = #{agencyId}
+
+    <where>
+        <if test="agencyId != null and agencyId !='' and type == '1'.toString() and isJoint == '1'.toString()">
+
+            AND (( m.agency_id = #{agencyId,jdbcType=INTEGER}
+            AND m.is_del = '0'
+            AND m.type = '1'
+            And ass.joint_status = '0')
+            or (ass.come_from = '1' and ass.party_id = #{agencyId,jdbcType=INTEGER}))
+        </if>
+
+        <if test="agencyId != null and agencyId !='' and type == '2'.toString() and isJoint == '1'.toString()">
+
+            and not exists  (SELECT 1 FROM agency_joint_activity_map WHERE agency_id = #{agencyId} AND type = '1' AND is_del = '0'  and id= m.id)
+
+            And ass.joint_status = '0'
+
+            and (ass.come_from = '0' or (ass.come_from = '1' and  ass.party_id != #{agencyId,jdbcType=INTEGER}))
+
+        </if>
+
+        <if test="agencyId != null and agencyId !='' and type == '1'.toString() and isJoint == '0'.toString()">
+
+
+            and ((( not exists  (SELECT 1 FROM agency_joint_activity_map WHERE agency_id = #{agencyId} AND type = '0' AND is_del = '0'  and id= m.id ) ) and ass.joint_status = '0')
+            or (ass.come_from = '1' and  ass.party_id = #{agencyId}))
+
+        </if>
+
+        <if test="agencyId != null and agencyId !='' and type == '2'.toString() and isJoint == '0'.toString()">
+            AND m.agency_id = #{agencyId,jdbcType=INTEGER}
+            AND m.is_del = '0'
+            AND m.type = '0'
+            And ass.joint_status = '0'
+
+        </if>
+
+        <if test="previewAtForm != null and previewAtForm !='' ">
+            AND a.preview_at >= #{previewAtForm,jdbcType=TIMESTAMP}
+        </if>
+        <if test="previewAtTo != null and previewAtTo !=''">
+            AND #{previewAtTo,jdbcType=TIMESTAMP}>= a.preview_at
+        </if>
+
+        <if test="beginAtFrom != null and beginAtFrom !=''">
+            AND a.begin_at >= #{beginAtFrom,jdbcType=TIMESTAMP}
+        </if>
+        <if test="beginAtTo != null and beginAtTo !=''">
+            AND #{beginAtTo,jdbcType=TIMESTAMP}>= a.begin_at
+        </if>
+        <if test="assetName != null and assetName != ''">
+            AND a.asset_name    like concat('%',#{assetName},'%')
+        </if>
+
+        <if test="auctionType != null and auctionType !=''">
+            AND a.mode  = #{auctionType,jdbcType=VARCHAR}
+        </if>
+        <if test="categoryId != null and categoryId != ''">
+            AND a.asset_category_group_id  = #{categoryId,jdbcType=VARCHAR}
+        </if>
+
+        <if test="status != null and 'UPCOMING' == status">
+            AND now( ) &gt;= a.preview_at
+            AND now( ) &lt;= a.begin_at
+            AND a.`status` = 'ONLINE'
+        </if>
+
+        <if test="status != null and 'SALE' == status">
+            AND now( ) &gt; a.begin_at
+            AND a.`status` = 'ONLINE'
+        </if>
+
+        <if test="status != null and 'UPCOMING' != status and 'SALE' != status and '' != status">
+            AND a.status = #{status}
+        </if>
+
+        <if test="provinceId != null and provinceId !='' ">
+            AND find_in_set(#{provinceId}, ass.province_id)
+        </if>
+        <if test="cityId != null and cityId !='' ">
+            AND find_in_set(#{cityId}, ass.city_id)
+        </if>
+        <if test="areaId != null and areaId !='' ">
+            AND find_in_set(#{areaId}, ass.area_id)
+        </if>
+
+
+        <if test="jointStatus != null and jointStatus !='' and jointStatus == '3'.toString() ">
+            AND ass.come_from = '1' and ass.party_id = #{agencyId,jdbcType=INTEGER}
+        </if>
+
+        <if test="jointStatus != null and jointStatus !='' and jointStatus == '1'.toString() and type == '2'.toString()">
+            AND a.id=0
+        </if>
+
+        <if test="jointStatus != null and jointStatus !='' and jointStatus == '1'.toString() and type == '1'.toString()">
+            AND ( ass.come_from = '0' or (ass.come_from = '1' and ass.party_id != #{agencyId,jdbcType=INTEGER}))
+        </if>
+
+
+        <if test="jointStatus != null and jointStatus !='' and jointStatus == '0'.toString() and type == '1'.toString()">
+            AND a.id=0
+        </if>
+
+        AND a.visibility_level = 'PLATFORM_DEFAULT'
+        AND NOW() > a.preview_at
+
+        AND a.status not in
+        ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+
+        order by  a.status ASC , a.preview_at DESC
+
+    </where>
+
+   </select>
+
+
+    <insert id="batchSaveJoint" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id" parameterType="java.util.List">
+        INSERT INTO agency_joint_activity_map (id, activity_id, agency_id, is_del, create_time, update_time,type)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.activityId},#{item.agencyId},#{item.isDel},#{item.createTime},#{item.updateTime},#{item.type})
+        </foreach>
+    </insert>
+
+
+
+    <select id="getJointActivityMapList" parameterType="map"
+            resultType="com._360pai.core.model.activity.JointActivityMap">
+
+        select * from agency_joint_activity_map where
+
+        agency_id = #{agencyId}
+
+        and type = #{type}
+        and activity_id in
+
+        <foreach collection="ids" item="item" index="index" open="(" separator="," close=")" >
+            #{item}
+        </foreach>
+
+    </select>
+
+
+
+
+    <update id="batchUpdateJoint" parameterType="map" >
+        update agency_joint_activity_map set is_del = #{isDel} ,update_time = now() where
+          id in
+        <foreach collection="ids" item="item" index="index" open="(" separator="," close=")" >
+            #{item}
+        </foreach>
+    </update>
+
+
+
+    <select id="getAgencyJointList" parameterType="map"
+            resultType="com._360pai.core.facade.activity.vo.AgencyUnionDataVo">
+
+
+SELECT
+	*
+FROM
+	(
+SELECT
+	ag.id AS agId,
+	au.id AS auId,
+	ag.NAME agencyName,
+	ag.`code` AS agencyCode,
+	ag.logo_url logoUrl,
+	c.NAME cityName,
+	p.NAME provinceName,
+	ifnull( ( SELECT p.view_count FROM agency_portal_activity p WHERE p.agency_id = ag.id AND p.activity_id = #{activityId} ), 0 ) AS viewCount,
+	( SELECT count( * ) FROM deposit d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS participantNumber,
+	( SELECT count( * ) FROM bid d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS bidCount
+
+FROM
+	t_agency ag
+	LEFT JOIN agency_joint_activity_map map ON ag.id = map.agency_id and map.type = '1' AND map.activity_id = #{activityId}
+	LEFT JOIN auction_activity au ON au.id = map.activity_id
+	LEFT JOIN city c ON c.id = ag.city_id
+	LEFT JOIN province p ON c.province_id = p.id
+WHERE
+	ag.is_joint = '1'
+	and ag.delete_flag=0
+	and  ag.website_status='ONLINE'
+	AND map.is_del = '0'
+	AND map.type = '1'
+	AND map.id IS NOT NULL
+	AND au.id = #{activityId} UNION ALL
+SELECT
+	ag.id AS agId,
+	au.id AS auId,
+	ag.NAME agencyName,
+	ag.`code` AS agencyCode,
+	ag.logo_url logoUrl,
+	c.NAME cityName,
+	p.NAME provinceName,
+	ifnull( ( SELECT p.view_count FROM agency_portal_activity p WHERE p.agency_id = ag.id AND p.activity_id = #{activityId} ), 0 ) AS viewCount,
+	( SELECT count( * ) FROM deposit d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS participantNumber,
+	( SELECT count( * ) FROM bid d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS bidCount
+
+FROM
+	t_agency ag
+	LEFT JOIN agency_joint_activity_map map ON ag.id = map.agency_id and map.type = '0' AND map.activity_id = #{activityId}
+	LEFT JOIN auction_activity au ON au.id = map.activity_id
+	LEFT JOIN city c ON c.id = ag.city_id
+	LEFT JOIN province p ON c.province_id = p.id
+WHERE
+	ag.is_joint = '0'
+	and ag.delete_flag=0
+	and  ag.website_status='ONLINE'
+
+     AND  not exists  (SELECT 1 FROM agency_joint_activity_map WHERE activity_id = #{activityId} AND type = '0' AND is_del = '0'  and id= map.id )
+
+
+	) t
+ORDER BY
+	viewCount DESC,
+	bidCount DESC,
+	agId
+
+    </select>
+
+
+
+
+    <select id="getSelfJointList" parameterType="map"
+            resultType="com._360pai.core.facade.activity.vo.AgencyUnionDataVo">
+    SELECT
+	    ag.CODE AS agencyCode,
+	    ag.NAME agencyName,
+
+	    ag.logo_url AS logoUrl,
+	    c.NAME AS cityName,
+	    p.NAME AS provinceName,
+
+	  ifnull( ( SELECT p.view_count FROM agency_portal_activity p WHERE p.agency_id = ag.id AND p.activity_id = #{activityId} ), 0 ) AS viewCount,
+	( SELECT count( * ) FROM deposit d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS participantNumber,
+	( SELECT count( * ) FROM bid d WHERE d.agency_id = ag.id AND d.activity_id = #{activityId} ) AS bidCount
+    FROM
+	auction_activity au
+	LEFT JOIN asset ass ON au.asset_id = ass.id
+	LEFT JOIN t_agency ag ON ass.party_id = ag.id
+	LEFT JOIN city c ON c.id = ag.city_id
+	LEFT JOIN province p ON c.province_id = p.id
+
+
+	where au.id = #{activityId}
+         and  ag.website_status='ONLINE' and ag.delete_flag=0
+
+    order by  viewCount desc,participantNumber desc,ag.id
+
+
+    </select>
+
+
+
+    <select id="getPlatformActivityList" parameterType="java.util.Map" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*,a.extra ->> '$.images[0]' AS imageUrl,
+        CASE
+        WHEN aa.`status` = 'ONLINE' AND aa.begin_at &lt; now() THEN 1
+        WHEN aa.`status` = 'ONLINE' AND aa.begin_at > now()  THEN 2
+        WHEN aa.`status` = 'SUCCESS' THEN 3
+        WHEN aa.`status` = 'FAILED' THEN 4
+        ELSE 99 END AS statusSortBy
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        left join auction_activity_view_count aavc on aavc.activity_id = aa.id
+        where aa.visibility_level = 'PLATFORM_DEFAULT' and now() > aa.preview_at and aa.status not in ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+        order by statusSortBy asc  ,aa.participant_number desc , aavc.view_count desc , aa.preview_At desc
+    </select>
+
+
+    <select id="getAuctionActivityByAccountId" parameterType="Integer" resultType="com._360pai.core.facade.activity.vo.SearchAuctionActivityVo">
+        SELECT
+        aa.id AS activityId,
+        aa.begin_at AS beginAt,
+        aa.preview_at AS previewAt,
+        aa.asset_name AS activityName,
+        aavc.view_count AS viewCount,
+        aa.end_at AS endAt,
+        aa.`status` AS `status`,
+        aa.deposit AS deposit,
+        aa.starting_price AS startingPrice,
+        ifnull(aa.starting_price,0) AS startingPriceOrderBy,
+        CASE
+        aa.`mode`
+        WHEN "ENGLISH" THEN
+        "增价拍"
+        WHEN "DUTCH" THEN
+        "减价拍"
+        WHEN "SEALED" THEN
+        "一口价暗标"
+        WHEN "PUBLIC" THEN
+        "一口价明标"
+        WHEN "FREE" THEN
+        "自由报价"
+        WHEN "FLASH" THEN
+        "限时秒杀"
+        END AS modeStr,
+        CASE
+        WHEN now() >= aa.preview_at AND now()  &lt;= aa.begin_at AND aa.`status` = "ONLINE" THEN "即将开拍" WHEN now() >
+        aa.begin_at
+        AND aa.`status` = "ONLINE" THEN "正在拍卖" when aa.status = "success" then "成交" when aa.status = "FAILED" THEN "结束"
+        ELSE "其他"
+        END AS statusStr,
+        aa.`mode` AS `mode`,
+        acg.`name` AS categoryName,
+        ap.`name` AS propertyName,
+        ci.`name` AS cityName,
+        aa.participant_number AS participantNumber,
+        ag.`code` AS agencyCode,
+        ass.extra ->> '$.images[0]' AS imageUrl
+        FROM
+        t_account_view_record tavr
+        LEFT JOIN auction_activity aa ON aa.id = tavr.activity_id
+        LEFT JOIN t_asset_category acg ON acg.id = aa.asset_category_group_id
+        LEFT JOIN asset_property ap ON ap.id = aa.asset_property_id
+        LEFT JOIN asset ass ON ass.id = aa.asset_id
+        LEFT join t_agency ag on ag.id = ass.agency_id
+        LEFT JOIN party pa ON pa.id = ass.party_id
+        LEFT JOIN `auction_activity_view_count` aavc ON aavc.activity_id = aa.id
+        LEFT JOIN city ci ON ci.id = ass.city_id
+        where 1 = 1
+        and tavr.type = 'AUCTION'
+        and DATE_SUB(CURDATE(), INTERVAL 10 DAY)  &lt;= tavr.update_at
+        and tavr.account_id = #{accountId}
+        <if test="partyId != null and partyId != ''">
+            and tavr.party_id = #{partyId}
+        </if>
+
+        <if test="partyId == null">
+            and tavr.party_id is null
+        </if>
+        order by tavr.update_at desc
+    </select>
+    <select id="getListWillEndAt2Days" parameterType="Map" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select * from zeus.auction_activity where status='ONLINE' and delete_flag=0 and end_at >= #{beginTime} and end_at &lt;= #{endTime}
+    </select>
+    <select id="getListWillEndAtOver2Days" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select * from zeus.auction_activity where status='ONLINE' and delete_flag=0 and end_at > #{endTime}
+    </select>
+
+</mapper>

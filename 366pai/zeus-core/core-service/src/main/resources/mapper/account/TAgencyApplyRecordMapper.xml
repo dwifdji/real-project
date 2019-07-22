@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAgencyApplyRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAgencyApplyRecord">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="short_name" jdbcType="VARCHAR" property="shortName" />
+	<result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="register_city_id" jdbcType="VARCHAR" property="registerCityId" />
+	<result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="register_province_id" jdbcType="VARCHAR" property="registerProvinceId" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+    <result column="register_area_id" jdbcType="VARCHAR" property="registerAreaId" />
+	<result column="account_license" jdbcType="VARCHAR" property="accountLicense" />
+	<result column="authorization_img" jdbcType="VARCHAR" property="authorizationImg" />
+	<result column="business_begin" jdbcType="TIMESTAMP" property="businessBegin" />
+	<result column="business_end" jdbcType="TIMESTAMP" property="businessEnd" />
+	<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+	<result column="id_card_back_img" jdbcType="VARCHAR" property="idCardBackImg" />
+	<result column="id_card_front_img" jdbcType="VARCHAR" property="idCardFrontImg" />
+	<result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+	<result column="license" jdbcType="VARCHAR" property="license" />
+	<result column="license_img" jdbcType="VARCHAR" property="licenseImg" />
+	<result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+	<result column="qualification_img" jdbcType="VARCHAR" property="qualificationImg" />
+	<result column="qualification_number" jdbcType="VARCHAR" property="qualificationNumber" />
+	<result column="qualified_begin" jdbcType="TIMESTAMP" property="qualifiedBegin" />
+	<result column="qualified_end" jdbcType="TIMESTAMP" property="qualifiedEnd" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="serve_buyer_percent" jdbcType="INTEGER" property="serveBuyerPercent" />
+	<result column="serve_seller_percent" jdbcType="INTEGER" property="serveSellerPercent" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="trustee" jdbcType="VARCHAR" property="trustee" />
+	<result column="is_del" jdbcType="INTEGER" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, name, mobile, code, short_name, 
+	register_address, address, register_city_id, city_id, province_id, register_province_id,
+    area_id, register_area_id, account_license, authorization_img,
+	business_begin, business_end, id_card, id_card_back_img, id_card_front_img, legal_person, 
+	license, license_img, logo_url, qualification_img, qualification_number, qualified_begin, 
+	qualified_end, remark, serve_buyer_percent, serve_seller_percent, status, operator_id, 
+	open_account_operator_id, business_operator_id, trustee, is_del, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_agency_apply_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAgencyApplyRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_agency_apply_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="shortName != null">
+        AND short_name = #{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null">
+        AND register_address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="registerCityId != null">
+        AND register_city_id = #{registerCityId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="registerProvinceId != null">
+        AND register_province_id = #{registerProvinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAreaId != null">
+        AND register_area_id = #{registerAreaId,jdbcType=VARCHAR}
+      </if>
+      <if test="accountLicense != null">
+        AND account_license = #{accountLicense,jdbcType=VARCHAR}
+      </if>
+      <if test="authorizationImg != null">
+        AND authorization_img = #{authorizationImg,jdbcType=VARCHAR}
+      </if>
+      <if test="businessBegin != null">
+        AND business_begin = #{businessBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="businessEnd != null">
+        AND business_end = #{businessEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="idCard != null">
+        AND id_card = #{idCard,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardBackImg != null">
+        AND id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardFrontImg != null">
+        AND id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPerson != null">
+        AND legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="license != null">
+        AND license = #{license,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseImg != null">
+        AND license_img = #{licenseImg,jdbcType=VARCHAR}
+      </if>
+      <if test="logoUrl != null">
+        AND logo_url = #{logoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="qualificationImg != null">
+        AND qualification_img = #{qualificationImg,jdbcType=VARCHAR}
+      </if>
+      <if test="qualificationNumber != null">
+        AND qualification_number = #{qualificationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="qualifiedBegin != null">
+        AND qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="qualifiedEnd != null">
+        AND qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="serveBuyerPercent != null">
+        AND serve_buyer_percent = #{serveBuyerPercent,jdbcType=INTEGER}
+      </if>
+      <if test="serveSellerPercent != null">
+        AND serve_seller_percent = #{serveSellerPercent,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="trustee != null">
+        AND trustee = #{trustee,jdbcType=VARCHAR}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TAgencyApplyRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_agency_apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="shortName != null">
+        short_name, 
+      </if>
+      <if test="registerAddress != null">
+        register_address, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="registerCityId != null">
+        register_city_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="registerProvinceId != null">
+        register_province_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="registerAreaId != null">
+        register_area_id,
+      </if>
+      <if test="accountLicense != null">
+        account_license, 
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img, 
+      </if>
+      <if test="businessBegin != null">
+        business_begin, 
+      </if>
+      <if test="businessEnd != null">
+        business_end, 
+      </if>
+      <if test="idCard != null">
+        id_card, 
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img, 
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img, 
+      </if>
+      <if test="legalPerson != null">
+        legal_person, 
+      </if>
+      <if test="license != null">
+        license, 
+      </if>
+      <if test="licenseImg != null">
+        license_img, 
+      </if>
+      <if test="logoUrl != null">
+        logo_url, 
+      </if>
+      <if test="qualificationImg != null">
+        qualification_img, 
+      </if>
+      <if test="qualificationNumber != null">
+        qualification_number, 
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin, 
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="serveBuyerPercent != null">
+        serve_buyer_percent, 
+      </if>
+      <if test="serveSellerPercent != null">
+        serve_seller_percent, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="trustee != null">
+        trustee,
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+        create_time, 
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        #{registerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerProvinceId != null">
+        #{registerProvinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAreaId != null">
+        #{registerAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationImg != null">
+        #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBegin != null">
+        #{businessBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationImg != null">
+        #{qualificationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null">
+        #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiedBegin != null">
+        #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serveBuyerPercent != null">
+        #{serveBuyerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="serveSellerPercent != null">
+        #{serveSellerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="trustee != null">
+        #{trustee,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TAgencyApplyRecord">
+    update zeus.t_agency_apply_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        register_address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        register_city_id = #{registerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerProvinceId != null">
+        register_province_id = #{registerProvinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAreaId != null">
+        register_area_id = #{registerAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        account_license = #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img = #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBegin != null">
+        business_begin = #{businessBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        business_end = #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        license = #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        license_img = #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationImg != null">
+        qualification_img = #{qualificationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null">
+        qualification_number = #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serveBuyerPercent != null">
+        serve_buyer_percent = #{serveBuyerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="serveSellerPercent != null">
+        serve_seller_percent = #{serveSellerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="trustee != null">
+        trustee = #{trustee,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+       id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select r.*
+    from zeus.t_agency_apply_record r
+    <where>
+      r.is_del = 0
+      <if test="q != null"> and (r.name like concat('%',#{q},'%') or r.mobile like concat('%',#{q},'%'))</if>
+      <if test="status != null"> and r.status=#{status}</if>
+    </where>
+  </select>
+</mapper>

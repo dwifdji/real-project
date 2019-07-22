@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月09日 18时17分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.order.mapper.TServiceWithdrawRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.order.TServiceWithdrawRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="withdraw_no" jdbcType="VARCHAR" property="withdrawNo" />
+	<result column="bank_id" jdbcType="INTEGER" property="bankId" />
+	<result column="bank_no" jdbcType="VARCHAR" property="bankNo" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="account_type" jdbcType="VARCHAR" property="accountType" />
+	<result column="account_name" jdbcType="VARCHAR" property="accountName" />
+	<result column="withdraw_amount" jdbcType="DECIMAL" property="withdrawAmount" />
+	<result column="verify_time" jdbcType="TIMESTAMP" property="verifyTime" />
+	<result column="verify_status" jdbcType="VARCHAR" property="verifyStatus" />
+	<result column="verify_operator" jdbcType="INTEGER" property="verifyOperator" />
+	<result column="verify_content" jdbcType="VARCHAR" property="verifyContent" />
+	<result column="additional" jdbcType="LONGVARCHAR" property="additional" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, withdraw_no, bank_id, bank_no, account_id,party_id, account_type,
+	account_name, withdraw_amount, verify_time, verify_status, verify_operator, verify_content, 
+	additional, create_time, update_time, del_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_service_withdraw_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.order.TServiceWithdrawRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_service_withdraw_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="withdrawNo != null">
+        AND withdraw_no = #{withdrawNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bankId != null">
+        AND bank_id = #{bankId,jdbcType=INTEGER}
+      </if>
+      <if test="bankNo != null">
+        AND bank_no = #{bankNo,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null  and partyId != ''">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="accountType != null">
+        AND account_type = #{accountType,jdbcType=VARCHAR}
+      </if>
+      <if test="accountName != null">
+        AND account_name = #{accountName,jdbcType=VARCHAR}
+      </if>
+      <if test="withdrawAmount != null">
+        AND withdraw_amount = #{withdrawAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="verifyTime != null">
+        AND verify_time = #{verifyTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="verifyStatus != null">
+        AND verify_status = #{verifyStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="verifyOperator != null">
+        AND verify_operator = #{verifyOperator,jdbcType=INTEGER}
+      </if>
+      <if test="verifyContent != null">
+        AND verify_content = #{verifyContent,jdbcType=VARCHAR}
+      </if>
+      <if test="additional != null">
+        AND additional = #{additional,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.order.TServiceWithdrawRecord">
+    insert into zeus.t_service_withdraw_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="withdrawNo != null">
+        withdraw_no, 
+      </if>
+      <if test="bankId != null">
+        bank_id, 
+      </if>
+      <if test="bankNo != null">
+        bank_no, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="accountType != null">
+        account_type, 
+      </if>
+      <if test="accountName != null">
+        account_name, 
+      </if>
+      <if test="withdrawAmount != null">
+        withdraw_amount, 
+      </if>
+      <if test="verifyTime != null">
+        verify_time, 
+      </if>
+      <if test="verifyStatus != null">
+        verify_status, 
+      </if>
+      <if test="verifyOperator != null">
+        verify_operator, 
+      </if>
+      <if test="verifyContent != null">
+        verify_content, 
+      </if>
+      <if test="additional != null">
+        additional, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawNo != null">
+        #{withdrawNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankNo != null">
+        #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawAmount != null">
+        #{withdrawAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="verifyTime != null">
+        #{verifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifyStatus != null">
+        #{verifyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyOperator != null">
+        #{verifyOperator,jdbcType=INTEGER},
+      </if>
+      <if test="verifyContent != null">
+        #{verifyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additional != null">
+        #{additional,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.order.TServiceWithdrawRecord">
+    update zeus.t_service_withdraw_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="withdrawNo != null">
+        withdraw_no = #{withdrawNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="bankNo != null">
+        bank_no = #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null">
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawAmount != null">
+        withdraw_amount = #{withdrawAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="verifyTime != null">
+        verify_time = #{verifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifyStatus != null">
+        verify_status = #{verifyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyOperator != null">
+        verify_operator = #{verifyOperator,jdbcType=INTEGER},
+      </if>
+      <if test="verifyContent != null">
+        verify_content = #{verifyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additional != null">
+        additional = #{additional,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="selectWithdrawRecordByParam" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List"/>
+    FROM
+      zeus.t_service_withdraw_record
+    WHERE
+      party_id = #{partyId}
+      AND del_flag = 0
+      <if test="withdrawNo != null and withdrawNo !=''">AND withdraw_no = #{withdrawNo}</if>
+      <if test="verifyStatus != null and verifyStatus !=''">AND verify_status = #{verifyStatus}</if>
+      <if test="timeBy == 'createTime' and beginDate != null"><![CDATA[AND create_time >= #{beginDate}]]></if>
+      <if test="timeBy == 'createTime' and endDate != null  "><![CDATA[AND create_time <= #{endDate}]]></if>
+      <if test="timeBy == 'verifyTime' and beginDate != null"><![CDATA[AND verify_time <= #{beginDate}]]></if>
+      <if test="timeBy == 'verifyTime' and endDate != null  "><![CDATA[AND verify_time <= #{endDate}]]></if>
+      ORDER BY verify_status ASC
+  </select>
+
+  <select id="selectAdminWithdrawRecordByParam" resultMap="BaseResultMap">
+    SELECT
+      t1.*
+    FROM
+      zeus.t_service_withdraw_record t1
+    WHERE
+      t1.account_type = #{accountType}
+      <if test="searchStr != null and searchStr != ''">AND ( t1.withdraw_no = #{searchStr} OR t1.bank_no = #{searchStr} OR t1.account_name = #{searchStr} )</if>
+      <if test="verifyStatus != null and verifyStatus != ''">AND t1.verify_status = #{verifyStatus}</if>
+      <if test="timeBy == 'createTime' and beginDate != null"><![CDATA[AND t1.create_time >= #{beginDate}]]></if>
+      <if test="timeBy == 'createTime' and endDate != null  "><![CDATA[AND t1.create_time <= #{endDate}]]></if>
+  </select>
+
+</mapper>

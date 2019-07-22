@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.StickyAuctionActivityAlbumMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.StickyAuctionActivityAlbum">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="album_id" jdbcType="INTEGER" property="albumId"/>
+        <result column="order_number" jdbcType="SMALLINT" property="orderNumber"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, img, album_id, order_number
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.sticky_auction_activity_album
+    </select>
+
+    <select id="selectByCondition"
+            parameterType="com._360pai.core.condition.assistant.StickyAuctionActivityAlbumCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.sticky_auction_activity_album
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="img != null">
+                AND img = #{img,jdbcType=VARCHAR}
+            </if>
+            <if test="albumId != null">
+                AND album_id = #{albumId,jdbcType=INTEGER}
+            </if>
+            <if test="orderNumber != null">
+                AND order_number = #{orderNumber,jdbcType=SMALLINT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.StickyAuctionActivityAlbum">
+        insert into zeus.sticky_auction_activity_album
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+            <if test="albumId != null">
+                album_id,
+            </if>
+            <if test="orderNumber != null">
+                order_number,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="albumId != null">
+                #{albumId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNumber != null">
+                #{orderNumber,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.StickyAuctionActivityAlbum">
+        update zeus.sticky_auction_activity_album
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="albumId != null">
+                album_id = #{albumId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNumber != null">
+                order_number = #{orderNumber,jdbcType=SMALLINT},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <select id="selectStickyAlbumList" resultType="com._360pai.core.model.assistant.StickyAuctionActivityAlbum">
+        select     saaa.id as id ,
+                   aaa.img as img ,
+                  saaa.album_id as albumId,
+                saaa.order_number as orderNumber,
+                aaa.`name` as albumName
+                from sticky_auction_activity_album saaa LEFT JOIN auction_activity_album aaa on saaa.album_id = aaa.id
+    </select>
+
+  <delete id="deleteById" parameterType="int">
+    delete from zeus.sticky_auction_activity_album
+    where  id = #{id,jdbcType=INTEGER}
+  </delete>
+
+</mapper>

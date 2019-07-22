@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月24日 20时32分01秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.disposal.mapper.TDisposeSurveyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.disposal.TDisposeSurvey">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="survey_no" jdbcType="VARCHAR" property="surveyNo" />
+	<result column="asset_id" jdbcType="INTEGER" property="assetId" />
+	<result column="provider_id" jdbcType="INTEGER" property="providerId" />
+	<result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+	<result column="city_id" jdbcType="VARCHAR" property="cityId" />
+	<result column="assign_time" jdbcType="TIMESTAMP" property="assignTime" />
+	<result column="survey_status" jdbcType="VARCHAR" property="surveyStatus" />
+	<result column="basis_survey" jdbcType="VARCHAR" property="basisSurvey" />
+	<result column="complete_survey" jdbcType="VARCHAR" property="completeSurvey" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, survey_no, asset_id, provider_id, asset_name, city_id,
+	assign_time, survey_status, basis_survey, complete_survey, create_time, update_time, 
+	del_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_dispose_survey
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.disposal.TDisposeSurveyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_dispose_survey
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="surveyNo != null">
+        AND survey_no = #{surveyNo,jdbcType=VARCHAR}
+      </if>
+      <if test="assetId != null">
+        AND asset_id = #{assetId,jdbcType=INTEGER}
+      </if>
+      <if test="providerId != null">
+        AND provider_id = #{providerId,jdbcType=INTEGER}
+      </if>
+      <if test="assetName != null">
+        AND asset_name = #{assetName,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="assignTime != null">
+        AND assign_time = #{assignTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="surveyStatus != null">
+        AND survey_status = #{surveyStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="basisSurvey != null">
+        AND basis_survey = #{basisSurvey,jdbcType=VARCHAR}
+      </if>
+      <if test="completeSurvey != null">
+        AND complete_survey = #{completeSurvey,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.disposal.TDisposeSurvey">
+    insert into zeus.t_dispose_survey
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="surveyNo != null">
+        survey_no, 
+      </if>
+      <if test="assetId != null">
+        asset_id, 
+      </if>
+      <if test="providerId != null">
+        provider_id,
+      </if>
+      <if test="assetName != null">
+        asset_name, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="assignTime != null">
+        assign_time, 
+      </if>
+      <if test="surveyStatus != null">
+        survey_status, 
+      </if>
+      <if test="basisSurvey != null">
+        basis_survey, 
+      </if>
+      <if test="completeSurvey != null">
+        complete_survey, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="surveyNo != null">
+        #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="assetId != null">
+        #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="assignTime != null">
+        #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyStatus != null">
+        #{surveyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="basisSurvey != null">
+        #{basisSurvey,jdbcType=VARCHAR},
+      </if>
+      <if test="completeSurvey != null">
+        #{completeSurvey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.disposal.TDisposeSurvey">
+    update zeus.t_dispose_survey
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="surveyNo != null">
+        survey_no = #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="assetId != null">
+        asset_id = #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        asset_name = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="assignTime != null">
+        assign_time = #{assignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyStatus != null">
+        survey_status = #{surveyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="basisSurvey != null">
+        basis_survey = #{basisSurvey,jdbcType=VARCHAR},
+      </if>
+      <if test="completeSurvey != null">
+        complete_survey = #{completeSurvey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="basisSurveyPrice != null">
+        basis_survey_price = #{basisSurveyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="completeSurveyPrice != null">
+        complete_survey_price = #{completeSurveyPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

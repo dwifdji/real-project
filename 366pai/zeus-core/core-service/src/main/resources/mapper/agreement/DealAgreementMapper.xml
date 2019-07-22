@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分50秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.agreement.mapper.DealAgreementMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.agreement.DealAgreement">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_id" jdbcType="BIGINT" property="orderId" />
+	<result column="all_signed" jdbcType="BIT" property="allSigned" />
+	<result column="buyer_signed" jdbcType="BIT" property="buyerSigned" />
+	<result column="seller_signed" jdbcType="BIT" property="sellerSigned" />
+	<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+	<result column="template_id" jdbcType="INTEGER" property="templateId" />
+	<result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="contract_type" jdbcType="VARCHAR" property="contractType" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_id, all_signed, buyer_signed, seller_signed, download_url, 
+	template_id, viewpdf_url, contract_id, created_at,update_time,contract_type
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.deal_agreement
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.agreement.DealAgreementCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.deal_agreement
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderId != null">
+        AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="allSigned != null">
+        AND all_signed = #{allSigned,jdbcType=BIT}
+      </if>
+      <if test="buyerSigned != null">
+        AND buyer_signed = #{buyerSigned,jdbcType=BIT}
+      </if>
+      <if test="sellerSigned != null">
+        AND seller_signed = #{sellerSigned,jdbcType=BIT}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="templateId != null">
+        AND template_id = #{templateId,jdbcType=INTEGER}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="contractType != null">
+        AND contract_type = #{contractType,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.agreement.DealAgreement">
+    insert into zeus.deal_agreement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderId != null">
+        order_id, 
+      </if>
+      <if test="allSigned != null">
+        all_signed, 
+      </if>
+      <if test="buyerSigned != null">
+        buyer_signed, 
+      </if>
+      <if test="sellerSigned != null">
+        seller_signed, 
+      </if>
+      <if test="downloadUrl != null">
+        download_url, 
+      </if>
+      <if test="templateId != null">
+        template_id, 
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="contractType != null">
+        contract_type,
+      </if>
+        created_at,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="allSigned != null">
+        #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="buyerSigned != null">
+        #{buyerSigned,jdbcType=BIT},
+      </if>
+      <if test="sellerSigned != null">
+        #{sellerSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null">
+        #{contractType,jdbcType=VARCHAR},
+      </if>
+        now(),
+        now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.agreement.DealAgreement">
+    update zeus.deal_agreement
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="allSigned != null">
+        all_signed = #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="buyerSigned != null">
+        buyer_signed = #{buyerSigned,jdbcType=BIT},
+      </if>
+      <if test="sellerSigned != null">
+        seller_signed = #{sellerSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null">
+        contract_type = #{contractType,jdbcType=VARCHAR},
+      </if>
+        update_time=now()
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

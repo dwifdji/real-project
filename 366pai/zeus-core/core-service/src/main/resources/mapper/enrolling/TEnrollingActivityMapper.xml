@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月16日 13时57分16秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.TEnrollingActivityMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.TEnrollingActivity">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="property_id" jdbcType="INTEGER" property="propertyId" />
+	<result column="category_id" jdbcType="INTEGER" property="categoryId" />
+	<result column="ref_price" jdbcType="DECIMAL" property="refPrice" />
+	<result column="deposit" jdbcType="DECIMAL" property="deposit" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="contact_qq" jdbcType="VARCHAR" property="contactQq" />
+	<result column="expire_at" jdbcType="TIMESTAMP" property="expireAt" />
+    <result column="extra" jdbcType="VARCHAR" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" property="extra" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="description_doc" jdbcType="VARCHAR" property="descriptionDoc" />
+	<result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+	<result column="participant_number" jdbcType="INTEGER" property="participantNumber" />
+	<result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+	<result column="commission_percent" jdbcType="DECIMAL" property="commissionPercent" />
+	<result column="asset_category_group_id" jdbcType="INTEGER" property="assetCategoryGroupId" />
+	<result column="options" jdbcType="VARCHAR" property="options" />
+	<result column="end_notified" jdbcType="BIT" property="endNotified" />
+	<result column="visibility_level" jdbcType="CHAR" property="visibilityLevel" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, status, name, city_id, agency_id, property_id, 
+	category_id, ref_price, deposit, code, begin_at, created_at, 
+	end_at, party_id, contact_name, contact_phone, contact_qq, expire_at, 
+	extra, remark, description_doc, detail, participant_number, reject_reason, 
+	commission_percent, asset_category_group_id, options, end_notified, visibility_level
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_enrolling_activity
+
+  </select>
+
+
+
+  <select id="getOldList" parameterType = "String" resultMap="BaseResultMap">
+    select * from t_enrolling_activity where code in ('SHBC-000570',
+'SHBC-000566',
+'SHBC-000219',
+'NXZHPM-000000-00',
+'SHBC-Y-000156',
+'SHBC-Y-000168'
+)
+
+  </select>
+
+
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.TEnrollingActivityCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_enrolling_activity
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="propertyId != null">
+        AND property_id = #{propertyId,jdbcType=INTEGER}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="refPrice != null">
+        AND ref_price = #{refPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="deposit != null">
+        AND deposit = #{deposit,jdbcType=DECIMAL}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactQq != null">
+        AND contact_qq = #{contactQq,jdbcType=VARCHAR}
+      </if>
+      <if test="expireAt != null">
+        AND expire_at = #{expireAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="extra != null">
+        AND extra = #{extra,jdbcType=VARCHAR, typeHandler= com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="descriptionDoc != null">
+        AND description_doc = #{descriptionDoc,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="participantNumber != null">
+        AND participant_number = #{participantNumber,jdbcType=INTEGER}
+      </if>
+      <if test="rejectReason != null">
+        AND reject_reason = #{rejectReason,jdbcType=VARCHAR}
+      </if>
+      <if test="commissionPercent != null">
+        AND commission_percent = #{commissionPercent,jdbcType=DECIMAL}
+      </if>
+      <if test="assetCategoryGroupId != null">
+        AND asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER}
+      </if>
+      <if test="options != null">
+        AND options = #{options,jdbcType=VARCHAR}
+      </if>
+      <if test="endNotified != null">
+        AND end_notified = #{endNotified,jdbcType=BIT}
+      </if>
+      <if test="visibilityLevel != null">
+        AND visibility_level = #{visibilityLevel,jdbcType=CHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.TEnrollingActivity">
+    insert into zeus.t_enrolling_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="propertyId != null">
+        property_id, 
+      </if>
+      <if test="categoryId != null">
+        category_id, 
+      </if>
+      <if test="refPrice != null">
+        ref_price, 
+      </if>
+      <if test="deposit != null">
+        deposit, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="contactQq != null">
+        contact_qq, 
+      </if>
+      <if test="expireAt != null">
+        expire_at, 
+      </if>
+      <if test="extra != null">
+        extra, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc, 
+      </if>
+      <if test="detail != null">
+        detail, 
+      </if>
+      <if test="participantNumber != null">
+        participant_number, 
+      </if>
+      <if test="rejectReason != null">
+        reject_reason, 
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent, 
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id, 
+      </if>
+      <if test="options != null">
+        options, 
+      </if>
+      <if test="endNotified != null">
+        end_notified, 
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="refPrice != null">
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="expireAt != null">
+        #{expireAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR, typeHandler= com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionDoc != null">
+        #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="participantNumber != null">
+        #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionPercent != null">
+        #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="endNotified != null">
+        #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="visibilityLevel != null">
+        #{visibilityLevel,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.TEnrollingActivity">
+    update zeus.t_enrolling_activity
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="refPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        contact_qq = #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="expireAt != null">
+        expire_at = #{expireAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR, typeHandler= com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc = #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="participantNumber != null">
+        participant_number = #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent = #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="endNotified != null">
+        end_notified = #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level = #{visibilityLevel,jdbcType=CHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.DepositMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.Deposit">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="activity_id" jdbcType="INTEGER" property="activityId"/>
+        <result column="party_id" jdbcType="INTEGER" property="partyId"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="agency_id" jdbcType="INTEGER" property="agencyId"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="pay_type" jdbcType="VARCHAR" property="payType"/>
+        <result column="pay_id" jdbcType="VARCHAR" property="payId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+        <result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+        <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+        <result column="ask_result" jdbcType="VARCHAR" property="askResult" />
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, activity_id, party_id, amount, status, agency_id, 
+	created_at, code,pay_type,update_time,remark,pay_id,bank_name, bank_account_number, bank_account_name,ask_result,level,delete_flag
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.deposit
+    </select>
+
+
+    <select id="selectNoDealYX" resultMap="BaseResultMap">
+        select * from zeus.deposit
+        where activity_id = #{activityId}
+        and ask_result='0'
+        order by level asc
+    </select>
+
+    <update id="updateDealYX">
+        update zeus.deposit
+        set ask_result = "2"
+        where level = #{level}
+        and ask_result = "0"
+
+    </update>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.DepositCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.deposit
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="partyId != null">
+                AND party_id = #{partyId,jdbcType=INTEGER}
+            </if>
+            <if test="amount != null">
+                AND amount = #{amount,jdbcType=DECIMAL}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="agencyId != null">
+                AND agency_id = #{agencyId,jdbcType=INTEGER}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="code != null">
+                AND code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="payType != null">
+                AND pay_type = #{payType,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null">
+                AND remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="payId != null">
+                AND pay_id = #{payId,jdbcType=VARCHAR}
+            </if>
+            <if test="bankName != null">
+                AND bank_name = #{bankName,jdbcType=VARCHAR}
+            </if>
+            <if test="askResult != null">
+                AND ask_result = #{askResult,jdbcType=VARCHAR}
+            </if>
+            <if test="level != null">
+                AND level = #{level,jdbcType=INTEGER}
+            </if>
+            <if test="deleteFlag != null">
+                AND delete_flag = #{deleteFlag,jdbcType=BIT}
+            </if>
+            <if test="bankAccountNumber != null">
+                AND bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="bankAccountName != null">
+                AND bank_account_name = #{bankAccountName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true"
+            parameterType="com._360pai.core.model.assistant.Deposit">
+        insert into zeus.deposit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="partyId != null">
+                party_id,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="agencyId != null">
+                agency_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="bankName != null">
+                bank_name,
+            </if>
+            <if test="bankAccountNumber != null">
+                bank_account_number,
+            </if>
+            <if test="bankAccountName != null">
+                bank_account_name,
+            </if>
+            <if test="askResult != null">
+                ask_result,
+            </if>
+            <if test="level != null">
+                 level,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            created_at,
+            update_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="agencyId != null">
+                #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=TIMESTAMP},
+            </if>
+            <if test="payId != null">
+                #{payId,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountNumber != null">
+                #{bankAccountNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountName != null">
+                #{bankAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="askResult != null">
+                #{askResult,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=BIT},
+            </if>
+            now(),
+            now()
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.Deposit">
+        update zeus.deposit
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                party_id = #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="agencyId != null">
+                agency_id = #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="payId != null">
+                pay_id = #{payId,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null">
+                bank_name = #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountNumber != null">
+                bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountName != null">
+                bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="askResult != null">
+                ask_result = #{askResult,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=BIT},
+            </if>
+            update_time=now()
+        </set>
+        <where>
+            AND id = #{id,jdbcType=BIGINT}
+        </where>
+    </update>
+
+    <select id="getDepositCount" resultType="java.lang.Integer">
+        select count(0)
+        from zeus.deposit
+        <where>
+            activity_id=#{activityId}
+            <if test="agencyId != null">and agency_id=#{agencyId}</if>
+        </where>
+    </select>
+    <select id="myDepositList" resultType="java.util.Map">
+        select
+        aa.`asset_name` as activityName,
+        aa.`id` as activityId,
+        aa.display_name as displayName,
+        ass.`extra` ->> '$.images[0]' as imageUrl,
+        aa.mode as `mode`,
+        aa.asset_type as assetTypt,
+        aa.begin_at as beginAt,
+        aa.end_at as endAt,
+        aa.created_at as createdAt,
+        aa.preview_at as previewAt,
+        aa.status as `status`,
+        CASE
+        aa.`mode`
+        WHEN "ENGLISH"
+        THEN "增价拍"
+        WHEN "DUTCH"
+        THEN "降价拍模式"
+        WHEN "SEALED"
+        THEN "一口价暗标"
+        WHEN "PUBLIC"
+        THEN "一口价明标"
+        WHEN "FREE"
+        THEN "自由报价"
+        WHEN "FLASH"
+        THEN "限时秒杀"
+        END AS modeStr,
+        CASE
+        aa.`status`
+        WHEN "PLATFORM_REVIEWING"
+        THEN "平台审核"
+        WHEN "PLATFORM_REJECTED"
+        THEN "平台拒绝"
+        WHEN "PLATFORM_APPROVED"
+        THEN "平台通过"
+        WHEN "ONLINE"
+        THEN "上线"
+        WHEN "CANCELLED"
+        THEN "撤掉"
+        WHEN "UNCONFIRMED"
+        THEN "等待确认"
+        WHEN "SUCCESS"
+        THEN "成交"
+        WHEN "FAILED"
+        THEN "流拍"
+        WHEN "PLATFORM_REVIEWING"
+        THEN "平台审核"
+        END AS statusStr,
+        ac.name AS categoryName,
+        ap.name AS propertyName,
+        de.amount AS amount,
+        aa.asset_category_group_id as categoryId
+        from
+        `deposit` de
+        inner join `auction_activity` aa
+        on aa.`id` = de.`activity_id`
+        LEFT JOIN `asset` ass
+        ON ass.`id` = aa.`asset_id`
+        LEFT JOIN `t_asset_category` ac
+        ON aa.asset_category_group_id = ac.`id`
+        LEFT JOIN `asset_property` ap
+        ON aa.asset_property_id = ap.`id`
+        <where>
+            and de.`party_id` = #{partyId}
+
+            <if test="name != null and name != ''">and ass.name like concat('%',#{name},'%')</if>
+
+            <if test="categoryId != null and categoryId!=''">and aa.asset_category_group_id=#{categoryId}</if>
+
+
+
+        </where>
+        ORDER BY de.id DESC
+    </select>
+    <select id="getByActivityIdPartId" resultType="com._360pai.core.model.assistant.Deposit">
+        select *  from `deposit` where activity_id = #{activityId} and party_id = #{partyId}
+    </select>
+
+    <select id="getBeginIn5MinuteList" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*
+        from zeus.deposit d
+        inner join zeus.auction_activity aa on aa.id=d.activity_id
+        where d.party_id=#{partyId} and aa.begin_at > now() and timestampdiff(MINUTE, now(), aa.begin_at) &lt;= 5
+    </select>
+
+    <select id="getEndIn5MinuteList" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*
+        from zeus.deposit d
+        inner join zeus.auction_activity aa on aa.id=d.activity_id
+        where d.party_id=#{partyId} and aa.end_at > now() and timestampdiff(MINUTE, now(), aa.end_at) &lt;= 5
+    </select>
+</mapper>

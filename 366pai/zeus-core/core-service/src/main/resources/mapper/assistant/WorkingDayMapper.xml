@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.WorkingDayMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.WorkingDay">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="date" jdbcType="DATE" property="date"/>
+        <result column="is_working" jdbcType="BIT" property="isWorking"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, date, is_working, name
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.working_day
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.WorkingDayCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.working_day
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="date != null">
+                AND date = #{date,jdbcType=DATE}
+            </if>
+            <if test="isWorking != null">
+                AND is_working = #{isWorking,jdbcType=BIT}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.WorkingDay">
+        insert into zeus.working_day
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="isWorking != null">
+                is_working,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=DATE},
+            </if>
+            <if test="isWorking != null">
+                #{isWorking,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.WorkingDay">
+        update zeus.working_day
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="date != null">
+                date = #{date,jdbcType=DATE},
+            </if>
+            <if test="isWorking != null">
+                is_working = #{isWorking,jdbcType=BIT},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <delete id="deleteWorkingDay">
+      delete from zeus.working_day where id = #{paramsId};
+    </delete>
+
+</mapper>

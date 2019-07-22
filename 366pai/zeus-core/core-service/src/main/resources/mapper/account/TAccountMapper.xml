@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月15日 19时32分10秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAccount">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="register_source" jdbcType="VARCHAR" property="registerSource" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="is_agency_admin" jdbcType="INTEGER" property="isAgencyAdmin" />
+    <result column="can_check_reserve_price" jdbcType="BIT" property="canCheckReservePrice" />
+    <result column="current_party_id" jdbcType="INTEGER" property="currentPartyId" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, mobile, password, register_source, source, status,
+    default_agency_id, agency_id, is_agency_admin, can_check_reserve_price, current_party_id, shop_id, delete_flag, create_time,
+    update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_account
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAccountCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_account
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="registerSource != null">
+        AND register_source = #{registerSource,jdbcType=VARCHAR}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="isAgencyAdmin != null">
+        AND is_agency_admin = #{isAgencyAdmin,jdbcType=INTEGER}
+      </if>
+      <if test="canCheckReservePrice != null">
+        AND can_check_reserve_price = #{canCheckReservePrice,jdbcType=BIT}
+      </if>
+      <if test="currentPartyId != null">
+        AND current_party_id = #{currentPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TAccount" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="registerSource != null">
+        register_source,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="isAgencyAdmin != null">
+        is_agency_admin,
+      </if>
+      <if test="canCheckReservePrice != null">
+        can_check_reserve_price,
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="isAgencyAdmin != null">
+        #{isAgencyAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="canCheckReservePrice != null">
+        #{canCheckReservePrice,jdbcType=BIT},
+      </if>
+      <if test="currentPartyId != null">
+        #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TAccount">
+    update zeus.t_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        register_source = #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="isAgencyAdmin != null">
+        is_agency_admin = #{isAgencyAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="canCheckReservePrice != null">
+        can_check_reserve_price = #{canCheckReservePrice,jdbcType=BIT},
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id = #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getAccountList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select a.*
+    from zeus.t_account a
+    <where>
+      and a.delete_flag='0'
+      <if test="q != null"> and a.mobile like concat('%',#{q},'%')</if>
+      <if test="status != null"> and a.status=#{status}</if>
+      <if test="registerSource != null"> and a.register_source=#{registerSource}</if>
+      <if test="agencyId != null"> and a.agency_id=#{agencyId}</if>
+    </where>
+  </select>
+
+  <select id="getCompanyAccountList" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select a.*
+      from zeus.account_company_map m
+      inner join zeus.t_account a on a.id=m.account_id
+      where m.company_id=#{companyId}
+  </select>
+
+  <update id="unBindAgency">
+    update zeus.t_account set agency_id=null,is_agency_admin=0 where id=#{id}
+  </update>
+
+  <select id="getApplyRecordList" resultType="com._360pai.core.facade.account.vo.ApplyRecordVo">
+      select *
+      from (
+        select r.id, 'user' `type`, r.`name` `name`,r.create_time createTime,r.`status`,r.reason remark
+        from zeus.t_user_apply_record r
+        where r.account_id=#{accountId}
+        union all
+        select r.id, 'company' `type`, r.`name` `name`,r.create_time createTime,r.`status`,r.reason remark
+        from zeus.t_company_apply_record r
+        where r.account_id=#{accountId}
+      ) t
+      order by t.createTime desc
+  </select>
+
+  <update id="updateCurrentPartyId">
+    update zeus.t_account set current_party_id=#{currentPartyId},update_time=now() where id=#{id}
+  </update>
+  <select id="getAppletAccountListNeedRepair" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TAccount">
+    select * from zeus.t_account
+    <where>
+      register_source='APPLET'
+      <if test="createTime != null"> and create_time &lt; #{createTime}</if>
+    </where>
+  </select>
+</mapper>

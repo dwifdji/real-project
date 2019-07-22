@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月25日 21时54分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.fdd.mapper.GatewayFddCallBackRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.fdd.GatewayFddCallBackRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="transaction_id" jdbcType="VARCHAR" property="transactionId" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="gateway_status" jdbcType="VARCHAR" property="gatewayStatus" />
+	<result column="core_status" jdbcType="VARCHAR" property="coreStatus" />
+	<result column="reqParam" jdbcType="LONGVARCHAR" property="reqparam" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, transaction_id, contract_id, gateway_status, core_status, 
+	reqParam, created_at, update_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_fdd_call_back_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.fdd.GatewayFddCallBackRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_fdd_call_back_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="transactionId != null">
+        AND transaction_id = #{transactionId,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="gatewayStatus != null">
+        AND gateway_status = #{gatewayStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="coreStatus != null">
+        AND core_status = #{coreStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="reqparam != null">
+        AND reqParam = #{reqparam,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateAt != null">
+        AND update_at = #{updateAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.fdd.GatewayFddCallBackRecord">
+    insert into zeus.gateway_fdd_call_back_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="transactionId != null">
+        transaction_id, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="gatewayStatus != null">
+        gateway_status, 
+      </if>
+      <if test="coreStatus != null">
+        core_status, 
+      </if>
+      <if test="reqparam != null">
+        reqParam, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="updateAt != null">
+        update_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayStatus != null">
+        #{gatewayStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="coreStatus != null">
+        #{coreStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reqparam != null">
+        #{reqparam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.fdd.GatewayFddCallBackRecord">
+    update zeus.gateway_fdd_call_back_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null">
+        transaction_id = #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayStatus != null">
+        gateway_status = #{gatewayStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="coreStatus != null">
+        core_status = #{coreStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reqparam != null">
+        reqParam = #{reqparam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="notifyFailureList"  resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from zeus.gateway_fdd_call_back_record
+   where 1=1
+   and (gateway_status is null or core_status is null)
+
+ </select>
+</mapper>

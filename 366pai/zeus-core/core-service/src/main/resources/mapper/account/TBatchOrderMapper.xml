@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月29日 15时57分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TBatchOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TBatchOrder">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="init_operator_id" jdbcType="INTEGER" property="initOperatorId" />
+    <result column="verify_operator_id" jdbcType="INTEGER" property="verifyOperatorId" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+    <sql id="Base_Column_List">
+    id, status, remark, init_operator_id, verify_operator_id, is_delete,
+    create_time, update_time
+  </sql>
+
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_batch_order
+    </select>
+
+    <select id="selectMaxId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_batch_order
+        order by id desc
+        limit 0,1
+    </select>
+
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TBatchOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_batch_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=TINYINT}
+      </if>
+      <if test="initOperatorId != null">
+        AND init_operator_id = #{initOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="verifyOperatorId != null">
+        AND verify_operator_id = #{verifyOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com._360pai.core.model.account.TBatchOrder">
+    insert into zeus.t_batch_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="initOperatorId != null">
+        init_operator_id, 
+      </if>
+      <if test="verifyOperatorId != null">
+        verify_operator_id, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="initOperatorId != null">
+        #{initOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="verifyOperatorId != null">
+        #{verifyOperatorId,jdbcType=INTEGER},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TBatchOrder">
+    update zeus.t_batch_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="initOperatorId != null">
+        init_operator_id = #{initOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="verifyOperatorId != null">
+        verify_operator_id = #{verifyOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+
+    <select id="searchBatchOrder" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_batch_order
+        <where>
+            <if test="batchOrderNo != null">
+                AND id = #{batchOrderNo}
+            </if>
+            <if test="status != null and status != ''.toString()">
+                AND status = #{status}
+            </if>
+            <if test="status == null or status ==''">
+                AND status != 'LAST_VERIFY_FAIL'
+            </if>
+            <if test="beginTime != null and beginTime != ''.toString()">
+                AND  create_time >= #{beginTime}
+            </if>
+            <if test="endTime != null and endTime != ''.toString()">
+                AND #{endTime}>=create_time
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月03日 14时51分14秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.fdd.mapper.GatewayFddSignKeyworkMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.fdd.GatewayFddSignKeywork">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="role_type" jdbcType="VARCHAR" property="roleType" />
+	<result column="key_name" jdbcType="VARCHAR" property="keyName" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, role_type, key_name
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_fdd_sign_keywork
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.fdd.GatewayFddSignKeyworkCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_fdd_sign_keywork
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="roleType != null">
+        AND role_type = #{roleType,jdbcType=VARCHAR}
+      </if>
+      <if test="keyName != null">
+        AND key_name = #{keyName,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.fdd.GatewayFddSignKeywork">
+    insert into zeus.gateway_fdd_sign_keywork
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="roleType != null">
+        role_type, 
+      </if>
+      <if test="keyName != null">
+        key_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="keyName != null">
+        #{keyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.fdd.GatewayFddSignKeywork">
+    update zeus.gateway_fdd_sign_keywork
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null">
+        role_type = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="keyName != null">
+        key_name = #{keyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分46秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.DataMigrationMapper">
+
+    <select id="getLicensesNeedToMigrate" resultType="java.lang.String">
+        select ma.license
+        from monet.agency ma
+        left join zeus.t_agency zta on ma.license=zta.license
+        where zta.id is null
+    </select>
+
+    <select id="getMobilesNeedToMigrate" resultType="java.lang.String">
+        select ma.mobile
+        from monet.account ma
+        left join zeus.t_account ta on ma.mobile=ta.mobile
+        where ta.id is null
+    </select>
+
+    <select id="getCompanyIdByFadadaEmailIsNull" resultType="java.lang.Integer">
+        select id
+        from zeus.t_company
+        where fadada_email is null
+    </select>
+
+    <select id="getAgencyIdByFadadaEmailIsNull" resultType="java.lang.Integer">
+        select id
+        from zeus.t_agency
+        where fadada_email is null
+    </select>
+
+    <select id="getNeedToSyncBusTypeNameActivityId" parameterType="java.util.Map" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*
+        from zeus.auction_activity aa
+        inner join zeus.asset a on a.id=aa.asset_id
+        inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+        inner join zeus.t_asset_category c on c.id=atc.category_id and c.name='债权拍卖'
+        where aa.bus_type_name is null
+    </select>
+</mapper>

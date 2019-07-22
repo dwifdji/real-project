@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TBlacklistRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TBlacklistRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_type" jdbcType="VARCHAR" property="accountType" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="action" jdbcType="VARCHAR" property="action" />
+	<result column="reason" jdbcType="VARCHAR" property="reason" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="is_del" jdbcType="INTEGER" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_type, account_id, action, reason, operator_id, 
+	is_del, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_blacklist_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TBlacklistRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_blacklist_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountType != null">
+        AND account_type = #{accountType,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="action != null">
+        AND action = #{action,jdbcType=VARCHAR}
+      </if>
+      <if test="reason != null">
+        AND reason = #{reason,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TBlacklistRecord">
+    insert into zeus.t_blacklist_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountType != null">
+        account_type, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="action != null">
+        action, 
+      </if>
+      <if test="reason != null">
+        reason, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TBlacklistRecord">
+    update zeus.t_blacklist_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null">
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+        create_time = now(),
+        update_time = now()
+    </set>
+	<where>
+       id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

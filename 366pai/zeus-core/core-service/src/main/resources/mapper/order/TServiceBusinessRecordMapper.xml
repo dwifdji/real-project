@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月08日 19时37分27秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.order.mapper.TServiceBusinessRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.order.TServiceBusinessRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="buyer_account_id" jdbcType="INTEGER" property="buyerAccountId" />
+	<result column="buyer_party_id" jdbcType="INTEGER" property="buyerPartyId" />
+	<result column="seller_account_id" jdbcType="INTEGER" property="sellerAccountId" />
+	<result column="seller_party_id" jdbcType="INTEGER" property="sellerPartyId" />
+	<result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+	<result column="order_type" jdbcType="INTEGER" property="orderType" />
+	<result column="asset_id" jdbcType="INTEGER" property="assetId" />
+	<result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="additional" jdbcType="LONGVARCHAR" property="additional" />
+	<result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, buyer_account_id, seller_account_id, buyer_party_id,seller_party_id,order_num, order_type, asset_id,
+	asset_name, amount, additional, pay_status, create_time, update_time, 
+	del_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_service_business_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.order.TServiceBusinessRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_service_business_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="buyerAccountId != null">
+        AND buyer_account_id = #{buyerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="sellerAccountId != null">
+        AND seller_account_id = #{sellerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="buyerPartyId != null">
+        AND buyer_party_id = #{buyerPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="sellerAccountId != null">
+        AND seller_party_id = #{sellerPartyId,jdbcType=INTEGER}
+      </if>
+
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="orderType != null">
+        AND order_type = #{orderType,jdbcType=INTEGER}
+      </if>
+      <if test="assetId != null">
+        AND asset_id = #{assetId,jdbcType=INTEGER}
+      </if>
+      <if test="assetName != null">
+        AND asset_name = #{assetName,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="additional != null">
+        AND additional = #{additional,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.order.TServiceBusinessRecord">
+    insert into zeus.t_service_business_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="buyerAccountId != null">
+        buyer_account_id, 
+      </if>
+      <if test="sellerAccountId != null">
+        seller_account_id, 
+      </if>
+      <if test="buyerPartyId != null">
+        buyer_party_id,
+      </if>
+      <if test="sellerPartyId != null">
+        seller_party_id,
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="orderType != null">
+        order_type, 
+      </if>
+      <if test="assetId != null">
+        asset_id, 
+      </if>
+      <if test="assetName != null">
+        asset_name, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="additional != null">
+        additional, 
+      </if>
+      <if test="payStatus != null">
+        pay_status, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buyerAccountId != null">
+        #{buyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerAccountId != null">
+        #{sellerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerPartyId != null">
+        #{buyerPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerPartyId != null">
+        #{sellerPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="assetId != null">
+        #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="additional != null">
+        #{additional,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.order.TServiceBusinessRecord">
+    update zeus.t_service_business_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buyerAccountId != null">
+        buyer_account_id = #{buyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerAccountId != null">
+        seller_account_id = #{sellerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerPartyId != null">
+        buyer_party_id = #{buyerPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerPartyId != null">
+        seller_party_id = #{sellerPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="assetId != null">
+        asset_id = #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        asset_name = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="additional != null">
+        additional = #{additional,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getBusinessRecordByReportType" parameterType="com._360pai.core.condition.order.TServiceBusinessRecordCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_service_business_record
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="buyerAccountId != null">
+        AND buyer_account_id = #{buyerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="sellerAccountId != null">
+        AND seller_account_id = #{sellerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="buyerPartyId != null">
+        AND buyer_party_id = #{buyerPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="sellerAccountId != null">
+        AND seller_party_id = #{sellerPartyId,jdbcType=INTEGER}
+      </if>
+
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="orderType != null">
+        AND order_type = #{orderType,jdbcType=INTEGER}
+      </if>
+      <if test="assetId != null">
+        AND asset_id = #{assetId,jdbcType=INTEGER}
+      </if>
+      <if test="assetName != null">
+        AND asset_name = #{assetName,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="additional != null">
+        AND additional = #{additional,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+      AND order_type in (31,32,33)
+    </where>
+    order by id desc
+  </select>
+
+</mapper>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分47秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.UserMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.User">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="certificate_number" jdbcType="VARCHAR" property="certificateNumber" />
+	<result column="certificate_begin" jdbcType="TIMESTAMP" property="certificateBegin" />
+	<result column="certificate_end" jdbcType="TIMESTAMP" property="certificateEnd" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="certificate_front_img" jdbcType="VARCHAR" property="certificateFrontImg" />
+	<result column="certificate_back_img" jdbcType="VARCHAR" property="certificateBackImg" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="is_valid" jdbcType="BIT" property="isValid" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="fadada_id" jdbcType="VARCHAR" property="fadadaId" />
+	<result column="mem_code" jdbcType="VARCHAR" property="memCode" />
+	<result column="pay_bind" jdbcType="BIT" property="payBind" />
+	<result column="public_account_id" jdbcType="VARCHAR" property="publicAccountId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, default_agency_id, name, certificate_number, certificate_begin, 
+	certificate_end, city_id, address, certificate_front_img, certificate_back_img, created_at, 
+	is_valid, mobile, fadada_id, mem_code, pay_bind, public_account_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from monet.user
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.UserCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from monet.user
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateNumber != null">
+        AND certificate_number = #{certificateNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBegin != null">
+        AND certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificateEnd != null">
+        AND certificate_end = #{certificateEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateFrontImg != null">
+        AND certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBackImg != null">
+        AND certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isValid != null">
+        AND is_valid = #{isValid,jdbcType=BIT}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="fadadaId != null">
+        AND fadada_id = #{fadadaId,jdbcType=VARCHAR}
+      </if>
+      <if test="memCode != null">
+        AND mem_code = #{memCode,jdbcType=VARCHAR}
+      </if>
+      <if test="payBind != null">
+        AND pay_bind = #{payBind,jdbcType=BIT}
+      </if>
+      <if test="publicAccountId != null">
+        AND public_account_id = #{publicAccountId,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.User">
+    insert into monet.user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number, 
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin, 
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img, 
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="isValid != null">
+        is_valid, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="fadadaId != null">
+        fadada_id, 
+      </if>
+      <if test="memCode != null">
+        mem_code, 
+      </if>
+      <if test="payBind != null">
+        pay_bind, 
+      </if>
+      <if test="publicAccountId != null">
+        public_account_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=BIT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaId != null">
+        #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null">
+        #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        #{payBind,jdbcType=BIT},
+      </if>
+      <if test="publicAccountId != null">
+        #{publicAccountId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.User">
+    update monet.user
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end = #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=BIT},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaId != null">
+        fadada_id = #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="memCode != null">
+        mem_code = #{memCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        pay_bind = #{payBind,jdbcType=BIT},
+      </if>
+      <if test="publicAccountId != null">
+        public_account_id = #{publicAccountId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

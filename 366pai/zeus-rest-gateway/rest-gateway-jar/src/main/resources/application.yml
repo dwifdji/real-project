@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: rest-gateway
+dubbo:
+  application:
+    id: rest-gateway
+    name: rest-gateway
+  scan:
+    basePackages: com._360pai.gateway.controller
+  protocol:
+    port: -1
+server:
+  port: 8090
+  context-path: /rest-gateway
+
+

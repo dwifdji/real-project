@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月07日 14时31分33秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetAuthorizationMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetAuthorization">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="activity_id" jdbcType="INTEGER" property="activityId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="protocol_type" jdbcType="VARCHAR" property="protocolType" />
+    <result column="protocol_subtype" jdbcType="VARCHAR" property="protocolSubtype" />
+    <result column="signed" jdbcType="BIT" property="signed" />
+    <result column="all_signed" jdbcType="BIT" property="allSigned" />
+    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+    <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+    <result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+    <result column="survey_no" jdbcType="VARCHAR" property="surveyNo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, activity_id, party_id, protocol_type, protocol_subtype, signed,
+    all_signed, contract_id, download_url, viewpdf_url, survey_no, create_time,
+    update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_asset_authorization
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetAuthorizationCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_asset_authorization
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="protocolType != null">
+        AND protocol_type = #{protocolType,jdbcType=VARCHAR}
+      </if>
+      <if test="protocolSubtype != null">
+        AND protocol_subtype = #{protocolSubtype,jdbcType=VARCHAR}
+      </if>
+      <if test="signed != null">
+        AND signed = #{signed,jdbcType=BIT}
+      </if>
+      <if test="allSigned != null">
+        AND all_signed = #{allSigned,jdbcType=BIT}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="surveyNo != null">
+        AND survey_no = #{surveyNo,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetAuthorization">
+    insert into zeus.t_asset_authorization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="protocolSubtype != null">
+        protocol_subtype,
+      </if>
+      <if test="signed != null">
+        signed,
+      </if>
+      <if test="allSigned != null">
+        all_signed,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+      <if test="downloadUrl != null">
+        download_url,
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url,
+      </if>
+      <if test="surveyNo != null">
+        survey_no,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolSubtype != null">
+        #{protocolSubtype,jdbcType=VARCHAR},
+      </if>
+      <if test="signed != null">
+        #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyNo != null">
+        #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetAuthorization">
+    update zeus.t_asset_authorization
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="protocolType != null">
+        protocol_type = #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolSubtype != null">
+        protocol_subtype = #{protocolSubtype,jdbcType=VARCHAR},
+      </if>
+      <if test="signed != null">
+        signed = #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        all_signed = #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyNo != null">
+        survey_no = #{surveyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

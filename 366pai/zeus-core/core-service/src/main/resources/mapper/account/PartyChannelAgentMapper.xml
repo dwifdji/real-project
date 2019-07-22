@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分47秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.PartyChannelAgentMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.PartyChannelAgent">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="channel_agent_party_id" jdbcType="INTEGER" property="channelAgentPartyId" />
+	<result column="commission_percent_channel_agent" jdbcType="DECIMAL" property="commissionPercentChannelAgent" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, party_id, channel_agent_party_id, commission_percent_channel_agent, created_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.party_channel_agent
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.PartyChannelAgentCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.party_channel_agent
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="channelAgentPartyId != null">
+        AND channel_agent_party_id = #{channelAgentPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="commissionPercentChannelAgent != null">
+        AND commission_percent_channel_agent = #{commissionPercentChannelAgent,jdbcType=DECIMAL}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.PartyChannelAgent">
+    insert into zeus.party_channel_agent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="channelAgentPartyId != null">
+        channel_agent_party_id, 
+      </if>
+      <if test="commissionPercentChannelAgent != null">
+        commission_percent_channel_agent, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="channelAgentPartyId != null">
+        #{channelAgentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercentChannelAgent != null">
+        #{commissionPercentChannelAgent,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.PartyChannelAgent">
+    update zeus.party_channel_agent
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="channelAgentPartyId != null">
+        channel_agent_party_id = #{channelAgentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercentChannelAgent != null">
+        commission_percent_channel_agent = #{commissionPercentChannelAgent,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <delete id="deleteById">
+    delete from `zeus`.`party_channel_agent` where `id`=#{id};
+  </delete>
+</mapper>

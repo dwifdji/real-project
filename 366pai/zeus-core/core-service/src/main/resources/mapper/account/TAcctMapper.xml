@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月22日 15时21分14秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAcctMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAcct">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="total_amt" jdbcType="DECIMAL" property="totalAmt" />
+	<result column="lock_amt" jdbcType="DECIMAL" property="lockAmt" />
+	<result column="avail_amt" jdbcType="DECIMAL" property="availAmt" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, party_id, total_amt, lock_amt, avail_amt, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_acct
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAcctCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_acct
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="totalAmt != null">
+        AND total_amt = #{totalAmt,jdbcType=DECIMAL}
+      </if>
+      <if test="lockAmt != null">
+        AND lock_amt = #{lockAmt,jdbcType=DECIMAL}
+      </if>
+      <if test="availAmt != null">
+        AND avail_amt = #{availAmt,jdbcType=DECIMAL}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TAcct">
+    insert into zeus.t_acct
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="totalAmt != null">
+        total_amt, 
+      </if>
+      <if test="lockAmt != null">
+        lock_amt, 
+      </if>
+      <if test="availAmt != null">
+        avail_amt, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmt != null">
+        #{totalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lockAmt != null">
+        #{lockAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="availAmt != null">
+        #{availAmt,jdbcType=DECIMAL},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TAcct">
+    update zeus.t_acct
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmt != null">
+        total_amt = #{totalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lockAmt != null">
+        lock_amt = #{lockAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="availAmt != null">
+        avail_amt = #{availAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getByPartyIdTypeForUpdate" resultType="com._360pai.core.model.account.TAcct">
+    select * from zeus.t_acct where type=#{type} and party_id=#{partyId}  for update
+  </select>
+
+
+  <select id="getByIdForUpdate" resultType="com._360pai.core.model.account.TAcct">
+    select * from zeus.t_acct where id=#{id}  for update
+  </select>
+
+
+  <update id="addAmt" parameterType="com._360pai.core.model.account.TAcct">
+    update zeus.t_acct
+    <set>
+
+      <if test="totalAmt != null">
+        total_amt =total_amt+ #{totalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lockAmt != null">
+        lock_amt = lock_amt+#{lockAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="availAmt != null">
+        avail_amt =avail_amt+ #{availAmt,jdbcType=DECIMAL},
+      </if>
+      update_time = now()
+    </set>
+    <where>
+      id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+
+  <update id="subAmt" parameterType="com._360pai.core.model.account.TAcct">
+    update zeus.t_acct
+    <set>
+
+      <if test="totalAmt != null">
+        total_amt =total_amt-#{totalAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lockAmt != null">
+        lock_amt = lock_amt-#{lockAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="availAmt != null">
+        avail_amt =avail_amt- #{availAmt,jdbcType=DECIMAL},
+      </if>
+      update_time = now()
+    </set>
+    <where>
+
+
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+
+      <if test="totalAmt != null">
+        AND total_amt >= #{totalAmt,jdbcType=DECIMAL}
+      </if>
+      <if test="lockAmt != null">
+        AND lock_amt >= #{lockAmt,jdbcType=DECIMAL}
+      </if>
+      <if test="availAmt != null">
+        AND avail_amt >= #{availAmt,jdbcType=DECIMAL}
+      </if>
+
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.facade.account.vo.AcctVo">
+      select *
+      from (
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_applet_shop u on u.id=a.party_id
+        where a.type='shop'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_user u on u.id=a.party_id
+        where a.type='user'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_company u on u.id=a.party_id
+        where a.type='company'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_agency u on u.id=a.party_id
+        where a.type='agency'
+      ) t
+      <where>
+        <if test="type != null">and t.type=#{type}</if>
+        <if test="q != null"> and t.name like concat('%',#{q},'%')</if>
+      </where>
+      order by t.authTime desc
+  </select>
+
+  <select id="getSummaryInfo" parameterType="java.util.Map" resultType="java.util.Map">
+    select ifnull(sum(t2.total_amt), 0) totalAmt,ifnull(sum(t2.lock_amt), 0) lockAmt,ifnull(sum(t2.avail_amt), 0) availAmt
+    from (
+      select *
+      from (
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_applet_shop u on u.id=a.party_id
+        where a.type='shop'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_user u on u.id=a.party_id
+        where a.type='user'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_company u on u.id=a.party_id
+        where a.type='company'
+        union all
+        select a.*,u.name,u.mobile,u.create_time authTime
+        from zeus.t_acct a
+        inner join zeus.t_agency u on u.id=a.party_id
+        where a.type='agency'
+      ) t
+      <where>
+        <if test="type != null">and t.type=#{type}</if>
+        <if test="q != null"> and t.name like concat('%',#{q},'%')</if>
+      </where>
+    ) t2
+  </select>
+</mapper>

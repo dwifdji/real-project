@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月16日 13时43分01秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.AuctionActivityCopyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.AuctionActivityCopy">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="bid_count" jdbcType="INTEGER" property="bidCount" />
+	<result column="participant_number" jdbcType="INTEGER" property="participantNumber" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+	<result column="asset_id" jdbcType="INTEGER" property="assetId" />
+	<result column="mode" jdbcType="CHAR" property="mode" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+	<result column="sub_category_id" jdbcType="INTEGER" property="subCategoryId" />
+	<result column="category_id" jdbcType="INTEGER" property="categoryId" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="restrict" jdbcType="CHAR" property="restrict" />
+	<result column="preview_at" jdbcType="TIMESTAMP" property="previewAt" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="is_force_finished" jdbcType="BIT" property="isForceFinished" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="finish_at" jdbcType="TIMESTAMP" property="finishAt" />
+	<result column="reserve_price" jdbcType="DECIMAL" property="reservePrice" />
+	<result column="ref_price" jdbcType="DECIMAL" property="refPrice" />
+	<result column="starting_price" jdbcType="DECIMAL" property="startingPrice" />
+	<result column="current_price" jdbcType="DECIMAL" property="currentPrice" />
+	<result column="increment" jdbcType="DECIMAL" property="increment" />
+	<result column="bidding_extension" jdbcType="INTEGER" property="biddingExtension" />
+	<result column="lock_end_at" jdbcType="BIT" property="lockEndAt" />
+	<result column="extended" jdbcType="BIT" property="extended" />
+	<result column="reduction" jdbcType="DECIMAL" property="reduction" />
+	<result column="reduction_period" jdbcType="INTEGER" property="reductionPeriod" />
+	<result column="reduced_at" jdbcType="TIMESTAMP" property="reducedAt" />
+	<result column="quantity" jdbcType="INTEGER" property="quantity" />
+	<result column="paid_by_seller" jdbcType="BIT" property="paidBySeller" />
+	<result column="deposit" jdbcType="DECIMAL" property="deposit" />
+	<result column="commission_seller" jdbcType="DECIMAL" property="commissionSeller" />
+	<result column="commission_buyer" jdbcType="DECIMAL" property="commissionBuyer" />
+	<result column="commission_percent_seller" jdbcType="DECIMAL" property="commissionPercentSeller" />
+	<result column="commission_percent_buyer" jdbcType="DECIMAL" property="commissionPercentBuyer" />
+	<result column="asset_category_group_id" jdbcType="INTEGER" property="assetCategoryGroupId" />
+	<result column="asset_category_id" jdbcType="INTEGER" property="assetCategoryId" />
+	<result column="asset_property_id" jdbcType="INTEGER" property="assetPropertyId" />
+	<result column="reference_activity_id" jdbcType="INTEGER" property="referenceActivityId" />
+	<result column="auctioneer_name" jdbcType="VARCHAR" property="auctioneerName" />
+	<result column="auctioneer_phone" jdbcType="VARCHAR" property="auctioneerPhone" />
+	<result column="auctioneer_qq" jdbcType="VARCHAR" property="auctioneerQq" />
+	<result column="display_name" jdbcType="VARCHAR" property="displayName" />
+	<result column="begin_notified" jdbcType="BIT" property="beginNotified" />
+	<result column="end_notified" jdbcType="BIT" property="endNotified" />
+	<result column="commission_channel_agent" jdbcType="DECIMAL" property="commissionChannelAgent" />
+	<result column="operator_at" jdbcType="TIMESTAMP" property="operatorAt" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="staff_id" jdbcType="INTEGER" property="staffId" />
+	<result column="visibility_level" jdbcType="CHAR" property="visibilityLevel" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, status, code, bid_count, participant_number, created_at, 
+	updated_at, asset_id, mode, asset_type, asset_name, sub_category_id, 
+	category_id, agency_id, `restrict`, preview_at, begin_at, is_force_finished,
+	end_at, finish_at, reserve_price, ref_price, starting_price, current_price, 
+	increment, bidding_extension, lock_end_at, extended, reduction, reduction_period, 
+	reduced_at, quantity, paid_by_seller, deposit, commission_seller, commission_buyer, 
+	commission_percent_seller, commission_percent_buyer, asset_category_group_id, asset_category_id, asset_property_id, reference_activity_id, 
+	auctioneer_name, auctioneer_phone, auctioneer_qq, display_name, begin_notified, end_notified, 
+	commission_channel_agent, operator_at, operator_id, staff_id, visibility_level
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.auction_activity_copy1
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.AuctionActivityCopyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.auction_activity_copy1
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="bidCount != null">
+        AND bid_count = #{bidCount,jdbcType=INTEGER}
+      </if>
+      <if test="participantNumber != null">
+        AND participant_number = #{participantNumber,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedAt != null">
+        AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="assetId != null">
+        AND asset_id = #{assetId,jdbcType=INTEGER}
+      </if>
+      <if test="mode != null">
+        AND mode = #{mode,jdbcType=CHAR}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="assetName != null">
+        AND asset_name = #{assetName,jdbcType=VARCHAR}
+      </if>
+      <if test="subCategoryId != null">
+        AND sub_category_id = #{subCategoryId,jdbcType=INTEGER}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="restrict != null">
+        AND restrict = #{restrict,jdbcType=CHAR}
+      </if>
+      <if test="previewAt != null">
+        AND preview_at = #{previewAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isForceFinished != null">
+        AND is_force_finished = #{isForceFinished,jdbcType=BIT}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="finishAt != null">
+        AND finish_at = #{finishAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reservePrice != null">
+        AND reserve_price = #{reservePrice,jdbcType=DECIMAL}
+      </if>
+      <if test="refPrice != null">
+        AND ref_price = #{refPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="startingPrice != null">
+        AND starting_price = #{startingPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="currentPrice != null">
+        AND current_price = #{currentPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="increment != null">
+        AND increment = #{increment,jdbcType=DECIMAL}
+      </if>
+      <if test="biddingExtension != null">
+        AND bidding_extension = #{biddingExtension,jdbcType=INTEGER}
+      </if>
+      <if test="lockEndAt != null">
+        AND lock_end_at = #{lockEndAt,jdbcType=BIT}
+      </if>
+      <if test="extended != null">
+        AND extended = #{extended,jdbcType=BIT}
+      </if>
+      <if test="reduction != null">
+        AND reduction = #{reduction,jdbcType=DECIMAL}
+      </if>
+      <if test="reductionPeriod != null">
+        AND reduction_period = #{reductionPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="reducedAt != null">
+        AND reduced_at = #{reducedAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="quantity != null">
+        AND quantity = #{quantity,jdbcType=INTEGER}
+      </if>
+      <if test="paidBySeller != null">
+        AND paid_by_seller = #{paidBySeller,jdbcType=BIT}
+      </if>
+      <if test="deposit != null">
+        AND deposit = #{deposit,jdbcType=DECIMAL}
+      </if>
+      <if test="commissionSeller != null">
+        AND commission_seller = #{commissionSeller,jdbcType=DECIMAL}
+      </if>
+      <if test="commissionBuyer != null">
+        AND commission_buyer = #{commissionBuyer,jdbcType=DECIMAL}
+      </if>
+      <if test="commissionPercentSeller != null">
+        AND commission_percent_seller = #{commissionPercentSeller,jdbcType=DECIMAL}
+      </if>
+      <if test="commissionPercentBuyer != null">
+        AND commission_percent_buyer = #{commissionPercentBuyer,jdbcType=DECIMAL}
+      </if>
+      <if test="assetCategoryGroupId != null">
+        AND asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER}
+      </if>
+      <if test="assetCategoryId != null">
+        AND asset_category_id = #{assetCategoryId,jdbcType=INTEGER}
+      </if>
+      <if test="assetPropertyId != null">
+        AND asset_property_id = #{assetPropertyId,jdbcType=INTEGER}
+      </if>
+      <if test="referenceActivityId != null">
+        AND reference_activity_id = #{referenceActivityId,jdbcType=INTEGER}
+      </if>
+      <if test="auctioneerName != null">
+        AND auctioneer_name = #{auctioneerName,jdbcType=VARCHAR}
+      </if>
+      <if test="auctioneerPhone != null">
+        AND auctioneer_phone = #{auctioneerPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="auctioneerQq != null">
+        AND auctioneer_qq = #{auctioneerQq,jdbcType=VARCHAR}
+      </if>
+      <if test="displayName != null">
+        AND display_name = #{displayName,jdbcType=VARCHAR}
+      </if>
+      <if test="beginNotified != null">
+        AND begin_notified = #{beginNotified,jdbcType=BIT}
+      </if>
+      <if test="endNotified != null">
+        AND end_notified = #{endNotified,jdbcType=BIT}
+      </if>
+      <if test="commissionChannelAgent != null">
+        AND commission_channel_agent = #{commissionChannelAgent,jdbcType=DECIMAL}
+      </if>
+      <if test="operatorAt != null">
+        AND operator_at = #{operatorAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="staffId != null">
+        AND staff_id = #{staffId,jdbcType=INTEGER}
+      </if>
+      <if test="visibilityLevel != null">
+        AND visibility_level = #{visibilityLevel,jdbcType=CHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.AuctionActivityCopy">
+    insert into zeus.auction_activity_copy1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="bidCount != null">
+        bid_count, 
+      </if>
+      <if test="participantNumber != null">
+        participant_number, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="updatedAt != null">
+        updated_at, 
+      </if>
+      <if test="assetId != null">
+        asset_id, 
+      </if>
+      <if test="mode != null">
+        mode, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="assetName != null">
+        asset_name, 
+      </if>
+      <if test="subCategoryId != null">
+        sub_category_id, 
+      </if>
+      <if test="categoryId != null">
+        category_id, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="restrict != null">
+        restrict, 
+      </if>
+      <if test="previewAt != null">
+        preview_at, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="isForceFinished != null">
+        is_force_finished, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="finishAt != null">
+        finish_at, 
+      </if>
+      <if test="reservePrice != null">
+        reserve_price, 
+      </if>
+      <if test="refPrice != null">
+        ref_price, 
+      </if>
+      <if test="startingPrice != null">
+        starting_price, 
+      </if>
+      <if test="currentPrice != null">
+        current_price, 
+      </if>
+      <if test="increment != null">
+        increment, 
+      </if>
+      <if test="biddingExtension != null">
+        bidding_extension, 
+      </if>
+      <if test="lockEndAt != null">
+        lock_end_at, 
+      </if>
+      <if test="extended != null">
+        extended, 
+      </if>
+      <if test="reduction != null">
+        reduction, 
+      </if>
+      <if test="reductionPeriod != null">
+        reduction_period, 
+      </if>
+      <if test="reducedAt != null">
+        reduced_at, 
+      </if>
+      <if test="quantity != null">
+        quantity, 
+      </if>
+      <if test="paidBySeller != null">
+        paid_by_seller, 
+      </if>
+      <if test="deposit != null">
+        deposit, 
+      </if>
+      <if test="commissionSeller != null">
+        commission_seller, 
+      </if>
+      <if test="commissionBuyer != null">
+        commission_buyer, 
+      </if>
+      <if test="commissionPercentSeller != null">
+        commission_percent_seller, 
+      </if>
+      <if test="commissionPercentBuyer != null">
+        commission_percent_buyer, 
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id, 
+      </if>
+      <if test="assetCategoryId != null">
+        asset_category_id, 
+      </if>
+      <if test="assetPropertyId != null">
+        asset_property_id, 
+      </if>
+      <if test="referenceActivityId != null">
+        reference_activity_id, 
+      </if>
+      <if test="auctioneerName != null">
+        auctioneer_name, 
+      </if>
+      <if test="auctioneerPhone != null">
+        auctioneer_phone, 
+      </if>
+      <if test="auctioneerQq != null">
+        auctioneer_qq, 
+      </if>
+      <if test="displayName != null">
+        display_name, 
+      </if>
+      <if test="beginNotified != null">
+        begin_notified, 
+      </if>
+      <if test="endNotified != null">
+        end_notified, 
+      </if>
+      <if test="commissionChannelAgent != null">
+        commission_channel_agent, 
+      </if>
+      <if test="operatorAt != null">
+        operator_at, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="staffId != null">
+        staff_id, 
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCount != null">
+        #{bidCount,jdbcType=INTEGER},
+      </if>
+      <if test="participantNumber != null">
+        #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assetId != null">
+        #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=CHAR},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="subCategoryId != null">
+        #{subCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="restrict != null">
+        #{restrict,jdbcType=CHAR},
+      </if>
+      <if test="previewAt != null">
+        #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isForceFinished != null">
+        #{isForceFinished,jdbcType=BIT},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishAt != null">
+        #{finishAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reservePrice != null">
+        #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="refPrice != null">
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="increment != null">
+        #{increment,jdbcType=DECIMAL},
+      </if>
+      <if test="biddingExtension != null">
+        #{biddingExtension,jdbcType=INTEGER},
+      </if>
+      <if test="lockEndAt != null">
+        #{lockEndAt,jdbcType=BIT},
+      </if>
+      <if test="extended != null">
+        #{extended,jdbcType=BIT},
+      </if>
+      <if test="reduction != null">
+        #{reduction,jdbcType=DECIMAL},
+      </if>
+      <if test="reductionPeriod != null">
+        #{reductionPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="reducedAt != null">
+        #{reducedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="paidBySeller != null">
+        #{paidBySeller,jdbcType=BIT},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionSeller != null">
+        #{commissionSeller,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionBuyer != null">
+        #{commissionBuyer,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionPercentSeller != null">
+        #{commissionPercentSeller,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionPercentBuyer != null">
+        #{commissionPercentBuyer,jdbcType=DECIMAL},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="assetCategoryId != null">
+        #{assetCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="assetPropertyId != null">
+        #{assetPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="referenceActivityId != null">
+        #{referenceActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="auctioneerName != null">
+        #{auctioneerName,jdbcType=VARCHAR},
+      </if>
+      <if test="auctioneerPhone != null">
+        #{auctioneerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="auctioneerQq != null">
+        #{auctioneerQq,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="beginNotified != null">
+        #{beginNotified,jdbcType=BIT},
+      </if>
+      <if test="endNotified != null">
+        #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="commissionChannelAgent != null">
+        #{commissionChannelAgent,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorAt != null">
+        #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="visibilityLevel != null">
+        #{visibilityLevel,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.AuctionActivityCopy">
+    update zeus.auction_activity_copy1
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCount != null">
+        bid_count = #{bidCount,jdbcType=INTEGER},
+      </if>
+      <if test="participantNumber != null">
+        participant_number = #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assetId != null">
+        asset_id = #{assetId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        mode = #{mode,jdbcType=CHAR},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="assetName != null">
+        asset_name = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="subCategoryId != null">
+        sub_category_id = #{subCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="restrict != null">
+        restrict = #{restrict,jdbcType=CHAR},
+      </if>
+      <if test="previewAt != null">
+        preview_at = #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isForceFinished != null">
+        is_force_finished = #{isForceFinished,jdbcType=BIT},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishAt != null">
+        finish_at = #{finishAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reservePrice != null">
+        reserve_price = #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="refPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="startingPrice != null">
+        starting_price = #{startingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="increment != null">
+        increment = #{increment,jdbcType=DECIMAL},
+      </if>
+      <if test="biddingExtension != null">
+        bidding_extension = #{biddingExtension,jdbcType=INTEGER},
+      </if>
+      <if test="lockEndAt != null">
+        lock_end_at = #{lockEndAt,jdbcType=BIT},
+      </if>
+      <if test="extended != null">
+        extended = #{extended,jdbcType=BIT},
+      </if>
+      <if test="reduction != null">
+        reduction = #{reduction,jdbcType=DECIMAL},
+      </if>
+      <if test="reductionPeriod != null">
+        reduction_period = #{reductionPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="reducedAt != null">
+        reduced_at = #{reducedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="paidBySeller != null">
+        paid_by_seller = #{paidBySeller,jdbcType=BIT},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionSeller != null">
+        commission_seller = #{commissionSeller,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionBuyer != null">
+        commission_buyer = #{commissionBuyer,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionPercentSeller != null">
+        commission_percent_seller = #{commissionPercentSeller,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionPercentBuyer != null">
+        commission_percent_buyer = #{commissionPercentBuyer,jdbcType=DECIMAL},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="assetCategoryId != null">
+        asset_category_id = #{assetCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="assetPropertyId != null">
+        asset_property_id = #{assetPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="referenceActivityId != null">
+        reference_activity_id = #{referenceActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="auctioneerName != null">
+        auctioneer_name = #{auctioneerName,jdbcType=VARCHAR},
+      </if>
+      <if test="auctioneerPhone != null">
+        auctioneer_phone = #{auctioneerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="auctioneerQq != null">
+        auctioneer_qq = #{auctioneerQq,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null">
+        display_name = #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="beginNotified != null">
+        begin_notified = #{beginNotified,jdbcType=BIT},
+      </if>
+      <if test="endNotified != null">
+        end_notified = #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="commissionChannelAgent != null">
+        commission_channel_agent = #{commissionChannelAgent,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorAt != null">
+        operator_at = #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level = #{visibilityLevel,jdbcType=CHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

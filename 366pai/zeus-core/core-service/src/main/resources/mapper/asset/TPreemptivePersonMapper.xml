@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年12月21日 15时29分00秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TPreemptivePersonMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TPreemptivePerson">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="preemptive_person_name" jdbcType="VARCHAR" property="preemptivePersonName"/>
+        <result column="preemptive_person_card" jdbcType="VARCHAR" property="preemptivePersonCard"/>
+        <result column="asset_id" jdbcType="INTEGER" property="assetId"/>
+        <result column="level" jdbcType="VARCHAR" property="level"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime"/>
+        <result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
+        <result column="ask_result" jdbcType="INTEGER" property="askResult"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, preemptive_person_name, preemptive_person_card, asset_id, level, created_time, 
+	updated_time, del_flag,ask_result
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_preemptive_person
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TPreemptivePersonCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_preemptive_person
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="preemptivePersonName != null">
+                AND preemptive_person_name = #{preemptivePersonName,jdbcType=VARCHAR}
+            </if>
+            <if test="preemptivePersonCard != null">
+                AND preemptive_person_card = #{preemptivePersonCard,jdbcType=VARCHAR}
+            </if>
+            <if test="assetId != null">
+                AND asset_id = #{assetId,jdbcType=INTEGER}
+            </if>
+            <if test="level != null">
+                AND level = #{level,jdbcType=VARCHAR}
+            </if>
+            <if test="createdTime != null">
+                AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updatedTime != null">
+                AND updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="delFlag != null">
+                AND del_flag = #{delFlag,jdbcType=INTEGER}
+            </if>
+            <if test="askResult != null">
+                AND ask_result = #{askResult,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.TPreemptivePerson">
+        insert into zeus.t_preemptive_person
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="preemptivePersonName != null">
+                preemptive_person_name,
+            </if>
+            <if test="preemptivePersonCard != null">
+                preemptive_person_card,
+            </if>
+            <if test="assetId != null">
+                asset_id,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            created_time,
+            <if test="updatedTime != null">
+                updated_time,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="preemptivePersonName != null">
+                #{preemptivePersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="preemptivePersonCard != null">
+                #{preemptivePersonCard,jdbcType=VARCHAR},
+            </if>
+            <if test="assetId != null">
+                #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=VARCHAR},
+            </if>
+            now(),
+            <if test="updatedTime != null">
+                #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.TPreemptivePerson">
+        update zeus.t_preemptive_person
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="preemptivePersonName != null">
+                preemptive_person_name = #{preemptivePersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="preemptivePersonCard != null">
+                preemptive_person_card = #{preemptivePersonCard,jdbcType=VARCHAR},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            updated_time = now(),
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=INTEGER},
+            </if>
+            <if test="askResult != null">
+                ask_result = #{askResult,jdbcType=INTEGER}
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

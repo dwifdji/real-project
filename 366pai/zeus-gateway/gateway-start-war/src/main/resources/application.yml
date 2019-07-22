@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: gateway
+dubbo:
+  application:
+    id: gateway
+    name: gateway
+  scan:
+    basePackages: com._360pai.core.provider
+  protocol:
+      port: -1
+server:
+  port: 8087
+
+
+

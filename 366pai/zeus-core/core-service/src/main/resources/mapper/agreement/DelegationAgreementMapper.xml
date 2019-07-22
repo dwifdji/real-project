@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分50秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.agreement.mapper.DelegationAgreementMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.agreement.DelegationAgreement">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="signed" jdbcType="BIT" property="signed" />
+	<result column="all_signed" jdbcType="BIT" property="allSigned" />
+	<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+	<result column="template_id" jdbcType="INTEGER" property="templateId" />
+	<result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="all_signed_at" jdbcType="TIMESTAMP" property="allSignedAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id, signed, all_signed, download_url, template_id, 
+	viewpdf_url, contract_id, created_at, all_signed_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.delegation_agreement
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.agreement.DelegationAgreementCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.delegation_agreement
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="signed != null">
+        AND signed = #{signed,jdbcType=BIT}
+      </if>
+      <if test="allSigned != null">
+        AND all_signed = #{allSigned,jdbcType=BIT}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="templateId != null">
+        AND template_id = #{templateId,jdbcType=INTEGER}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="allSignedAt != null">
+        AND all_signed_at = #{allSignedAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.agreement.DelegationAgreement">
+    insert into zeus.delegation_agreement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="signed != null">
+        signed, 
+      </if>
+      <if test="allSigned != null">
+        all_signed, 
+      </if>
+      <if test="downloadUrl != null">
+        download_url, 
+      </if>
+      <if test="templateId != null">
+        template_id, 
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="allSignedAt != null">
+        all_signed_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="signed != null">
+        #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allSignedAt != null">
+        #{allSignedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.agreement.DelegationAgreement">
+    update zeus.delegation_agreement
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="signed != null">
+        signed = #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        all_signed = #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allSignedAt != null">
+        all_signed_at = #{allSignedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getAllSignedTimeout" resultType="java.lang.Integer">
+      select d.activity_id
+      from zeus.delegation_agreement d
+      inner join zeus.auction_activity aa on aa.id=d.activity_id
+      where d.all_signed=0 and TIMESTAMPDIFF(SECOND, d.created_at, now()) - 7 * 24 * 3600 > 0 and aa.status != 'CANCELLED'
+  </select>
+</mapper>

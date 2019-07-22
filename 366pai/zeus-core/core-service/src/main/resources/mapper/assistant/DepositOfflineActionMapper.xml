@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月03日 14时24分09秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.DepositOfflineActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.DepositOfflineAction">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="action" jdbcType="CHAR" property="action" />
+	<result column="deposit_id" jdbcType="BIGINT" property="depositId" />
+	<result column="voucher" jdbcType="VARCHAR" property="voucher" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, action, deposit_id, voucher, remark, operator_id, 
+	create_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.deposit_offline_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.DepositOfflineActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.deposit_offline_action
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="action != null">
+        AND action = #{action,jdbcType=CHAR}
+      </if>
+      <if test="depositId != null">
+        AND deposit_id = #{depositId,jdbcType=BIGINT}
+      </if>
+      <if test="voucher != null">
+        AND voucher = #{voucher,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.DepositOfflineAction">
+    insert into zeus.deposit_offline_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="action != null">
+        action, 
+      </if>
+      <if test="depositId != null">
+        deposit_id, 
+      </if>
+      <if test="voucher != null">
+        voucher, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=CHAR},
+      </if>
+      <if test="depositId != null">
+        #{depositId,jdbcType=BIGINT},
+      </if>
+      <if test="voucher != null">
+        #{voucher,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.DepositOfflineAction">
+    update zeus.deposit_offline_action
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=CHAR},
+      </if>
+      <if test="depositId != null">
+        deposit_id = #{depositId,jdbcType=BIGINT},
+      </if>
+      <if test="voucher != null">
+        voucher = #{voucher,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.facade.assistant.vo.DepositVo">
+      select *
+      from (
+      SELECT
+      d.id,
+      d.amount,
+      d.bank_name bankName,
+      d.bank_account_number bankAccountNumber,
+      d.bank_account_name bankAccountName,
+      d.STATUS,
+      d.created_at createdAt,
+      aa.asset_name activityName,
+      aa.end_at endAt,
+      c.NAME categoryName,
+      CASE
+      WHEN bp.`type` = 'user' THEN
+      bu.`name` ELSE bc.`name`
+      END buyerName,
+      CASE
+      WHEN bp.`type` = 'user' THEN
+      bu.`mobile` ELSE bc.`mobile`
+      END buyerMobile,
+      doa.remark,
+      doa.voucher,
+      s.NAME operator,
+      a.category_id categoryId
+      FROM
+      zeus.deposit d
+      LEFT JOIN zeus.auction_activity aa ON aa.id = d.activity_id
+      LEFT JOIN zeus.asset a ON a.id = aa.asset_id
+      LEFT JOIN zeus.t_asset_template_category atc ON atc.id = a.category_id
+      LEFT JOIN zeus.t_asset_category c ON c.id = atc.category_id
+      LEFT JOIN zeus.t_party bp ON bp.id = d.party_id
+      LEFT JOIN zeus.t_user bu ON bu.id = bp.id
+      LEFT JOIN zeus.t_company bc ON bc.id = bp.id
+      LEFT JOIN zeus.deposit_offline_action doa ON doa.deposit_id = d.id
+      AND doa.action = 'PAYMENT'
+      LEFT JOIN zeus.staff s ON s.id = doa.operator_id
+      WHERE
+      d.pay_type = 'OFFLINE'
+      AND d.STATUS IN ( 'INIT', 'OFFLINE_RECEIVED', 'OFFLINE_FINISHED' )
+      AND d.delete_flag = '0'
+      ) t
+      <where>
+          <if test="id != null">and t.id=#{id}</if>
+          <if test="createdAtBegin != null and createdAtEnd != null">and t.createdAt>=#{createdAtBegin} and t.createdAt&lt;=#{createdAtEnd}</if>
+          <if test="status != null">and t.status=#{status}</if>
+          <if test ="q != null">and (t.buyerName like concat('%',#{q},'%') or t.id like concat('%',#{q},'%') or t.activityName like concat('%',#{q},'%'))</if>
+      </where>
+      order by t.createdAt desc
+  </select>
+
+    <select id="getRefundList" parameterType="java.util.Map" resultType="com._360pai.core.facade.assistant.vo.DepositVo">
+        select *
+        from (
+            select d.id,d.amount,d.bank_name bankName,d.bank_account_number bankAccountNumber,d.bank_account_name bankAccountName,d.status,d.created_at createdAt,
+                aa.asset_name activityName,aa.end_at endAt,c.name categoryName,
+                case when bp.`type`='user' then bu.`name` else bc.`name` end buyerName,
+                case when bp.`type`='user' then bu.`mobile` else bc.`mobile` end buyerMobile,
+                doa.remark,doa.voucher,s.name operator
+            from zeus.deposit d
+            inner join zeus.auction_activity aa on aa.id=d.activity_id and aa.end_at&lt;now()
+            inner join zeus.asset a on a.id=aa.asset_id
+            inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+            inner join zeus.t_asset_category c on c.id=atc.category_id
+            inner join zeus.t_party bp on bp.id=d.party_id
+            left join zeus.t_user bu on bu.id=bp.id
+            left join zeus.t_company bc on bc.id=bp.id
+            left join zeus.deposit_offline_action doa on doa.deposit_id=d.id and doa.action='REFUND'
+            left join zeus.staff s on s.id=doa.operator_id
+            where d.pay_type='OFFLINE' and d.status in ('OFFLINE_RECEIVED','OFFLINE_RETURNED') and d.delete_flag='0'
+            union all
+            select d.id,d.amount,d.bank_name bankName,d.bank_account_number bankAccountNumber,d.bank_account_name bankAccountName,d.status,d.created_at createdAt,
+                aa.asset_name activityName,aa.end_at endAt,c.name categoryName,
+                case when bp.`type`='user' then bu.`name` else bc.`name` end buyerName,
+                case when bp.`type`='user' then bu.`mobile` else bc.`mobile` end buyerMobile,
+                doa.remark,doa.voucher,s.name operator
+            from zeus.deposit d
+            inner join zeus.auction_activity aa on aa.id=d.activity_id and aa.end_at&lt;now()
+            inner join zeus.asset a on a.id=aa.asset_id
+            inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+            inner join zeus.t_asset_category c on c.id=atc.category_id
+            inner join zeus.t_party bp on bp.id=d.party_id
+            left join zeus.t_user bu on bu.id=bp.id
+            left join zeus.t_company bc on bc.id=bp.id
+            left join zeus.deposit_offline_action doa on doa.deposit_id=d.id and doa.action='TRANSFERRED'
+            left join zeus.staff s on s.id=doa.operator_id
+            where d.pay_type='OFFLINE' and d.status='OFFLINE_TRANSFERRED' and d.delete_flag='0'
+            union all
+            select d.id,d.amount,d.bank_name bankName,d.bank_account_number bankAccountNumber,d.bank_account_name bankAccountName,d.status,d.created_at createdAt,
+                aa.asset_name activityName,aa.end_at endAt,c.name categoryName,
+                case when bp.`type`='user' then bu.`name` else bc.`name` end buyerName,
+                case when bp.`type`='user' then bu.`mobile` else bc.`mobile` end buyerMobile,
+                doa.remark,doa.voucher,s.name operator
+            from zeus.deposit d
+            inner join zeus.auction_activity aa on aa.id=d.activity_id and aa.end_at&lt;now()
+            inner join zeus.asset a on a.id=aa.asset_id and a.come_from='0'
+            inner join zeus.t_party sp on sp.id=a.party_id and sp.`type`='company'
+            inner join zeus.t_company sc on sc.id=sp.id and sc.channel_pay='1'
+            inner join zeus.t_asset_template_category atc on atc.id=a.category_id
+            inner join zeus.t_asset_category c on c.id=atc.category_id
+            inner join zeus.t_party bp on bp.id=d.party_id
+            left join zeus.t_user bu on bu.id=bp.id
+            left join zeus.t_company bc on bc.id=bp.id
+            left join zeus.deposit_offline_action doa on doa.deposit_id=d.id and doa.action='REFUND'
+            left join zeus.staff s on s.id=doa.operator_id
+            where d.pay_type='OFFLINE' and d.status='OFFLINE_FINISHED' and d.delete_flag='0'
+        ) t
+        <where>
+            <if test="id != null">and t.id=#{id}</if>
+            <if test="createdAtBegin != null and createdAtEnd != null">and t.createdAt>=#{createdAtBegin} and t.createdAt&lt;=#{createdAtEnd}</if>
+            <if test="status != null">and t.status=#{status}</if>
+            <if test ="q != null">and (t.buyerName like concat('%',#{q},'%') or t.id like concat('%',#{q},'%') or t.activityName like concat('%',#{q},'%'))</if>
+        </where>
+        order by t.createdAt desc
+    </select>
+</mapper>

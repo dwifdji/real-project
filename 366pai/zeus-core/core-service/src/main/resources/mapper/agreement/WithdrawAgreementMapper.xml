@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年12月06日 10时46分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.agreement.mapper.WithdrawAgreementMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.agreement.WithdrawAgreement">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="acct_detail_id" jdbcType="BIGINT" property="acctDetailId" />
+	<result column="signed" jdbcType="BIT" property="signed" />
+	<result column="all_signed" jdbcType="BIT" property="allSigned" />
+	<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+	<result column="template_id" jdbcType="INTEGER" property="templateId" />
+	<result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="all_signed_at" jdbcType="TIMESTAMP" property="allSignedAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, acct_detail_id, signed, all_signed, download_url, template_id, 
+	viewpdf_url, contract_id, created_at, all_signed_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.withdraw_agreement
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.agreement.WithdrawAgreementCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.withdraw_agreement
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="acctDetailId != null">
+        AND acct_detail_id = #{acctDetailId,jdbcType=BIGINT}
+      </if>
+      <if test="signed != null">
+        AND signed = #{signed,jdbcType=BIT}
+      </if>
+      <if test="allSigned != null">
+        AND all_signed = #{allSigned,jdbcType=BIT}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="templateId != null">
+        AND template_id = #{templateId,jdbcType=INTEGER}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="allSignedAt != null">
+        AND all_signed_at = #{allSignedAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com._360pai.core.model.agreement.WithdrawAgreement">
+    insert into zeus.withdraw_agreement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="acctDetailId != null">
+        acct_detail_id, 
+      </if>
+      <if test="signed != null">
+        signed, 
+      </if>
+      <if test="allSigned != null">
+        all_signed, 
+      </if>
+      <if test="downloadUrl != null">
+        download_url, 
+      </if>
+      <if test="templateId != null">
+        template_id, 
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="allSignedAt != null">
+        all_signed_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acctDetailId != null">
+        #{acctDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="signed != null">
+        #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allSignedAt != null">
+        #{allSignedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.agreement.WithdrawAgreement">
+    update zeus.withdraw_agreement
+    <set>
+      <if test="signed != null">
+        signed = #{signed,jdbcType=BIT},
+      </if>
+      <if test="allSigned != null">
+        all_signed = #{allSigned,jdbcType=BIT},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allSignedAt != null">
+        all_signed_at = #{allSignedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

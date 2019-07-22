@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分49秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.AuctionActivityAlbumMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.AuctionActivityAlbum">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="img" jdbcType="VARCHAR" property="img" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="is_online" jdbcType="BIT" property="isOnline" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="preview_at" jdbcType="TIMESTAMP" property="previewAt" />
+	<result column="description" jdbcType="VARCHAR" property="description" />
+	<result column="detail_img" jdbcType="VARCHAR" property="detailImg" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, created_at, name, img, begin_at, end_at, 
+	is_online, remark, preview_at, description, detail_img
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.auction_activity_album
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.AuctionActivityAlbumCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.auction_activity_album
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="name != null">
+        AND `name` = #{name}
+      </if>
+      <if test="img != null">
+        AND img = #{img,jdbcType=VARCHAR}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isOnline != null">
+        AND is_online = #{isOnline,jdbcType=BIT}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="previewAt != null">
+        AND preview_at = #{previewAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="description != null">
+        AND description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="detailImg != null">
+        AND detail_img = #{detailImg,jdbcType=VARCHAR}
+      </if>
+      <if test="nameLike != null">
+        AND `name` like CONCAT('%',#{name},'%')
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.AuctionActivityAlbum" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.auction_activity_album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="img != null">
+        img, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="isOnline != null">
+        is_online, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="previewAt != null">
+        preview_at, 
+      </if>
+      <if test="description != null">
+        description, 
+      </if>
+      <if test="detailImg != null">
+        detail_img, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="previewAt != null">
+        #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImg != null">
+        #{detailImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.AuctionActivityAlbum">
+    update zeus.auction_activity_album
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isOnline != null">
+        is_online = #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="previewAt != null">
+        preview_at = #{previewAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImg != null">
+        detail_img = #{detailImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.activity.AuctionActivityAlbum">
+      select a.*
+      from zeus.auction_activity_album a
+      <where>
+        <if test="q != null"> and a.name like concat('%',#{q},'%')</if>
+        <if test="status != null"> and a.is_online=#{status}</if>
+      </where>
+  </select>
+
+  <select id="getStickyList" resultType="com._360pai.core.model.activity.AuctionActivityAlbum">
+	  select a.*
+      from zeus.sticky_auction_activity_album s
+      inner join zeus.auction_activity_album a on a.id=s.album_id
+      order by s.order_number asc
+  </select>
+
+  <select id="getRelatedActivityList" resultType="com._360pai.core.model.activity.AuctionActivity">
+      select a.*,c.name as categoryName,ifnull(vc.view_count, 0) viewCount
+      from zeus.auction_activity_album_map m
+      inner join zeus.auction_activity a on a.id=m.activity_id and a.visibility_level = 'PLATFORM_DEFAULT' and a.delete_flag=0
+      left join zeus.t_asset_category c on c.id=a.asset_category_group_id
+      left join zeus.auction_activity_view_count vc on vc.activity_id=a.id
+      where m.album_id=#{albumId}
+  </select>
+    <select id="getFrontRelatedActivityList" resultType="java.util.Map">
+        select *
+        from (
+            select aa.asset_name as assetName,
+                    aa.`id` as activityId,
+                    ass.extra ->> "$.images[0]" as imageUrl,
+                    aa.`deposit` as deposit,
+                    aa.`starting_price` as startingPrice,
+                    null as refPrice,
+                    m.activity_type activityType,
+                    aa.asset_category_group_id as `category`,
+                    acg.`name` as categoryName,
+                    aa.begin_at as beginAt,
+                    aa.end_at as endAt,
+                    aa.preview_at as previewAt,
+                    aa.`mode`,
+                    aa.`status`,
+                    aa.participant_number AS participantNumber,
+                    ifnull(aavc.view_count, 0) AS viewCount,
+                    ci.`name` AS cityName,
+                    cp.`name` AS provinceName,
+                    m.order_num orderNum
+            from zeus.auction_activity_album_map m
+            inner join zeus.auction_activity aa
+                on aa.id=m.activity_id and aa.delete_flag = 0 and aa.visibility_level = 'PLATFORM_DEFAULT'
+                    and  now() > aa.preview_at and aa.status not in ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+            inner join zeus.asset ass on ass.id=aa.asset_id
+            left join t_asset_category acg ON acg.id = aa.asset_category_group_id
+            left join zeus.auction_activity_view_count aavc ON aavc.activity_id = aa.id
+            left join zeus.city ci ON ci.id = ass.city_id
+            left join zeus.province cp ON cp.id = ass.province_id
+            where m.activity_type='auction' and m.album_id=#{albumId}
+            union all
+            select e.name as assetName,
+                    e.`id` as activityId,
+                    e.extra ->> "$.images[0]" as imageUrl,
+                    e.`deposit` as deposit,
+                    null as startingPrice,
+                    e.ref_price as refPrice,
+                    m.activity_type activityType,
+                    e.type as `category`,
+                    '' as categoryName,
+                    e.begin_at as beginAt,
+                    e.end_at as endAt,
+                    null as previewAt,
+                    '' `mode`,
+                    e.`status`,
+                    e.apply_number as participantNumber,
+                    e.browse_number as viewCount,
+                    ci.`name` as cityName,
+                    cp.`name` AS provinceName,
+                    m.order_num orderNum
+            from zeus.auction_activity_album_map m
+            inner join zeus.enrolling_activity e
+              on e.id=m.activity_id and e.delete_flag = 0 and e.status in ( "ONLINE", "FINISHED", "CLOSED")
+                  and e.visibility_level = 'PLATFORM_DEFAULT' and e.begin_at &lt; NOW()
+            left join zeus.city ci ON ci.id = e.city_id
+            left join zeus.province cp ON cp.id = e.province_id
+            where m.activity_type='enrolling' and m.album_id=#{albumId}
+        ) t
+        order by t.orderNum asc, t.viewCount desc, t.endAt asc
+    </select>
+</mapper>

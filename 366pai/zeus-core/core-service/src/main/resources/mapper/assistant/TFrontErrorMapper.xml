@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月24日 18时12分14秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TFrontErrorMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TFrontError">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="login_id" jdbcType="INTEGER" property="loginId" />
+	<result column="application" jdbcType="VARCHAR" property="application" />
+	<result column="point_key" jdbcType="VARCHAR" property="pointKey" />
+	<result column="point_desc" jdbcType="VARCHAR" property="pointDesc" />
+	<result column="buz_id" jdbcType="VARCHAR" property="buzId" />
+	<result column="buz_params" jdbcType="VARCHAR" property="buzParams" />
+	<result column="device_mark" jdbcType="VARCHAR" property="deviceMark" />
+	<result column="error" jdbcType="LONGVARCHAR" property="error" />
+	<result column="city" jdbcType="VARCHAR" property="city" />
+	<result column="province" jdbcType="VARCHAR" property="province" />
+	<result column="ip" jdbcType="VARCHAR" property="ip" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, login_id, application, point_key, point_desc, buz_id, 
+	buz_params, device_mark, error, city, province, ip, 
+	delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_front_error
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TFrontErrorCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_front_error
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="loginId != null">
+        AND login_id = #{loginId,jdbcType=INTEGER}
+      </if>
+      <if test="application != null">
+        AND application = #{application,jdbcType=VARCHAR}
+      </if>
+      <if test="pointKey != null">
+        AND point_key = #{pointKey,jdbcType=VARCHAR}
+      </if>
+      <if test="pointDesc != null">
+        AND point_desc = #{pointDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="buzId != null">
+        AND buz_id = #{buzId,jdbcType=VARCHAR}
+      </if>
+      <if test="buzParams != null">
+        AND buz_params = #{buzParams,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceMark != null">
+        AND device_mark = #{deviceMark,jdbcType=VARCHAR}
+      </if>
+      <if test="error != null">
+        AND error = #{error,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="city != null">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="province != null">
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="ip != null">
+        AND ip = #{ip,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TFrontError">
+    insert into zeus.t_front_error
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="loginId != null">
+        login_id, 
+      </if>
+      <if test="application != null">
+        application, 
+      </if>
+      <if test="pointKey != null">
+        point_key, 
+      </if>
+      <if test="pointDesc != null">
+        point_desc, 
+      </if>
+      <if test="buzId != null">
+        buz_id, 
+      </if>
+      <if test="buzParams != null">
+        buz_params, 
+      </if>
+      <if test="deviceMark != null">
+        device_mark, 
+      </if>
+      <if test="error != null">
+        error, 
+      </if>
+      <if test="city != null">
+        city, 
+      </if>
+      <if test="province != null">
+        province, 
+      </if>
+      <if test="ip != null">
+        ip, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginId != null">
+        #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="pointKey != null">
+        #{pointKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDesc != null">
+        #{pointDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="buzId != null">
+        #{buzId,jdbcType=VARCHAR},
+      </if>
+      <if test="buzParams != null">
+        #{buzParams,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceMark != null">
+        #{deviceMark,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TFrontError">
+    update zeus.t_front_error
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginId != null">
+        login_id = #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        application = #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="pointKey != null">
+        point_key = #{pointKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDesc != null">
+        point_desc = #{pointDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="buzId != null">
+        buz_id = #{buzId,jdbcType=VARCHAR},
+      </if>
+      <if test="buzParams != null">
+        buz_params = #{buzParams,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceMark != null">
+        device_mark = #{deviceMark,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        error = #{error,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

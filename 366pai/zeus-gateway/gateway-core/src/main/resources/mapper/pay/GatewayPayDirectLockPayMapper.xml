@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月15日 16时47分13秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.pay.mapper.GatewayPayDirectLockPayMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.pay.GatewayPayDirectLockPay">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="pay_type" jdbcType="VARCHAR" property="payType" />
+	<result column="pay_id" jdbcType="VARCHAR" property="payId" />
+	<result column="original_pay_id" jdbcType="VARCHAR" property="originalPayId" />
+	<result column="pay_mem_code" jdbcType="VARCHAR" property="payMemCode" />
+	<result column="pay_mem_name" jdbcType="VARCHAR" property="payMemName" />
+	<result column="pay_amt" jdbcType="VARCHAR" property="payAmt" />
+	<result column="rec_mem_code" jdbcType="VARCHAR" property="recMemCode" />
+	<result column="rec_mem_name" jdbcType="VARCHAR" property="recMemName" />
+	<result column="lock_tag" jdbcType="VARCHAR" property="lockTag" />
+	<result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+	<result column="bank_use" jdbcType="VARCHAR" property="bankUse" />
+	<result column="pay_mem_type" jdbcType="VARCHAR" property="payMemType" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, pay_type, pay_id, original_pay_id, pay_mem_code, pay_mem_name, 
+	pay_amt, rec_mem_code, rec_mem_name, lock_tag, bank_account, bank_use, 
+	pay_mem_type, status, msg, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_pay_direct_lock_pay
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.pay.GatewayPayDirectLockPayCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_pay_direct_lock_pay
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="payId != null">
+        AND pay_id = #{payId,jdbcType=VARCHAR}
+      </if>
+      <if test="originalPayId != null">
+        AND original_pay_id = #{originalPayId,jdbcType=VARCHAR}
+      </if>
+      <if test="payMemCode != null">
+        AND pay_mem_code = #{payMemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="payMemName != null">
+        AND pay_mem_name = #{payMemName,jdbcType=VARCHAR}
+      </if>
+      <if test="payAmt != null">
+        AND pay_amt = #{payAmt,jdbcType=VARCHAR}
+      </if>
+      <if test="recMemCode != null">
+        AND rec_mem_code = #{recMemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="recMemName != null">
+        AND rec_mem_name = #{recMemName,jdbcType=VARCHAR}
+      </if>
+      <if test="lockTag != null">
+        AND lock_tag = #{lockTag,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccount != null">
+        AND bank_account = #{bankAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="bankUse != null">
+        AND bank_use = #{bankUse,jdbcType=VARCHAR}
+      </if>
+      <if test="payMemType != null">
+        AND pay_mem_type = #{payMemType,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.pay.GatewayPayDirectLockPay">
+    insert into zeus.gateway_pay_direct_lock_pay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="payType != null">
+        pay_type, 
+      </if>
+      <if test="payId != null">
+        pay_id, 
+      </if>
+      <if test="originalPayId != null">
+        original_pay_id, 
+      </if>
+      <if test="payMemCode != null">
+        pay_mem_code, 
+      </if>
+      <if test="payMemName != null">
+        pay_mem_name, 
+      </if>
+      <if test="payAmt != null">
+        pay_amt, 
+      </if>
+      <if test="recMemCode != null">
+        rec_mem_code, 
+      </if>
+      <if test="recMemName != null">
+        rec_mem_name, 
+      </if>
+      <if test="lockTag != null">
+        lock_tag, 
+      </if>
+      <if test="bankAccount != null">
+        bank_account, 
+      </if>
+      <if test="bankUse != null">
+        bank_use, 
+      </if>
+      <if test="payMemType != null">
+        pay_mem_type, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPayId != null">
+        #{originalPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemCode != null">
+        #{payMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemName != null">
+        #{payMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmt != null">
+        #{payAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemCode != null">
+        #{recMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemName != null">
+        #{recMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTag != null">
+        #{lockTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUse != null">
+        #{bankUse,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemType != null">
+        #{payMemType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.pay.GatewayPayDirectLockPay">
+    update zeus.gateway_pay_direct_lock_pay
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null">
+        pay_id = #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPayId != null">
+        original_pay_id = #{originalPayId,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemCode != null">
+        pay_mem_code = #{payMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemName != null">
+        pay_mem_name = #{payMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmt != null">
+        pay_amt = #{payAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemCode != null">
+        rec_mem_code = #{recMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemName != null">
+        rec_mem_name = #{recMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTag != null">
+        lock_tag = #{lockTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUse != null">
+        bank_use = #{bankUse,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemType != null">
+        pay_mem_type = #{payMemType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

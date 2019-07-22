@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetCategoryMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetCategory">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+        <result column="is_group_default" jdbcType="BIT" property="isGroupDefault"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, name, group_id, is_group_default
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_category
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetCategoryCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_category
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="groupId != null">
+                AND group_id = #{groupId,jdbcType=INTEGER}
+            </if>
+            <if test="isGroupDefault != null">
+                AND is_group_default = #{isGroupDefault,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetCategory">
+        insert into zeus.asset_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="groupId != null">
+                group_id,
+            </if>
+            <if test="isGroupDefault != null">
+                is_group_default,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="groupId != null">
+                #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="isGroupDefault != null">
+                #{isGroupDefault,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetCategory">
+        update zeus.asset_category
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="groupId != null">
+                group_id = #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="isGroupDefault != null">
+                is_group_default = #{isGroupDefault,jdbcType=BIT},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="selectDefault" resultType="java.lang.Integer">
+      select id from asset_category where group_id = #{groupId} and is_group_default = 1
+  </select>
+
+</mapper>

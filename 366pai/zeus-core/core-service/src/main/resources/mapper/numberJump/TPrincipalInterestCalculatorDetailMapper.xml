@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月29日 14时56分33秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.numberJump.mapper.TPrincipalInterestCalculatorDetailMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorDetail">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="calculator_id" jdbcType="INTEGER" property="calculatorId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="benchmark_interest_rate" jdbcType="DECIMAL" property="benchmarkInterestRate" />
+    <result column="actual_interest_rate" jdbcType="DECIMAL" property="actualInterestRate" />
+    <result column="interest" jdbcType="DECIMAL" property="interest" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, calculator_id, type, start_date, end_date, benchmark_interest_rate,
+    actual_interest_rate, interest, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_principal_interest_calculator_detail
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.numberJump.TPrincipalInterestCalculatorDetailCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_principal_interest_calculator_detail
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="calculatorId != null">
+        AND calculator_id = #{calculatorId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="startDate != null">
+        AND start_date = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="benchmarkInterestRate != null">
+        AND benchmark_interest_rate = #{benchmarkInterestRate,jdbcType=DECIMAL}
+      </if>
+      <if test="actualInterestRate != null">
+        AND actual_interest_rate = #{actualInterestRate,jdbcType=DECIMAL}
+      </if>
+      <if test="interest != null">
+        AND interest = #{interest,jdbcType=DECIMAL}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorDetail">
+    insert into zeus.t_principal_interest_calculator_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="calculatorId != null">
+        calculator_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="benchmarkInterestRate != null">
+        benchmark_interest_rate,
+      </if>
+      <if test="actualInterestRate != null">
+        actual_interest_rate,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="calculatorId != null">
+        #{calculatorId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="benchmarkInterestRate != null">
+        #{benchmarkInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="actualInterestRate != null">
+        #{actualInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.numberJump.TPrincipalInterestCalculatorDetail">
+    update zeus.t_principal_interest_calculator_detail
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="calculatorId != null">
+        calculator_id = #{calculatorId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="benchmarkInterestRate != null">
+        benchmark_interest_rate = #{benchmarkInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="actualInterestRate != null">
+        actual_interest_rate = #{actualInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

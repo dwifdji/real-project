@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月11日 11时17分23秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.TAuctionStepRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.TAuctionStepRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="order_id" jdbcType="BIGINT" property="orderId" />
+	<result column="step" jdbcType="VARCHAR" property="step" />
+	<result column="req" jdbcType="VARCHAR" property="req" />
+	<result column="resp" jdbcType="VARCHAR" property="resp" />
+	<result column="core_exception" jdbcType="LONGVARCHAR" property="coreException" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id,party_id, order_id, step, req, resp,
+	core_exception, status, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_auction_step_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.TAuctionStepRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_auction_step_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="orderId != null">
+        AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="step != null">
+        AND step = #{step,jdbcType=VARCHAR}
+      </if>
+      <if test="req != null">
+        AND req = #{req,jdbcType=VARCHAR}
+      </if>
+      <if test="resp != null">
+        AND resp = #{resp,jdbcType=VARCHAR}
+      </if>
+      <if test="coreException != null">
+        AND core_exception = #{coreException,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.TAuctionStepRecord">
+    insert into zeus.t_auction_step_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="orderId != null">
+        order_id, 
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="step != null">
+        step, 
+      </if>
+      <if test="req != null">
+        req, 
+      </if>
+      <if test="resp != null">
+        resp, 
+      </if>
+      <if test="coreException != null">
+        core_exception, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=BIGINT},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="req != null">
+        #{req,jdbcType=VARCHAR},
+      </if>
+      <if test="resp != null">
+        #{resp,jdbcType=VARCHAR},
+      </if>
+      <if test="coreException != null">
+        #{coreException,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.TAuctionStepRecord">
+    update zeus.t_auction_step_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="req != null">
+        req = #{req,jdbcType=VARCHAR},
+      </if>
+      <if test="resp != null">
+        resp = #{resp,jdbcType=VARCHAR},
+      </if>
+      <if test="coreException != null">
+        core_exception = #{coreException,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetCategoryGroupSelfMappingMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetCategoryGroupSelfMapping">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="from_category_group_id" jdbcType="INTEGER" property="fromCategoryGroupId" />
+	<result column="to_category_group_id" jdbcType="INTEGER" property="toCategoryGroupId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, from_category_group_id, to_category_group_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.asset_category_group_self_mapping
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetCategoryGroupSelfMappingCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.asset_category_group_self_mapping
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="fromCategoryGroupId != null">
+        AND from_category_group_id = #{fromCategoryGroupId,jdbcType=INTEGER}
+      </if>
+      <if test="toCategoryGroupId != null">
+        AND to_category_group_id = #{toCategoryGroupId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.AssetCategoryGroupSelfMapping">
+    insert into zeus.asset_category_group_self_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="fromCategoryGroupId != null">
+        from_category_group_id, 
+      </if>
+      <if test="toCategoryGroupId != null">
+        to_category_group_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fromCategoryGroupId != null">
+        #{fromCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="toCategoryGroupId != null">
+        #{toCategoryGroupId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.AssetCategoryGroupSelfMapping">
+    update zeus.asset_category_group_self_mapping
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fromCategoryGroupId != null">
+        from_category_group_id = #{fromCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="toCategoryGroupId != null">
+        to_category_group_id = #{toCategoryGroupId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

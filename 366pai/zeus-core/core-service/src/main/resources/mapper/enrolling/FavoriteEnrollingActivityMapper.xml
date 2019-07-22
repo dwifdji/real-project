@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分54秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.FavoriteEnrollingActivityMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.FavoriteEnrollingActivity">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, party_id, activity_id, created_at, account_id,type,resource_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.favorite_enrolling_activity
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.FavoriteEnrollingActivityCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.favorite_enrolling_activity
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="resourceId != null">
+        AND resource_id = #{resourceId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.FavoriteEnrollingActivity">
+    insert into zeus.favorite_enrolling_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.FavoriteEnrollingActivity">
+    update zeus.favorite_enrolling_activity
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <select id="getFocusList" parameterType="com._360pai.core.dto.enrolling.ActivityIdReqDto" resultType="com._360pai.core.vo.enrolling.EnrollingInfoVo" >
+    SELECT
+    u.NAME AS useName,
+    u.mobile AS useMobile,
+    c.mobile AS comMobile,
+    c.NAME AS comName,
+    e.created_at AS createdAt
+    FROM
+    favorite_enrolling_activity e
+    LEFT JOIN t_company c ON e.party_id = c.id
+    LEFT JOIN t_user u ON u.id = e.party_id
+    <where>
+      <if test="activityId != null and activityId !=''">
+        AND e.activity_id = #{activityId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  
+  <delete id="deleteModel" parameterType="String">
+  		delete from favorite_enrolling_activity where id = #{id}
+  </delete>
+  
+  <delete id="deleteModelList" parameterType="java.util.List">
+        delete from favorite_enrolling_activity where id in 
+        
+        <foreach item="empnoItem" collection="focusList" open="(" separator="," close=")">
+            #{empnoItem}
+        </foreach>
+   </delete>
+
+  <select id="getBeginIn5MinuteList" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+    select ea.*
+    from zeus.favorite_enrolling_activity fea
+    inner join zeus.enrolling_activity ea on ea.id=fea.activity_id
+    <where>
+      fea.account_id=#{accountId} and ea.begin_at > now() and timestampdiff(MINUTE, now(), ea.begin_at) &lt;= 5
+      <if test="partyId != null"> and fea.party_id=#{partyId}</if>
+    </where>
+  </select>
+
+  <select id="getEndIn5MinuteList" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+    select ea.*
+    from zeus.favorite_enrolling_activity fea
+    inner join zeus.enrolling_activity ea on ea.id=fea.activity_id
+    <where>
+      fea.account_id=#{accountId} and ea.end_at > now() and timestampdiff(MINUTE, now(), ea.end_at) &lt;= 5
+      <if test="partyId != null"> and fea.party_id=#{partyId}</if>
+    </where>
+  </select>
+</mapper>

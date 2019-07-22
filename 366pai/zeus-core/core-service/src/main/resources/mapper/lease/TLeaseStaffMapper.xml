@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月23日 10时11分08秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.lease.mapper.TLeaseStaffMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.lease.TLeaseStaff">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="part_id" jdbcType="INTEGER" property="partId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="com_id" jdbcType="INTEGER" property="comId" />
+    <result column="agent_flag" jdbcType="BIT" property="agentFlag" />
+	<result column="trial_flag" jdbcType="BIT" property="trialFlag" />
+	<result column="final_flag" jdbcType="BIT" property="finalFlag" />
+	<result column="forbid_flag" jdbcType="BIT" property="forbidFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="fadada_id" jdbcType="VARCHAR" property="fadadaId" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, part_id, name, mobile, account_id, agent_flag, 
+	trial_flag, final_flag, forbid_flag, create_time, update_time, is_delete,fadada_id,com_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_lease_staff
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.lease.TLeaseStaffCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_lease_staff
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="partId != null">
+        AND part_id = #{partId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="agentFlag != null">
+        AND agent_flag = #{agentFlag,jdbcType=BIT}
+      </if>
+      <if test="trialFlag != null">
+        AND trial_flag = #{trialFlag,jdbcType=BIT}
+      </if>
+      <if test="finalFlag != null">
+        AND final_flag = #{finalFlag,jdbcType=BIT}
+      </if>
+      <if test="forbidFlag != null">
+        AND forbid_flag = #{forbidFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+
+      <if test="fadadaId != null">
+        AND fadada_id = #{fadadaId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="comId != null">
+        AND com_id = #{comId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.lease.TLeaseStaff">
+    insert into zeus.t_lease_staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="partId != null">
+        part_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="agentFlag != null">
+        agent_flag, 
+      </if>
+      <if test="trialFlag != null">
+        trial_flag, 
+      </if>
+      <if test="finalFlag != null">
+        final_flag, 
+      </if>
+      <if test="forbidFlag != null">
+        forbid_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+
+      <if test="fadadaId != null">
+        fadada_id,
+      </if>
+
+
+      <if test="comId != null">
+        com_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partId != null">
+        #{partId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="agentFlag != null">
+        #{agentFlag,jdbcType=BIT},
+      </if>
+      <if test="trialFlag != null">
+        #{trialFlag,jdbcType=BIT},
+      </if>
+      <if test="finalFlag != null">
+        #{finalFlag,jdbcType=BIT},
+      </if>
+      <if test="forbidFlag != null">
+        #{forbidFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="fadadaId != null">
+        #{fadadaId,jdbcType=VARCHAR},
+      </if>
+
+      <if test="comId != null">
+        #{comId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.lease.TLeaseStaff">
+    update zeus.t_lease_staff
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="partId != null">
+        part_id = #{partId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="agentFlag != null">
+        agent_flag = #{agentFlag,jdbcType=BIT},
+      </if>
+      <if test="trialFlag != null">
+        trial_flag = #{trialFlag,jdbcType=BIT},
+      </if>
+      <if test="finalFlag != null">
+        final_flag = #{finalFlag,jdbcType=BIT},
+      </if>
+      <if test="forbidFlag != null">
+        forbid_flag = #{forbidFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+
+      <if test="fadadaId != null">
+        fadada_id = #{fadadaId,jdbcType=VARCHAR},
+      </if>
+
+      <if test="comId != null">
+        com_id = #{comId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

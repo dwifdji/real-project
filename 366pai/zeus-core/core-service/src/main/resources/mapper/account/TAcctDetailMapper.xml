@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月29日 15时57分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TAcctDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TAcctDetail">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="acct_id" jdbcType="INTEGER" property="acctId" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="amount" jdbcType="DECIMAL" property="amount" />
+        <result column="total_amt" jdbcType="DECIMAL" property="totalAmt" />
+        <result column="lock_amt" jdbcType="DECIMAL" property="lockAmt" />
+        <result column="avail_amt" jdbcType="DECIMAL" property="availAmt" />
+        <result column="backup_amt" jdbcType="DECIMAL" property="backupAmt" />
+        <result column="bank_account_id" jdbcType="INTEGER" property="bankAccountId" />
+        <result column="invoice_id" jdbcType="INTEGER" property="invoiceId" />
+        <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="source_order_id" jdbcType="VARCHAR" property="sourceOrderId" />
+        <result column="first_verify_operator_id" jdbcType="INTEGER" property="firstVerifyOperatorId" />
+        <result column="first_verify_refuse_reason" jdbcType="VARCHAR" property="firstVerifyRefuseReason" />
+        <result column="first_verify_time" jdbcType="TIMESTAMP" property="firstVerifyTime" />
+        <result column="invoice_verify_operator_id" jdbcType="INTEGER" property="invoiceVerifyOperatorId" />
+        <result column="invoice_verify_refuse_reason" jdbcType="VARCHAR" property="invoiceVerifyRefuseReason" />
+        <result column="invoice_verify_time" jdbcType="TIMESTAMP" property="invoiceVerifyTime" />
+        <result column="pay_operator_id" jdbcType="INTEGER" property="payOperatorId" />
+        <result column="cancel_pay_operator_id" jdbcType="INTEGER" property="cancelPayOperatorId" />
+        <result column="cancel_pay_reason" jdbcType="VARCHAR" property="cancelPayReason" />
+        <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+        <result column="hc_time" jdbcType="TIMESTAMP" property="hcTime" />
+        <result column="hc_operator_id" jdbcType="INTEGER" property="hcOperatorId" />
+        <result column="hc_reason" jdbcType="VARCHAR" property="hcReason" />
+        <result column="pay_bank_account_id" jdbcType="INTEGER" property="payBankAccountId" />
+        <result column="pay_detail_no" jdbcType="VARCHAR" property="payDetailNo" />
+        <result column="pay_time" jdbcType="VARCHAR" property="payTime" />
+        <result column="invite_shop_id" jdbcType="INTEGER" property="inviteShopId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, acct_id, type, amount, total_amt, lock_amt,
+        avail_amt, backup_amt, bank_account_id, invoice_id, contract_id, status,
+        source_order_id, first_verify_operator_id, first_verify_refuse_reason, first_verify_time, invoice_verify_operator_id, invoice_verify_refuse_reason,
+        invoice_verify_time, pay_operator_id, cancel_pay_operator_id, cancel_pay_reason, cancel_time, hc_time,
+        hc_operator_id, hc_reason, pay_bank_account_id, pay_detail_no, pay_time, invite_shop_id,
+        create_time, update_time
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.t_acct_detail
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TAcctDetailCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.t_acct_detail
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="acctId != null">
+                AND acct_id = #{acctId,jdbcType=INTEGER}
+            </if>
+            <if test="type != null">
+                AND type = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="amount != null">
+                AND amount = #{amount,jdbcType=DECIMAL}
+            </if>
+            <if test="totalAmt != null">
+                AND total_amt = #{totalAmt,jdbcType=DECIMAL}
+            </if>
+            <if test="lockAmt != null">
+                AND lock_amt = #{lockAmt,jdbcType=DECIMAL}
+            </if>
+            <if test="availAmt != null">
+                AND avail_amt = #{availAmt,jdbcType=DECIMAL}
+            </if>
+            <if test="backupAmt != null">
+                AND backup_amt = #{backupAmt,jdbcType=DECIMAL}
+            </if>
+            <if test="bankAccountId != null">
+                AND bank_account_id = #{bankAccountId,jdbcType=INTEGER}
+            </if>
+            <if test="invoiceId != null">
+                AND invoice_id = #{invoiceId,jdbcType=INTEGER}
+            </if>
+            <if test="contractId != null">
+                AND contract_id = #{contractId,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="sourceOrderId != null">
+                AND source_order_id = #{sourceOrderId,jdbcType=VARCHAR}
+            </if>
+            <if test="firstVerifyOperatorId != null">
+                AND first_verify_operator_id = #{firstVerifyOperatorId,jdbcType=INTEGER}
+            </if>
+            <if test="firstVerifyRefuseReason != null">
+                AND first_verify_refuse_reason = #{firstVerifyRefuseReason,jdbcType=VARCHAR}
+            </if>
+            <if test="firstVerifyTime != null">
+                AND first_verify_time = #{firstVerifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="invoiceVerifyOperatorId != null">
+                AND invoice_verify_operator_id = #{invoiceVerifyOperatorId,jdbcType=INTEGER}
+            </if>
+            <if test="invoiceVerifyRefuseReason != null">
+                AND invoice_verify_refuse_reason = #{invoiceVerifyRefuseReason,jdbcType=VARCHAR}
+            </if>
+            <if test="invoiceVerifyTime != null">
+                AND invoice_verify_time = #{invoiceVerifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="payOperatorId != null">
+                AND pay_operator_id = #{payOperatorId,jdbcType=INTEGER}
+            </if>
+            <if test="cancelPayOperatorId != null">
+                AND cancel_pay_operator_id = #{cancelPayOperatorId,jdbcType=INTEGER}
+            </if>
+            <if test="cancelPayReason != null">
+                AND cancel_pay_reason = #{cancelPayReason,jdbcType=VARCHAR}
+            </if>
+            <if test="cancelTime != null">
+                AND cancel_time = #{cancelTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="hcTime != null">
+                AND hc_time = #{hcTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="hcOperatorId != null">
+                AND hc_operator_id = #{hcOperatorId,jdbcType=INTEGER}
+            </if>
+            <if test="hcReason != null">
+                AND hc_reason = #{hcReason,jdbcType=VARCHAR}
+            </if>
+            <if test="payBankAccountId != null">
+                AND pay_bank_account_id = #{payBankAccountId,jdbcType=INTEGER}
+            </if>
+            <if test="payDetailNo != null">
+                AND pay_detail_no = #{payDetailNo,jdbcType=VARCHAR}
+            </if>
+            <if test="payTime != null">
+                AND pay_time = #{payTime,jdbcType=VARCHAR}
+            </if>
+            <if test="inviteShopId != null">
+                AND invite_shop_id = #{inviteShopId,jdbcType=INTEGER}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.account.TAcctDetail">
+        insert into zeus.t_acct_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="acctId != null">
+                acct_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="totalAmt != null">
+                total_amt,
+            </if>
+            <if test="lockAmt != null">
+                lock_amt,
+            </if>
+            <if test="availAmt != null">
+                avail_amt,
+            </if>
+            <if test="backupAmt != null">
+                backup_amt,
+            </if>
+            <if test="bankAccountId != null">
+                bank_account_id,
+            </if>
+            <if test="invoiceId != null">
+                invoice_id,
+            </if>
+            <if test="contractId != null">
+                contract_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="sourceOrderId != null">
+                source_order_id,
+            </if>
+            <if test="firstVerifyOperatorId != null">
+                first_verify_operator_id,
+            </if>
+            <if test="firstVerifyRefuseReason != null">
+                first_verify_refuse_reason,
+            </if>
+            <if test="firstVerifyTime != null">
+                first_verify_time,
+            </if>
+            <if test="invoiceVerifyOperatorId != null">
+                invoice_verify_operator_id,
+            </if>
+            <if test="invoiceVerifyRefuseReason != null">
+                invoice_verify_refuse_reason,
+            </if>
+            <if test="invoiceVerifyTime != null">
+                invoice_verify_time,
+            </if>
+            <if test="payOperatorId != null">
+                pay_operator_id,
+            </if>
+            <if test="cancelPayOperatorId != null">
+                cancel_pay_operator_id,
+            </if>
+            <if test="cancelPayReason != null">
+                cancel_pay_reason,
+            </if>
+            <if test="cancelTime != null">
+                cancel_time,
+            </if>
+            <if test="hcTime != null">
+                hc_time,
+            </if>
+            <if test="hcOperatorId != null">
+                hc_operator_id,
+            </if>
+            <if test="hcReason != null">
+                hc_reason,
+            </if>
+            <if test="payBankAccountId != null">
+                pay_bank_account_id,
+            </if>
+            <if test="payDetailNo != null">
+                pay_detail_no,
+            </if>
+            <if test="payTime != null">
+                pay_time,
+            </if>
+            <if test="inviteShopId != null">
+                invite_shop_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="acctId != null">
+                #{acctId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAmt != null">
+                #{totalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="lockAmt != null">
+                #{lockAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="availAmt != null">
+                #{availAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="backupAmt != null">
+                #{backupAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="bankAccountId != null">
+                #{bankAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceId != null">
+                #{invoiceId,jdbcType=INTEGER},
+            </if>
+            <if test="contractId != null">
+                #{contractId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceOrderId != null">
+                #{sourceOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVerifyOperatorId != null">
+                #{firstVerifyOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="firstVerifyRefuseReason != null">
+                #{firstVerifyRefuseReason,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVerifyTime != null">
+                #{firstVerifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invoiceVerifyOperatorId != null">
+                #{invoiceVerifyOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceVerifyRefuseReason != null">
+                #{invoiceVerifyRefuseReason,jdbcType=VARCHAR},
+            </if>
+            <if test="invoiceVerifyTime != null">
+                #{invoiceVerifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="payOperatorId != null">
+                #{payOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="cancelPayOperatorId != null">
+                #{cancelPayOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="cancelPayReason != null">
+                #{cancelPayReason,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                #{cancelTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hcTime != null">
+                #{hcTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hcOperatorId != null">
+                #{hcOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="hcReason != null">
+                #{hcReason,jdbcType=VARCHAR},
+            </if>
+            <if test="payBankAccountId != null">
+                #{payBankAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="payDetailNo != null">
+                #{payDetailNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null">
+                #{payTime,jdbcType=VARCHAR},
+            </if>
+            <if test="inviteShopId != null">
+                #{inviteShopId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.account.TAcctDetail">
+        update zeus.t_acct_detail
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="acctId != null">
+                acct_id = #{acctId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="totalAmt != null">
+                total_amt = #{totalAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="lockAmt != null">
+                lock_amt = #{lockAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="availAmt != null">
+                avail_amt = #{availAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="backupAmt != null">
+                backup_amt = #{backupAmt,jdbcType=DECIMAL},
+            </if>
+            <if test="bankAccountId != null">
+                bank_account_id = #{bankAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceId != null">
+                invoice_id = #{invoiceId,jdbcType=INTEGER},
+            </if>
+            <if test="contractId != null">
+                contract_id = #{contractId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceOrderId != null">
+                source_order_id = #{sourceOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVerifyOperatorId != null">
+                first_verify_operator_id = #{firstVerifyOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="firstVerifyRefuseReason != null">
+                first_verify_refuse_reason = #{firstVerifyRefuseReason,jdbcType=VARCHAR},
+            </if>
+            <if test="firstVerifyTime != null">
+                first_verify_time = #{firstVerifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="invoiceVerifyOperatorId != null">
+                invoice_verify_operator_id = #{invoiceVerifyOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceVerifyRefuseReason != null">
+                invoice_verify_refuse_reason = #{invoiceVerifyRefuseReason,jdbcType=VARCHAR},
+            </if>
+            <if test="invoiceVerifyTime != null">
+                invoice_verify_time = #{invoiceVerifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="payOperatorId != null">
+                pay_operator_id = #{payOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="cancelPayOperatorId != null">
+                cancel_pay_operator_id = #{cancelPayOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="cancelPayReason != null">
+                cancel_pay_reason = #{cancelPayReason,jdbcType=VARCHAR},
+            </if>
+            <if test="cancelTime != null">
+                cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hcTime != null">
+                hc_time = #{hcTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hcOperatorId != null">
+                hc_operator_id = #{hcOperatorId,jdbcType=INTEGER},
+            </if>
+            <if test="hcReason != null">
+                hc_reason = #{hcReason,jdbcType=VARCHAR},
+            </if>
+            <if test="payBankAccountId != null">
+                pay_bank_account_id = #{payBankAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="payDetailNo != null">
+                pay_detail_no = #{payDetailNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime,jdbcType=VARCHAR},
+            </if>
+            <if test="inviteShopId != null">
+                invite_shop_id = #{inviteShopId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=BIGINT}
+        </where>
+    </update>
+
+    <select id="getInviteCommissionList" parameterType="java.util.Map"
+            resultType="com._360pai.core.facade.account.vo.InviteCommissionVo">
+        select *
+        from (
+        select ad.id,concat('DP',s.id) inviteCode,s.name,s.mobile,ss.create_time,concat('DP',ss.id)
+        subInviteCode,ad.amount shopInvitedCommission
+        from zeus.t_acct_detail ad
+        inner join zeus.t_acct ac on ac.id=ad.acct_id and ac.type='shop'
+        inner join zeus.t_applet_shop s on s.id=ac.party_id
+        inner join zeus.t_applet_shop ss on ss.id= ad.invite_shop_id
+        <where>
+            ad.type='SHOP_INVITED_COMMISSION'
+            <if test="inviteCode != null">and concat('DP',s.id) like concat('%',#{inviteCode},'%')</if>
+            <if test="q != null">and (s.mobile like concat('%',#{q},'%'))</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and ss.create_time>=#{createdAtFrom} and
+                ss.create_time&lt;=#{createdAtTo}
+            </if>
+        </where>
+        union all
+        select ad.id,concat('DP',s.id) inviteCode,u.name,s.mobile,ss.create_time,concat('DP',ss.id)
+        subInviteCode,ad.amount shopInvitedCommission
+        from zeus.t_acct_detail ad
+        inner join zeus.t_acct ac on ac.id=ad.acct_id and ac.type='user'
+        inner join zeus.t_user u on u.id=ac.party_id
+        inner join zeus.t_applet_shop s on s.party_id=ac.party_id
+        inner join zeus.t_applet_shop ss on ss.id= ad.invite_shop_id
+        <where>
+            ad.type='SHOP_INVITED_COMMISSION'
+            <if test="inviteCode != null">and concat('DP',s.id) like concat('%',#{inviteCode},'%')</if>
+            <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and ss.create_time>=#{createdAtFrom} and
+                ss.create_time&lt;=#{createdAtTo}
+            </if>
+        </where>
+        union all
+        select ad.id,concat('DP',s.id) inviteCode,u.name,s.mobile,ss.create_time,concat('DP',ss.id)
+        subInviteCode,ad.amount shopInvitedCommission
+        from zeus.t_acct_detail ad
+        inner join zeus.t_acct ac on ac.id=ad.acct_id and ac.type='company'
+        inner join zeus.t_company u on u.id=ac.party_id
+        inner join zeus.t_applet_shop s on s.party_id=ac.party_id
+        inner join zeus.t_applet_shop ss on ss.id= ad.invite_shop_id
+        <where>
+            ad.type='SHOP_INVITED_COMMISSION'
+            <if test="inviteCode != null">and concat('DP',s.id) like concat('%',#{inviteCode},'%')</if>
+            <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and ss.create_time>=#{createdAtFrom} and
+                ss.create_time&lt;=#{createdAtTo}
+            </if>
+        </where>
+        ) t
+        order by t.id desc
+    </select>
+
+    <select id="getInviteCommission" resultType="com._360pai.core.facade.account.vo.InviteCommissionVo">
+    select ad.id,concat('DP',s.id) inviteCode,
+        case when u.id is null then c.name else u.name end `name`,
+        a.mobile,s.create_time,concat('DP',ss.id) subInviteCode,ad.amount shopInvitedCommission,
+        case when su.id is null then sc.name else su.name end subName,sa.mobile subMobile
+    from zeus.t_acct_detail ad
+    inner join zeus.t_acct ac on ac.id=ad.acct_id
+    left join zeus.t_user u on u.id=ac.party_id
+    left join zeus.t_company c on c.id=ac.party_id
+    inner join zeus.t_applet_shop s on s.party_id=ac.party_id
+    inner join zeus.t_account_ext_bind b on b.current_party_id=s.party_id
+    inner join zeus.t_account a on a.id = b.account_id
+    inner join zeus.t_applet_shop ss on ss.party_id= ad.source_order_id
+    inner join zeus.t_account_ext_bind sb on sb.current_party_id=ss.party_id
+    inner join zeus.t_account sa on sa.id = sb.account_id
+    left join zeus.t_user su on su.id=ss.party_id
+    left join zeus.t_company sc on sc.id=ss.party_id
+    where ad.id=#{id}
+  </select>
+
+    <select id="getMyCommissionList" resultType="com._360pai.core.model.account.TAcctDetail">
+    select d.*
+    from zeus.t_acct_detail d
+    where d.acct_id=#{acctId} and d.type in ('BUY_COMMISSION','SHOP_INVITED_COMMISSION')
+    order by d.create_time desc
+  </select>
+
+    <select id="getFrontList" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TAcctDetail">
+        select d.*
+        from zeus.t_acct_detail d
+        <where>
+            d.status != 'HC'
+            <if test="orderId != null">and d.id=#{orderId}</if>
+            <if test="acctId != null">and d.acct_id=#{acctId}</if>
+            <if test="type != null">and d.type=#{type}</if>
+            <if test="status != null and status == 'NEED_VERIFY'.toString()">and d.status in ('INIT','FIRST_VERIFY_SUCCESS','HAS_SIGN_CONTRACT','HAS_PROVIDE_INVOICE')</if>
+            <if test="status != null and status == 'NEED_PAY'.toString()">and d.status in ('INVOICE_VERIFY_SUCCESS','LAST_VERIFY_SUCCESS','LAST_VERIFY_FAIL')</if>
+            <if test="status != null and status == 'HAS_PAY'.toString()">and d.status in ('HAS_PAY')</if>
+            <if test="status != null and status == 'VERIFY_FAIL'.toString()">and d.status in ('FIRST_VERIFY_FAIL','HAS_MARK_HC')</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and d.create_time>=#{createdAtFrom} and d.create_time&lt;=#{createdAtTo}</if>
+        </where>
+        order by d.create_time desc
+    </select>
+
+    <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TAcctDetail">
+        select d.*
+        from zeus.t_acct_detail d
+        <where>
+            <if test="orderId != null">and d.id=#{orderId}</if>
+            <if test="acctId != null">and d.acct_id=#{acctId}</if>
+            <if test="type != null">and d.type=#{type}</if>
+            <if test="status != null">and d.status=#{status}</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and d.create_time>=#{createdAtFrom} and d.create_time&lt;=#{createdAtTo}</if>
+        </where>
+        order by d.create_time desc
+    </select>
+
+    <select id="getWithdrawList" resultType="com._360pai.core.model.account.TAcctDetail">
+    select *
+    from zeus.t_acct_detail
+    where acct_id=#{acctId}
+    and status!='HC' and `type`='WITHDRAW'
+    order by create_time desc
+  </select>
+
+    <select id="getFirstVerifyWithdrawList" parameterType="java.util.Map"
+            resultType="com._360pai.core.facade.account.vo.WithdrawAcctDetailVo">
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='user'
+        inner join zeus.t_user u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='company'
+        inner join zeus.t_company u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='agency'
+        inner join zeus.t_agency u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        order by create_time desc
+    </select>
+
+    <sql id="getFirstVerifyWithdrawList_select">
+    d.id,a.type,u.name,u.mobile,d.create_time,d.amount,d.total_amt totalAmt,d.lock_amt lockAmt,d.avail_amt availAmt,
+    d.status,s.name firstVerifyOperator,d.first_verify_refuse_reason firstVerifyRefuseReason,
+    d.first_verify_time firstVerifyTime,ba.bank_name bankName,ba.bank_account_no bankAccountNo,ba.bank_account_name bankAccountName,ba.sub_bank_name subBankName
+  </sql>
+    <sql id="getFirstVerifyWithdrawList_where">
+        d.type='WITHDRAW' and d.status in ('INIT','FIRST_VERIFY_SUCCESS','FIRST_VERIFY_FAIL','HAS_SIGN_CONTRACT')
+        <if test="q != null">and u.name like concat('%',#{q},'%')</if>
+        <if test="mobile != null">and u.mobile like concat('%',#{mobile},'%')</if>
+        <if test="bankAccountNo != null">and ba.bank_account_no like concat('%',#{bankAccountNo},'%')</if>
+        <if test="type != null">and a.type=#{type}</if>
+        <if test="status != null and status == 'INIT'.toString()">and d.status='INIT'</if>
+        <if test="status != null and status == 'NEED_VERIFY_INVOICE'.toString()">and d.status in ('FIRST_VERIFY_SUCCESS', 'HAS_SIGN_CONTRACT')</if>
+        <if test="status != null and status == 'FIRST_VERIFY_FAIL'.toString()">and d.status='FIRST_VERIFY_FAIL'</if>
+        <if test="orderId != null">and d.id=#{orderId}</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and d.create_time>=#{createdAtFrom} and d.create_time&lt;=#{createdAtTo}</if>
+    </sql>
+
+    <select id="getFirstVerifyWithdrawSummaryInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select sum(t.amount) totalAmount
+        from (
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='user'
+        inner join zeus.t_user u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='company'
+        inner join zeus.t_company u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getFirstVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='agency'
+        inner join zeus.t_agency u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        <where>
+            <include refid="getFirstVerifyWithdrawList_where"/>
+        </where>
+        ) t
+    </select>
+
+    <select id="getInvoiceVerifyWithdrawList" parameterType="java.util.Map"
+            resultType="com._360pai.core.facade.account.vo.WithdrawAcctDetailVo">
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='user'
+        inner join zeus.t_user u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='company'
+        inner join zeus.t_company u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='agency'
+        inner join zeus.t_agency u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        order by create_time desc
+    </select>
+
+    <sql id="getInvoiceVerifyWithdrawList_select">
+    d.id,a.type,u.name,u.mobile,d.create_time,d.amount,d.total_amt totalAmt,d.lock_amt lockAmt,d.avail_amt availAmt,
+    d.status,s.name firstVerifyOperator,d.invoice_verify_refuse_reason firstVerifyRefuseReason,d.first_verify_time firstVerifyTime,
+    ss.name invoiceVerifyOperator,d.invoice_verify_refuse_reason invoiceVerifyRefuseReason,d.invoice_verify_time invoiceVerifyTime,
+    ba.bank_name bankName,ba.bank_account_no bankAccountNo,ba.bank_account_name bankAccountName,ba.sub_bank_name subBankName,r.batch_id batchId,d.invoice_id invoiceId
+  </sql>
+    <sql id="getInvoiceVerifyWithdrawList_where">
+        d.type='WITHDRAW' and d.status in ('HAS_PROVIDE_INVOICE','INVOICE_VERIFY_SUCCESS','INVOICE_VERIFY_FAIL')
+        <if test="q != null">and u.name like concat('%',#{q},'%')</if>
+        <if test="mobile != null">and u.mobile like concat('%',#{mobile},'%')</if>
+        <if test="bankAccountNo != null">and ba.bank_account_no like concat('%',#{bankAccountNo},'%')</if>
+        <if test="type != null">and a.type=#{type}</if>
+        <if test="status != null">and d.status=#{status}</if>
+        <if test="orderId != null">and d.id=#{orderId}</if>
+        <if test="batchId != null">and r.batch_id=#{batchId}</if>
+        <if test="invoiceType != null">and i.type=#{invoiceType}</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and d.create_time>=#{createdAtFrom} and d.create_time&lt;=#{createdAtTo}</if>
+    </sql>
+
+    <select id="getInvoiceVerifyWithdrawSummaryInfo" parameterType="java.util.Map" resultType="java.util.Map">
+        select sum(t.amount) totalAmount
+        from (
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='user'
+        inner join zeus.t_user u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='company'
+        inner join zeus.t_company u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        union all
+        select
+        <include refid="getInvoiceVerifyWithdrawList_select"/>
+        from zeus.t_acct_detail d
+        inner join zeus.t_acct a on a.id=d.acct_id and a.type='agency'
+        inner join zeus.t_agency u on u.id=a.party_id
+        inner join zeus.t_bank_account ba on ba.id=d.bank_account_id
+        left join zeus.staff s on s.id=d.first_verify_operator_id
+        left join zeus.staff ss on ss.id=d.invoice_verify_operator_id
+        left join zeus.t_invoice i on i.id=d.invoice_id
+        left join zeus.t_batch_detail_ref r on r.detail_id=d.id and r.is_delete='0'
+        <where>
+            <include refid="getInvoiceVerifyWithdrawList_where"/>
+        </where>
+        ) t
+    </select>
+
+
+    <select id="getNoBatchDetail" resultMap="BaseResultMap">
+    SELECT * FROM zeus.`t_acct_detail`
+    WHERE id NOT IN
+    (
+        SELECT detail_id FROM zeus.`t_batch_detail_ref`
+        WHERE is_delete=0
+    )
+    and status='INVOICE_VERIFY_SUCCESS'
+  </select>
+
+    <select id="countUncompletedWithdrawRecords" resultType="int">
+        select count(0) from zeus.t_acct_detail where bank_account_id=#{bankAccountId} and type='WITHDRAW'
+    </select>
+
+    <select id="countRelatedWithdrawRecords" resultType="int">
+        select count(0) from zeus.t_acct_detail where pay_bank_account_id=#{payBankAccountId} and type='WITHDRAW'
+    </select>
+</mapper>

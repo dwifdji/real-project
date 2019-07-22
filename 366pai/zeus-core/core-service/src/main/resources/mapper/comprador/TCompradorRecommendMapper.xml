@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月03日 12时40分06秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.comprador.mapper.TCompradorRecommendMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.comprador.TCompradorRecommend">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="recommend_no" jdbcType="VARCHAR" property="recommendNo" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="recommend_description" jdbcType="VARCHAR" property="recommendDescription" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="recommend_status" jdbcType="CHAR" property="recommendStatus" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="operator_id" jdbcType="VARCHAR" property="operatorId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, recommend_no, contact_phone, contact_address, contact_name, recommend_description, 
+	account_id,party_id, recommend_status, remark, is_delete, created_time, update_time,
+	operator_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_comprador_recommend  where id_delete = 0
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.comprador.TCompradorRecommendCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_comprador_recommend
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="recommendNo != null and recommendNo != '' ">
+        AND recommend_no = #{recommendNo,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null and contactPhone != '' ">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactAddress != null  and contactAddress != ''">
+        AND contact_address = #{contactAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="contactName != null  and contactName != ''">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="recommendDescription != null  and recommendDescription != ''">
+        AND recommend_description = #{recommendDescription,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null  and accountId != ''">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null  and partyId != ''">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="recommendStatus != null  and recommendStatus != ''">
+        AND recommend_status = #{recommendStatus,jdbcType=CHAR}
+      </if>
+
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=VARCHAR}
+      </if>
+
+      <if test="createdTime != null ">
+        AND DATE_FORMAT(created_time, '%Y-%m-%d') = DATE_FORMAT(#{createdTime}, '%Y-%m-%d')
+      </if>
+      <if test="remark != null and  remark == '0'.toString() ">
+        AND remark is null
+      </if>
+      <if test="remark != null and  remark == '1'.toString() ">
+        AND remark is not null
+      </if>
+
+      AND is_delete = 0
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.comprador.TCompradorRecommend" keyProperty="id" useGeneratedKeys="true">
+    insert into zeus.t_comprador_recommend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="recommendNo != null">
+        recommend_no, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="contactAddress != null">
+        contact_address, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="recommendDescription != null">
+        recommend_description, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="recommendStatus != null">
+        recommend_status, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createdTime != null">
+        created_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="recommendNo != null">
+        #{recommendNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendDescription != null">
+        #{recommendDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendStatus != null">
+        #{recommendStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.comprador.TCompradorRecommend">
+    update zeus.t_comprador_recommend
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="recommendNo != null">
+        recommend_no = #{recommendNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendDescription != null">
+        recommend_description = #{recommendDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendStatus != null">
+        recommend_status = #{recommendStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetDataMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetData">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="content" jdbcType="VARCHAR" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"
+                property="content"/>
+        <result column="asset_id" jdbcType="INTEGER" property="assetId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, content, asset_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_data
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetDataCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_data
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="content != null">
+                AND content = #{content,jdbcType=VARCHAR}
+            </if>
+            <if test="assetId != null">
+                AND asset_id = #{assetId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetData">
+        insert into zeus.asset_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="assetId != null">
+                asset_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR ,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+            <if test="assetId != null">
+                #{assetId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetData">
+        update zeus.asset_data
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR ,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,1620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分53秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingActivityMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingActivity">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+    <result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="ref_price" jdbcType="DECIMAL" property="refPrice" />
+    <result column="deposit" jdbcType="DECIMAL" property="deposit" />
+    <result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expireAt" />
+    <result column="extra" jdbcType="VARCHAR" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" property="extra" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="description_doc" jdbcType="VARCHAR" property="descriptionDoc" />
+    <result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="participant_number" jdbcType="INTEGER" property="participantNumber" />
+    <result column="commission_percent" jdbcType="DECIMAL" property="commissionPercent" />
+    <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+    <result column="asset_category_group_id" jdbcType="INTEGER" property="assetCategoryGroupId" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_qq" jdbcType="VARCHAR" property="contactQq" />
+    <result column="options" jdbcType="VARCHAR" property="options" />
+    <result column="end_notified" jdbcType="BIT" property="endNotified" />
+    <result column="visibility_level" jdbcType="CHAR" property="visibilityLevel" />
+    <result column="browse_number" jdbcType="INTEGER" property="browseNumber" />
+    <result column="focus_number" jdbcType="INTEGER" property="focusNumber" />
+    <result column="reminder_number" jdbcType="INTEGER" property="reminderNumber" />
+    <result column="apply_number" jdbcType="INTEGER" property="applyNumber" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="guarantee" jdbcType="INTEGER" property="guarantee" />
+    <result column="bright_spot" jdbcType="VARCHAR" property="brightSpot" />
+    <result column="operator_at" jdbcType="TIMESTAMP" property="operatorAt" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="end_pay_time" jdbcType="TIMESTAMP" property="endPayTime" />
+    <result column="release_amount" jdbcType="DECIMAL" property="releaseAmount" />
+    <result column="third_party_status" jdbcType="INTEGER" property="thirdPartyStatus" />
+    <result column="third_party_title" jdbcType="VARCHAR" property="thirdPartyTitle" />
+    <result column="third_party_url" jdbcType="VARCHAR" property="thirdPartyUrl" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="bus_type_name" jdbcType="VARCHAR" property="busTypeName" />
+
+    <result column="branch_com_name" jdbcType="VARCHAR" property="branchComName" />
+
+    <result column="disposal_service" jdbcType="VARCHAR" property="disposalService" />
+    <result column="fund_provider" jdbcType="VARCHAR" property="fundProvider" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, status, name, province_id, city_id, area_id, agency_id, property_id,
+	category_id, ref_price, deposit, begin_at, end_at, party_id,
+	expire_at, extra, remark, description_doc, detail, code,
+	created_at, participant_number, commission_percent, reject_reason, asset_category_group_id, contact_name,
+	contact_phone, contact_qq, options, end_notified, visibility_level,browse_number,focus_number,reminder_number,apply_number,type, city_name,guarantee,bright_spot, operator_at, operator_id,end_pay_time,release_amount,
+	third_party_status, third_party_title, third_party_url, delete_flag,bus_type_name,branch_com_name,disposal_service,fund_provider
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.enrolling_activity
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingActivityCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.enrolling_activity
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="propertyId != null">
+        AND property_id = #{propertyId,jdbcType=INTEGER}
+      </if>
+      <if test="categoryId != null">
+        AND category_id = #{categoryId,jdbcType=INTEGER}
+      </if>
+      <if test="refPrice != null">
+        AND ref_price = #{refPrice,jdbcType=DECIMAL}
+      </if>
+      <if test="deposit != null">
+        AND deposit = #{deposit,jdbcType=DECIMAL}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="expireAt != null">
+        AND expire_at = #{expireAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="extra != null">
+        AND extra = #{extra,jdbcType=VARCHAR, typeHandler= com._360pai.arch.core.sysconfig.JsonTypeHandler}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="descriptionDoc != null">
+        AND description_doc = #{descriptionDoc,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="participantNumber != null">
+        AND participant_number = #{participantNumber,jdbcType=INTEGER}
+      </if>
+      <if test="commissionPercent != null">
+        AND commission_percent = #{commissionPercent,jdbcType=DECIMAL}
+      </if>
+      <if test="rejectReason != null">
+        AND reject_reason = #{rejectReason,jdbcType=VARCHAR}
+      </if>
+      <if test="assetCategoryGroupId != null">
+        AND asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactQq != null">
+        AND contact_qq = #{contactQq,jdbcType=VARCHAR}
+      </if>
+      <if test="options != null">
+        AND options = #{options,jdbcType=VARCHAR}
+      </if>
+      <if test="endNotified != null">
+        AND end_notified = #{endNotified,jdbcType=BIT}
+      </if>
+      <if test="visibilityLevel != null">
+        AND visibility_level = #{visibilityLevel,jdbcType=CHAR}
+      </if>
+      <if test="browseNumber != null">
+        AND browse_number = #{browseNumber,jdbcType=INTEGER}
+      </if>
+      <if test="focusNumber != null">
+        AND focus_number = #{focusNumber,jdbcType=INTEGER}
+      </if>
+      <if test="reminderNumber != null">
+        AND reminder_number = #{reminderNumber,jdbcType=INTEGER}
+      </if>
+      <if test="applyNumber != null">
+        AND apply_number = #{applyNumber,jdbcType=INTEGER}
+      </if>
+      <if test="cityName != null">
+        AND city_name = #{cityName,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+
+      <if test="guarantee != null">
+        AND guarantee = #{guarantee,jdbcType=INTEGER}
+      </if>
+      <if test="brightSpot != null">
+        AND bright_spot = #{brightSpot,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorAt != null">
+        AND operator_at = #{operatorAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="thirdPartyStatus != null">
+        AND third_party_status = #{thirdPartyStatus,jdbcType=INTEGER}
+      </if>
+      <if test="thirdPartyTitle != null">
+        AND third_party_title = #{thirdPartyTitle,jdbcType=VARCHAR}
+      </if>
+      <if test="thirdPartyUrl != null">
+        AND third_party_url = #{thirdPartyUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+
+      <if test="branchComName != null">
+        AND branch_com_name = #{branchComName,jdbcType=VARCHAR}
+      </if>
+
+      <if test="disposalService != null">
+        AND disposal_service = #{disposalService,jdbcType=VARCHAR}
+      </if>
+
+      <if test="fundProvider != null">
+        AND fund_provider = #{fundProvider,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com._360pai.core.model.enrolling.EnrollingActivity">
+    insert into zeus.enrolling_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="refPrice != null">
+        ref_price,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="beginAt != null">
+        begin_at,
+      </if>
+      <if test="endAt != null">
+        end_at,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="expireAt != null">
+        expire_at,
+      </if>
+      <if test="extra != null">
+        extra,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="participantNumber != null">
+        participant_number,
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent,
+      </if>
+      <if test="rejectReason != null">
+        reject_reason,
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="contactQq != null">
+        contact_qq,
+      </if>
+      <if test="options != null">
+        options,
+      </if>
+      <if test="endNotified != null">
+        end_notified,
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level,
+      </if>
+      <if test="browseNumber != null">
+        browse_number,
+      </if>
+      <if test="focusNumber != null">
+        focus_number,
+      </if>
+      <if test="reminderNumber != null">
+        reminder_number,
+      </if>
+      <if test="applyNumber != null">
+        apply_number,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+
+      <if test="guarantee != null">
+        guarantee,
+      </if>
+      <if test="brightSpot != null">
+        bright_spot,
+      </if>
+      <if test="operatorAt != null">
+        operator_at,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="endPayTime != null">
+        end_pay_time,
+      </if>
+      <if test="releaseAmount != null">
+        release_amount,
+      </if>
+
+      <if test="thirdPartyStatus != null">
+        third_party_status,
+      </if>
+      <if test="thirdPartyTitle != null">
+        third_party_title,
+      </if>
+      <if test="thirdPartyUrl != null">
+        third_party_url,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+
+      <if test="busTypeName != null">
+        bus_type_name,
+      </if>
+
+      <if test="branchComName != null">
+        branch_com_name,
+      </if>
+
+      <if test="disposalService != null">
+        disposal_service,
+      </if>
+
+      <if test="fundProvider != null">
+        fund_provider,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="refPrice != null">
+        #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="expireAt != null">
+        #{expireAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extra != null">
+        #{extra,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionDoc != null">
+        #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="participantNumber != null">
+        #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null">
+        #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="endNotified != null">
+        #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="visibilityLevel != null">
+        #{visibilityLevel,jdbcType=CHAR},
+      </if>
+      <if test="browseNumber != null">
+        #{browseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="focusNumber != null">
+        #{focusNumber,jdbcType=INTEGER},
+      </if>
+      <if test="reminderNumber != null">
+        #{reminderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="applyNumber != null">
+        #{applyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+
+      <if test="guarantee != null">
+        #{guarantee,jdbcType=INTEGER},
+      </if>
+      <if test="brightSpot != null">
+        #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorAt != null">
+        #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+
+      <if test="endPayTime != null">
+        #{endPayTime,jdbcType=TIMESTAMP},
+      </if>
+
+
+      <if test="releaseAmount != null">
+        #{releaseAmount,jdbcType=DECIMAL},
+      </if>
+
+      <if test="thirdPartyStatus != null">
+        #{thirdPartyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPartyTitle != null">
+        #{thirdPartyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyUrl != null">
+        #{thirdPartyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+
+      <if test="busTypeName != null">
+        #{busTypeName,jdbcType=VARCHAR},
+      </if>
+
+      <if test="branchComName != null">
+        #{branchComName,jdbcType=VARCHAR},
+      </if>
+
+
+      <if test="disposalService != null">
+        #{disposalService,jdbcType=VARCHAR},
+      </if>
+
+      <if test="fundProvider != null">
+        #{fundProvider,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingActivity">
+    update zeus.enrolling_activity
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="refPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="expireAt != null">
+        expire_at = #{expireAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extra != null">
+        extra = #{extra,jdbcType=VARCHAR, typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionDoc != null">
+        description_doc = #{descriptionDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="participantNumber != null">
+        participant_number = #{participantNumber,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent = #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="assetCategoryGroupId != null">
+        asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactQq != null">
+        contact_qq = #{contactQq,jdbcType=VARCHAR},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="endNotified != null">
+        end_notified = #{endNotified,jdbcType=BIT},
+      </if>
+      <if test="visibilityLevel != null">
+        visibility_level = #{visibilityLevel,jdbcType=CHAR},
+      </if>
+      <if test="browseNumber != null">
+        browse_number = #{browseNumber,jdbcType=INTEGER},
+      </if>
+      <if test="focusNumber != null">
+        focus_number = #{focusNumber,jdbcType=INTEGER},
+      </if>
+      <if test="reminderNumber != null">
+        reminder_number = #{reminderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="applyNumber != null">
+        apply_number = #{applyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null">
+        guarantee = #{guarantee,jdbcType=INTEGER},
+      </if>
+      <if test="brightSpot != null">
+        bright_spot = #{brightSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorAt != null">
+        operator_at = #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="endPayTime != null">
+        end_pay_time = #{endPayTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="releaseAmount != null">
+        release_amount = #{releaseAmount,jdbcType=DECIMAL},
+      </if>
+
+      <if test="thirdPartyStatus != null">
+        third_party_status = #{thirdPartyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPartyTitle != null">
+        third_party_title = #{thirdPartyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyUrl != null">
+        third_party_url = #{thirdPartyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+
+      <if test="busTypeName != null">
+        bus_type_name = #{busTypeName,jdbcType=VARCHAR},
+      </if>
+
+      <if test="branchComName != null">
+        branch_com_name = #{branchComName,jdbcType=VARCHAR},
+      </if>
+
+      <if test="disposalService != null">
+        disposal_service = #{disposalService,jdbcType=VARCHAR},
+      </if>
+
+      <if test="fundProvider != null">
+        fund_provider = #{fundProvider,jdbcType=VARCHAR},
+      </if>
+
+      <if test="realRefPrice != null">
+        ref_price = #{refPrice,jdbcType=DECIMAL},
+      </if>
+
+
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getEnrollingActivityList" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.EnrollingActivityVo">
+    SELECT
+    e.id AS id,
+    e.STATUS AS status,
+    c.`name` AS cityName,
+    e.NAME AS name,
+    a.`name` AS agencyName,
+    p.NAME AS assetPropertyName,
+    e.CODE AS code,
+    e.created_at AS createdAt,
+    e.deposit AS deposit,
+    u.`name` AS userName,
+    e.ref_price AS refPrice,
+    com.name As comName,
+    e.begin_at as beginAt,
+    e.end_at endAt,
+    e.commission_Percent as commissionPercent,
+    e.contact_Phone as contactPhone,
+    e.extra as extra,
+    e.remark as remark,
+    e.description_Doc as descriptionDoc,
+    e.contact_Name as contactName,
+    e.contact_Qq as contactQq,
+    e.expire_At as expireAt,
+    e.visibility_Level as visibilityLevel,
+    e.type as type,
+    sta.name as projectManager,
+    IFNULL(com.name, u.`name`) as partyName,
+    e.operator_at as operateAt,
+    st.name as operateName,
+    ag.name as userAgencyName,
+    e.third_party_status as thirdPartyStatus,
+    e.third_party_title as thirdPartyTitle,
+    e.third_party_url as thirdPartyUrl,
+    e.branch_com_name as branchComName
+    FROM
+    enrolling_activity e
+    LEFT JOIN t_user u ON e.party_id = u.id
+    LEFT JOIN t_agency a ON e.agency_id = a.id
+    LEFT JOIN city c ON e.city_id = c.id
+    LEFT JOIN staff st ON e.operator_id = st.id
+    LEFT JOIN asset_property p ON e.property_id = p.id
+    LEFT JOIN t_company com ON e.party_id = com.id
+    LEFT JOIN staff sta ON e.OPTIONS = sta.id
+    LEFT JOIN t_agency ag ON e.party_id = ag.id
+    WHERE 1 = 1
+    AND e.status != "NOT_PAY" AND e.delete_flag='0'
+    <if test="id != null and id != ''">
+      AND e.id = #{id,jdbcType=INTEGER}
+    </if>
+
+    <if test="status != null and status != ''">
+      AND e.status = #{status,jdbcType=CHAR}
+    </if>
+
+    <if test="info != null and info != ''">
+      AND (e.name like concat(concat('%', #{info}), '%') or e.code like concat(concat('%', #{info}), '%'))
+    </if>
+
+    <if test=" createdAtFrom != null and createdAtFrom != ''">
+      and e.begin_at  >=  #{createdAtFrom}
+    </if>
+
+    <if test=" createdAtTo != null and createdAtTo != ''">
+      and   #{createdAtTo}  >=  e.end_at
+    </if>
+
+    <if test="agencyName != null and agencyName !=''">
+
+      AND a.name like concat(concat('%', #{agencyName}), '%')
+    </if>
+
+    <if test="cityId != null and cityId != ''">
+      AND FIND_IN_SET(#{cityId},e.city_id)
+    </if>
+
+    <if test="provinceId != null and provinceId != ''">
+      AND FIND_IN_SET(#{provinceId},e.province_id)
+    </if>
+
+    <if test="areaId != null and areaId != ''">
+      AND FIND_IN_SET(#{areaId},e.area_id)
+    </if>
+
+    <if test="(partyName != null and  partyName != '') and partyType == 1">
+      AND u.name like concat(concat('%', #{partyName}), '%')
+    </if>
+
+    <if test="(partyName != null and partyName != '')  and partyType == 2" >
+      AND com.name like concat(concat('%', #{partyName}), '%')
+    </if>
+
+    <if test="agencyId != null and agencyId != ''">
+      AND e.agency_id = #{agencyId}
+    </if>
+
+    <if test="type != null and type != ''">
+      AND e.type = #{type,jdbcType=VARCHAR}
+    </if>
+    <if test="agencyId != null and agencyId != ''">
+      AND e.agency_id = #{agencyId,jdbcType=INTEGER}
+      AND e.type in ('1', '2', '3')
+    </if>
+
+    <if test="thirdPartyStatus != null">
+      AND e.third_party_status = #{thirdPartyStatus,jdbcType=INTEGER}
+    </if>
+
+    <if test="noThirdPartyStatus != null">
+      <if test="noThirdPartyStatus == 4">
+        AND (e.third_party_status in (0,1,2) or (e.third_party_status IN (3,4) and e.status in ('ONLINE', 'CLOSED', 'FINISHED')) )
+      </if>
+
+      <if test="noThirdPartyStatus != 4">
+        AND (e.third_party_status in (0,2) or (e.third_party_status IN (3,4) and e.status in ('ONLINE', 'CLOSED', 'FINISHED')) )
+      </if>
+
+
+     </if>
+
+    <if test="visibilityLevel != null and visibilityLevel != ''">
+      AND e.visibility_level = #{visibilityLevel}
+    </if>
+
+    <if test="hallId != null and hallId != ''">
+      AND e.id not in (select enrolling_activity_id from zeus.t_hall_enrolling_activity where  hall_id =#{hallId} and  del_flag=0)
+    </if>
+    <if test="excludeAppletHallActivity != null and excludeAppletHallActivity=='1'.toString()"> and e.id not in (select activity_id from zeus.t_applet_hall_activity where type=1 and delete_flag=0)</if>
+    <if test="excludeAssetPropertyActivity != null"> and e.id not in (select activity_id from zeus.t_asset_property_activity where asset_property_id=#{excludeAssetPropertyActivity} and activity_type='enrolling' and del_flag=0)</if>
+    <if test="excludeAlbumActivity != null"> and e.id not in (select activity_id from zeus.auction_activity_album_map where album_id=#{excludeAlbumActivity} and activity_type='enrolling')</if>
+    <if test="frontFlag != null and frontFlag=='1'.toString()">
+      AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED") AND e.begin_at &lt; NOW() AND e.visibility_level = 'PLATFORM_DEFAULT'
+    </if>
+    order by e.created_at desc
+  </select>
+
+  <!-- 我的招商会 -->
+  <select id="myEnrollingActivities" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+		SELECT
+			e.type as type,
+			e.id AS activityId,
+			e.STATUS AS STATUS,
+			c.`name` AS cityName,
+			e.NAME AS name,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			e.ref_price AS refPrice,
+			e.begin_at as beginAt,
+			e.end_at endAt,
+			e.id as id,
+			e.extra ->> '$.images[0]' as images,
+			e.expire_At as expireAt,
+			e.created_at as createAt,
+			e.apply_number as depositNum,
+			e.reject_reason as rejectReason,
+			e.end_pay_time as endPayTime
+
+		FROM
+		enrolling_activity e
+		LEFT JOIN city c ON e.city_id = c.id
+		where 1 = 1
+		and e.status != "NOT_PAY"
+		and e.party_id = #{partyId}
+        <if test="thirdPartyStatus != null">
+          AND e.third_party_status = #{thirdPartyStatus,jdbcType=INTEGER}
+        </if>
+
+		ORDER BY e.created_at DESC
+	</select>
+
+  <!-- 新增查询机构后台 -->
+  <select id="getAvailableEnrollingActivities" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.EnrollingActivityVo">
+    SELECT
+    e.id AS id,
+    e. STATUS AS STATUS,
+    c.`name` AS cityName,
+    e. NAME AS NAME,
+    a.`name` AS agencyName,
+    p. NAME AS assetPropertyName,
+    e. CODE AS CODE,
+    e.created_at AS createdAt,
+    e.deposit AS deposit,
+    u.`name` AS userName,
+    e.ref_price AS refPrice,
+    com. NAME AS comName,
+    e.begin_at AS beginAt,
+    e.end_at endAt,
+    e.commission_Percent AS commissionPercent,
+    e.contact_Phone AS contactPhone,
+    e.extra AS extra,
+    e.remark AS remark,
+    e.description_Doc AS descriptionDoc,
+    e.contact_Name AS contactName,
+    e.contact_Qq AS contactQq,
+    e.expire_At AS expireAt,
+    e.visibility_Level AS visibilityLevel
+    FROM
+    enrolling_activity e
+    LEFT JOIN t_user u ON e.party_id = u.id
+    LEFT JOIN t_agency a ON e.agency_id = a.id
+    LEFT JOIN city c ON e.city_id = c.id
+    LEFT JOIN asset_property p ON e.property_id = p.id
+    LEFT JOIN t_company com ON e.party_id = com.id
+    LEFT JOIN agency_portal_enrolling_activity apea ON apea.enrolling_activity_id = e.id
+    where 1 = 1
+    AND e.status != "NOT_PAY"
+    <if test="unionStatus != null and unionStatus == 1">
+      AND apea.agency_id = #{agencyId}
+      AND e.`status` IN ('ONLINE', 'CLOSED', 'FINISHED')
+    </if>
+
+    <if test="unionStatus != null and unionStatus == 2">
+      AND e.`status` IN ('CREATED', 'PUBLISHED', 'AGENCY_APPROVED', 'PLATFORM_REJECT', 'PLATFORM_APPROVED')
+    </if>
+
+    <if test="status != null and status != ''">
+      AND e.status = #{status,jdbcType=CHAR}
+    </if>
+
+    <if test="info != null and info != ''">
+      AND (e.name like concat(concat('%', #{info}), '%') or e.code like concat(concat('%', #{info}), '%'))
+    </if>
+  </select>
+
+  <!-- 根据partyId查询我已经关注的预招商活动列表 #AND fec.party_id = #{partyId}-->
+  <select id="focusList" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+    SELECT
+    e.type as type,
+    e.id AS activityId,
+    e.STATUS AS STATUS,
+    c.`name` AS cityName,
+    e.NAME AS name,
+    e.created_at AS createdAt,
+    e.deposit AS deposit,
+    e.ref_price AS refPrice,
+    e.begin_at as beginAt,
+    e.end_at endAt,
+    e.id as id,
+    e.extra ->> '$.images[0]' as images,
+    e.expire_At as expireAt,
+    e.apply_number as depositNum,
+    e.focus_number as focusNum,
+    e.browse_number as browseNum,
+    fec.resource_id as resourceId,
+    a.name as shopName,
+    e.deposit AS enrollingDeposit,
+    e.ref_price AS enrollingRefPrice
+    FROM
+    favorite_enrolling_activity fec
+    INNER JOIN enrolling_activity e ON e.id = fec.activity_id AND e.visibility_level = 'PLATFORM_DEFAULT'
+    LEFT JOIN city c ON e.city_id = c.id
+    left join t_applet_shop  a on a.id = fec.resource_id and fec.type = '1'
+    where 1 = 1
+    AND e.status != "NOT_PAY"
+    AND e.visibility_level = "PLATFORM_DEFAULT"
+    <if test="type != null and type != ''">
+      AND e.type = #{type,jdbcType=CHAR}
+    </if>
+
+    <if test="partyId != null and partyId != ''">
+      AND fec.party_id = #{partyId,jdbcType=INTEGER}
+    </if>
+
+    <if test="status != null and status != ''">
+      AND e.status = #{status,jdbcType=CHAR}
+    </if>
+
+    <if test="cityId != null and cityId != ''">
+      AND find_in_set(#{cityId,jdbcType=CHAR}, e.city_id)
+    </if>
+
+    <if test="accountId != null and accountId != ''">
+      AND fec.account_id = #{accountId,jdbcType=INTEGER}
+    </if>
+
+    <if test="focusInfo != null and focusInfo != ''">
+      AND fec.type = #{focusInfo,jdbcType=CHAR}
+    </if>
+
+  </select>
+
+  <!-- 根据partyId获取个人中心提醒预招商信息信息 -->
+  <select id="remindList" parameterType="com._360pai.core.dto.enrolling.ActivityPersionDto" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+		SELECT
+			e.type as type,
+			e.id AS activityId,
+			e.STATUS AS STATUS,
+			c.`name` AS cityName,
+			e.NAME AS name,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			e.ref_price AS refPrice,
+			e.begin_at as beginAt,
+			e.end_at endAt,
+			e.id as id,
+			e.extra ->> '$.images[0]' as images,
+			e.expire_At as expireAt,
+			e.apply_number as depositNum
+
+		FROM
+			notify_party_enrolling_activity npea
+		LEFT JOIN enrolling_activity e ON e.id = npea.activity_id
+		LEFT JOIN city c ON e.city_id = c.id
+		where 1 = 1
+		and e.status != "NOT_PAY"
+		and e.visibility_level = "PLATFORM_DEFAULT"
+		<if test="partyId != null">and npea.party_id = #{partyId}</if>
+		and npea.account_id = #{accountId}
+	</select>
+
+  <!-- 根据partyId获取已经报名的预招商活动列表 预留partyId -->
+  <select id="myApplyActivity" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+		SELECT
+			e.type as type,
+			e.id AS activityId,
+			e.STATUS AS STATUS,
+			c.`name` AS cityName,
+			e.NAME AS name,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			e.ref_price AS refPrice,
+			e.begin_at as beginAt,
+			e.end_at endAt,
+			e.id as id,
+			e.extra ->> '$.images[0]' as images,
+			e.expire_At as expireAt,
+			e.apply_number as depositNum,
+			ed.status as depositStatus,
+			ed.participate_proof as proof,
+			ed.created_at as depositTime
+
+		FROM
+			enrolling_deposit ed
+		LEFT JOIN enrolling_activity e ON e.id = ed.activity_id
+		LEFT JOIN city c ON e.city_id = c.id
+		where 1 = 1
+		and e.status != "NOT_PAY"
+		and e.visibility_level = "PLATFORM_DEFAULT"
+		and ed.party_id = #{partyId}
+		order by depositTime desc
+	</select>
+
+  <select id="searchHomeActivity" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.MyEnrollingActivityVO">
+      select *
+      from (
+        SELECT
+        e.type as type,
+        e.id AS activityId,
+        e.STATUS AS STATUS,
+        e.NAME AS name,
+        e.created_at AS createdAt,
+        e.deposit AS deposit,
+        e.ref_price AS refPrice,
+        e.begin_at as beginAt,
+        e.end_at endAt,
+        e.id as id,
+        e.extra ->> '$.images[0]' as images,
+        e.expire_At as expireAt,
+        e.apply_number as depositNum,
+        e.browse_number as browseNum,
+        e.focus_number as focusNum,
+        e.guarantee as mortgageValue,
+        e.province_id provinceId,
+        e.third_party_status as source,
+        ci.`name` AS cityName,
+        ca.`name` areaName,
+        cp.`name` provinceName,
+        case when e.type = '1' then e.deposit else e.ref_price end as amount
+        FROM
+        enrolling_activity e left join  t_party p on e.party_id = p.id
+        LEFT JOIN city ci ON ci.id = e.city_id
+        LEFT JOIN area ca ON ca.id = e.area_id
+        LEFT JOIN province cp ON cp.id = e.province_id
+        where 1 = 1
+        AND e.delete_flag = 0
+        AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+        AND e.begin_at &lt; NOW()
+        AND e.visibility_level = 'PLATFORM_DEFAULT'
+        <if test="type != null and type != ''">
+          AND e.type = #{type,jdbcType=CHAR}
+        </if>
+
+        <if test="status != null and status != ''">
+          AND e.status = #{status,jdbcType=CHAR}
+        </if>
+
+        <if test="cityId != null and cityId != ''">
+          AND find_in_set(#{cityId}, e.city_id)
+        </if>
+        <if test="provinceId != null and provinceId != ''">
+          AND find_in_set(#{provinceId}, e.province_id)
+        </if>
+        <if test="areaId != null and areaId != ''">
+          AND find_in_set(#{areaId}, e.area_id)
+        </if>
+
+        <if test="todayFlag != null and todayFlag != ''">
+          AND DATE_SUB(CURDATE(), INTERVAL 6 DAY) &lt;= date(e.begin_at)
+        </if>
+
+        <if test="info != null and info != ''">
+          AND (e.name like concat(concat('%', #{info}), '%') or e.code like concat(concat('%', #{info}), '%'))
+        </if>
+
+        <if test="source != null and source != ''">
+          AND e.third_party_status = #{source}
+        </if>
+
+        <if test="category != null and category != ''">
+          <choose>
+            <when test="category == 'AUCTION_COMPANY'.toString()">AND ((p.category = #{category} and e.third_party_status != '2') or e.third_party_status='2')</when>
+            <otherwise>
+              AND p.category = #{category} AND e.third_party_status != '2'
+            </otherwise>
+          </choose>
+        </if>
+
+        <if test="partyId != null and partyId != ''">
+          AND e.party_id=#{partyId}
+        </if>
+
+        <if test="mortgage != null and mortgage != ''">
+          AND e.guarantee = #{mortgage}
+        </if>
+
+        <if test="busTypeName != null and busTypeName != '' and busTypeName !='无抵押'">
+
+          AND find_in_set(#{busTypeName}, e.bus_type_name)
+         </if>
+
+          <if test="busTypeName != null and busTypeName != '' and busTypeName =='无抵押'">
+
+              AND (e.bus_type_name is null or e.bus_type_name ='' ) and e.type = '2'
+          </if>
+
+        <if test="branchCom != null and branchCom != ''">
+
+          AND e.branch_com_name = #{branchCom}
+        </if>
+        <if test="typeList!=null">
+          AND e.type in <foreach item="item" index="index" collection="typeList" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+        <if test="busTypeList!=null">
+          AND e.bus_type_name in <foreach item="item" index="index" collection="busTypeList" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+        <if test="activityIdList!=null">
+          AND e.id in <foreach item="item" index="index" collection="activityIdList" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+        <if test="statusList!=null">
+          AND e.status in <foreach item="item" index="index" collection="statusList" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+          <if test="activityPosterCityId != null and activityPosterCityId != ''">
+              AND find_in_set(#{activityPosterCityId}, e.city_id)
+          </if>
+          <if test="activityPosterProvinceId != null and activityPosterProvinceId != ''">
+              AND find_in_set(#{activityPosterProvinceId}, e.province_id)
+          </if>
+          <if test="activityPosterAreaId != null and activityPosterAreaId != ''">
+              AND find_in_set(#{activityPosterAreaId}, e.area_id)
+          </if>
+    ) t
+    <where>
+      <if test="beginPrice != null and beginPrice != ''">
+        AND ifnull(t.amount, 0) &gt;= #{beginPrice}
+      </if>
+      <if test="endPrice != null and endPrice != ''">
+        AND ifnull(t.amount, 0) &lt;= #{endPrice}
+      </if>
+    </where>
+    ORDER BY
+    <choose>
+      <when test="orderBy != null and orderBy == 'begin_at_asc'.toString()">
+        t.beginAt asc
+      </when>
+      <when test="orderBy != null and orderBy == 'begin_at_desc'.toString()">
+        t.beginAt desc
+      </when>
+      <when test="orderBy != null and orderBy == 'browse_number_asc'.toString()">
+        t.browseNum asc
+      </when>
+      <when test="orderBy != null and orderBy == 'browse_number_desc'.toString()">
+        t.browseNum desc
+      </when>
+      <when test="orderBy != null and orderBy =='recentUpload'.toString() ">
+        t.beginAt desc
+      </when>
+      <when test="orderBy != null and orderBy =='ref_price_asc'.toString() ">
+        t.amount asc
+      </when>
+      <when test="orderBy != null and orderBy =='ref_price_desc'.toString() ">
+        t.amount desc
+      </when>
+      <otherwise>
+        t.status desc,
+        t.beginAt desc,
+        t.depositNum desc,
+        t.browseNum desc
+      </otherwise>
+    </choose>
+
+  </select>
+
+  <select id="getActivityByTab" parameterType="String" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+		 SELECT
+			e.type as type,
+			e.id AS activityId,
+			e.STATUS AS STATUS,
+			c.`name` AS cityName,
+			e.NAME AS name,
+			ap.NAME AS assetPropertyName,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			e.ref_price AS refPrice,
+			e.begin_at as beginAt,
+			e.end_at endAt,
+			e.extra ->> '$.images[0]' as images,
+			e.expire_At as expireAt,
+			e.id as id
+		FROM
+			enrolling_activity e
+		LEFT JOIN t_asset_property_enrolling tape ON tape.activity_id = e.id
+		LEFT JOIN asset_property ap ON tape.asset_property_id = ap.id
+		LEFT JOIN city c ON e.city_id = c.id
+		WHERE 1 = 1
+		AND ap.id = #{tabId}
+		AND e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+		LIMIT 0, 6
+	</select>
+
+  <!-- 排行榜后续排序后续加上 -->
+  <select id="leaderboardEnrolling" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.HomeEnrollingActivityVO">
+		  SELECT
+			e.type as type,
+			e.id AS activityId,
+			e.STATUS AS STATUS,
+			c.`name` AS cityName,
+			e.NAME AS name,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			e.ref_price AS refPrice,
+			e.begin_at as beginAt,
+			e.end_at endAt,
+			e.extra ->> '$.images[0]' as images,
+			e.expire_At as expireAt,
+			e.id as id,
+			e.guarantee as mortgageValue,
+			e.third_party_status as source
+		FROM
+			enrolling_activity e
+		LEFT JOIN city c ON e.city_id = c.id
+		WHERE 1 = 1
+		AND e.STATUS IN ( "ONLINE", "FINISHED", "CLOSED")
+		AND e.begin_at &lt; NOW()
+		AND e.visibility_level = 'PLATFORM_DEFAULT' AND e.delete_flag=0
+		ORDER BY
+		e.status desc,
+		e.browse_number desc
+	</select>
+
+  <select id="getEnrollingDetailInfoVo" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.EnrollingDetailInfoVo">
+		SELECT
+			e.id AS id,
+			e. STATUS AS STATUS,
+			e.city_name AS cityName,
+			e. NAME AS NAME,
+			a.`name` AS agencyName,
+			p. NAME AS assetPropertyName,
+			e. CODE AS CODE,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			u.`name` AS userName,
+			e.ref_price AS refPrice,
+			com.NAME AS comName,
+			e.begin_at AS beginAt,
+			e.end_at endAt,
+			e.commission_Percent AS commissionPercent,
+			e.contact_Phone AS contactPhone,
+			e.extra AS extra,
+			e.remark AS remark,
+			e.description_Doc AS descriptionDoc,
+			e.contact_Name AS contactName,
+			e.contact_Qq AS contactQq,
+			e.expire_At AS expireAt,
+			e.visibility_Level AS visibilityLevel,
+			e.browse_number AS browse,
+			e.focus_number AS focus,
+			e.reminder_number AS remind,
+			e.apply_number AS apply,
+			e.extra ->> '$.images[0]' AS images,
+			s.name as projectName,
+			s.mobile as projectPhone,
+			s.qq as projectQq,
+			e.category_id as categoryId,
+			e.third_party_status as source,
+			e.type as type,
+			e.detail as detail,
+			pa.category as category,
+			e.city_id as cityId,
+			e.disposal_service as disposalService,
+			e.fund_provider as fundProvider,
+            e.province_id provinceId,
+            e.area_id areaId
+		FROM
+			enrolling_activity e
+		LEFT JOIN t_user u ON e.party_id = u.id
+		LEFT JOIN t_agency a ON e.agency_id = a.id
+		LEFT JOIN asset_property p ON e.property_id = p.id
+		LEFT JOIN t_company com ON e.party_id = com.id
+		LEFT JOIN staff s ON e.options = s.id
+		LEFT JOIN t_party pa ON e.party_id = pa.id
+		where 1 = 1
+		and e.id = #{id}
+	</select>
+
+  <select id="getAllActivityStatus" resultType="com._360pai.core.vo.enrolling.web.EnrollingStatusVO">
+		select DISTINCT e.status as id from enrolling_activity e where status in ('FINISHED', 'CLOSED', 'ONLINE') ORDER BY e.status desc
+	</select>
+
+  <!-- 获取全网联拍列表数据 -->
+  <select id="getActivityJoint" parameterType="String" resultType="com._360pai.core.vo.enrolling.web.LinkageEnrollingActivityVO">
+
+	SELECT
+	ag.NAME AS agencyName,
+	ag.logo_url AS logoUrl,
+	IFNULL(ap.view_count, 0 ) AS viewCount,
+	( SELECT count( 1 ) FROM enrolling_deposit d WHERE d.agency_id = ag.id
+	and d.activity_id =#{activityId}
+	) AS participantNumber,
+	c.name as cityName,
+	p.name as provinceName,
+	ag.code as agencyCode
+	FROM
+	t_agency ag
+	LEFT JOIN agency_portal_enrolling_activity ap ON ag.id = ap.agency_id  and
+	ap.enrolling_activity_id = #{activityId}
+
+	LEFT JOIN city c on ag.city_id = c.id
+	left join province p on p.id = c.province_id
+	where ag.status='1'
+	and ag.website_status='ONLINE'
+
+    ORDER BY
+	viewCount DESC,
+	participantNumber DESC,
+	ag.id
+	</select>
+
+
+
+  <select id="getSignInfo" parameterType="com._360pai.core.dto.enrolling.EnrollingListReqDto" resultType="com._360pai.core.vo.enrolling.web.EnrollingSignVO">
+    SELECT
+    u.fadada_id as userFddId,
+    com.fadada_id as comFddId,
+    a.fadada_id as agencyFddId,
+    e.type as type,
+    e.party_id as partyId,
+    e.third_party_status  as thirdPartyStatus,
+    ag.fadada_id as userAgencyFddId
+    FROM
+    enrolling_activity e
+    LEFT JOIN t_user u ON e.party_id = u.id
+    LEFT JOIN t_agency a ON e.agency_id = a.id
+    LEFT JOIN t_company com ON e.party_id = com.id
+    LEFT JOIN t_agency ag ON e.party_id = ag.id
+
+    where 1 = 1
+    <if test="id != null and id != ''">
+      AND e.id = #{id,jdbcType=CHAR}
+    </if>
+
+    <if test="status != null and status != ''">
+      AND e.status = #{status,jdbcType=CHAR}
+    </if>
+
+    <if test="agencyId != null and agencyId != ''">
+      AND e.agency_id = #{agencyId,jdbcType=CHAR}
+    </if>
+    <if test="type != null and type != ''">
+      AND e.type = #{type,jdbcType=CHAR}
+    </if>
+
+
+  </select>
+
+  <!-- 机构后台获取基本信息 -->
+  <select id="getAgencyActivityInfo" parameterType="String" resultType="com._360pai.core.vo.enrolling.AgencyActivityDetailVO">
+  		SELECT
+			e.id AS id,
+			e. STATUS AS STATUS,
+			c.`name` AS cityName,
+			e. NAME AS NAME,
+			a.`name` AS agencyName,
+			e.type AS type,
+			e. CODE AS CODE,
+			e.created_at AS createdAt,
+			e.deposit AS deposit,
+			u.`name` AS userName,
+			e.ref_price AS refPrice,
+			com. NAME AS comName,
+			e.begin_at AS beginAt,
+			e.end_at endAt,
+			e.commission_Percent AS commissionPercent,
+			e.contact_Phone AS contactPhone,
+			e.extra AS extra,
+			e.remark AS remark,
+			e.description_Doc AS descriptionDoc,
+			e.contact_Name AS contactName,
+			e.contact_Qq AS contactQq,
+			e.expire_At AS expireAt,
+			e.visibility_Level AS visibilityLevel,
+			e.browse_number AS browse,
+			e.focus_number AS focus,
+			e.reminder_number AS remind,
+			e.apply_number AS apply,
+			e.extra ->> '$.images[0]' AS images
+		FROM
+			enrolling_activity e
+		LEFT JOIN t_user u ON e.party_id = u.id
+		LEFT JOIN t_agency a ON e.agency_id = a.id
+		LEFT JOIN city c ON e.city_id = c.id
+		LEFT JOIN t_company com ON e.party_id = com.id
+		where 1 = 1
+		and e.id = #{id}
+  </select>
+
+
+  <!-- 签章参数 -->
+  <select id="getEnrollingContractParam" parameterType="String" resultType="com._360pai.core.vo.enrolling.EnrollingContractParamVO">
+  		SELECT
+			e.name AS name,
+			e.code AS code,
+			e.ref_price AS refPrice,
+            e.begin_at AS beginAt,
+			e.end_at as endAt,
+			o.amount as cost,
+			e.commission_Percent AS commissionPercent,
+			a.`name` AS agencyName,
+		    a.`mobile` AS agencyPhone,
+		    a.`address` AS agencyAddress,
+			u.`name` AS userName,
+			u.`address` AS userAddress,
+			u.mobile as userPhone,
+			com.name AS comName,
+			com.mobile AS comPhone,
+			com.address AS comAddress,
+			userAgency.name AS userAgencyName,
+			userAgency.mobile AS userAgencyPhone,
+			userAgency.address AS userAgencyAddress,
+			userAgency.license AS userAgencylicense,
+
+ 			e.deposit AS deposit,
+ 			u.certificate_number as userIdNumber,
+ 			com.license as comIdNumber
+		FROM
+			enrolling_activity e
+		LEFT JOIN t_user u ON e.party_id = u.id
+		LEFT JOIN t_agency a ON e.agency_id = a.id
+		LEFT JOIN t_company com ON e.party_id = com.id
+		LEFT JOIN t_agency userAgency ON e.party_id = userAgency.id
+
+		LEFT JOIN enrolling_submit_order o ON o.activity_id = e.id
+		where 1 = 1
+		and e.id = #{activityId}
+  </select>
+
+  <select id="getActivityByName" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from enrolling_activity
+    where name = #{name}
+    and status != "NOT_PAY"
+  </select>
+
+  <select id="getActivityModelInfo" parameterType="String" resultType="com._360pai.core.vo.enrolling.web.EnrollingAnnouncementVO">
+  		SELECT
+            e.NAME AS NAME,
+            e.contact_name AS contactName,
+            e.contact_phone AS contactPhone,
+            e.begin_at AS beginAt,
+            e.end_at AS endAt,
+            a.`name` AS agencyName,
+            a.`mobile` AS agencyPhone,
+            com.NAME AS comName,
+            e.deposit AS deposit,
+            u.NAME AS userName,
+            IFNULL( u.NAME, com.NAME ) AS partyName,
+            e.expire_at AS expireAt,
+            sta.NAME AS projectManager,
+            sta.mobile AS projectPhone,
+            ag.name as userAgencyName,
+            e.third_party_status as thirdPartyStatus,
+            e.type
+
+        FROM
+            enrolling_activity e
+            LEFT JOIN t_user u ON e.party_id = u.id
+            LEFT JOIN t_agency a ON e.agency_id = a.id
+            LEFT JOIN t_company com ON e.party_id = com.id
+            LEFT JOIN staff sta ON e.OPTIONS = sta.id
+            LEFT JOIN t_agency ag on ag.id = e.party_id
+
+
+        WHERE
+            1 = 1
+		and e.id = #{activityId}
+  </select>
+
+  <!-- 查询当前登陆人所关注的预招商活动总数 -->
+  <select id="getFoucseCount" parameterType="Integer" resultType="Integer">
+  		SELECT
+            count( fec.id )
+        FROM
+            favorite_enrolling_activity fec
+            LEFT JOIN enrolling_activity e ON e.id = fec.activity_id
+        WHERE
+            1 = 1
+            AND e.STATUS != "NOT_PAY"
+            AND e.visibility_level = "PLATFORM_DEFAULT"
+            and fec.type = '0'
+            <if test="accountId != null"> AND fec.account_id = #{accountId}</if>
+            <if test="partyId != null"> AND fec.party_id = #{partyId}</if>
+  </select>
+
+  <update id="batchUpdateFocusNum" parameterType="java.util.List">
+    update  enrolling_activity  set  focus_number = focus_number -1  where  id in
+
+    <foreach item="empnoItem" collection="activityIdList" open="(" separator="," close=")">
+      #{empnoItem}
+    </foreach>
+  </update>
+
+  <select id="getActivitysByAccountId" parameterType="Integer" resultType="com._360pai.core.vo.enrolling.web.MyEnrollingActivityVO">
+    SELECT
+    e.type as type,
+    e.id AS activityId,
+    e.STATUS AS STATUS,
+    e.city_name AS cityName,
+    e.NAME AS name,
+    e.created_at AS createdAt,
+    e.deposit AS deposit,
+    e.ref_price AS refPrice,
+    e.begin_at as beginAt,
+    e.end_at endAt,
+    e.id as id,
+    e.extra ->> '$.images[0]' as images,
+    e.expire_At as expireAt,
+    e.apply_number as depositNum,
+    e.browse_number as browseNum,
+    e.focus_number as focusNum,
+    e.guarantee as mortgageValue
+    FROM
+    t_account_view_record tavr  left join
+    enrolling_activity e on tavr.activity_id = e.id
+    where 1 = 1
+    and tavr.type = 'ENROLLING'
+    and DATE_SUB(CURDATE(), INTERVAL 10 DAY)  &lt;= tavr.update_at
+    and tavr.account_id = #{accountId}
+    <if test="partyId != null and partyId != ''">
+      and tavr.party_id = #{partyId}
+    </if>
+
+    <if test="partyId == null">
+      and tavr.party_id is null
+    </if>
+
+    order by tavr.update_at desc
+
+  </select>
+
+  <select id="countPlatformActivityNum" resultType="int">
+        select count(0) cnt
+        from zeus.enrolling_activity e
+        where  e. STATUS IN ( "ONLINE", "FINISHED", "CLOSED") and e.begin_at &lt; NOW() and e.visibility_level = 'PLATFORM_DEFAULT'
+    </select>
+    <select id="getListWillEndAt2Days" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+      select * from zeus.enrolling_activity where status='ONLINE' and delete_flag=0 and end_at >= #{beginTime} and end_at &lt;= #{endTime}
+    </select>
+  <select id="getListWillEndAtOver2Days" resultType="com._360pai.core.model.enrolling.EnrollingActivity">
+    select * from zeus.enrolling_activity where status='ONLINE' and delete_flag=0 and end_at > #{endTime}
+  </select>
+</mapper>

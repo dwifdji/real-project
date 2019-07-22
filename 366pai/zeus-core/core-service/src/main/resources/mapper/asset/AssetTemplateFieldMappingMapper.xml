@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetTemplateFieldMappingMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetTemplateFieldMapping">
+        <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+        <result column="field_id" jdbcType="INTEGER" property="fieldId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	group_id, field_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_template_field_mapping
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetTemplateFieldMappingCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_template_field_mapping
+        <where>
+            <if test="groupId != null">
+                AND group_id = #{groupId,jdbcType=INTEGER}
+            </if>
+            <if test="fieldId != null">
+                AND field_id = #{fieldId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetTemplateFieldMapping">
+        insert into zeus.asset_template_field_mapping
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">
+                group_id,
+            </if>
+            <if test="fieldId != null">
+                field_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">
+                #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                #{fieldId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetTemplateFieldMapping">
+        update zeus.asset_template_field_mapping
+        <set>
+            <if test="groupId != null">
+                group_id = #{groupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                field_id = #{fieldId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND ID = #{ID,jdbcType=VARCHAR}
+        </where>
+    </update>
+
+    <select id="isInMapping" resultType="java.lang.Boolean">
+      SELECT count(group_id) FROM asset_template_field_mapping WHERE group_id = #{groupId} AND field_id = #{fieldId}
+    </select>
+
+    <delete id="deleteMapping">
+        delete  from asset_template_field_mapping where group_id = #{groupId};
+    </delete>
+
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分52秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.LockDepositActionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.LockDepositAction">
+	<result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="for_send_back" jdbcType="BIT" property="forSendBack" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, for_send_back
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.lock_deposit_action
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.LockDepositActionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.lock_deposit_action
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="forSendBack != null">
+        AND for_send_back = #{forSendBack,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.payment.LockDepositAction">
+    insert into zeus.lock_deposit_action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="forSendBack != null">
+        for_send_back, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="forSendBack != null">
+        #{forSendBack,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.payment.LockDepositAction">
+    update zeus.lock_deposit_action
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="forSendBack != null">
+        for_send_back = #{forSendBack,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

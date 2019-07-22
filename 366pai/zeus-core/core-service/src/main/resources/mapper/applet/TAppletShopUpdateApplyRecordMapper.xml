@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月29日 16时52分10秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletShopUpdateApplyRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletShopUpdateApplyRecord">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="old_name" jdbcType="VARCHAR" property="oldName" />
+    <result column="old_logo_url" jdbcType="VARCHAR" property="oldLogoUrl" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, shop_id, party_id, name, logo_url, old_name,
+	old_logo_url, status,
+    operator_id, reason, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_shop_update_apply_record
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletShopUpdateApplyRecordCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_shop_update_apply_record
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="logoUrl != null">
+        AND logo_url = #{logoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="oldName != null">
+        AND old_name = #{oldName,jdbcType=VARCHAR}
+      </if>
+      <if test="oldLogoUrl != null">
+        AND old_logo_url = #{oldLogoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="reason != null">
+        AND reason = #{reason,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletShopUpdateApplyRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_applet_shop_update_apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="oldName != null">
+        old_name,
+      </if>
+      <if test="oldLogoUrl != null">
+        old_logo_url,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="oldName != null">
+        #{oldName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLogoUrl != null">
+        #{oldLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletShopUpdateApplyRecord">
+    update zeus.t_applet_shop_update_apply_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="oldName != null">
+        old_name = #{oldName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLogoUrl != null">
+        old_logo_url = #{oldLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.applet.TAppletShopUpdateApplyRecord">
+    <if test="partyType == null or partyType == ''.toString()">
+      select r.*
+      from zeus.t_applet_shop_update_apply_record r
+      inner join zeus.t_applet_shop s on s.id = r.shop_id
+      inner join zeus.t_account a on a.shop_id = s.id
+      <where>
+        r.party_id is null
+        <if test="q != null">and (s.mobile like concat('%',#{q},'%') or r.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and r.create_time>=#{createdAtFrom} and r.create_time&lt;=#{createdAtTo}</if>
+        <if test="status !=null">and r.status=#{status}</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by r.id desc
+    </if>
+    <if test="partyType == 'user'.toString()">
+      select r.*
+      from zeus.t_applet_shop_update_apply_record r
+      inner join zeus.t_applet_shop s on s.id = r.shop_id
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'user'
+      inner join zeus.t_user u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      <where>
+        r.party_id is not null
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.certificate_number like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and r.create_time>=#{createdAtFrom} and r.create_time&lt;=#{createdAtTo}</if>
+        <if test="status !=null">and r.status=#{status}</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by r.id desc
+    </if>
+    <if test="partyType == 'company'.toString()">
+      select r.*
+      from zeus.t_applet_shop_update_apply_record r
+      inner join zeus.t_applet_shop s on s.id = r.shop_id
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'company'
+      inner join zeus.t_company u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      <where>
+        r.party_id is not null
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and r.create_time>=#{createdAtFrom} and r.create_time&lt;=#{createdAtTo}</if>
+        <if test="status !=null">and r.status=#{status}</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by r.id desc
+    </if>
+  </select>
+</mapper>

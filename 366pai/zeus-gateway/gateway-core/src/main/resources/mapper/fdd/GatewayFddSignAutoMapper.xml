@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月15日 16时37分04秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.fdd.mapper.GatewayFddSignAutoMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.fdd.GatewayFddSignAuto">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="member_id" jdbcType="INTEGER" property="memberId" />
+	<result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+	<result column="doc_title" jdbcType="VARCHAR" property="docTitle" />
+	<result column="template_id" jdbcType="VARCHAR" property="templateId" />
+	<result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+	<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+	<result column="viewpdf_url" jdbcType="VARCHAR" property="viewpdfUrl" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, member_id, customer_id, doc_title, template_id, contract_id, 
+	download_url, viewpdf_url, status, msg, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_fdd_sign_auto
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.fdd.GatewayFddSignAutoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_fdd_sign_auto
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="memberId != null">
+        AND member_id = #{memberId,jdbcType=INTEGER}
+      </if>
+      <if test="customerId != null">
+        AND customer_id = #{customerId,jdbcType=VARCHAR}
+      </if>
+      <if test="docTitle != null">
+        AND doc_title = #{docTitle,jdbcType=VARCHAR}
+      </if>
+      <if test="templateId != null">
+        AND template_id = #{templateId,jdbcType=VARCHAR}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=VARCHAR}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="viewpdfUrl != null">
+        AND viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.fdd.GatewayFddSignAuto">
+    insert into zeus.gateway_fdd_sign_auto
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="memberId != null">
+        member_id, 
+      </if>
+      <if test="customerId != null">
+        customer_id, 
+      </if>
+      <if test="docTitle != null">
+        doc_title, 
+      </if>
+      <if test="templateId != null">
+        template_id, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="downloadUrl != null">
+        download_url, 
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="docTitle != null">
+        #{docTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.fdd.GatewayFddSignAuto">
+    update zeus.gateway_fdd_sign_auto
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="docTitle != null">
+        doc_title = #{docTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="viewpdfUrl != null">
+        viewpdf_url = #{viewpdfUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月17日 10时09分27秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TServiceFollowMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TServiceFollow">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="relative_type" jdbcType="VARCHAR" property="relativeType" />
+	<result column="relative_id" jdbcType="INTEGER" property="relativeId" />
+	<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, party_id, relative_type, relative_id, created_time, del_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_service_follow
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TServiceFollowCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_service_follow
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="relativeType != null">
+        AND relative_type = #{relativeType,jdbcType=VARCHAR}
+      </if>
+      <if test="relativeId != null">
+        AND relative_id = #{relativeId,jdbcType=INTEGER}
+      </if>
+      <if test="createdTime != null">
+        AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TServiceFollow">
+    insert into zeus.t_service_follow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="relativeType != null">
+        relative_type, 
+      </if>
+      <if test="relativeId != null">
+        relative_id, 
+      </if>
+      <if test="createdTime != null">
+        created_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="relativeType != null">
+        #{relativeType,jdbcType=VARCHAR},
+      </if>
+      <if test="relativeId != null">
+        #{relativeId,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TServiceFollow">
+    update zeus.t_service_follow
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="relativeType != null">
+        relative_type = #{relativeType,jdbcType=VARCHAR},
+      </if>
+      <if test="relativeId != null">
+        relative_id = #{relativeId,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <update id="removeFollowList" parameterType="com._360pai.core.model.assistant.TServiceFollow">
+    <foreach collection="list" index="index" item="item" open="" close="" separator=";">
+      UPDATE zeus.t_service_follow  SET del_flag = '1'
+      WHERE  account_id = #{item.accountId} AND relative_type = #{item.relativeType} AND relative_id = #{item.relativeId}
+      AND del_flag = '0'
+    </foreach>
+  </update>
+
+</mapper>

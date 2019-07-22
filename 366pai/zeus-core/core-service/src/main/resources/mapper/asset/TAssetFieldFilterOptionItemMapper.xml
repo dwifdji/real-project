@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月01日 16时58分24秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldFilterOptionItemMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldFilterOptionItem">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="filter_option_id" jdbcType="INTEGER" property="filterOptionId"/>
+        <result column="item_name" jdbcType="VARCHAR" property="itemName"/>
+        <result column="filter_id" jdbcType="INTEGER" property="filterId"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, filter_option_id, item_name, filter_id,order_num
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_filter_option_item
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldFilterOptionItemCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_filter_option_item
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="filterOptionId != null">
+                AND filter_option_id = #{filterOptionId,jdbcType=INTEGER}
+            </if>
+            <if test="itemName != null">
+                AND item_name = #{itemName,jdbcType=VARCHAR}
+            </if>
+            <if test="filterId != null">
+                AND filter_id = #{filterId,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldFilterOptionItem">
+        insert into zeus.t_asset_field_filter_option_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="filterOptionId != null">
+                filter_option_id,
+            </if>
+            <if test="itemName != null">
+                item_name,
+            </if>
+            <if test="filterId != null">
+                filter_id,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionId != null">
+                #{filterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="itemName != null">
+                #{itemName,jdbcType=VARCHAR},
+            </if>
+            <if test="filterId != null">
+                #{filterId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldFilterOptionItem">
+        update zeus.t_asset_field_filter_option_item
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionId != null">
+                filter_option_id = #{filterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="itemName != null">
+                item_name = #{itemName,jdbcType=VARCHAR},
+            </if>
+            <if test="filterId != null">
+                filter_id = #{filterId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <delete id="deleteTAssetFieldFilterOptionItem">
+      delete from zeus.t_asset_field_filter_option_item where id  = #{paramsId};
+  </delete>
+
+</mapper>

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.payment.mapper.AuctionOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.payment.AuctionOrder">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="activity_id" jdbcType="INTEGER" property="activityId"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="deposit" jdbcType="DECIMAL" property="deposit"/>
+        <result column="bid_id" jdbcType="INTEGER" property="bidId"/>
+        <result column="buyer_agency_id" jdbcType="INTEGER" property="buyerAgencyId"/>
+        <result column="seller_agency_id" jdbcType="INTEGER" property="sellerAgencyId"/>
+        <result column="buyer_id" jdbcType="INTEGER" property="buyerId"/>
+        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="buyer_paid_commission" jdbcType="BIT" property="buyerPaidCommission"/>
+        <result column="buyer_paid_order" jdbcType="BIT" property="buyerPaidOrder"/>
+        <result column="seller_paid_commission" jdbcType="BIT" property="sellerPaidCommission"/>
+        <result column="seller_paid_order" jdbcType="BIT" property="sellerPaidOrder"/>
+        <result column="asset_category" jdbcType="VARCHAR" property="assetCategory"/>
+        <result column="buyer_has_pay_end" jdbcType="VARCHAR" property="buyerHasPayEnd"/>
+        <result column="seller_has_pay_end" jdbcType="VARCHAR" property="sellerHasPayEnd"/>
+        <result column="serve_buyer_percent" jdbcType="DECIMAL" property="serveBuyerPercent"/>
+        <result column="serve_seller_percent" jdbcType="DECIMAL" property="serveSellerPercent"/>
+        <result column="auto_handle_delay" jdbcType="BIT" property="autoHandleDelay"/>
+        <result column="come_from" jdbcType="CHAR" property="comeFrom"/>
+        <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, activity_id, status, created_at, deposit, bid_id, 
+	buyer_agency_id, seller_agency_id, buyer_id, seller_id, amount, buyer_paid_commission, 
+	buyer_paid_order, seller_paid_commission, seller_paid_order, asset_category, serve_buyer_percent, serve_seller_percent, 
+	auto_handle_delay,update_time,buyer_has_pay_end,seller_has_pay_end, come_from, delete_flag
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.auction_order
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.payment.AuctionOrderCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.auction_order
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deposit != null">
+                AND deposit = #{deposit,jdbcType=DECIMAL}
+            </if>
+            <if test="bidId != null">
+                AND bid_id = #{bidId,jdbcType=INTEGER}
+            </if>
+            <if test="buyerAgencyId != null">
+                AND buyer_agency_id = #{buyerAgencyId,jdbcType=INTEGER}
+            </if>
+            <if test="sellerAgencyId != null">
+                AND seller_agency_id = #{sellerAgencyId,jdbcType=INTEGER}
+            </if>
+            <if test="buyerId != null">
+                AND buyer_id = #{buyerId,jdbcType=INTEGER}
+            </if>
+            <if test="sellerId != null">
+                AND seller_id = #{sellerId,jdbcType=INTEGER}
+            </if>
+            <if test="amount != null">
+                AND amount = #{amount,jdbcType=DECIMAL}
+            </if>
+            <if test="buyerPaidCommission != null">
+                AND buyer_paid_commission = #{buyerPaidCommission,jdbcType=BIT}
+            </if>
+            <if test="buyerPaidOrder != null">
+                AND buyer_paid_order = #{buyerPaidOrder,jdbcType=BIT}
+            </if>
+            <if test="sellerPaidCommission != null">
+                AND seller_paid_commission = #{sellerPaidCommission,jdbcType=BIT}
+            </if>
+            <if test="sellerPaidOrder != null">
+                AND seller_paid_order = #{sellerPaidOrder,jdbcType=BIT}
+            </if>
+            <if test="assetCategory != null">
+                AND asset_category = #{assetCategory,jdbcType=VARCHAR}
+            </if>
+            <if test="serveBuyerPercent != null">
+                AND serve_buyer_percent = #{serveBuyerPercent,jdbcType=DECIMAL}
+            </if>
+            <if test="serveSellerPercent != null">
+                AND serve_seller_percent = #{serveSellerPercent,jdbcType=DECIMAL}
+            </if>
+            <if test="autoHandleDelay != null">
+                AND auto_handle_delay = #{autoHandleDelay,jdbcType=BIT}
+            </if>
+            <if test="buyerHasPayEnd != null">
+                AND buyer_has_pay_end = #{buyerHasPayEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="sellerHasPayEnd != null">
+                AND seller_has_pay_end = #{sellerHasPayEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="comeFrom != null">
+                AND come_from = #{comeFrom,jdbcType=CHAR}
+            </if>
+            <if test="deleteFlag != null">
+                AND delete_flag = #{deleteFlag,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.payment.AuctionOrder">
+        insert into zeus.auction_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="bidId != null">
+                bid_id,
+            </if>
+            <if test="buyerAgencyId != null">
+                buyer_agency_id,
+            </if>
+            <if test="sellerAgencyId != null">
+                seller_agency_id,
+            </if>
+            <if test="buyerId != null">
+                buyer_id,
+            </if>
+            <if test="sellerId != null">
+                seller_id,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="buyerPaidCommission != null">
+                buyer_paid_commission,
+            </if>
+            <if test="buyerPaidOrder != null">
+                buyer_paid_order,
+            </if>
+            <if test="sellerPaidCommission != null">
+                seller_paid_commission,
+            </if>
+            <if test="sellerPaidOrder != null">
+                seller_paid_order,
+            </if>
+            <if test="assetCategory != null">
+                asset_category,
+            </if>
+            <if test="serveBuyerPercent != null">
+                serve_buyer_percent,
+            </if>
+            <if test="serveSellerPercent != null">
+                serve_seller_percent,
+            </if>
+            <if test="autoHandleDelay != null">
+                auto_handle_delay,
+            </if>
+            <if test="buyerHasPayEnd != null">
+                buyer_has_pay_end,
+            </if>
+            <if test="sellerHasPayEnd != null">
+                seller_has_pay_end,
+            </if>
+            <if test="comeFrom != null">
+                come_from,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            created_at,
+            update_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=DECIMAL},
+            </if>
+            <if test="bidId != null">
+                #{bidId,jdbcType=INTEGER},
+            </if>
+            <if test="buyerAgencyId != null">
+                #{buyerAgencyId,jdbcType=INTEGER},
+            </if>
+            <if test="sellerAgencyId != null">
+                #{sellerAgencyId,jdbcType=INTEGER},
+            </if>
+            <if test="buyerId != null">
+                #{buyerId,jdbcType=INTEGER},
+            </if>
+            <if test="sellerId != null">
+                #{sellerId,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerPaidCommission != null">
+                #{buyerPaidCommission,jdbcType=BIT},
+            </if>
+            <if test="buyerPaidOrder != null">
+                #{buyerPaidOrder,jdbcType=BIT},
+            </if>
+            <if test="sellerPaidCommission != null">
+                #{sellerPaidCommission,jdbcType=BIT},
+            </if>
+            <if test="sellerPaidOrder != null">
+                #{sellerPaidOrder,jdbcType=BIT},
+            </if>
+            <if test="assetCategory != null">
+                #{assetCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="serveBuyerPercent != null">
+                #{serveBuyerPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="serveSellerPercent != null">
+                #{serveSellerPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="autoHandleDelay != null">
+                #{autoHandleDelay,jdbcType=BIT},
+            </if>
+            <if test="buyerHasPayEnd != null">
+                #{buyerHasPayEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerHasPayEnd != null">
+                #{sellerHasPayEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="comeFrom != null">
+                #{comeFrom,jdbcType=CHAR},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=BIT},
+            </if>
+            now(),
+            now()
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.payment.AuctionOrder">
+        update zeus.auction_order
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=DECIMAL},
+            </if>
+            <if test="bidId != null">
+                bid_id = #{bidId,jdbcType=INTEGER},
+            </if>
+            <if test="buyerAgencyId != null">
+                buyer_agency_id = #{buyerAgencyId,jdbcType=INTEGER},
+            </if>
+            <if test="sellerAgencyId != null">
+                seller_agency_id = #{sellerAgencyId,jdbcType=INTEGER},
+            </if>
+            <if test="buyerId != null">
+                buyer_id = #{buyerId,jdbcType=INTEGER},
+            </if>
+            <if test="sellerId != null">
+                seller_id = #{sellerId,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerPaidCommission != null">
+                buyer_paid_commission = #{buyerPaidCommission,jdbcType=BIT},
+            </if>
+            <if test="buyerPaidOrder != null">
+                buyer_paid_order = #{buyerPaidOrder,jdbcType=BIT},
+            </if>
+            <if test="sellerPaidCommission != null">
+                seller_paid_commission = #{sellerPaidCommission,jdbcType=BIT},
+            </if>
+            <if test="sellerPaidOrder != null">
+                seller_paid_order = #{sellerPaidOrder,jdbcType=BIT},
+            </if>
+            <if test="assetCategory != null">
+                asset_category = #{assetCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerHasPayEnd != null">
+                buyer_has_pay_end = #{buyerHasPayEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerHasPayEnd != null">
+                seller_has_pay_end = #{sellerHasPayEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="serveBuyerPercent != null">
+                serve_buyer_percent = #{serveBuyerPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="serveSellerPercent != null">
+                serve_seller_percent = #{serveSellerPercent,jdbcType=DECIMAL},
+            </if>
+            <if test="autoHandleDelay != null">
+                auto_handle_delay = #{autoHandleDelay,jdbcType=BIT},
+            </if>
+            <if test="comeFrom != null">
+                come_from = #{comeFrom,jdbcType=CHAR},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=BIT},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=BIGINT}
+        </where>
+    </update>
+
+    <select id="getAuctionOrderList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select o.*
+        from zeus.auction_order o
+        inner join zeus.auction_activity aa on aa.id=o.activity_id
+        inner join zeus.t_agency sa on sa.id=o.seller_agency_id
+        <where>
+            and o.delete_flag='0'
+            <if test="q != null">and (aa.asset_name like concat('%',#{q},'%') or o.id like concat('%',#{q},'%'))
+            </if>
+            <if test="status !=null">and o.status=#{status}</if>
+            <if test="createdAtFrom != null and createdAtTo != null">and o.created_at>=#{createdAtFrom} and o.created_at&lt;=#{createdAtTo}</if>
+            <if test="sellerAgencyName != null">and sa.name like concat('%',#{sellerAgencyName},'%')</if>
+            <if test="amountFrom != null">and o.amount>=#{amountFrom}</if>
+            <if test="amountTo !=null">and o.amount&lt;=#{amountTo}</if>
+            <if test="sellerAgencyId != null">and o.seller_agency_id=#{sellerAgencyId}</if>
+            <if test="buyerAgencyId != null">and o.buyer_agency_id=#{buyerAgencyId}</if>
+            <if test="sellerId != null">and o.seller_id=#{sellerId}</if>
+            <if test="buyerId != null">and o.buyer_id=
+                #{buyerId}</if>
+            <if test="comeFrom != null">and o.come_from=#{comeFrom}</if>
+
+
+            <if test="name != null and name != ''">and aa.asset_name like concat('%',#{name},'%')</if>
+            <if test="categoryId != null and categoryId != ''">and aa.asset_category_group_id=#{categoryId}</if>
+
+        </where>
+    </select>
+
+    <select id="getAuctionOrders" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        aa.asset_name AS activityName,
+        aa.display_name AS displayName,
+        aa.id AS activityId,
+        aa.mode AS `mode`,
+        ass.`extra` ->> '$.images[0]' AS imageUrl,
+        ao.amount AS amount,
+        ac.`name` AS categoryName,
+        ap.`name` AS propertyName,
+        CONVERT(ao.amount * (aa.commission_percent_seller / 100),DECIMAL(20,2)) AS commissionSeller,
+        CONVERT(ao.amount * (aa.commission_percent_buyer / 100) , DECIMAL(20,2))  AS commissionBuyer,
+        CONVERT(ao.amount - aa.deposit + ao.amount * (aa.commission_percent_buyer / 100) ,DECIMAL(20,2))  AS buyerAmount,
+        aa.commission_percent_buyer AS commissionPercentBuyer,
+        aa.commission_percent_seller AS commissionPercentSeller,
+        aa.deposit AS deposit,
+        ao.amount AS amount,
+        ao.buyer_id AS buyerId,
+        ao.seller_id AS sellerId,
+        ao.id AS orderId,
+        aa.paid_by_seller AS paidBySeller,
+        ao.buyer_paid_commission AS buyerPaidCommission,
+        ao.buyer_paid_order AS buyerPaidOrder,
+        da.download_url AS downloadUrl,
+        da.viewpdf_url AS viewpdfUrl,
+        ao.status AS orderStatus,
+        ao.created_at AS createdAt,
+        ag.name AS agencyName,
+        ag.id AS agencyId,
+        da.buyer_signed AS buyerSigned,
+        da.id AS dealAgreementId,
+        ag.mobile AS agencyMobile,
+        ao.come_from comeFrom,
+        ao.seller_has_pay_end sellerHasPayEnd,
+        ao.buyer_has_pay_end buyerHasPayEnd,
+    CASE
+        aa.`mode`
+        WHEN "ENGLISH"
+        THEN "增价拍"
+        WHEN "DUTCH"
+        THEN "降价拍模式"
+        WHEN "SEALED"
+        THEN "一口价暗标"
+        WHEN "PUBLIC"
+        THEN "一口价明标"
+        WHEN "FREE"
+        THEN "自由报价"
+        WHEN "FLASH"
+        THEN "限时秒杀"
+        END AS modeStr,
+    CASE ao.status
+        WHEN "NOT_SIGNED"
+        THEN "未签协议"
+        WHEN "NOT_PAID"
+        THEN "等待支付"
+        WHEN "PAID"
+        THEN "等待发货"
+        WHEN "DELIVERED"
+        THEN "等待收货"
+        WHEN "RECEIVED"
+        THEN "完成"
+        WHEN "CLOSED"
+        THEN "终止"
+        END AS orderStatusStr
+        FROM
+        `auction_order` ao
+        LEFT JOIN `t_party` pa
+        ON pa.`id` = ao.`buyer_id`
+        LEFT JOIN `auction_activity` aa
+        ON aa.`id` = ao.`activity_id`
+        LEFT JOIN `asset` ass
+        ON aa.`asset_id` = ass.`id`
+        LEFT JOIN `t_asset_category` ac
+        ON ac.`id` = aa.`asset_category_group_id`
+        LEFT JOIN `asset_property` ap
+        ON ap.`id` = aa.`asset_property_id`
+        LEFT JOIN `deal_agreement` da
+        ON da.`order_id` = ao.`id` and da.contract_type = 'deal'
+        LEFT JOIN `t_agency` ag
+        ON ag.id = ao.seller_agency_id
+        WHERE ao.`buyer_id` = #{partyId}
+
+        <if test="name != null and name != ''">and ass.name like concat('%',#{name},'%')</if>
+
+        <if test="categoryId != null and categoryId!=''">and aa.asset_category_group_id=#{categoryId}</if>
+
+        order by ao.created_at desc
+    </select>
+
+    <select id="getShopDealCommissionListByPage" parameterType="java.util.Map" resultType="com._360pai.core.facade.payment.vo.ShopAuctionOrderVo">
+        select *
+        from (
+            select o.id orderId,case when a.onlined = 1 then '线上' else '线下' end onlined,u.name buyerName,ta.mobile buyerMobile,
+            '' belongShopCode,po.belong_shop_commission belongShopCommission,'' parentCode,ifnull(po.parent_commission, 0) parentCommission,
+            po.seller_agency_commission_pay_amount sellerAgencyCommission,po.buyer_agency_commission_pay_amount buyerAgencyCommission,
+            ifnull(po.platform_commission_pay_amount, 0) platformCommission,o.created_at createTime,belong_acct_id belongAcctId,parent_acct_id parentAcctId
+            from zeus.auction_order o
+            inner join zeus.t_auction_pay_order po on po.order_id=o.id
+            inner join zeus.auction_activity aa on aa.id=o.activity_id
+            inner join zeus.asset a on a.id=aa.asset_id
+            inner join zeus.t_party p on p.id=o.buyer_id and p.type='user'
+            inner join zeus.t_user u on u.id=p.id
+            inner join zeus.t_account ta on ta.id=u.account_id and ta.register_source='APPLET'
+            inner join zeus.t_account_ext_bind b on b.account_id=ta.id
+            <where>
+                o.status='RECEIVED'
+                <if test="orderId !=null">and o.id=#{orderId}</if>
+                <if test="onlined !=null">and a.onlined=#{onlined}</if>
+                <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+                <if test="inviteCode != null">and concat(b.invite_type,b.invite_code) like concat('%',#{inviteCode},'%')</if>
+            </where>
+            union all
+            select o.id orderId,case when a.onlined = 1 then '线上' else '线下' end onlined,u.name buyerName,ta.mobile buyerMobile,
+            '' belongShopCode,po.belong_shop_commission belongShopCommission,'' parentCode,ifnull(po.parent_commission, 0) parentCommission,
+            po.seller_agency_commission_pay_amount sellerAgencyCommission,po.buyer_agency_commission_pay_amount buyerAgencyCommission,
+            ifnull(po.platform_commission_pay_amount, 0) platformCommission,o.created_at createTime,belong_acct_id belongAcctId,parent_acct_id parentAcctId
+            from zeus.auction_order o
+            inner join zeus.t_auction_pay_order po on po.order_id=o.id
+            inner join zeus.auction_activity aa on aa.id=o.activity_id
+            inner join zeus.asset a on a.id=aa.asset_id
+            inner join zeus.t_party p on p.id=o.buyer_id and p.type='company'
+            inner join zeus.t_company u on u.id=p.id
+            inner join zeus.t_account ta on ta.id=u.account_id and ta.register_source='APPLET'
+            inner join zeus.t_account_ext_bind b on b.account_id=ta.id
+            <where>
+                o.status='RECEIVED'
+                <if test="orderId !=null">and o.id=#{orderId}</if>
+                <if test="onlined !=null">and a.onlined=#{onlined}</if>
+                <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+                <if test="inviteCode != null">and concat(b.invite_type,b.invite_code) like concat('%',#{inviteCode},'%')</if>
+            </where>
+        ) t
+        order by t.orderId desc
+    </select>
+
+    <select id="getBuyerNeedToPaidList" resultType="com._360pai.core.model.payment.AuctionOrder">
+        select o.*
+        from zeus.auction_order o
+        inner join zeus.auction_activity aa on aa.id=o.activity_id
+        inner join zeus.asset a on a.id=aa.asset_id and a.onlined='1'
+        where o.buyer_id=#{partyId} and o.status='NOT_PAID' and o.buyer_has_pay_end != 'PAID_SUCCESS'
+    </select>
+    
+    <select id="getBuyerNameByActivityId" parameterType="INTEGER" resultType="String">
+        SELECT
+            IFNULL( com.NAME, u.`name` ) AS buyerName
+        FROM
+            `auction_order` ar
+            LEFT JOIN auction_activity aa ON ar.activity_id = aa.id
+            LEFT JOIN asset a ON a.id = aa.asset_id
+            LEFT JOIN t_company com ON ar.`buyer_id` = com.id
+            LEFT JOIN t_user u ON ar.`buyer_id` = u.id
+        WHERE
+            ar.`status` = 'CLOSED'
+            AND a.id = 123
+    </select>
+</mapper>

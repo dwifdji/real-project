@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分53秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.AgencyPortalEnrollingActivityMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.AgencyPortalEnrollingActivity">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="agency_portal_id" jdbcType="INTEGER" property="agencyPortalId" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="enrolling_activity_id" jdbcType="INTEGER" property="enrollingActivityId" />
+	<result column="view_count" jdbcType="INTEGER" property="viewCount" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, agency_portal_id, agency_id, enrolling_activity_id, view_count, created_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.agency_portal_enrolling_activity
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.AgencyPortalEnrollingActivityCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.agency_portal_enrolling_activity
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="agencyPortalId != null">
+        AND agency_portal_id = #{agencyPortalId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="enrollingActivityId != null">
+        AND enrolling_activity_id = #{enrollingActivityId,jdbcType=INTEGER}
+      </if>
+      <if test="viewCount != null">
+        AND view_count = #{viewCount,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.enrolling.AgencyPortalEnrollingActivity">
+    insert into zeus.agency_portal_enrolling_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="agencyPortalId != null">
+        agency_portal_id, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="enrollingActivityId != null">
+        enrolling_activity_id, 
+      </if>
+      <if test="viewCount != null">
+        view_count, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agencyPortalId != null">
+        #{agencyPortalId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="enrollingActivityId != null">
+        #{enrollingActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.AgencyPortalEnrollingActivity">
+    update zeus.agency_portal_enrolling_activity
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agencyPortalId != null">
+        agency_portal_id = #{agencyPortalId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="enrollingActivityId != null">
+        enrolling_activity_id = #{enrollingActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

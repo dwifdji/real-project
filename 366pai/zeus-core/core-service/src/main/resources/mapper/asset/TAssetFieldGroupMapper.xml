@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月11日 19时10分03秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldGroupMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldGroup">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="order_num" jdbcType="INTEGER" property="orderNum" />
+	<result column="extensible" jdbcType="INTEGER" property="extensible" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, order_num, extensible, title
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_asset_field_group
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldGroupCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_asset_field_group
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="extensible != null">
+        AND extensible = #{extensible,jdbcType=INTEGER}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldGroup">
+    insert into zeus.t_asset_field_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="extensible != null">
+        extensible, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="extensible != null">
+        #{extensible,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldGroup">
+    update zeus.t_asset_field_group
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="extensible != null">
+        extensible = #{extensible,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

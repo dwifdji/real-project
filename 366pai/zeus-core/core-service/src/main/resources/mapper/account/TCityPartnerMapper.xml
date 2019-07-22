@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月01日 12时43分39秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TCityPartnerMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TCityPartner">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="office_size" jdbcType="VARCHAR" property="officeSize" />
+	<result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="position" jdbcType="VARCHAR" property="position" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="reserved_field" jdbcType="VARCHAR" property="reservedField" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, city_id, office_size, contact_name, contact_phone, position, 
+	created_at, reserved_field
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_city_partner
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TCityPartnerCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_city_partner
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="officeSize != null">
+        AND office_size = #{officeSize,jdbcType=VARCHAR}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null">
+        AND position = #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reservedField != null">
+        AND reserved_field = #{reservedField,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TCityPartner">
+    insert into zeus.t_city_partner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="officeSize != null">
+        office_size, 
+      </if>
+      <if test="contactName != null">
+        contact_name, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="position != null">
+        position, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="reservedField != null">
+        reserved_field, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="officeSize != null">
+        #{officeSize,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reservedField != null">
+        #{reservedField,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TCityPartner">
+    update zeus.t_city_partner
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="officeSize != null">
+        office_size = #{officeSize,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reservedField != null">
+        reserved_field = #{reservedField,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

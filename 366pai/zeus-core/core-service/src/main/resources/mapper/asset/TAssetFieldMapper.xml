@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月11日 16时04分21秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetField">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="label" jdbcType="VARCHAR" property="label"/>
+        <result column="hint" jdbcType="VARCHAR" property="hint"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="type" jdbcType="CHAR" property="type"/>
+        <result column="field_group_id" jdbcType="INTEGER" property="fieldGroupId"/>
+        <result column="fm_num" jdbcType="INTEGER" property="fmNum"/>
+        <result column="front_show" jdbcType="BIT" property="frontShow"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+        <result column="json_data" jdbcType="VARCHAR" property="jsonData"
+                typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, name, label, hint,unit, type, field_group_id,
+	front_show, order_num, json_data,fm_num
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="label != null">
+                AND label = #{label,jdbcType=VARCHAR}
+            </if>
+            <if test="hint != null">
+                AND hint = #{hint,jdbcType=VARCHAR}
+            </if>
+            <if test="unit != null">
+                AND unit = #{unit,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                AND type = #{type,jdbcType=CHAR}
+            </if>
+            <if test="fieldGroupId != null">
+                AND field_group_id = #{fieldGroupId,jdbcType=INTEGER}
+            </if>
+            <if test="frontShow != null">
+                AND front_show = #{frontShow,jdbcType=BIT}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="fmNum != null">
+                AND fm_num = #{fmNum,jdbcType=INTEGER}
+            </if>
+            <if test="jsonData != null">
+                AND json_data = #{jsonData,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetField">
+        insert into zeus.t_asset_field
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="label != null">
+                label,
+            </if>
+            <if test="hint != null">
+                hint,
+            </if>
+            <if test="unit != null">
+                unit,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="fieldGroupId != null">
+                field_group_id,
+            </if>
+            <if test="frontShow != null">
+                front_show,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="fmNum != null">
+                fm_num,
+            </if>
+            <if test="jsonData != null">
+                json_data,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="unit != null">
+                #{unit,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=CHAR},
+            </if>
+            <if test="fieldGroupId != null">
+                #{fieldGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="frontShow != null">
+                #{frontShow,jdbcType=BIT},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="fmNum != null">
+                #{fmNum,jdbcType=INTEGER},
+            </if>
+            <if test="jsonData != null">
+                #{jsonData,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetField">
+        update zeus.t_asset_field
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                label = #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                hint = #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="unit != null">
+                unit = #{unit,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=CHAR},
+            </if>
+            <if test="fieldGroupId != null">
+                field_group_id = #{fieldGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="frontShow != null">
+                front_show = #{frontShow,jdbcType=BIT},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="fmNum != null">
+                fm_num = #{fmNum,jdbcType=INTEGER},
+            </if>
+            <if test="jsonData != null">
+                json_data = #{jsonData,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="searchAssetFields" resultType="java.util.Map" parameterType="com._360pai.core.dto.TAssetFieldDto">
+        select afg.`name` as groupName,
+        af.front_show AS frontShow,
+        af.hint AS hint,
+        af.id AS id,
+        af.field_group_id AS fieldGroupId,
+        af.label AS label,
+        af.`name` AS name,
+        af.order_num AS orderNum,
+        af.type AS type
+        from zeus.t_asset_field af
+        LEFT JOIN t_asset_field_group afg on af.field_group_id = afg.id
+        <where>
+            <if test="fieldGroupId != null">and af.field_group_id = #{fieldGroupId}</if>
+            <if test="label != null">and af.label like CONCAT('%',#{label},'%')</if>
+        </where>
+    </select>
+    <select id="findUnit" resultType="com._360pai.core.model.asset.TAssetField">
+      select * from zeus.t_asset_field where name = #{key}
+  </select>
+
+</mapper>

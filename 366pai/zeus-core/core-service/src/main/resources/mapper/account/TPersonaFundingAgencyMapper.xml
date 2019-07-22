@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月03日 15时55分23秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaFundingAgencyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersonaFundingAgency">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="persona_id" jdbcType="INTEGER" property="personaId" />
+    <result column="fund_source" jdbcType="VARCHAR" property="fundSource" />
+    <result column="funding_risk_management_demand" jdbcType="VARCHAR" property="fundingRiskManagementDemand" />
+    <result column="asset_property_type" jdbcType="VARCHAR" property="assetPropertyType" />
+    <result column="business_area" jdbcType="VARCHAR" property="businessArea" />
+    <result column="funding_level" jdbcType="VARCHAR" property="fundingLevel" />
+    <result column="funding_level_prior_rate" jdbcType="DECIMAL" property="fundingLevelPriorRate" />
+    <result column="funding_level_inferior_rate" jdbcType="DECIMAL" property="fundingLevelInferiorRate" />
+    <result column="funding_level_interbed_rate" jdbcType="DECIMAL" property="fundingLevelInterbedRate" />
+    <result column="funding_percent" jdbcType="DECIMAL" property="fundingPercent" />
+    <result column="funding_time" jdbcType="DECIMAL" property="fundingTime" />
+    <result column="funding_term" jdbcType="DECIMAL" property="fundingTerm" />
+    <result column="funding_term_start" jdbcType="DECIMAL" property="fundingTermStart" />
+    <result column="funding_term_end" jdbcType="DECIMAL" property="fundingTermEnd" />
+    <result column="funding_income_demand" jdbcType="DECIMAL" property="fundingIncomeDemand" />
+    <result column="funding_rate_start" jdbcType="DECIMAL" property="fundingRateStart" />
+    <result column="funding_rate_end" jdbcType="DECIMAL" property="fundingRateEnd" />
+    <result column="is_partake_dispose" jdbcType="BIT" property="isPartakeDispose" />
+    <result column="special_requirement_on_demand_side" jdbcType="VARCHAR" property="specialRequirementOnDemandSide" />
+    <result column="remaining_funding_volume" jdbcType="DECIMAL" property="remainingFundingVolume" />
+    <result column="other_fee" jdbcType="DECIMAL" property="otherFee" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, persona_id, fund_source, funding_risk_management_demand, asset_property_type, business_area,
+	funding_level, funding_level_prior_rate, funding_level_inferior_rate, funding_level_interbed_rate, funding_percent, funding_time,
+	funding_term, funding_term_start, funding_term_end, funding_income_demand, funding_rate_start, funding_rate_end,
+	is_partake_dispose, special_requirement_on_demand_side, remaining_funding_volume, other_fee, is_delete, create_time,
+	update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_persona_funding_agency
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaFundingAgencyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_persona_funding_agency
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="personaId != null">
+        AND persona_id = #{personaId,jdbcType=INTEGER}
+      </if>
+      <if test="fundSource != null">
+        AND fund_source = #{fundSource,jdbcType=VARCHAR}
+      </if>
+      <if test="fundingRiskManagementDemand != null">
+        AND funding_risk_management_demand = #{fundingRiskManagementDemand,jdbcType=VARCHAR}
+      </if>
+      <if test="assetPropertyType != null">
+        AND asset_property_type = #{assetPropertyType,jdbcType=VARCHAR}
+      </if>
+      <if test="businessArea != null">
+        AND business_area = #{businessArea,jdbcType=VARCHAR}
+      </if>
+      <if test="fundingLevel != null">
+        AND funding_level = #{fundingLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="fundingLevelPriorRate != null">
+        AND funding_level_prior_rate = #{fundingLevelPriorRate,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingLevelInferiorRate != null">
+        AND funding_level_inferior_rate = #{fundingLevelInferiorRate,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingLevelInterbedRate != null">
+        AND funding_level_interbed_rate = #{fundingLevelInterbedRate,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingPercent != null">
+        AND funding_percent = #{fundingPercent,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingTime != null">
+        AND funding_time = #{fundingTime,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingTerm != null">
+        AND funding_term = #{fundingTerm,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingTermStart != null">
+        AND funding_term_start = #{fundingTermStart,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingTermEnd != null">
+        AND funding_term_end = #{fundingTermEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingIncomeDemand != null">
+        AND funding_income_demand = #{fundingIncomeDemand,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingRateStart != null">
+        AND funding_rate_start = #{fundingRateStart,jdbcType=DECIMAL}
+      </if>
+      <if test="fundingRateEnd != null">
+        AND funding_rate_end = #{fundingRateEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="isPartakeDispose != null">
+        AND is_partake_dispose = #{isPartakeDispose,jdbcType=BIT}
+      </if>
+      <if test="specialRequirementOnDemandSide != null">
+        AND special_requirement_on_demand_side = #{specialRequirementOnDemandSide,jdbcType=VARCHAR}
+      </if>
+      <if test="remainingFundingVolume != null">
+        AND remaining_funding_volume = #{remainingFundingVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="otherFee != null">
+        AND other_fee = #{otherFee,jdbcType=DECIMAL}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersonaFundingAgency">
+    insert into zeus.t_persona_funding_agency
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="personaId != null">
+        persona_id,
+      </if>
+      <if test="fundSource != null">
+        fund_source,
+      </if>
+      <if test="fundingRiskManagementDemand != null">
+        funding_risk_management_demand,
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type,
+      </if>
+      <if test="businessArea != null">
+        business_area,
+      </if>
+      <if test="fundingLevel != null">
+        funding_level,
+      </if>
+      <if test="fundingLevelPriorRate != null">
+        funding_level_prior_rate,
+      </if>
+      <if test="fundingLevelInferiorRate != null">
+        funding_level_inferior_rate,
+      </if>
+      <if test="fundingLevelInterbedRate != null">
+        funding_level_interbed_rate,
+      </if>
+      <if test="fundingPercent != null">
+        funding_percent,
+      </if>
+      <if test="fundingTime != null">
+        funding_time,
+      </if>
+      <if test="fundingTerm != null">
+        funding_term,
+      </if>
+      <if test="fundingTermStart != null">
+        funding_term_start,
+      </if>
+      <if test="fundingTermEnd != null">
+        funding_term_end,
+      </if>
+      <if test="fundingIncomeDemand != null">
+        funding_income_demand,
+      </if>
+      <if test="fundingRateStart != null">
+        funding_rate_start,
+      </if>
+      <if test="fundingRateEnd != null">
+        funding_rate_end,
+      </if>
+      <if test="isPartakeDispose != null">
+        is_partake_dispose,
+      </if>
+      <if test="specialRequirementOnDemandSide != null">
+        special_requirement_on_demand_side,
+      </if>
+      <if test="remainingFundingVolume != null">
+        remaining_funding_volume,
+      </if>
+      <if test="otherFee != null">
+        other_fee,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="fundSource != null">
+        #{fundSource,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingRiskManagementDemand != null">
+        #{fundingRiskManagementDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessArea != null">
+        #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingLevel != null">
+        #{fundingLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingLevelPriorRate != null">
+        #{fundingLevelPriorRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingLevelInferiorRate != null">
+        #{fundingLevelInferiorRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingLevelInterbedRate != null">
+        #{fundingLevelInterbedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingPercent != null">
+        #{fundingPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTime != null">
+        #{fundingTime,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTerm != null">
+        #{fundingTerm,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTermStart != null">
+        #{fundingTermStart,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTermEnd != null">
+        #{fundingTermEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingIncomeDemand != null">
+        #{fundingIncomeDemand,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingRateStart != null">
+        #{fundingRateStart,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingRateEnd != null">
+        #{fundingRateEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="isPartakeDispose != null">
+        #{isPartakeDispose,jdbcType=BIT},
+      </if>
+      <if test="specialRequirementOnDemandSide != null">
+        #{specialRequirementOnDemandSide,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingFundingVolume != null">
+        #{remainingFundingVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="otherFee != null">
+        #{otherFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersonaFundingAgency">
+    update zeus.t_persona_funding_agency
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        persona_id = #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="fundSource != null">
+        fund_source = #{fundSource,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingRiskManagementDemand != null">
+        funding_risk_management_demand = #{fundingRiskManagementDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type = #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessArea != null">
+        business_area = #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingLevel != null">
+        funding_level = #{fundingLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fundingLevelPriorRate != null">
+        funding_level_prior_rate = #{fundingLevelPriorRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingLevelInferiorRate != null">
+        funding_level_inferior_rate = #{fundingLevelInferiorRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingLevelInterbedRate != null">
+        funding_level_interbed_rate = #{fundingLevelInterbedRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingPercent != null">
+        funding_percent = #{fundingPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTime != null">
+        funding_time = #{fundingTime,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTerm != null">
+        funding_term = #{fundingTerm,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTermStart != null">
+        funding_term_start = #{fundingTermStart,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingTermEnd != null">
+        funding_term_end = #{fundingTermEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingIncomeDemand != null">
+        funding_income_demand = #{fundingIncomeDemand,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingRateStart != null">
+        funding_rate_start = #{fundingRateStart,jdbcType=DECIMAL},
+      </if>
+      <if test="fundingRateEnd != null">
+        funding_rate_end = #{fundingRateEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="isPartakeDispose != null">
+        is_partake_dispose = #{isPartakeDispose,jdbcType=BIT},
+      </if>
+      <if test="specialRequirementOnDemandSide != null">
+        special_requirement_on_demand_side = #{specialRequirementOnDemandSide,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingFundingVolume != null">
+        remaining_funding_volume = #{remainingFundingVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="otherFee != null">
+        other_fee = #{otherFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年12月04日 13时50分38秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TJobActivityViewCountRecodeMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TJobActivityViewCountRecode">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="activity_type" jdbcType="INTEGER" property="activityType"/>
+        <result column="activity_id" jdbcType="INTEGER" property="activityId"/>
+        <result column="agency_id" jdbcType="INTEGER" property="agencyId"/>
+        <result column="create_date" jdbcType="VARCHAR" property="createDate"/>
+        <result column="create_at" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="view_count_num" jdbcType="INTEGER" property="viewCountNum"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, activity_type, activity_id, create_date, create_at, view_count_num,agency_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_job_activity_view_count_recode
+    </select>
+
+    <select id="selectByCondition"
+            parameterType="com._360pai.core.condition.assistant.TJobActivityViewCountRecodeCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_job_activity_view_count_recode
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="activityType != null">
+                AND activity_type = #{activityType,jdbcType=INTEGER}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="agencyId != null">
+                AND agency_id = #{agencyId,jdbcType=INTEGER}
+            </if>
+            <if test="createDate != null">
+                AND create_date = #{createDate,jdbcType=VARCHAR}
+            </if>
+            <if test="createAt != null">
+                AND create_at = #{createAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="viewCountNum != null">
+                AND view_count_num = #{viewCountNum,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="getTotalActivityViewCount" resultType="java.lang.Integer">
+      	select ifNull(sum(view_count_num),0) as taotalViewCountNum from zeus.t_job_activity_view_count_recode
+      	where activity_type = #{activityType} and activity_id = #{activityId}
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.TJobActivityViewCountRecode">
+        insert into zeus.t_job_activity_view_count_recode
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="activityType != null">
+                activity_type,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="agencyId != null">
+                agency_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createAt != null">
+                create_at,
+            </if>
+            <if test="viewCountNum != null">
+                view_count_num,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="activityType != null">
+                #{activityType,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="agencyId != null">
+                #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt != null">
+                #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewCountNum != null">
+                #{viewCountNum,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.TJobActivityViewCountRecode">
+        update zeus.t_job_activity_view_count_recode
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="activityType != null">
+                activity_type = #{activityType,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="agencyId != null">
+                agency_id = #{agencyId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewCountNum != null">
+                view_count_num = #{viewCountNum,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

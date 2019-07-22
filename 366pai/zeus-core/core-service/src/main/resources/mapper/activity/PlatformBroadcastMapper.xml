@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分50秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.PlatformBroadcastMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.PlatformBroadcast">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="activity_id" jdbcType="INTEGER" property="activityId"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, status, activity_id, created_at, delete_flag
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.platform_broadcast
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.PlatformBroadcastCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.platform_broadcast
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                AND status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deleteFlag != null">
+                AND delete_flag = #{deleteFlag,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.activity.PlatformBroadcast">
+        insert into zeus.platform_broadcast
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.activity.PlatformBroadcast">
+        update zeus.platform_broadcast
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=BIT},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <select id="getBroadcastList" resultType="com._360pai.core.model.activity.PlatformBroadcast">
+                SELECT
+        pb.id AS id,
+        pb.status AS `status`,
+        pb.`activity_id` AS activityId,
+        pb.`created_at` AS createdAt ,
+        ac.`asset_name`  AS assetName
+        FROM platform_broadcast pb LEFT JOIN auction_activity ac ON ac.`id` = pb.`activity_id`
+        WHERE pb.delete_flag='0'
+        order by pb.`created_at` desc
+    </select>
+
+</mapper>

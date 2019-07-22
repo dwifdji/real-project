@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月25日 16时59分26秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.DetailViewRecodeMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.DetailViewRecode">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="recode_type" jdbcType="TINYINT" property="recodeType" />
+        <result column="activity_id" jdbcType="INTEGER" property="activityId" />
+        <result column="account_id" jdbcType="INTEGER" property="accountId" />
+        <result column="party_id" jdbcType="INTEGER" property="partyId" />
+        <result column="path_type" jdbcType="TINYINT" property="pathType" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, recode_type, activity_id, account_id, party_id, path_type,
+	create_time
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.detail_view_recode
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.DetailViewRecodeCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from zeus.detail_view_recode
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="recodeType != null">
+                AND recode_type = #{recodeType,jdbcType=TINYINT}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="accountId != null">
+                AND account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="partyId != null">
+                AND party_id = #{partyId,jdbcType=INTEGER}
+            </if>
+            <if test="pathType != null">
+                AND path_type = #{pathType,jdbcType=TINYINT}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.DetailViewRecode">
+        insert into zeus.detail_view_recode
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="recodeType != null">
+                recode_type,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="accountId != null">
+                account_id,
+            </if>
+            <if test="partyId != null">
+                party_id,
+            </if>
+            <if test="pathType != null">
+                path_type,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="recodeType != null">
+                #{recodeType,jdbcType=TINYINT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="accountId != null">
+                #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="pathType != null">
+                #{pathType,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.DetailViewRecode">
+        update zeus.detail_view_recode
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="recodeType != null">
+                recode_type = #{recodeType,jdbcType=TINYINT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="accountId != null">
+                account_id = #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                party_id = #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="pathType != null">
+                path_type = #{pathType,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.FavoriteActivityMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.FavoriteActivity">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="party_id" jdbcType="INTEGER" property="partyId"/>
+        <result column="activity_id" jdbcType="INTEGER" property="activityId"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="account_id" jdbcType="INTEGER" property="accountId" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, party_id, activity_id, created_at, type, resource_id
+	,account_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.favorite_activity
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.FavoriteActivityCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.favorite_activity
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="partyId != null">
+                AND party_id = #{partyId,jdbcType=INTEGER}
+            </if>
+            <if test="activityId != null">
+                AND activity_id = #{activityId,jdbcType=INTEGER}
+            </if>
+            <if test="createdAt != null">
+                AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+            </if>
+            <if test="accountId != null">
+                AND account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="type != null">
+                AND type = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="resourceId != null">
+                AND resource_id = #{resourceId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.FavoriteActivity">
+        insert into zeus.favorite_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="partyId != null">
+                party_id,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="resourceId != null">
+                resource_id,
+            </if>
+            created_at,
+            <if test="accountId != null">
+                account_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                #{resourceId,jdbcType=INTEGER},
+            </if>
+            now(),
+            <if test="accountId != null">
+                #{accountId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.FavoriteActivity">
+        update zeus.favorite_activity
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="partyId != null">
+                party_id = #{partyId,jdbcType=INTEGER},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                resource_id = #{resourceId,jdbcType=INTEGER},
+            </if>
+            <if test="accountId != null">
+                account_id = #{accountId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <delete id="cancelFavor">
+        delete from zeus.favorite_activity where id = #{paramsId} and party_id = #{partyId};
+    </delete>
+
+    <delete id="unFavor">
+        delete from zeus.favorite_activity where
+        activity_id = #{activityId}
+        <if test="partyId != null"> AND party_id = #{partyId}</if>
+        and account_id = #{accountId}
+        and type = #{type}
+        and resource_id = #{resourceId};
+    </delete>
+
+
+    <select id="myFavor" resultType="com._360pai.core.vo.activity.FavoriteActivityVo">
+        select * from (SELECT
+        fa.id AS id,
+        aa.id AS activityId,
+        aa.begin_at AS beginAt,
+        aa.asset_name AS activityName,
+        aavc.view_count AS viewCount,
+        aa.end_at AS endAt,
+        aa.`status` as status,
+        aa.asset_category_group_id as categoryId,
+        CASE
+        WHEN now() >= aa.preview_at AND now() &lt;= aa.begin_at AND aa.`status` = "ONLINE" THEN "即将开拍" WHEN now() >
+        aa.begin_at
+        AND aa.`status` = "ONLINE" THEN "正在拍卖" when aa.status = "success" then "成交" when aa.status = "FAILED" THEN "结束"
+        END AS statusStr,
+        aa.deposit AS deposit,
+        aa.starting_price AS startingPrice,
+        CASE
+        aa.`mode`
+        WHEN "ENGLISH"
+        THEN "增价拍"
+        WHEN "DUTCH"
+        THEN "降价拍"
+        WHEN "SEALED"
+        THEN "一口价暗标"
+        WHEN "PUBLIC"
+        THEN "一口价明标"
+        WHEN "FREE"
+        THEN "自由报价"
+        WHEN "FLASH"
+        THEN "限时秒杀"
+        END AS modeStr,
+        aa.`mode` as mode,
+        acg.`name` AS categoryName,
+        ci.`name` AS cityName,
+        aa.preview_at AS previewAt,
+        aa.participant_number AS participantNumber,
+        ag.`code` AS agencyCode,
+        ass.extra ->> '$.images[0]' AS imageUrl,
+        d.apply_end_time as applyEndTime, 		ass.id as assetId        FROM
+        favorite_activity fa
+        INNER JOIN auction_activity aa
+        ON fa.activity_id = aa.id AND aa.visibility_level = 'PLATFORM_DEFAULT'
+        LEFT JOIN `t_asset_category` acg
+        ON acg.id = aa.asset_category_group_id
+        LEFT JOIN asset ass
+        ON ass.id = aa.asset_id
+        LEFT join t_agency ag
+        ON ag.id = ass.agency_id
+        LEFT JOIN city ci
+        ON ci.id = ass.city_id
+        LEFT JOIN auction_activity_view_count aavc
+        ON aavc.activity_id = aa.id
+
+        LEFT JOIN asset_lease_data d
+        on ass.id = d.asset_id
+
+        <where>
+            <if test="1 != 0">and aa.status not in
+                ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+                and type='0'
+            </if>
+            <if test="partyId != null">and fa.party_id = #{partyId}</if>
+            <if test="accountId != null">and fa.account_id = #{accountId}</if>
+            <if test="1 != 0">and NOW() > aa.preview_at </if>
+            <if test="1 != 0">AND aa.visibility_level = 'PLATFORM_DEFAULT' </if>
+            <if test="activityMode != null and activityMode !=''">and aa.`mode` = #{activityMode}</if>
+            <if test="activityStatus!=null and activityStatus =='ahead'.toString() ">AND now() >= aa.preview_at AND
+                now() &lt;= aa.begin_at AND aa.`status` = "ONLINE"
+            </if>
+            <if test="activityStatus!=null and activityStatus =='beginAuction'.toString() ">AND now() > aa.begin_at AND
+                aa.`status` = "ONLINE"
+            </if>
+            <if test="activityStatus!=null and activityStatus =='success'.toString() ">AND aa.`status` = 'SUCCESS'</if>
+            <if test="activityStatus!=null and activityStatus =='end'.toString() ">AND aa.`status` = 'FAILED'</if>
+            <if test="categoryId != null and categoryId != ''">and aa.asset_category_group_id = #{categoryId}</if>
+            <if test="activityName != null and activityName !=''">and aa.asset_name like concat('%',#{activityName},'%')
+            </if>
+        </where>) as temp
+        ORDER BY
+        temp.status ASC ,temp.statusStr ASC,temp.participantNumber DESC , temp.viewCount DESC , temp.previewAt DESC
+        <if test="agencyCode !=null and agencyCode !=''">, temp.agencyCode = #{agencyCode} desc</if>
+    </select>
+
+    <select id="selectByPartyIdAndActivityId" resultType="com._360pai.core.model.assistant.FavoriteActivity">
+        select * from favorite_activity where party_id = #{partyId} and activity_id = #{activityId}
+    </select>
+
+    <select id="selectShopFavorActivityId" resultType="com._360pai.core.model.assistant.FavoriteActivity">
+              select * from favorite_activity where activity_id = #{activityId}
+              <if test="partyId != null">and party_id = #{partyId}</if>
+              and account_id = #{accountId} and resource_id = #{shopId}
+    </select>
+
+    <select id="favoriteCount" resultType="int">
+        select sum(t.cnt)
+        from (
+            SELECT COUNT(1) cnt
+            FROM favorite_activity fa
+            INNER JOIN auction_activity aa
+            ON fa.activity_id = aa.id AND aa.visibility_level = 'PLATFORM_DEFAULT'
+            <where>
+                <if test="partyId != null"> and fa.party_id = #{partyId}</if>
+                <if test="accountId != null"> and fa.account_id = #{accountId}</if>
+                <if test="type != null"> and fa.type = #{type}</if>
+            </where>
+            union all
+            SELECT COUNT(1) cnt
+            FROM favorite_enrolling_activity fec
+            INNER JOIN enrolling_activity e ON e.id = fec.activity_id AND e.visibility_level = 'PLATFORM_DEFAULT'
+            <where>
+                <if test="partyId != null"> and fec.party_id = #{partyId}</if>
+                <if test="accountId != null"> and fec.account_id = #{accountId}</if>
+                <if test="type != null"> and fec.type = #{type}</if>
+            </where>
+        ) t
+    </select>
+
+    <select id="getMyShopFavor" resultType="com._360pai.core.vo.activity.FavoriteActivityVo">
+        SELECT
+            fa.id AS id,
+            aa.id AS activityId,
+            aa.asset_name AS activityName,
+            aa.begin_at AS beginAt,
+            aa.end_at AS endAt,
+            aa.`status` AS STATUS,
+            tas.id as shopId,
+            tas.name as shopName,
+            ass.extra ->> '$.images[0]' AS imageUrl,
+            CASE
+
+            WHEN now( ) >= aa.preview_at
+            AND now( ) = aa.begin_at AND aa.`status` = "ONLINE" THEN "即将开拍" WHEN now( ) > aa.begin_at
+            AND aa.`status` = "ONLINE" THEN
+            "正在拍卖"
+            WHEN aa.STATUS = "success" THEN
+            "成交"
+            WHEN aa.STATUS = "FAILED" THEN
+            "结束"
+            END AS statusStr,
+            FORMAT( aa.deposit, 2 ) AS deposit,
+            FORMAT( aa.starting_price, 2 ) AS startingPrice,
+            CASE
+            aa.`mode`
+            WHEN "ENGLISH" THEN
+            "增价拍"
+            WHEN "DUTCH" THEN
+            "降价拍"
+            WHEN "SEALED" THEN
+            "一口价暗标"
+            WHEN "PUBLIC" THEN
+            "一口价明标"
+            WHEN "FREE" THEN
+            "自由报价"
+            WHEN "FLASH" THEN
+            "限时秒杀"
+            END AS modeStr,
+            aa.`mode` AS MODE
+            FROM
+            favorite_activity fa
+            INNER JOIN auction_activity aa ON aa.id = fa.activity_id AND aa.visibility_level = 'PLATFORM_DEFAULT'
+            LEFT JOIN t_applet_shop tas on tas.id = fa.resource_id
+            LEFT JOIN asset ass ON ass.id = aa.asset_id
+            where fa.type = 1
+            <if test="partyId != null">and fa.party_id = #{partyId}</if>
+            and fa.account_id = #{accountId}
+            ORDER BY fa.created_at desc
+    </select>
+
+    <select id="getBeginIn5MinuteList" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*
+        from zeus.favorite_activity fa
+        inner join zeus.auction_activity aa on aa.id=fa.activity_id
+        <where>
+            fa.account_id=#{accountId} and fa.type='0' and aa.begin_at > now() and timestampdiff(MINUTE, now(), aa.begin_at) &lt;= 5
+            <if test="partyId != null"> and fa.party_id=#{partyId}</if>
+        </where>
+    </select>
+
+    <select id="getEndIn5MinuteList" resultType="com._360pai.core.model.activity.AuctionActivity">
+        select aa.*
+        from zeus.favorite_activity fa
+        inner join zeus.auction_activity aa on aa.id=fa.activity_id
+        <where>
+            fa.account_id=#{accountId} and fa.type='0' and aa.end_at > now() and timestampdiff(MINUTE, now(), aa.end_at) &lt;= 5
+            <if test="partyId != null"> and fa.party_id=#{partyId}</if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分46秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.AgencyApplicationMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.AgencyApplication">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="authorization_img" jdbcType="VARCHAR" property="authorizationImg" />
+	<result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+	<result column="license" jdbcType="VARCHAR" property="license" />
+	<result column="license_img" jdbcType="VARCHAR" property="licenseImg" />
+	<result column="qualification_img" jdbcType="VARCHAR" property="qualificationImg" />
+	<result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+	<result column="business_begin" jdbcType="TIMESTAMP" property="businessBegin" />
+	<result column="business_end" jdbcType="TIMESTAMP" property="businessEnd" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="qualification_number" jdbcType="VARCHAR" property="qualificationNumber" />
+	<result column="qualified_begin" jdbcType="TIMESTAMP" property="qualifiedBegin" />
+	<result column="qualified_end" jdbcType="TIMESTAMP" property="qualifiedEnd" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="serve_buyer_percent" jdbcType="INTEGER" property="serveBuyerPercent" />
+	<result column="serve_seller_percent" jdbcType="INTEGER" property="serveSellerPercent" />
+	<result column="short_name" jdbcType="VARCHAR" property="shortName" />
+	<result column="email" jdbcType="VARCHAR" property="email" />
+	<result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+	<result column="account_license" jdbcType="VARCHAR" property="accountLicense" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+	<result column="id_card_back_img" jdbcType="VARCHAR" property="idCardBackImg" />
+	<result column="id_card_front_img" jdbcType="VARCHAR" property="idCardFrontImg" />
+	<result column="register_city_id" jdbcType="INTEGER" property="registerCityId" />
+	<result column="operator_at" jdbcType="TIMESTAMP" property="operatorAt" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, mobile, city_id, created_at, status, 
+	account_id, authorization_img, legal_person, license, license_img, qualification_img, 
+	register_address, business_begin, business_end, code, qualification_number, qualified_begin, 
+	qualified_end, remark, serve_buyer_percent, serve_seller_percent, short_name, email, 
+	logo_url, account_license, address, id_card, id_card_back_img, id_card_front_img, 
+	register_city_id, operator_at, operator_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from monet.agency_application
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.AgencyApplicationCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from monet.agency_application
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="authorizationImg != null">
+        AND authorization_img = #{authorizationImg,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPerson != null">
+        AND legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="license != null">
+        AND license = #{license,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseImg != null">
+        AND license_img = #{licenseImg,jdbcType=VARCHAR}
+      </if>
+      <if test="qualificationImg != null">
+        AND qualification_img = #{qualificationImg,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null">
+        AND register_address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="businessBegin != null">
+        AND business_begin = #{businessBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="businessEnd != null">
+        AND business_end = #{businessEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="qualificationNumber != null">
+        AND qualification_number = #{qualificationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="qualifiedBegin != null">
+        AND qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="qualifiedEnd != null">
+        AND qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="serveBuyerPercent != null">
+        AND serve_buyer_percent = #{serveBuyerPercent,jdbcType=INTEGER}
+      </if>
+      <if test="serveSellerPercent != null">
+        AND serve_seller_percent = #{serveSellerPercent,jdbcType=INTEGER}
+      </if>
+      <if test="shortName != null">
+        AND short_name = #{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="logoUrl != null">
+        AND logo_url = #{logoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="accountLicense != null">
+        AND account_license = #{accountLicense,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="idCard != null">
+        AND id_card = #{idCard,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardBackImg != null">
+        AND id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardFrontImg != null">
+        AND id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="registerCityId != null">
+        AND register_city_id = #{registerCityId,jdbcType=INTEGER}
+      </if>
+      <if test="operatorAt != null">
+        AND operator_at = #{operatorAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.AgencyApplication">
+    insert into monet.agency_application
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img, 
+      </if>
+      <if test="legalPerson != null">
+        legal_person, 
+      </if>
+      <if test="license != null">
+        license, 
+      </if>
+      <if test="licenseImg != null">
+        license_img, 
+      </if>
+      <if test="qualificationImg != null">
+        qualification_img, 
+      </if>
+      <if test="registerAddress != null">
+        register_address, 
+      </if>
+      <if test="businessBegin != null">
+        business_begin, 
+      </if>
+      <if test="businessEnd != null">
+        business_end, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="qualificationNumber != null">
+        qualification_number, 
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin, 
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="serveBuyerPercent != null">
+        serve_buyer_percent, 
+      </if>
+      <if test="serveSellerPercent != null">
+        serve_seller_percent, 
+      </if>
+      <if test="shortName != null">
+        short_name, 
+      </if>
+      <if test="email != null">
+        email, 
+      </if>
+      <if test="logoUrl != null">
+        logo_url, 
+      </if>
+      <if test="accountLicense != null">
+        account_license, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="idCard != null">
+        id_card, 
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img, 
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img, 
+      </if>
+      <if test="registerCityId != null">
+        register_city_id, 
+      </if>
+      <if test="operatorAt != null">
+        operator_at, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="authorizationImg != null">
+        #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationImg != null">
+        #{qualificationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBegin != null">
+        #{businessBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null">
+        #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiedBegin != null">
+        #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serveBuyerPercent != null">
+        #{serveBuyerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="serveSellerPercent != null">
+        #{serveSellerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        #{registerCityId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorAt != null">
+        #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.AgencyApplication">
+    update monet.agency_application
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img = #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        license = #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        license_img = #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationImg != null">
+        qualification_img = #{qualificationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        register_address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="businessBegin != null">
+        business_begin = #{businessBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEnd != null">
+        business_end = #{businessEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null">
+        qualification_number = #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serveBuyerPercent != null">
+        serve_buyer_percent = #{serveBuyerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="serveSellerPercent != null">
+        serve_seller_percent = #{serveSellerPercent,jdbcType=INTEGER},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        account_license = #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        register_city_id = #{registerCityId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorAt != null">
+        operator_at = #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

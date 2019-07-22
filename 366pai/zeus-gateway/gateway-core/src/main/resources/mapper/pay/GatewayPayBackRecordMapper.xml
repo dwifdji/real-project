@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月25日 21时54分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.pay.mapper.GatewayPayBackRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.pay.GatewayPayBackRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+	<result column="trade_order_id" jdbcType="VARCHAR" property="tradeOrderId" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
+	<result column="req_param" jdbcType="LONGVARCHAR" property="reqParam" />
+	<result column="gateway_status" jdbcType="VARCHAR" property="gatewayStatus" />
+	<result column="core_status" jdbcType="VARCHAR" property="coreStatus" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_num, trade_order_id, amount, pay_status, req_param, 
+	gateway_status, core_status, msg, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_pay_back_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.pay.GatewayPayBackRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_pay_back_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeOrderId != null">
+        AND trade_order_id = #{tradeOrderId,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="reqParam != null">
+        AND req_param = #{reqParam,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="gatewayStatus != null">
+        AND gateway_status = #{gatewayStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="coreStatus != null">
+        AND core_status = #{coreStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.pay.GatewayPayBackRecord">
+    insert into zeus.gateway_pay_back_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="tradeOrderId != null">
+        trade_order_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="payStatus != null">
+        pay_status, 
+      </if>
+      <if test="reqParam != null">
+        req_param, 
+      </if>
+      <if test="gatewayStatus != null">
+        gateway_status, 
+      </if>
+      <if test="coreStatus != null">
+        core_status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null">
+        #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reqParam != null">
+        #{reqParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gatewayStatus != null">
+        #{gatewayStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="coreStatus != null">
+        #{coreStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.pay.GatewayPayBackRecord">
+    update zeus.gateway_pay_back_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null">
+        trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="reqParam != null">
+        req_param = #{reqParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gatewayStatus != null">
+        gateway_status = #{gatewayStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="coreStatus != null">
+        core_status = #{coreStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+
+    </where>
+  </update>
+
+</mapper>

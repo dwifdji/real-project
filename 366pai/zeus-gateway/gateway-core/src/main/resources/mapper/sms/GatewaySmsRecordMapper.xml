@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月15日 16时47分13秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.sms.mapper.GatewaySmsRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.sms.GatewaySmsRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="phone" jdbcType="VARCHAR" property="phone" />
+	<result column="template_code" jdbcType="VARCHAR" property="templateCode" />
+	<result column="template_param" jdbcType="VARCHAR" property="templateParam" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="template_content" jdbcType="VARCHAR" property="templateContent" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, phone, template_code, template_param, status, msg, 
+	create_time, update_time,template_content
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.gateway_sms_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.sms.GatewaySmsRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.gateway_sms_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="templateCode != null">
+        AND template_code = #{templateCode,jdbcType=VARCHAR}
+      </if>
+      <if test="templateParam != null">
+        AND template_param = #{templateParam,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="templateContent != null">
+        AND template_content = #{templateContent,jdbcType=VARCHAR}
+      </if>
+
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.sms.GatewaySmsRecord">
+    insert into zeus.gateway_sms_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="phone != null">
+        phone, 
+      </if>
+      <if test="templateCode != null">
+        template_code, 
+      </if>
+      <if test="templateParam != null">
+        template_param, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="templateContent != null">
+        template_content,
+      </if>
+
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateParam != null">
+        #{templateParam,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="templateContent != null">
+        #{templateContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.sms.GatewaySmsRecord">
+    update zeus.gateway_sms_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        template_code = #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateParam != null">
+        template_param = #{templateParam,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="templateContent != null">
+        template_content = #{templateContent,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

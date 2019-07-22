@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月21日 09时57分53秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldItemMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldItem">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="template_id" jdbcType="INTEGER" property="templateId"/>
+        <result column="order_num" jdbcType="INTEGER" property="orderNum"/>
+        <result column="field_group_id" jdbcType="INTEGER" property="fieldGroupId"/>
+        <result column="field_id" jdbcType="INTEGER" property="fieldId"/>
+        <result column="displayed" jdbcType="TINYINT" property="displayed"/>
+        <result column="required" jdbcType="TINYINT" property="required"/>
+        <result column="is_near" jdbcType="INTEGER" property="isNear"/>
+        <result column="time_day" jdbcType="INTEGER" property="timeDay"/>
+        <result column="party_filter_option_id" jdbcType="INTEGER" property="partyFilterOptionId"/>
+        <result column="filter_option_id" jdbcType="INTEGER" property="filterOptionId"/>
+        <result column="filter_option_item_id" jdbcType="INTEGER" property="filterOptionItemId"/>
+        <result column="filter_option_item_data_id" jdbcType="INTEGER" property="filterOptionItemDataId"/>
+        <result column="model_id" jdbcType="INTEGER" property="modelId"/>
+        <result column="model_option_id" jdbcType="INTEGER" property="modelOptionId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, category_id, template_id, order_num, field_group_id, field_id,
+	displayed, required, is_near, party_filter_option_id, filter_option_id, filter_option_item_id,
+	filter_option_item_data_id, model_id, model_option_id,time_day
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_item
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldItemCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_item
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="categoryId != null">
+                AND category_id = #{categoryId,jdbcType=INTEGER}
+            </if>
+            <if test="templateId != null">
+                AND template_id = #{templateId,jdbcType=INTEGER}
+            </if>
+            <if test="orderNum != null">
+                AND order_num = #{orderNum,jdbcType=INTEGER}
+            </if>
+            <if test="fieldGroupId != null">
+                AND field_group_id = #{fieldGroupId,jdbcType=INTEGER}
+            </if>
+            <if test="fieldId != null">
+                AND field_id = #{fieldId,jdbcType=INTEGER}
+            </if>
+            <if test="displayed != null">
+                AND displayed = #{displayed,jdbcType=TINYINT}
+            </if>
+            <if test="required != null">
+                AND required = #{required,jdbcType=TINYINT}
+            </if>
+            <if test="isNear != null">
+                AND is_near = #{isNear,jdbcType=INTEGER}
+            </if>
+            <if test="timeDay != null">
+                AND time_day = #{timeDay,jdbcType=INTEGER}
+            </if>
+            <if test="partyFilterOptionId != null">
+                AND party_filter_option_id = #{partyFilterOptionId,jdbcType=INTEGER}
+            </if>
+            <if test="filterOptionId != null">
+                AND filter_option_id = #{filterOptionId,jdbcType=INTEGER}
+            </if>
+            <if test="filterOptionItemId != null">
+                AND filter_option_item_id = #{filterOptionItemId,jdbcType=INTEGER}
+            </if>
+            <if test="filterOptionItemDataId != null">
+                AND filter_option_item_data_id = #{filterOptionItemDataId,jdbcType=INTEGER}
+            </if>
+            <if test="modelId != null">
+                AND model_id = #{modelId,jdbcType=INTEGER}
+            </if>
+            <if test="modelOptionId != null">
+                AND model_option_id = #{modelOptionId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldItem">
+        insert into zeus.t_asset_field_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="templateId != null">
+                template_id,
+            </if>
+            <if test="orderNum != null">
+                order_num,
+            </if>
+            <if test="fieldGroupId != null">
+                field_group_id,
+            </if>
+            <if test="fieldId != null">
+                field_id,
+            </if>
+            <if test="displayed != null">
+                displayed,
+            </if>
+            <if test="required != null">
+                required,
+            </if>
+            <if test="isNear != null">
+                is_near,
+            </if>
+            <if test="timeDay != null">
+                time_day,
+            </if>
+            <if test="partyFilterOptionId != null">
+                party_filter_option_id,
+            </if>
+            <if test="filterOptionId != null">
+                filter_option_id,
+            </if>
+            <if test="filterOptionItemId != null">
+                filter_option_item_id,
+            </if>
+            <if test="filterOptionItemDataId != null">
+                filter_option_item_data_id,
+            </if>
+            <if test="modelId != null">
+                model_id,
+            </if>
+            <if test="modelOptionId != null">
+                model_option_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="templateId != null">
+                #{templateId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="fieldGroupId != null">
+                #{fieldGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                #{fieldId,jdbcType=INTEGER},
+            </if>
+            <if test="displayed != null">
+                #{displayed,jdbcType=TINYINT},
+            </if>
+            <if test="required != null">
+                #{required,jdbcType=TINYINT},
+            </if>
+            <if test="isNear != null">
+                #{isNear,jdbcType=INTEGER},
+            </if>
+            <if test="timeDay != null">
+                #{timeDay,jdbcType=INTEGER},
+            </if>
+            <if test="partyFilterOptionId != null">
+                #{partyFilterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionId != null">
+                #{filterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionItemId != null">
+                #{filterOptionItemId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionItemDataId != null">
+                #{filterOptionItemDataId,jdbcType=INTEGER},
+            </if>
+            <if test="modelId != null">
+                #{modelId,jdbcType=INTEGER},
+            </if>
+            <if test="modelOptionId != null">
+                #{modelOptionId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldItem">
+        update zeus.t_asset_field_item
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="templateId != null">
+                template_id = #{templateId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNum != null">
+                order_num = #{orderNum,jdbcType=INTEGER},
+            </if>
+            <if test="fieldGroupId != null">
+                field_group_id = #{fieldGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="fieldId != null">
+                field_id = #{fieldId,jdbcType=INTEGER},
+            </if>
+            <if test="displayed != null">
+                displayed = #{displayed,jdbcType=TINYINT},
+            </if>
+            <if test="required != null">
+                required = #{required,jdbcType=TINYINT},
+            </if>
+            <if test="isNear != null">
+                is_near = #{isNear,jdbcType=INTEGER},
+            </if>
+            <if test="timeDay != null">
+                time_day = #{timeDay,jdbcType=INTEGER},
+            </if>
+            <if test="partyFilterOptionId != null">
+                party_filter_option_id = #{partyFilterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionId != null">
+                filter_option_id = #{filterOptionId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionItemId != null">
+                filter_option_item_id = #{filterOptionItemId,jdbcType=INTEGER},
+            </if>
+            <if test="filterOptionItemDataId != null">
+                filter_option_item_data_id = #{filterOptionItemDataId,jdbcType=INTEGER},
+            </if>
+            <if test="modelId != null">
+                model_id = #{modelId,jdbcType=INTEGER},
+            </if>
+            <if test="modelOptionId != null">
+                model_option_id = #{modelOptionId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="findFields" resultType="java.util.Map">
+        SELECT
+        afi.id as id,
+        afi.category_id as categoryId,
+        afi.template_id as templateId,
+        afi.field_group_id as fieldGroupId,
+        afi.field_id as fieldId,
+        afi.required as required,
+        afi.party_filter_option_id AS partyFilterOptionId,
+        afi.filter_option_id as filterOptionId,
+        afi.filter_option_item_id AS filterOptionItemId,
+        afi.filter_option_item_data_id AS filterOptionItemDataId,
+        affo.filter_id as filterId,
+        aff.`name` as filterName,
+        afg.`name` as groupName ,
+        afi.`displayed` AS displayed,
+        afi.`time_day` AS timeDay,
+        afi.model_id AS modelId,
+        afm.`model_key` AS modelKey,
+        afm.`model_title` AS modelTitle,
+        afm.`extensible` AS modelExtensible,
+        afi.model_option_id AS modelOptionId,
+        afmo.`name` AS modelOptionName,
+        afmo.`extensible` AS modelOptionExtensible,
+        affo.`name` as optionName,
+        affoi.item_name as itemName,
+        aff.extensible as extensible,
+        af.label as fieldName,
+        af.unit as unit,
+        af.name as filterKey,
+        af.json_data as jsonData,
+        af.type as type,
+        af.hint as hint,
+        af.fm_num as fmNum,
+        af.choiced as choiced
+        FROM t_asset_field_item afi
+        LEFT JOIN t_asset_field_group afg on afi.field_group_id = afg.id
+        LEFT JOIN t_asset_field_filter_option affo on afi.filter_option_id = affo.id
+        LEFT JOIN t_asset_field_filter_option_item affoi on afi.filter_option_item_id = affoi.id
+        LEFT JOIN t_asset_field af on afi.field_id = af.id
+        LEFT JOIN `t_asset_field_model` afm ON afm.id = afi.`model_id`
+        LEFT JOIN `t_asset_field_model_option` afmo ON afm.id = afmo.`model_id`
+        LEFT JOIN t_asset_field_filter aff on aff.id = affo.filter_id
+        where afi.template_id = #{templateCategoryId} and afi.field_group_id = #{assetFieldGroupId}
+        <if test="filterOptionId !=null and filterOptionId !=''">and afi.`filter_option_id` = #{filterOptionId}</if>
+        <if test="filterOptionItemId !=null and filterOptionItemId !=''">and afi.filter_option_item_id =
+            #{filterOptionItemId}
+        </if>
+        <if test="filterOptionItemDataId !=null and filterOptionItemDataId !=''">and afi.filter_option_item_data_id =
+            #{filterOptionItemDataId}
+        </if>
+        order by afi.order_num asc
+    </select>
+
+    <select id="findFieldsNotHaveOption" resultType="java.util.Map">
+        SELECT
+        afi.id as id,
+        afi.category_id as categoryId,
+        afi.template_id as templateId,
+        afi.field_group_id as fieldGroupId,
+        afi.field_id as fieldId,
+        afi.required as required,
+        afi.filter_option_id as filterOptionId,
+        afi.filter_option_item_id AS filterOptionItemId,
+        affo.filter_id as filterId,
+        aff.`name` as filterName,
+        afg.`name` as groupName ,
+        affo.`name` as optionName,
+        affoi.item_name as itemName,
+        aff.extensible as extensible,
+        af.label as fieldName,
+        af.type as type,
+        af.hint as hint
+        FROM t_asset_field_item afi
+        LEFT JOIN t_asset_field_group afg on afi.field_group_id = afg.id
+        LEFT JOIN t_asset_field_filter_option affo on afi.filter_option_id = affo.id
+        LEFT JOIN t_asset_field_filter_option_item affoi on afi.filter_option_item_id = affoi.id
+        LEFT JOIN t_asset_field af on afi.field_id = af.id
+        LEFT JOIN t_asset_field_filter aff on aff.id = affo.filter_id
+        where afi.template_id = #{templateCategoryId} and afi.field_group_id = #{assetFieldGroupId} and afi.`filter_option_id` is null and  afi.`displayed` = 0
+    </select>
+
+    <select id="findDisplayField" resultType="java.util.Map">
+        SELECT
+        afi.id as id,
+        afi.category_id as categoryId,
+        afi.template_id as templateId,
+        afi.field_group_id as fieldGroupId,
+        afi.field_id as fieldId,
+        afi.required as required,
+        afi.filter_option_id as filterOptionId,
+        afi.filter_option_item_id AS filterOptionItemId,
+        affo.filter_id as filterId,
+        aff.`name` as filterName,
+        afg.`name` as groupName ,
+        affo.`name` as optionName,
+        affoi.item_name as itemName,
+        aff.extensible as extensible,
+        af.label as fieldName,
+        af.type as type,
+        af.hint as hint
+        FROM t_asset_field_item afi
+        LEFT JOIN t_asset_field_group afg on afi.field_group_id = afg.id
+        LEFT JOIN t_asset_field_filter_option affo on afi.filter_option_id = affo.id
+        LEFT JOIN t_asset_field_filter_option_item affoi on afi.filter_option_item_id = affoi.id
+        LEFT JOIN t_asset_field af on afi.field_id = af.id
+        LEFT JOIN t_asset_field_filter aff on aff.id = affo.filter_id
+        where afi.template_id = #{templateCategoryId} and afi.field_group_id = #{assetFieldGroupId} and afi.`displayed` = 1
+    </select>
+
+    <delete id="deleteTemplateGroupField">
+        delete from zeus.t_asset_field_item where id  = #{paramsId};
+    </delete>
+
+</mapper>

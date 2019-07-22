@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月12日 13时59分42秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TSmsEmailConfigMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TSmsEmailConfig">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="bus_type" jdbcType="VARCHAR" property="busType" />
+	<result column="service_phone" jdbcType="VARCHAR" property="servicePhone" />
+	<result column="service_email" jdbcType="VARCHAR" property="serviceEmail" />
+	<result column="auditor_phone" jdbcType="VARCHAR" property="auditorPhone" />
+	<result column="auditor_email" jdbcType="VARCHAR" property="auditorEmail" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, bus_type, service_phone, service_email, auditor_phone, auditor_email, 
+	status, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_sms_email_config
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TSmsEmailConfigCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_sms_email_config
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="busType != null">
+        AND bus_type = #{busType,jdbcType=VARCHAR}
+      </if>
+      <if test="servicePhone != null">
+        AND service_phone = #{servicePhone,jdbcType=VARCHAR}
+      </if>
+      <if test="serviceEmail != null">
+        AND service_email = #{serviceEmail,jdbcType=VARCHAR}
+      </if>
+      <if test="auditorPhone != null">
+        AND auditor_phone = #{auditorPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="auditorEmail != null">
+        AND auditor_email = #{auditorEmail,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TSmsEmailConfig">
+    insert into zeus.t_sms_email_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="busType != null">
+        bus_type, 
+      </if>
+      <if test="servicePhone != null">
+        service_phone, 
+      </if>
+      <if test="serviceEmail != null">
+        service_email, 
+      </if>
+      <if test="auditorPhone != null">
+        auditor_phone, 
+      </if>
+      <if test="auditorEmail != null">
+        auditor_email, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        #{servicePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceEmail != null">
+        #{serviceEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorPhone != null">
+        #{auditorPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorEmail != null">
+        #{auditorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TSmsEmailConfig">
+    update zeus.t_sms_email_config
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="servicePhone != null">
+        service_phone = #{servicePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceEmail != null">
+        service_email = #{serviceEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorPhone != null">
+        auditor_phone = #{auditorPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorEmail != null">
+        auditor_email = #{auditorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

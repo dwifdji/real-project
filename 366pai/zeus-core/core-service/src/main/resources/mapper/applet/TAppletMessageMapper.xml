@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月22日 14时40分30秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletMessageMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletMessage">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="open_id" jdbcType="VARCHAR" property="openId" />
+	<result column="shop_id" jdbcType="INTEGER" property="shopId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="context" jdbcType="VARCHAR" property="context" />
+	<result column="is_del" jdbcType="BIT" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, open_id, shop_id, type, name, context, 
+	is_del, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_applet_message
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletMessageCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_applet_message
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="openId != null">
+        AND open_id = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="context != null">
+        AND context = #{context,jdbcType=VARCHAR}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletMessage">
+    insert into zeus.t_applet_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="openId != null">
+        open_id, 
+      </if>
+      <if test="shopId != null">
+        shop_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="context != null">
+        context, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletMessage">
+    update zeus.t_applet_message
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+    <select id="getShopMessageList" parameterType="map" resultType="com._360pai.core.facade.shop.vo.AppletMessageVO">
+        SELECT
+            tam.id AS id,
+            1 AS type,
+            tam.NAME AS NAME,
+            tam.context AS context,
+            date_format( tam.create_time, '%Y/%m/%d' ) AS createTime,
+            IF ( IFNULL( tamm.shop_id, 0 ) = 0, 0, 1 ) AS readFlag
+            FROM
+            t_applet_message tam
+            LEFT JOIN t_applet_read_message_map tamm ON tamm.message_id = tam.id
+            WHERE
+            1 = 1
+            AND tam.is_del = 0
+        <if test="openId != null and '' != openId">
+            AND tam.open_id = #{openId}
+        </if>
+            order by tam.create_time desc
+
+    </select>
+
+    <select id="getAnnoucementList" parameterType="map" resultType="com._360pai.core.facade.shop.vo.AppletMessageVO">
+        SELECT
+        *
+        FROM
+        (
+        SELECT
+        1 AS readFlag,
+        2 AS type,
+        pa.title AS NAME,
+        pa.detail AS context,
+        date_format( pa.public_at, '%Y/%m/%d' ) AS create_time,
+        tamm.message_id AS id
+        FROM
+        t_applet_read_message_map tamm
+        INNER JOIN platform_announcement pa ON pa.id = tamm.message_id
+        WHERE
+        tamm.type = 2
+        AND pa.category = 'SHOP_ANNOUNCEMENT'
+        AND pa.expired_at > now( )
+        AND pa.public_at &lt; now( )
+        AND tamm.shop_id = #{shopId}
+        AND tamm.open_id = #{openId}
+        ORDER BY
+        pa.created_at DESC
+        ) t1 UNION ALL
+        SELECT
+        *
+        FROM
+        (
+        SELECT
+        0 AS readFlag,
+        2 AS type,
+        pa.title AS NAME,
+        pa.detail AS context,
+        date_format( pa.public_at, '%Y/%m/%d' ) AS create_time,
+        pa.id AS id
+        FROM
+        platform_announcement pa
+        WHERE
+        pa.category = 'SHOP_ANNOUNCEMENT'
+        AND pa.expired_at > now( )
+        AND pa.public_at &lt; now( )
+        AND pa.id NOT IN (
+        SELECT
+        tamm.message_id AS id
+        FROM
+        t_applet_read_message_map tamm
+        LEFT JOIN platform_announcement pa ON pa.id = tamm.message_id
+        WHERE
+        tamm.type = 2
+        AND tamm.shop_id = #{shopId}
+        AND tamm.open_id = #{openId}
+        )
+        ORDER BY
+        pa.created_at DESC
+        ) t2
+    </select>
+
+    <select id="getMyShopMessage" parameterType="map" resultType="com._360pai.core.facade.shop.vo.ShopMessageTypeVO">
+      SELECT
+        COUNT( pa.id ) AS messageTotal,
+        2 AS messageType,
+       	if(IFNULL(MAX( pa.public_at ), 0) = 0,'', DATE_FORMAT(MAX( pa.public_at ),'%Y/%m/%d')) AS publicAt
+    FROM
+        platform_announcement pa
+    WHERE
+        pa.category = 'SHOP_ANNOUNCEMENT'
+        and pa.expired_at > now()
+        and pa.public_at &lt; now() and
+        pa.id NOT IN ( SELECT message_id FROM t_applet_read_message_map WHERE shop_id = #{shopId} AND open_id = #{openId} AND type = 2 ) UNION ALL
+    SELECT
+        COUNT( tam.id ) AS messageTotal,
+        1 AS messageType,
+        if(IFNULL(MAX( tam.create_time ), 0) = 0,'', DATE_FORMAT(MAX( tam.create_time ),'%Y/%m/%d'))  AS publicAt
+    FROM
+        t_applet_message tam
+    WHERE
+        tam.open_id = #{openId}
+        AND tam.is_del = 0
+        AND tam.id NOT IN ( SELECT message_id FROM t_applet_read_message_map WHERE open_id = #{openId} AND type = 1 )
+    </select>
+    
+    <select id="getRecentMessageAt" parameterType="map" resultType="String">
+        SELECT
+          if(IFNULL(MAX(create_time), 0) = 0,'', DATE_FORMAT(MAX(create_time ),'%Y/%m/%d'))  AS publicAt
+        FROM
+            t_applet_message
+        WHERE
+            open_id = #{openId}
+    </select>
+    
+    <select id="getRecentAnnouncementAt" parameterType="map" resultType="String">
+        SELECT
+            	if(IFNULL(MAX( public_at ), 0) = 0,'', DATE_FORMAT(MAX( public_at ),'%Y/%m/%d')) AS publicAt
+        FROM
+            platform_announcement
+        WHERE
+            category = 'SHOP_ANNOUNCEMENT'
+            and expired_at > now()
+            and public_at &lt; now()
+    </select>
+
+</mapper>

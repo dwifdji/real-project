@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月22日 14时40分30秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletSearchRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletSearchRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="open_id" jdbcType="VARCHAR" property="openId" />
+	<result column="shop_id" jdbcType="INTEGER" property="shopId" />
+	<result column="context" jdbcType="VARCHAR" property="context" />
+	<result column="is_del" jdbcType="BIT" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, open_id, shop_id, context, is_del, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_applet_search_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletSearchRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_applet_search_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="openId != null">
+        AND open_id = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="context != null">
+        AND context = #{context,jdbcType=VARCHAR}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletSearchRecord">
+    insert into zeus.t_applet_search_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="openId != null">
+        open_id, 
+      </if>
+      <if test="shopId != null">
+        shop_id, 
+      </if>
+      <if test="context != null">
+        context, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletSearchRecord">
+    update zeus.t_applet_search_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getSearchRecordList" parameterType="com._360pai.core.facade.shop.dto.SearchRecordListDto"
+          resultType="com._360pai.core.facade.shop.vo.SearchRecordListVO">
+      SELECT
+          tasr.id AS recordId,
+          tasr.create_time AS searchDate,
+          tasr.context AS searchContent
+      FROM
+      t_applet_search_record tasr
+      LEFT JOIN t_account_ext_bind taeb ON taeb.ext_user_id = tasr.open_id
+      <where>
+      tasr.is_del = 0
+    <if test="query != null and '' != query">
+      and tasr.context like concat('%',#{query},'%')
+    </if>
+
+    <if test="openId != null and '' != openId">
+      and tasr.open_id = #{openId}
+    </if>
+
+    <if test="shopId != null and '' != shopId">
+      and tasr.shop_id = #{shopId}
+    </if>
+
+    <if test="beginTime != null and '' != beginTime">
+      and tasr.create_time   &gt; #{beginTime}
+    </if>
+
+    <if test="endTime != null and '' != endTime">
+      and tasr.create_time  &lt; #{endTime}
+    </if>
+      </where>
+      ORDER BY
+      tasr.update_time DESC
+  </select>
+  
+  <update id="deleteSearchRecord" parameterType="map">
+      UPDATE t_applet_search_record
+      SET is_del = 1
+      WHERE
+          1 = 1
+      <if test="deleteType != null and 1 == deleteType">
+        AND id in
+        <foreach item="item" index="index" collection="records" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+      AND shop_id = #{shopId}
+      AND is_del = 0
+
+  </update>
+
+</mapper>

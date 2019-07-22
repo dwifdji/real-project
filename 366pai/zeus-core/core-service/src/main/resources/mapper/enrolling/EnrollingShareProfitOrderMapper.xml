@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月16日 13时57分17秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.enrolling.mapper.EnrollingShareProfitOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.enrolling.EnrollingShareProfitOrder">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="commission_id" jdbcType="VARCHAR" property="commissionId" />
+	<result column="agency_name" jdbcType="VARCHAR" property="agencyName" />
+	<result column="agency_mem_code" jdbcType="VARCHAR" property="agencyMemCode" />
+	<result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, activity_id, amount, created_at, status, agency_id, 
+	commission_id, agency_name, agency_mem_code, order_num, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.enrolling_share_profit_order
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.enrolling.EnrollingShareProfitOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.enrolling_share_profit_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="commissionId != null">
+        AND commission_id = #{commissionId,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyName != null">
+        AND agency_name = #{agencyName,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyMemCode != null">
+        AND agency_mem_code = #{agencyMemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com._360pai.core.model.enrolling.EnrollingShareProfitOrder">
+    insert into zeus.enrolling_share_profit_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="commissionId != null">
+        commission_id, 
+      </if>
+      <if test="agencyName != null">
+        agency_name, 
+      </if>
+      <if test="agencyMemCode != null">
+        agency_mem_code, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionId != null">
+        #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyName != null">
+        #{agencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyMemCode != null">
+        #{agencyMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.enrolling.EnrollingShareProfitOrder">
+    update zeus.enrolling_share_profit_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionId != null">
+        commission_id = #{commissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyName != null">
+        agency_name = #{agencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyMemCode != null">
+        agency_mem_code = #{agencyMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+</mapper>

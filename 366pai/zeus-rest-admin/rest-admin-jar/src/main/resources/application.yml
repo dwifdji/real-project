@@ -1,0 +1,19 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: rest-admin
+dubbo:
+  application:
+    id: rest-admin
+    name: rest-admin
+  scan:
+    basePackages: com._360pai.admin.controller
+  protocol:
+      port: -1
+server:
+  port: 8087
+  context-path: /rest-admin
+

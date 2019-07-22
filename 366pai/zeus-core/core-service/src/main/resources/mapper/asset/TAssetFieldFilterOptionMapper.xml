@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月30日 17时10分43秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldFilterOptionMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldFilterOption">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="filter_id" jdbcType="INTEGER" property="filterId"/>
+        <result column="search_weight" jdbcType="INTEGER" property="searchWeight"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, name, filter_id, search_weight
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_filter_option
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldFilterOptionCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.t_asset_field_filter_option
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="filterId != null">
+                AND filter_id = #{filterId,jdbcType=INTEGER}
+            </if>
+            <if test="searchWeight != null">
+                AND search_weight = #{searchWeight,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldFilterOption">
+        insert into zeus.t_asset_field_filter_option
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="filterId != null">
+                filter_id,
+            </if>
+            <if test="searchWeight != null">
+                search_weight,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="filterId != null">
+                #{filterId,jdbcType=INTEGER},
+            </if>
+            <if test="searchWeight != null">
+                #{searchWeight,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldFilterOption">
+        update zeus.t_asset_field_filter_option
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="filterId != null">
+                filter_id = #{filterId,jdbcType=INTEGER},
+            </if>
+            <if test="searchWeight != null">
+                search_weight = #{searchWeight,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <delete id="deleteAssetTemplateFieldOption">
+      delete FROM   zeus.t_asset_field_filter_option where id = #{paramsId};
+  </delete>
+
+</mapper>

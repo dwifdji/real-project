@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月19日 12时50分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TDisposeProviderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TDisposeProvider">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_type" jdbcType="VARCHAR" property="companyType" />
+    <result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+    <result property="region" jdbcType="VARCHAR" column="region"/>
+    <result column="register_capital" jdbcType="DECIMAL" property="registerCapital" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_mobile" jdbcType="VARCHAR" property="contactMobile" />
+    <result column="qualification_url" jdbcType="VARCHAR" property="qualificationUrl" />
+    <result column="work_year" jdbcType="DECIMAL" property="workYear" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="case_url" jdbcType="VARCHAR" property="caseUrl" />
+    <result column="provide_service" jdbcType="VARCHAR" property="provideService" />
+    <result column="dispose_type" jdbcType="VARCHAR" property="disposeType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="region_province" jdbcType="VARCHAR" property="regionProvince" />
+    <result column="region_area" jdbcType="VARCHAR" property="regionArea" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, party_id, company_name, company_type, register_address, region, register_capital,
+	contact_name, contact_mobile, qualification_url, work_year, introduction, case_url,
+	provide_service, dispose_type, create_time, update_time, business_operator_id, open_account_operator_id, delete_flag,region_province, region_area
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_dispose_provider
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TDisposeProviderCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_dispose_provider
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="companyName != null">
+        AND company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyType != null">
+        AND company_type = #{companyType,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null">
+        AND register_address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="region != null">
+        AND region = #{region,jdbcType=VARCHAR}
+      </if>
+      <if test="registerCapital != null">
+        AND register_capital = #{registerCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="contactName != null">
+        AND contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+      <if test="contactMobile != null">
+        AND contact_mobile = #{contactMobile,jdbcType=VARCHAR}
+      </if>
+      <if test="qualificationUrl != null">
+        AND qualification_url = #{qualificationUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="workYear != null">
+        AND work_year = #{workYear,jdbcType=DECIMAL}
+      </if>
+      <if test="introduction != null">
+        AND introduction = #{introduction,jdbcType=VARCHAR}
+      </if>
+      <if test="caseUrl != null">
+        AND case_url = #{caseUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="provideService != null">
+        AND provide_service = #{provideService,jdbcType=VARCHAR}
+      </if>
+      <if test="disposeType != null">
+        AND dispose_type = #{disposeType,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="regionProvince != null">
+        AND region_province = #{regionProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="regionArea != null">
+        AND region_area = #{regionArea,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TDisposeProvider">
+    insert into zeus.t_dispose_provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyType != null">
+        company_type,
+      </if>
+      <if test="registerAddress != null">
+        register_address,
+      </if>
+      <if test="region != null">
+        region,
+      </if>
+      <if test="registerCapital != null">
+        register_capital,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactMobile != null">
+        contact_mobile,
+      </if>
+      <if test="qualificationUrl != null">
+        qualification_url,
+      </if>
+      <if test="workYear != null">
+        work_year,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="caseUrl != null">
+        case_url,
+      </if>
+      <if test="provideService != null">
+        provide_service,
+      </if>
+      <if test="disposeType != null">
+        dispose_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="regionProvince != null">
+        region_province,
+      </if>
+      <if test="regionArea != null">
+        region_area,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCapital != null">
+        #{registerCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null">
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationUrl != null">
+        #{qualificationUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="workYear != null">
+        #{workYear,jdbcType=DECIMAL},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="caseUrl != null">
+        #{caseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="provideService != null">
+        #{provideService,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeType != null">
+        #{disposeType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="regionProvince != null">
+        #{regionProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="regionArea != null">
+        #{regionArea,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TDisposeProvider">
+    update zeus.t_dispose_provider
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        company_type = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        register_address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCapital != null">
+        register_capital = #{registerCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null">
+        contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationUrl != null">
+        qualification_url = #{qualificationUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="workYear != null">
+        work_year = #{workYear,jdbcType=DECIMAL},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="caseUrl != null">
+        case_url = #{caseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="provideService != null">
+        provide_service = #{provideService,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeType != null">
+        dispose_type = #{disposeType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="regionProvince != null">
+        region_province = #{regionProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="regionArea != null">
+        region_area = #{regionArea,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select p.*
+    from zeus.t_dispose_provider p
+    inner join zeus.t_account a on a.id=p.account_id
+    <where>
+      and p.delete_flag='0'
+      <if test="q != null"> and (a.mobile like concat('%',#{q},'%') or p.company_name like concat('%',#{q},'%'))</if>
+      <if test="status != null"> and p.status=#{status}</if>
+    </where>
+  </select>
+
+  <select id="getRecommendList" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select t.*
+    from (
+      select p.*,pa.law_office
+      from zeus.t_dispose_provider p
+      inner join zeus.t_dispose_provider_apply pa on pa.party_id=p.party_id and pa.status='APPROVED'
+      inner join zeus.t_company c on c.id=p.party_id
+      <where>
+        and p.delete_flag='0' and p.dispose_type=10
+        <if test="provinceId != null"> and p.region_province=#{provinceId}</if>
+        <if test="cityId != null"> and p.region=#{cityId}</if>
+        <if test="areaId != null"> and p.region_area=#{areaId}</if>
+      </where>
+      union all
+      select p.*,pa.law_office
+      from zeus.t_dispose_provider p
+      inner join zeus.t_dispose_provider_apply pa on pa.party_id=p.party_id and pa.status='APPROVED'
+      inner join zeus.t_user c on c.id=p.party_id
+      <where>
+        and p.delete_flag='0' and p.dispose_type=30
+        <if test="provinceId != null"> and c.province_id=#{provinceId}</if>
+        <if test="cityId != null"> and c.city_id=#{cityId}</if>
+        <if test="areaId != null"> and c.area_id=#{areaId}</if>
+      </where>
+    ) t
+  </select>
+
+  <select id="findByName" resultType="com._360pai.core.model.account.TDisposeProvider">
+    select p.*
+    from zeus.t_dispose_provider p
+    where p.delete_flag='0' and p.company_name=#{name}
+  </select>
+</mapper>

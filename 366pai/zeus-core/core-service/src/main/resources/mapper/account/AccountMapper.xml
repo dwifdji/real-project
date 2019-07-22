@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分46秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.AccountMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.Account">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="is_valid" jdbcType="BIT" property="isValid" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+	<result column="register_source" jdbcType="CHAR" property="registerSource" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="password_hash" jdbcType="VARCHAR" property="passwordHash" />
+	<result column="current_party_id" jdbcType="INTEGER" property="currentPartyId" />
+	<result column="agency_bind" jdbcType="BIT" property="agencyBind" />
+	<result column="is_agency_admin" jdbcType="BIT" property="isAgencyAdmin" />
+	<result column="source" jdbcType="VARCHAR" property="source" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, mobile, is_valid, created_at, updated_at, register_source, 
+	default_agency_id, agency_id, password_hash, current_party_id, agency_bind, is_agency_admin, 
+	source
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from monet.account
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.AccountCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from monet.account
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="isValid != null">
+        AND is_valid = #{isValid,jdbcType=BIT}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedAt != null">
+        AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="registerSource != null">
+        AND register_source = #{registerSource,jdbcType=CHAR}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="passwordHash != null">
+        AND password_hash = #{passwordHash,jdbcType=VARCHAR}
+      </if>
+      <if test="currentPartyId != null">
+        AND current_party_id = #{currentPartyId,jdbcType=INTEGER}
+      </if>
+      <if test="agencyBind != null">
+        AND agency_bind = #{agencyBind,jdbcType=BIT}
+      </if>
+      <if test="isAgencyAdmin != null">
+        AND is_agency_admin = #{isAgencyAdmin,jdbcType=BIT}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.Account">
+    insert into monet.account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="isValid != null">
+        is_valid, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="updatedAt != null">
+        updated_at, 
+      </if>
+      <if test="registerSource != null">
+        register_source, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="passwordHash != null">
+        password_hash, 
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id, 
+      </if>
+      <if test="agencyBind != null">
+        agency_bind, 
+      </if>
+      <if test="isAgencyAdmin != null">
+        is_agency_admin, 
+      </if>
+      <if test="source != null">
+        source, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerSource != null">
+        #{registerSource,jdbcType=CHAR},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="passwordHash != null">
+        #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPartyId != null">
+        #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyBind != null">
+        #{agencyBind,jdbcType=BIT},
+      </if>
+      <if test="isAgencyAdmin != null">
+        #{isAgencyAdmin,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.Account">
+    update monet.account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerSource != null">
+        register_source = #{registerSource,jdbcType=CHAR},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="passwordHash != null">
+        password_hash = #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPartyId != null">
+        current_party_id = #{currentPartyId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyBind != null">
+        agency_bind = #{agencyBind,jdbcType=BIT},
+      </if>
+      <if test="isAgencyAdmin != null">
+        is_agency_admin = #{isAgencyAdmin,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

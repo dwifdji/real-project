@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分51秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.PromotionCategoryCardMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.PromotionCategoryCard">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="hint" jdbcType="VARCHAR" property="hint"/>
+        <result column="asset_category_group_id" jdbcType="INTEGER" property="assetCategoryGroupId"/>
+        <result column="asset_property_id" jdbcType="INTEGER" property="assetPropertyId"/>
+        <result column="order_no" jdbcType="SMALLINT" property="orderNo"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="link" jdbcType="VARCHAR" property="link"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, title, hint, asset_category_group_id, asset_property_id, order_no, 
+	img, link
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.promotion_category_card
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.PromotionCategoryCardCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.promotion_category_card
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="title != null">
+                AND title = #{title,jdbcType=VARCHAR}
+            </if>
+            <if test="hint != null">
+                AND hint = #{hint,jdbcType=VARCHAR}
+            </if>
+            <if test="assetCategoryGroupId != null">
+                AND asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER}
+            </if>
+            <if test="assetPropertyId != null">
+                AND asset_property_id = #{assetPropertyId,jdbcType=INTEGER}
+            </if>
+            <if test="orderNo != null">
+                AND order_no = #{orderNo,jdbcType=SMALLINT}
+            </if>
+            <if test="img != null">
+                AND img = #{img,jdbcType=VARCHAR}
+            </if>
+            <if test="link != null">
+                AND link = #{link,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.assistant.PromotionCategoryCard">
+        insert into zeus.promotion_category_card
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="hint != null">
+                hint,
+            </if>
+            <if test="assetCategoryGroupId != null">
+                asset_category_group_id,
+            </if>
+            <if test="assetPropertyId != null">
+                asset_property_id,
+            </if>
+            <if test="orderNo != null">
+                order_no,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+            <if test="link != null">
+                link,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="assetCategoryGroupId != null">
+                #{assetCategoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="assetPropertyId != null">
+                #{assetPropertyId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo,jdbcType=SMALLINT},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="link != null">
+                #{link,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.assistant.PromotionCategoryCard">
+        update zeus.promotion_category_card
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="hint != null">
+                hint = #{hint,jdbcType=VARCHAR},
+            </if>
+            <if test="assetCategoryGroupId != null">
+                asset_category_group_id = #{assetCategoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="assetPropertyId != null">
+                asset_property_id = #{assetPropertyId,jdbcType=INTEGER},
+            </if>
+            <if test="orderNo != null">
+                order_no = #{orderNo,jdbcType=SMALLINT},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="link != null">
+                link = #{link,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+    <delete id="deleteCard">
+      delete from zeus.promotion_category_card where id = #{paramId};
+    </delete>
+    <select id="getCards" resultType="com._360pai.core.vo.assistant.PromotionCategoryCardVo">
+        select
+        pcc.id as id,
+        pcc.title as title,
+        pcc.hint as hint,
+        pcc.asset_category_group_id as assetCategoryGroupId,
+        pcc.asset_property_id as assetPropertyId,
+        pcc.order_no as orderNo,
+        pcc.img as img,
+        pcc.link as link,
+        acg.`name` as assetCategoryGroupName ,
+        ap.`name` as assetPropertyName
+        from zeus.promotion_category_card pcc
+        left join `t_asset_category` acg  on  acg.id = pcc.asset_category_group_id
+        left join asset_property ap  on pcc.asset_property_id = ap.id
+    </select>
+
+</mapper>

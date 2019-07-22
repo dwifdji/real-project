@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年07月01日 10时42分57秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.TActivityPosterMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.TActivityPoster">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+	<result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+	<result column="agency_display_flag" jdbcType="BIT" property="agencyDisplayFlag" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="auto_flag" jdbcType="BIT" property="autoFlag" />
+	<result column="province_id" jdbcType="INTEGER" property="provinceId" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="area_id" jdbcType="INTEGER" property="areaId" />
+	<result column="category" jdbcType="VARCHAR" property="category" />
+	<result column="bus_type" jdbcType="VARCHAR" property="busType" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="activity_ids" jdbcType="VARCHAR" property="activityIds" />
+	<result column="order_num" jdbcType="INTEGER" property="orderNum" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, begin_at, end_at, agency_display_flag, img_url, 
+	auto_flag, province_id, city_id, area_id, category, bus_type, 
+	status, activity_ids, order_num, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_activity_poster
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.TActivityPosterCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_activity_poster
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="beginAt != null">
+        AND begin_at = #{beginAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endAt != null">
+        AND end_at = #{endAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="agencyDisplayFlag != null">
+        AND agency_display_flag = #{agencyDisplayFlag,jdbcType=BIT}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="autoFlag != null">
+        AND auto_flag = #{autoFlag,jdbcType=BIT}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=INTEGER}
+      </if>
+      <if test="category != null">
+        AND category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="busType != null">
+        AND bus_type = #{busType,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="activityIds != null">
+        AND activity_ids = #{activityIds,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.activity.TActivityPoster">
+    insert into zeus.t_activity_poster
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="beginAt != null">
+        begin_at, 
+      </if>
+      <if test="endAt != null">
+        end_at, 
+      </if>
+      <if test="agencyDisplayFlag != null">
+        agency_display_flag, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="autoFlag != null">
+        auto_flag, 
+      </if>
+      <if test="provinceId != null">
+        province_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="areaId != null">
+        area_id, 
+      </if>
+      <if test="category != null">
+        category, 
+      </if>
+      <if test="busType != null">
+        bus_type, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="activityIds != null">
+        activity_ids, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agencyDisplayFlag != null">
+        #{agencyDisplayFlag,jdbcType=BIT},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="autoFlag != null">
+        #{autoFlag,jdbcType=BIT},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="activityIds != null">
+        #{activityIds,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.TActivityPoster">
+    update zeus.t_activity_poster
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="beginAt != null">
+        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endAt != null">
+        end_at = #{endAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agencyDisplayFlag != null">
+        agency_display_flag = #{agencyDisplayFlag,jdbcType=BIT},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="autoFlag != null">
+        auto_flag = #{autoFlag,jdbcType=BIT},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="busType != null">
+        bus_type = #{busType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="activityIds != null">
+        activity_ids = #{activityIds,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getFrontList" resultType="com._360pai.core.model.activity.TActivityPoster">
+      select *
+      from zeus.t_activity_poster
+      <where>
+          delete_flag=0 and begin_at &lt;= now() and end_at >= now()
+        <if test="agencyCode != null and agencyCode!=''"> and agency_display_flag=1</if>
+      </where>
+      order by order_num asc
+    limit 0,5
+  </select>
+  <select id="getManualAuctionActivityList" resultType="java.util.Map">
+        select aa.asset_name as assetName,
+                aa.`id` as activityId,
+                ass.extra ->> "$.images[0]" as imageUrl,
+                aa.`deposit` as deposit,
+                aa.`starting_price` as startingPrice,
+                null as refPrice,
+                'auction' activityType,
+                aa.asset_category_group_id as `category`,
+                ifnull(acg.`name`, '租赁权拍卖') as categoryName,
+                aa.begin_at as beginAt,
+                aa.end_at as endAt,
+                aa.preview_at as previewAt,
+                aa.`mode`,
+                aa.`status`,
+                aa.participant_number AS participantNumber,
+                aavc.view_count AS viewCount,
+                ci.`name` AS cityName,
+                cp.`name` AS provinceName,
+                0 orderNum
+        from  zeus.auction_activity aa
+        inner join zeus.asset ass on ass.id=aa.asset_id
+        left join t_asset_category acg ON acg.id = aa.asset_category_group_id
+        left join zeus.auction_activity_view_count aavc ON aavc.activity_id = aa.id
+        left join zeus.city ci ON ci.id = ass.city_id
+        left join zeus.province cp ON cp.id = ass.province_id
+        where aa.id in <foreach item="item" index="index" collection="activityIdList" open="(" separator="," close=")">#{item}</foreach>
+                and aa.delete_flag = 0 and aa.visibility_level = 'PLATFORM_DEFAULT'
+                and  now() > aa.preview_at and aa.status not in ('PLATFORM_REVIEWING','PLATFORM_APPROVED','CANCELLED','UNCONFIRMED','AGENCY_PENDING','AGENCY_REJECT','PLATFORM_REJECTED')
+  </select>
+  <select id="getManualEnrollingActivityList" resultType="java.util.Map">
+        select e.name as assetName,
+                e.`id` as activityId,
+                e.extra ->> "$.images[0]" as imageUrl,
+                e.`deposit` as deposit,
+                null as startingPrice,
+                e.ref_price as refPrice,
+                'enrolling' activityType,
+                e.type as `category`,
+                '' as categoryName,
+                e.begin_at as beginAt,
+                e.end_at as endAt,
+                null as previewAt,
+                '' `mode`,
+                e.`status`,
+                e.apply_number as participantNumber,
+                e.browse_number as viewCount,
+                ci.`name` as cityName,
+                cp.`name` AS provinceName,
+                0 orderNum
+        from zeus.enrolling_activity e
+        left join zeus.city ci ON ci.id = e.city_id
+        left join zeus.province cp ON cp.id = e.province_id
+        where e.id in  <foreach item="item" index="index" collection="activityIdList" open="(" separator="," close=")">#{item}</foreach>
+              and e.delete_flag = 0 and e.status in ( "ONLINE", "FINISHED", "CLOSED")
+              and e.visibility_level = 'PLATFORM_DEFAULT' and e.begin_at &lt; NOW()
+  </select>
+</mapper>

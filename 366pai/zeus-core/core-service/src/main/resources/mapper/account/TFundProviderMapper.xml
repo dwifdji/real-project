@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月19日 12时50分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TFundProviderMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TFundProvider">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_type" jdbcType="VARCHAR" property="companyType" />
+    <result column="custom_company_type" jdbcType="VARCHAR" property="customCompanyType" />
+    <result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+    <result column="register_capital" jdbcType="DECIMAL" property="registerCapital" />
+    <result column="provider_area" jdbcType="VARCHAR" property="providerArea" />
+    <result column="provider_min_amount" jdbcType="DECIMAL" property="providerMinAmount" />
+    <result column="provider_max_amount" jdbcType="DECIMAL" property="providerMaxAmount" />
+    <result column="provider_level" jdbcType="VARCHAR" property="providerLevel" typeHandler="com._360pai.arch.core.sysconfig.JsonTypeHandler" />
+    <result column="provider_min_cost" jdbcType="DECIMAL" property="providerMinCost" />
+    <result column="provider_max_cost" jdbcType="DECIMAL" property="providerMaxCost" />
+    <result column="provider_fee" jdbcType="DECIMAL" property="providerFee" />
+    <result column="provider_min_month" jdbcType="DECIMAL" property="providerMinMonth" />
+    <result column="provider_max_month" jdbcType="DECIMAL" property="providerMaxMonth" />
+    <result column="provider_pattern" jdbcType="VARCHAR" property="providerPattern" />
+    <result column="asset_require" jdbcType="VARCHAR" property="assetRequire" />
+    <result column="descrip" jdbcType="VARCHAR" property="descrip" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="scale" jdbcType="DECIMAL" property="scale" />
+    <result column="fund_type" jdbcType="VARCHAR" property="fundType" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_person" jdbcType="VARCHAR" property="contactPerson" />
+    <result column="single_min_amount" jdbcType="DECIMAL" property="singleMinAmount" />
+    <result column="single_max_amount" jdbcType="DECIMAL" property="singleMaxAmount" />
+    <result column="annua_return_min" jdbcType="VARCHAR" property="annuaReturnMin" />
+    <result column="annua_return_max" jdbcType="VARCHAR" property="annuaReturnMax" />
+    <result column="other_fee" jdbcType="VARCHAR" property="otherFee" />
+    <result column="asset_type" jdbcType="VARCHAR" property="assetType" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, account_id, party_id, company_name, company_type, custom_company_type, register_address, register_capital,
+    provider_area, provider_min_amount, provider_max_amount, provider_level, provider_min_cost, provider_max_cost,
+    provider_fee, provider_min_month, provider_max_month, provider_pattern, asset_require, descrip,
+    create_time, update_time,  scale, fund_type, business_operator_id, open_account_operator_id, contact_phone, contact_person, single_min_amount, single_max_amount, annua_return_min,
+	annua_return_max, other_fee, asset_type, delete_flag
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_fund_provider
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TFundProviderCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_fund_provider
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="companyName != null">
+        AND company_name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyType != null">
+        AND company_type = #{companyType,jdbcType=VARCHAR}
+      </if>
+      <if test="customCompanyType != null">
+        AND custom_company_type = #{customCompanyType,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null">
+        AND register_address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="registerCapital != null">
+        AND register_capital = #{registerCapital,jdbcType=DECIMAL}
+      </if>
+      <if test="providerArea != null">
+        AND provider_area = #{providerArea,jdbcType=VARCHAR}
+      </if>
+      <if test="providerMinAmount != null">
+        AND provider_min_amount = #{providerMinAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="providerMaxAmount != null">
+        AND provider_max_amount = #{providerMaxAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="providerLevel != null">
+        AND provider_level = #{providerLevel,jdbcType=JSON}
+      </if>
+      <if test="providerMinCost != null">
+        AND provider_min_cost = #{providerMinCost,jdbcType=DECIMAL}
+      </if>
+      <if test="providerMaxCost != null">
+        AND provider_max_cost = #{providerMaxCost,jdbcType=DECIMAL}
+      </if>
+      <if test="providerFee != null">
+        AND provider_fee = #{providerFee,jdbcType=DECIMAL}
+      </if>
+      <if test="providerMinMonth != null">
+        AND provider_min_month = #{providerMinMonth,jdbcType=DECIMAL}
+      </if>
+      <if test="providerMaxMonth != null">
+        AND provider_max_month = #{providerMaxMonth,jdbcType=DECIMAL}
+      </if>
+      <if test="providerPattern != null">
+        AND provider_pattern = #{providerPattern,jdbcType=VARCHAR}
+      </if>
+      <if test="assetRequire != null">
+        AND asset_require = #{assetRequire,jdbcType=VARCHAR}
+      </if>
+      <if test="descrip != null">
+        AND descrip = #{descrip,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="scale != null">
+        AND scale = #{scale,jdbcType=DECIMAL}
+      </if>
+      <if test="fundType != null">
+        AND fund_type = #{fundType,jdbcType=VARCHAR}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPerson != null">
+        AND contact_person = #{contactPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="singleMinAmount != null">
+        AND single_min_amount = #{singleMinAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="singleMaxAmount != null">
+        AND single_max_amount = #{singleMaxAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="annuaReturnMin != null">
+        AND annua_return_min = #{annuaReturnMin,jdbcType=VARCHAR}
+      </if>
+      <if test="annuaReturnMax != null">
+        AND annua_return_max = #{annuaReturnMax,jdbcType=VARCHAR}
+      </if>
+      <if test="otherFee != null">
+        AND other_fee = #{otherFee,jdbcType=VARCHAR}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TFundProvider">
+    insert into zeus.t_fund_provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyType != null">
+        company_type,
+      </if>
+      <if test="customCompanyType != null">
+        custom_company_type,
+      </if>
+      <if test="registerAddress != null">
+        register_address,
+      </if>
+      <if test="registerCapital != null">
+        register_capital,
+      </if>
+      <if test="providerArea != null">
+        provider_area,
+      </if>
+      <if test="providerMinAmount != null">
+        provider_min_amount,
+      </if>
+      <if test="providerMaxAmount != null">
+        provider_max_amount,
+      </if>
+      <if test="providerLevel != null">
+        provider_level,
+      </if>
+      <if test="providerMinCost != null">
+        provider_min_cost,
+      </if>
+      <if test="providerMaxCost != null">
+        provider_max_cost,
+      </if>
+      <if test="providerFee != null">
+        provider_fee,
+      </if>
+      <if test="providerMinMonth != null">
+        provider_min_month,
+      </if>
+      <if test="providerMaxMonth != null">
+        provider_max_month,
+      </if>
+      <if test="providerPattern != null">
+        provider_pattern,
+      </if>
+      <if test="assetRequire != null">
+        asset_require,
+      </if>
+      <if test="descrip != null">
+        descrip,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="fundType != null">
+        fund_type,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="contactPerson != null">
+        contact_person,
+      </if>
+      <if test="singleMinAmount != null">
+        single_min_amount,
+      </if>
+      <if test="singleMaxAmount != null">
+        single_max_amount,
+      </if>
+      <if test="annuaReturnMin != null">
+        annua_return_min,
+      </if>
+      <if test="annuaReturnMax != null">
+        annua_return_max,
+      </if>
+      <if test="otherFee != null">
+        other_fee,
+      </if>
+      <if test="assetType != null">
+        asset_type,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="customCompanyType != null">
+        #{customCompanyType,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCapital != null">
+        #{registerCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="providerArea != null">
+        #{providerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="providerMinAmount != null">
+        #{providerMinAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxAmount != null">
+        #{providerMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="providerLevel != null">
+        #{providerLevel,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="providerMinCost != null">
+        #{providerMinCost,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxCost != null">
+        #{providerMaxCost,jdbcType=DECIMAL},
+      </if>
+      <if test="providerFee != null">
+        #{providerFee,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMinMonth != null">
+        #{providerMinMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxMonth != null">
+        #{providerMaxMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="providerPattern != null">
+        #{providerPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRequire != null">
+        #{assetRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="descrip != null">
+        #{descrip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=DECIMAL},
+      </if>
+      <if test="fundType != null">
+        #{fundType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="singleMinAmount != null">
+        #{singleMinAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="singleMaxAmount != null">
+        #{singleMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="annuaReturnMin != null">
+        #{annuaReturnMin,jdbcType=VARCHAR},
+      </if>
+      <if test="annuaReturnMax != null">
+        #{annuaReturnMax,jdbcType=VARCHAR},
+      </if>
+      <if test="otherFee != null">
+        #{otherFee,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TFundProvider">
+    update zeus.t_fund_provider
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        company_type = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="customCompanyType != null">
+        custom_company_type = #{customCompanyType,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        register_address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCapital != null">
+        register_capital = #{registerCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="providerArea != null">
+        provider_area = #{providerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="providerMinAmount != null">
+        provider_min_amount = #{providerMinAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxAmount != null">
+        provider_max_amount = #{providerMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="providerLevel != null">
+        provider_level = #{providerLevel,jdbcType=VARCHAR,typeHandler=com._360pai.arch.core.sysconfig.JsonTypeHandler},
+      </if>
+      <if test="providerMinCost != null">
+        provider_min_cost = #{providerMinCost,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxCost != null">
+        provider_max_cost = #{providerMaxCost,jdbcType=DECIMAL},
+      </if>
+      <if test="providerFee != null">
+        provider_fee = #{providerFee,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMinMonth != null">
+        provider_min_month = #{providerMinMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="providerMaxMonth != null">
+        provider_max_month = #{providerMaxMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="providerPattern != null">
+        provider_pattern = #{providerPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRequire != null">
+        asset_require = #{assetRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="descrip != null">
+        descrip = #{descrip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=DECIMAL},
+      </if>
+      <if test="fundType != null">
+        fund_type = #{fundType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="singleMinAmount != null">
+        single_min_amount = #{singleMinAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="singleMaxAmount != null">
+        single_max_amount = #{singleMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="annuaReturnMin != null">
+        annua_return_min = #{annuaReturnMin,jdbcType=VARCHAR},
+      </if>
+      <if test="annuaReturnMax != null">
+        annua_return_max = #{annuaReturnMax,jdbcType=VARCHAR},
+      </if>
+      <if test="otherFee != null">
+        other_fee = #{otherFee,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select p.*
+    from zeus.t_fund_provider p
+    inner join zeus.t_account a on a.id=p.account_id
+    <where>
+      and p.delete_flag='0'
+      <if test="q != null"> and (a.mobile like concat('%',#{q},'%') or p.company_name like concat('%',#{q},'%'))</if>
+      <if test="status != null"> and p.status=#{status}</if>
+    </where>
+  </select>
+</mapper>

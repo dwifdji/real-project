@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: rest-web
+dubbo:
+  application:
+    id: rest-web
+    name: rest-web
+  scan:
+    basePackages: com._360pai.web.controller
+  protocol:
+    port: -1
+server:
+  port: 8086
+  context-path: /rest-web
+
+

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月27日 18时53分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletViewShopMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletViewShop">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="auction_id" jdbcType="INTEGER" property="auctionId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, shop_id, open_id, auction_id, type, is_delete,
+	create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_view_shop
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletViewShopCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_view_shop
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="openId != null">
+        AND open_id = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="auctionId != null">
+        AND auction_id = #{auctionId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletViewShop">
+    insert into zeus.t_applet_view_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="auctionId != null">
+        auction_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionId != null">
+        #{auctionId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletViewShop">
+    update zeus.t_applet_view_shop
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="auctionId != null">
+        auction_id = #{auctionId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getAppletVisitList" parameterType="com._360pai.core.condition.applet.TAppletViewShopCondition" resultType="com._360pai.core.facade.applet.vo.AppletVisitVo">
+    SELECT
+    a.nick_name AS 'name',
+    a.head_img_url AS 'imgUrl',
+    v.update_time as 'timeInfo'
+
+    FROM
+    zeus.t_applet_view_shop v
+    LEFT JOIN t_account_ext_bind a ON v.open_id = a.ext_user_id
+    <where>
+      <if test="id != null">
+        AND v.id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="shopId != null">
+        AND v.shop_id = #{shopId,jdbcType=INTEGER}
+      </if>
+      <if test="openId != null">
+        AND v.open_id = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND v.is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND v.create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND v.update_time  >= #{updateTime}
+      </if>
+
+      <if test="type != null">
+        AND v.type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="auctionId != null">
+        AND v.auction_id = #{auctionId,jdbcType=INTEGER}
+      </if>
+
+      order by v.update_time desc
+
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TChannelDetailMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TChannelDetail">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="child_type" jdbcType="VARCHAR" property="childType" />
+	<result column="child_id" jdbcType="INTEGER" property="childId" />
+	<result column="parent_type" jdbcType="VARCHAR" property="parentType" />
+	<result column="parent_id" jdbcType="INTEGER" property="parentId" />
+	<result column="commission_percent" jdbcType="DECIMAL" property="commissionPercent" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="is_del" jdbcType="INTEGER" property="isDel" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, child_type, child_id, parent_type, parent_id, commission_percent, 
+	operator_id, is_del, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_channel_detail
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TChannelDetailCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_channel_detail
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="childType != null">
+        AND child_type = #{childType,jdbcType=VARCHAR}
+      </if>
+      <if test="childId != null">
+        AND child_id = #{childId,jdbcType=INTEGER}
+      </if>
+      <if test="parentType != null">
+        AND parent_type = #{parentType,jdbcType=VARCHAR}
+      </if>
+      <if test="parentId != null">
+        AND parent_id = #{parentId,jdbcType=INTEGER}
+      </if>
+      <if test="commissionPercent != null">
+        AND commission_percent = #{commissionPercent,jdbcType=DECIMAL}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="isDel != null">
+        AND is_del = #{isDel,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TChannelDetail">
+    insert into zeus.t_channel_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="childType != null">
+        child_type, 
+      </if>
+      <if test="childId != null">
+        child_id, 
+      </if>
+      <if test="parentType != null">
+        parent_type, 
+      </if>
+      <if test="parentId != null">
+        parent_id, 
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="isDel != null">
+        is_del, 
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="childType != null">
+        #{childType,jdbcType=VARCHAR},
+      </if>
+      <if test="childId != null">
+        #{childId,jdbcType=INTEGER},
+      </if>
+      <if test="parentType != null">
+        #{parentType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null">
+        #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TChannelDetail">
+    update zeus.t_channel_detail
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="childType != null">
+        child_type = #{childType,jdbcType=VARCHAR},
+      </if>
+      <if test="childId != null">
+        child_id = #{childId,jdbcType=INTEGER},
+      </if>
+      <if test="parentType != null">
+        parent_type = #{parentType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="commissionPercent != null">
+        commission_percent = #{commissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+        create_time = now(),
+        update_time = now()
+    </set>
+	<where>
+       id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

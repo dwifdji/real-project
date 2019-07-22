@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年09月03日 13时51分46秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaDisposalPartyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersonaDisposalParty">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="persona_id" jdbcType="INTEGER" property="personaId" />
+    <result column="business_type" jdbcType="CHAR" property="businessType" />
+    <result column="business_area" jdbcType="VARCHAR" property="businessArea" />
+    <result column="familiar_court" jdbcType="VARCHAR" property="familiarCourt" />
+    <result column="complete_disposal_volume" jdbcType="DECIMAL" property="completeDisposalVolume" />
+    <result column="ongoing_disposal_volume" jdbcType="DECIMAL" property="ongoingDisposalVolume" />
+    <result column="disposal_cost_range_start" jdbcType="DECIMAL" property="disposalCostRangeStart" />
+    <result column="disposal_cost_range_end" jdbcType="DECIMAL" property="disposalCostRangeEnd" />
+    <result column="due_cost_range_start" jdbcType="DECIMAL" property="dueCostRangeStart" />
+    <result column="due_cost_range_end" jdbcType="DECIMAL" property="dueCostRangeEnd" />
+    <result column="responsible_investigation_period" jdbcType="DECIMAL" property="responsibleInvestigationPeriod" />
+    <result column="team_number" jdbcType="INTEGER" property="teamNumber" />
+    <result column="disposal_period" jdbcType="DECIMAL" property="disposalPeriod" />
+    <result column="average_disposal_period_start" jdbcType="DECIMAL" property="averageDisposalPeriodStart" />
+    <result column="average_disposal_period_end" jdbcType="DECIMAL" property="averageDisposalPeriodEnd" />
+    <result column="is_going_to_invest_disposal_asset" jdbcType="BIT" property="isGoingToInvestDisposalAsset" />
+    <result column="is_do_fully_risk_agency" jdbcType="BIT" property="isDoFullyRiskAgency" />
+    <result column="asset_property_type" jdbcType="VARCHAR" property="assetPropertyType" />
+    <result column="oral_evaluate" jdbcType="BIT" property="oralEvaluate" />
+    <result column="oral_evaluate_fee" jdbcType="DECIMAL" property="oralEvaluateFee" />
+    <result column="evaluate_report" jdbcType="BIT" property="evaluateReport" />
+    <result column="evaluate_report_fee" jdbcType="DECIMAL" property="evaluateReportFee" />
+    <result column="evaluate_term_start" jdbcType="DECIMAL" property="evaluateTermStart" />
+    <result column="evaluate_term_end" jdbcType="DECIMAL" property="evaluateTermEnd" />
+    <result column="evaluate_agency_level" jdbcType="VARCHAR" property="evaluateAgencyLevel" />
+    <result column="collection_mode" jdbcType="VARCHAR" property="collectionMode" />
+    <result column="collection_fee_start" jdbcType="DECIMAL" property="collectionFeeStart" />
+    <result column="collection_fee_end" jdbcType="DECIMAL" property="collectionFeeEnd" />
+    <result column="collection_period" jdbcType="DECIMAL" property="collectionPeriod" />
+    <result column="asset_clues" jdbcType="VARCHAR" property="assetClues" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, persona_id, business_type, business_area, familiar_court, complete_disposal_volume,
+	ongoing_disposal_volume, disposal_cost_range_start, disposal_cost_range_end, due_cost_range_start, due_cost_range_end, responsible_investigation_period,
+	team_number, disposal_period, average_disposal_period_start, average_disposal_period_end, is_going_to_invest_disposal_asset, is_do_fully_risk_agency,
+	asset_property_type, oral_evaluate, oral_evaluate_fee, evaluate_report, evaluate_report_fee, evaluate_term_start,
+	evaluate_term_end, evaluate_agency_level, collection_mode, collection_fee_start, collection_fee_end, collection_period,
+	asset_clues, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_persona_disposal_party
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaDisposalPartyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_persona_disposal_party
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="personaId != null">
+        AND persona_id = #{personaId,jdbcType=INTEGER}
+      </if>
+      <if test="businessType != null">
+        AND business_type = #{businessType,jdbcType=CHAR}
+      </if>
+      <if test="businessArea != null">
+        AND business_area = #{businessArea,jdbcType=VARCHAR}
+      </if>
+      <if test="familiarCourt != null">
+        AND familiar_court = #{familiarCourt,jdbcType=VARCHAR}
+      </if>
+      <if test="completeDisposalVolume != null">
+        AND complete_disposal_volume = #{completeDisposalVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="ongoingDisposalVolume != null">
+        AND ongoing_disposal_volume = #{ongoingDisposalVolume,jdbcType=DECIMAL}
+      </if>
+      <if test="disposalCostRangeStart != null">
+        AND disposal_cost_range_start = #{disposalCostRangeStart,jdbcType=DECIMAL}
+      </if>
+      <if test="disposalCostRangeEnd != null">
+        AND disposal_cost_range_end = #{disposalCostRangeEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="dueCostRangeStart != null">
+        AND due_cost_range_start = #{dueCostRangeStart,jdbcType=DECIMAL}
+      </if>
+      <if test="dueCostRangeEnd != null">
+        AND due_cost_range_end = #{dueCostRangeEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="responsibleInvestigationPeriod != null">
+        AND responsible_investigation_period = #{responsibleInvestigationPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="teamNumber != null">
+        AND team_number = #{teamNumber,jdbcType=INTEGER}
+      </if>
+      <if test="disposalPeriod != null">
+        AND disposal_period = #{disposalPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="averageDisposalPeriodStart != null">
+        AND average_disposal_period_start = #{averageDisposalPeriodStart,jdbcType=DECIMAL}
+      </if>
+      <if test="averageDisposalPeriodEnd != null">
+        AND average_disposal_period_end = #{averageDisposalPeriodEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="isGoingToInvestDisposalAsset != null">
+        AND is_going_to_invest_disposal_asset = #{isGoingToInvestDisposalAsset,jdbcType=BIT}
+      </if>
+      <if test="isDoFullyRiskAgency != null">
+        AND is_do_fully_risk_agency = #{isDoFullyRiskAgency,jdbcType=BIT}
+      </if>
+      <if test="assetPropertyType != null">
+        AND asset_property_type = #{assetPropertyType,jdbcType=VARCHAR}
+      </if>
+      <if test="oralEvaluate != null">
+        AND oral_evaluate = #{oralEvaluate,jdbcType=BIT}
+      </if>
+      <if test="oralEvaluateFee != null">
+        AND oral_evaluate_fee = #{oralEvaluateFee,jdbcType=DECIMAL}
+      </if>
+      <if test="evaluateReport != null">
+        AND evaluate_report = #{evaluateReport,jdbcType=BIT}
+      </if>
+      <if test="evaluateReportFee != null">
+        AND evaluate_report_fee = #{evaluateReportFee,jdbcType=DECIMAL}
+      </if>
+      <if test="evaluateTermStart != null">
+        AND evaluate_term_start = #{evaluateTermStart,jdbcType=DECIMAL}
+      </if>
+      <if test="evaluateTermEnd != null">
+        AND evaluate_term_end = #{evaluateTermEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="evaluateAgencyLevel != null">
+        AND evaluate_agency_level = #{evaluateAgencyLevel,jdbcType=VARCHAR}
+      </if>
+      <if test="collectionMode != null">
+        AND collection_mode = #{collectionMode,jdbcType=VARCHAR}
+      </if>
+      <if test="collectionFeeStart != null">
+        AND collection_fee_start = #{collectionFeeStart,jdbcType=DECIMAL}
+      </if>
+      <if test="collectionFeeEnd != null">
+        AND collection_fee_end = #{collectionFeeEnd,jdbcType=DECIMAL}
+      </if>
+      <if test="collectionPeriod != null">
+        AND collection_period = #{collectionPeriod,jdbcType=DECIMAL}
+      </if>
+      <if test="assetClues != null">
+        AND asset_clues = #{assetClues,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersonaDisposalParty">
+    insert into zeus.t_persona_disposal_party
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="personaId != null">
+        persona_id,
+      </if>
+      <if test="businessType != null">
+        business_type,
+      </if>
+      <if test="businessArea != null">
+        business_area,
+      </if>
+      <if test="familiarCourt != null">
+        familiar_court,
+      </if>
+      <if test="completeDisposalVolume != null">
+        complete_disposal_volume,
+      </if>
+      <if test="ongoingDisposalVolume != null">
+        ongoing_disposal_volume,
+      </if>
+      <if test="disposalCostRangeStart != null">
+        disposal_cost_range_start,
+      </if>
+      <if test="disposalCostRangeEnd != null">
+        disposal_cost_range_end,
+      </if>
+      <if test="dueCostRangeStart != null">
+        due_cost_range_start,
+      </if>
+      <if test="dueCostRangeEnd != null">
+        due_cost_range_end,
+      </if>
+      <if test="responsibleInvestigationPeriod != null">
+        responsible_investigation_period,
+      </if>
+      <if test="teamNumber != null">
+        team_number,
+      </if>
+      <if test="disposalPeriod != null">
+        disposal_period,
+      </if>
+      <if test="averageDisposalPeriodStart != null">
+        average_disposal_period_start,
+      </if>
+      <if test="averageDisposalPeriodEnd != null">
+        average_disposal_period_end,
+      </if>
+      <if test="isGoingToInvestDisposalAsset != null">
+        is_going_to_invest_disposal_asset,
+      </if>
+      <if test="isDoFullyRiskAgency != null">
+        is_do_fully_risk_agency,
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type,
+      </if>
+      <if test="oralEvaluate != null">
+        oral_evaluate,
+      </if>
+      <if test="oralEvaluateFee != null">
+        oral_evaluate_fee,
+      </if>
+      <if test="evaluateReport != null">
+        evaluate_report,
+      </if>
+      <if test="evaluateReportFee != null">
+        evaluate_report_fee,
+      </if>
+      <if test="evaluateTermStart != null">
+        evaluate_term_start,
+      </if>
+      <if test="evaluateTermEnd != null">
+        evaluate_term_end,
+      </if>
+      <if test="evaluateAgencyLevel != null">
+        evaluate_agency_level,
+      </if>
+      <if test="collectionMode != null">
+        collection_mode,
+      </if>
+      <if test="collectionFeeStart != null">
+        collection_fee_start,
+      </if>
+      <if test="collectionFeeEnd != null">
+        collection_fee_end,
+      </if>
+      <if test="collectionPeriod != null">
+        collection_period,
+      </if>
+      <if test="assetClues != null">
+        asset_clues,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="businessArea != null">
+        #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="familiarCourt != null">
+        #{familiarCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="completeDisposalVolume != null">
+        #{completeDisposalVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="ongoingDisposalVolume != null">
+        #{ongoingDisposalVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalCostRangeStart != null">
+        #{disposalCostRangeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalCostRangeEnd != null">
+        #{disposalCostRangeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCostRangeStart != null">
+        #{dueCostRangeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCostRangeEnd != null">
+        #{dueCostRangeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="responsibleInvestigationPeriod != null">
+        #{responsibleInvestigationPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="teamNumber != null">
+        #{teamNumber,jdbcType=INTEGER},
+      </if>
+      <if test="disposalPeriod != null">
+        #{disposalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="averageDisposalPeriodStart != null">
+        #{averageDisposalPeriodStart,jdbcType=DECIMAL},
+      </if>
+      <if test="averageDisposalPeriodEnd != null">
+        #{averageDisposalPeriodEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="isGoingToInvestDisposalAsset != null">
+        #{isGoingToInvestDisposalAsset,jdbcType=BIT},
+      </if>
+      <if test="isDoFullyRiskAgency != null">
+        #{isDoFullyRiskAgency,jdbcType=BIT},
+      </if>
+      <if test="assetPropertyType != null">
+        #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="oralEvaluate != null">
+        #{oralEvaluate,jdbcType=BIT},
+      </if>
+      <if test="oralEvaluateFee != null">
+        #{oralEvaluateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateReport != null">
+        #{evaluateReport,jdbcType=BIT},
+      </if>
+      <if test="evaluateReportFee != null">
+        #{evaluateReportFee,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateTermStart != null">
+        #{evaluateTermStart,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateTermEnd != null">
+        #{evaluateTermEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateAgencyLevel != null">
+        #{evaluateAgencyLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionMode != null">
+        #{collectionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionFeeStart != null">
+        #{collectionFeeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="collectionFeeEnd != null">
+        #{collectionFeeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="collectionPeriod != null">
+        #{collectionPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="assetClues != null">
+        #{assetClues,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersonaDisposalParty">
+    update zeus.t_persona_disposal_party
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        persona_id = #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="businessArea != null">
+        business_area = #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="familiarCourt != null">
+        familiar_court = #{familiarCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="completeDisposalVolume != null">
+        complete_disposal_volume = #{completeDisposalVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="ongoingDisposalVolume != null">
+        ongoing_disposal_volume = #{ongoingDisposalVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalCostRangeStart != null">
+        disposal_cost_range_start = #{disposalCostRangeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="disposalCostRangeEnd != null">
+        disposal_cost_range_end = #{disposalCostRangeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCostRangeStart != null">
+        due_cost_range_start = #{dueCostRangeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCostRangeEnd != null">
+        due_cost_range_end = #{dueCostRangeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="responsibleInvestigationPeriod != null">
+        responsible_investigation_period = #{responsibleInvestigationPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="teamNumber != null">
+        team_number = #{teamNumber,jdbcType=INTEGER},
+      </if>
+      <if test="disposalPeriod != null">
+        disposal_period = #{disposalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="averageDisposalPeriodStart != null">
+        average_disposal_period_start = #{averageDisposalPeriodStart,jdbcType=DECIMAL},
+      </if>
+      <if test="averageDisposalPeriodEnd != null">
+        average_disposal_period_end = #{averageDisposalPeriodEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="isGoingToInvestDisposalAsset != null">
+        is_going_to_invest_disposal_asset = #{isGoingToInvestDisposalAsset,jdbcType=BIT},
+      </if>
+      <if test="isDoFullyRiskAgency != null">
+        is_do_fully_risk_agency = #{isDoFullyRiskAgency,jdbcType=BIT},
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type = #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="oralEvaluate != null">
+        oral_evaluate = #{oralEvaluate,jdbcType=BIT},
+      </if>
+      <if test="oralEvaluateFee != null">
+        oral_evaluate_fee = #{oralEvaluateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateReport != null">
+        evaluate_report = #{evaluateReport,jdbcType=BIT},
+      </if>
+      <if test="evaluateReportFee != null">
+        evaluate_report_fee = #{evaluateReportFee,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateTermStart != null">
+        evaluate_term_start = #{evaluateTermStart,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateTermEnd != null">
+        evaluate_term_end = #{evaluateTermEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluateAgencyLevel != null">
+        evaluate_agency_level = #{evaluateAgencyLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionMode != null">
+        collection_mode = #{collectionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionFeeStart != null">
+        collection_fee_start = #{collectionFeeStart,jdbcType=DECIMAL},
+      </if>
+      <if test="collectionFeeEnd != null">
+        collection_fee_end = #{collectionFeeEnd,jdbcType=DECIMAL},
+      </if>
+      <if test="collectionPeriod != null">
+        collection_period = #{collectionPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="assetClues != null">
+        asset_clues = #{assetClues,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

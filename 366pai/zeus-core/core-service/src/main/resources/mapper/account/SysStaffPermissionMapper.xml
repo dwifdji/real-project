@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月07日 20时50分28秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.SysStaffPermissionMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.SysStaffPermission">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="staff_id" jdbcType="INTEGER" property="staffId" />
+	<result column="permission_id" jdbcType="INTEGER" property="permissionId" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, staff_id, permission_id, create_time, update_time, is_delete
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.sys_staff_permission
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.SysStaffPermissionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.sys_staff_permission
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="staffId != null">
+        AND staff_id = #{staffId,jdbcType=INTEGER}
+      </if>
+      <if test="permissionId != null">
+        AND permission_id = #{permissionId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.SysStaffPermission">
+    insert into zeus.sys_staff_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="staffId != null">
+        staff_id, 
+      </if>
+      <if test="permissionId != null">
+        permission_id, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.SysStaffPermission">
+    update zeus.sys_staff_permission
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionId != null">
+        permission_id = #{permissionId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getStaffSpecialPermissionList" resultType="com._360pai.core.facade.account.vo.PermissionVo">
+    select p.id permissionId,p.permission_code permissionCode,p.permission_name permissionName,p.permission_type permissionType
+    from zeus.sys_staff_permission sp
+    inner join zeus.sys_permission p on p.id=sp.permission_id
+    where sp.staff_id=#{staffId} and sp.is_delete='0'
+  </select>
+
+</mapper>

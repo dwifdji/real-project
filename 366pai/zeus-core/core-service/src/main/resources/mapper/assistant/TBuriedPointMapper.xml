@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年10月08日 12时29分43秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.assistant.mapper.TBuriedPointMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.assistant.TBuriedPoint">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="point_key" jdbcType="VARCHAR" property="pointKey" />
+	<result column="point_desc" jdbcType="VARCHAR" property="pointDesc" />
+	<result column="point_type" jdbcType="VARCHAR" property="pointType" />
+	<result column="buz_id" jdbcType="VARCHAR" property="buzId" />
+	<result column="buz_params" jdbcType="VARCHAR" property="buzParams" />
+	<result column="device_mark" jdbcType="VARCHAR" property="deviceMark" />
+	<result column="device_type" jdbcType="VARCHAR" property="deviceType" />
+	<result column="user_id" jdbcType="VARCHAR" property="userId" />
+	<result column="user_type" jdbcType="VARCHAR" property="userType" />
+	<result column="create_time" jdbcType="VARCHAR" property="createTime" />
+	<result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, point_key, point_desc, point_type, buz_id, buz_params, 
+	device_mark, device_type, user_id, user_type, create_time, update_time,city,province,ip
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_buried_point
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.assistant.TBuriedPointCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_buried_point
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="pointKey != null">
+        AND point_key = #{pointKey,jdbcType=VARCHAR}
+      </if>
+      <if test="pointDesc != null">
+        AND point_desc = #{pointDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="pointType != null">
+        AND point_type = #{pointType,jdbcType=VARCHAR}
+      </if>
+      <if test="buzId != null">
+        AND buz_id = #{buzId,jdbcType=VARCHAR}
+      </if>
+      <if test="buzParams != null">
+        AND buz_params = #{buzParams,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceMark != null">
+        AND device_mark = #{deviceMark,jdbcType=VARCHAR}
+      </if>
+      <if test="deviceType != null">
+        AND device_type = #{deviceType,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+        AND user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userType != null">
+        AND user_type = #{userType,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.assistant.TBuriedPoint" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_buried_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="pointKey != null">
+        point_key, 
+      </if>
+      <if test="pointDesc != null">
+        point_desc, 
+      </if>
+      <if test="pointType != null">
+        point_type, 
+      </if>
+      <if test="buzId != null">
+        buz_id, 
+      </if>
+      <if test="buzParams != null">
+        buz_params, 
+      </if>
+      <if test="deviceMark != null">
+        device_mark, 
+      </if>
+      <if test="deviceType != null">
+        device_type, 
+      </if>
+      <if test="userId != null">
+        user_id, 
+      </if>
+      <if test="userType != null">
+        user_type, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pointKey != null">
+        #{pointKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDesc != null">
+        #{pointDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pointType != null">
+        #{pointType,jdbcType=VARCHAR},
+      </if>
+      <if test="buzId != null">
+        #{buzId,jdbcType=VARCHAR},
+      </if>
+      <if test="buzParams != null">
+        #{buzParams,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceMark != null">
+        #{deviceMark,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.assistant.TBuriedPoint">
+    update zeus.t_buried_point
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pointKey != null">
+        point_key = #{pointKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pointDesc != null">
+        point_desc = #{pointDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="pointType != null">
+        point_type = #{pointType,jdbcType=VARCHAR},
+      </if>
+      <if test="buzId != null">
+        buz_id = #{buzId,jdbcType=VARCHAR},
+      </if>
+      <if test="buzParams != null">
+        buz_params = #{buzParams,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceMark != null">
+        device_mark = #{deviceMark,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

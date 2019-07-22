@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分48秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.UserVerifyApplicationMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.UserVerifyApplication">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="certificate_number" jdbcType="VARCHAR" property="certificateNumber" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="status" jdbcType="CHAR" property="status" />
+	<result column="certificate_front_img" jdbcType="VARCHAR" property="certificateFrontImg" />
+	<result column="certificate_back_img" jdbcType="VARCHAR" property="certificateBackImg" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="certificate_begin" jdbcType="TIMESTAMP" property="certificateBegin" />
+	<result column="certificate_end" jdbcType="TIMESTAMP" property="certificateEnd" />
+	<result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="email" jdbcType="VARCHAR" property="email" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+	<result column="operator_at" jdbcType="TIMESTAMP" property="operatorAt" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, certificate_number, mobile, created_at, city_id, 
+	status, certificate_front_img, certificate_back_img, address, certificate_begin, certificate_end, 
+	reject_reason, account_id, email, default_agency_id, operator_at, operator_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from monet.user_verify_application
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.UserVerifyApplicationCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from monet.user_verify_application
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateNumber != null">
+        AND certificate_number = #{certificateNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=CHAR}
+      </if>
+      <if test="certificateFrontImg != null">
+        AND certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBackImg != null">
+        AND certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBegin != null">
+        AND certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificateEnd != null">
+        AND certificate_end = #{certificateEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rejectReason != null">
+        AND reject_reason = #{rejectReason,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="operatorAt != null">
+        AND operator_at = #{operatorAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.UserVerifyApplication">
+    insert into monet.user_verify_application
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img, 
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin, 
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end, 
+      </if>
+      <if test="rejectReason != null">
+        reject_reason, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="email != null">
+        email, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="operatorAt != null">
+        operator_at, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorAt != null">
+        #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.UserVerifyApplication">
+    update monet.user_verify_application
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end = #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorAt != null">
+        operator_at = #{operatorAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

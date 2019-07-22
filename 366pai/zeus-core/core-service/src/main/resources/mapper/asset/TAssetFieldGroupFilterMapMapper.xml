@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月30日 17时10分43秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.TAssetFieldGroupFilterMapMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.TAssetFieldGroupFilterMap">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="asset_filter_id" jdbcType="INTEGER" property="assetFilterId" />
+	<result column="asset_field_group_id" jdbcType="INTEGER" property="assetFieldGroupId" />
+	<result column="template_id" jdbcType="INTEGER" property="templateId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, asset_filter_id, asset_field_group_id, template_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_asset_field_group_filter_map
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.TAssetFieldGroupFilterMapCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_asset_field_group_filter_map
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="assetFilterId != null">
+        AND asset_filter_id = #{assetFilterId,jdbcType=INTEGER}
+      </if>
+      <if test="assetFieldGroupId != null">
+        AND asset_field_group_id = #{assetFieldGroupId,jdbcType=INTEGER}
+      </if>
+      <if test="templateId != null">
+        AND template_id = #{templateId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.asset.TAssetFieldGroupFilterMap">
+    insert into zeus.t_asset_field_group_filter_map
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="assetFilterId != null">
+        asset_filter_id, 
+      </if>
+      <if test="assetFieldGroupId != null">
+        asset_field_group_id, 
+      </if>
+      <if test="templateId != null">
+        template_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="assetFilterId != null">
+        #{assetFilterId,jdbcType=INTEGER},
+      </if>
+      <if test="assetFieldGroupId != null">
+        #{assetFieldGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.asset.TAssetFieldGroupFilterMap">
+    update zeus.t_asset_field_group_filter_map
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="assetFilterId != null">
+        asset_filter_id = #{assetFilterId,jdbcType=INTEGER},
+      </if>
+      <if test="assetFieldGroupId != null">
+        asset_field_group_id = #{assetFieldGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

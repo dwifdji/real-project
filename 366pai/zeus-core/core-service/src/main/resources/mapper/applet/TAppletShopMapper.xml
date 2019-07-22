@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年11月27日 18时53分11秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.applet.mapper.TAppletShopMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.applet.TAppletShop">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="party_id" jdbcType="INTEGER" property="partyId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="favorite_count" jdbcType="INTEGER" property="favoriteCount" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="product_count" jdbcType="INTEGER" property="productCount" />
+    <result column="invite_code" jdbcType="INTEGER" property="inviteCode" />
+    <result column="invite_type" jdbcType="CHAR" property="inviteType" />
+    <result column="shop_commission_percent" jdbcType="DECIMAL" property="shopCommissionPercent" />
+    <result column="applet_qr_code" jdbcType="VARCHAR" property="appletQrCode" />
+    <result column="invite_qr_code" jdbcType="VARCHAR" property="inviteQrCode" />
+    <result column="service_charge" jdbcType="DECIMAL" property="serviceCharge" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="is_hide_contact_phone" jdbcType="BIT" property="isHideContactPhone" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, logo_url, party_id, mobile, favorite_count,
+    view_count, product_count, invite_code, invite_type, shop_commission_percent, applet_qr_code,invite_qr_code,
+    service_charge, contact_phone, is_hide_contact_phone, is_delete, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_shop
+  </select>
+
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.applet.TAppletShopCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from zeus.t_applet_shop
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="logoUrl != null">
+        AND logo_url = #{logoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="favoriteCount != null">
+        AND favorite_count = #{favoriteCount,jdbcType=INTEGER}
+      </if>
+      <if test="viewCount != null">
+        AND view_count = #{viewCount,jdbcType=INTEGER}
+      </if>
+      <if test="productCount != null">
+        AND product_count = #{productCount,jdbcType=INTEGER}
+      </if>
+      <if test="inviteCode != null">
+        AND invite_code = #{inviteCode,jdbcType=INTEGER}
+      </if>
+      <if test="inviteType != null">
+        AND invite_type = #{inviteType,jdbcType=CHAR}
+      </if>
+      <if test="shopCommissionPercent != null">
+        AND shop_commission_percent = #{shopCommissionPercent,jdbcType=DECIMAL}
+      </if>
+      <if test="appletQrCode != null">
+        AND applet_qr_code = #{appletQrCode,jdbcType=VARCHAR}
+      </if>
+      <if test="inviteQrCode != null">
+        AND invite_qr_code = #{inviteQrCode,jdbcType=VARCHAR}
+      </if>
+      <if test="serviceCharge != null">
+        AND service_charge = #{serviceCharge,jdbcType=DECIMAL}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="isHideContactPhone != null">
+        AND is_hide_contact_phone = #{isHideContactPhone,jdbcType=BIT}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com._360pai.core.model.applet.TAppletShop" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_applet_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="partyId != null">
+        party_id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="favoriteCount != null">
+        favorite_count,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="productCount != null">
+        product_count,
+      </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="inviteType != null">
+        invite_type,
+      </if>
+      <if test="shopCommissionPercent != null">
+        shop_commission_percent,
+      </if>
+      <if test="appletQrCode != null">
+        applet_qr_code,
+      </if>
+      <if test="inviteQrCode != null">
+        invite_qr_code,
+      </if>
+      <if test="serviceCharge != null">
+        service_charge,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="isHideContactPhone != null">
+        is_hide_contact_phone,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteCount != null">
+        #{favoriteCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="productCount != null">
+        #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=INTEGER},
+      </if>
+      <if test="inviteType != null">
+        #{inviteType,jdbcType=CHAR},
+      </if>
+      <if test="shopCommissionPercent != null">
+        #{shopCommissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="appletQrCode != null">
+        #{appletQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteQrCode != null">
+        #{inviteQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharge != null">
+        #{serviceCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isHideContactPhone != null">
+        #{isHideContactPhone,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com._360pai.core.model.applet.TAppletShop">
+    update zeus.t_applet_shop
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="favoriteCount != null">
+        favorite_count = #{favoriteCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="productCount != null">
+        product_count = #{productCount,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=INTEGER},
+      </if>
+      <if test="inviteType != null">
+        invite_type = #{inviteType,jdbcType=CHAR},
+      </if>
+      <if test="shopCommissionPercent != null">
+        shop_commission_percent = #{shopCommissionPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="appletQrCode != null">
+        applet_qr_code = #{appletQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteQrCode != null">
+        invite_qr_code = #{inviteQrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharge != null">
+        service_charge = #{serviceCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isHideContactPhone != null">
+        is_hide_contact_phone = #{isHideContactPhone,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <update id="addFavoriteCount">
+    update zeus.t_applet_shop set favorite_count = favorite_count + 1,update_time=now() where id=#{id}
+  </update>
+
+  <update id="subFavoriteCount">
+    update zeus.t_applet_shop set favorite_count = favorite_count - 1,update_time=now() where id=#{id}
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.applet.TAppletShop">
+    <if test="partyType == null or partyType == ''.toString()">
+      select s.*
+      from zeus.t_applet_shop s
+      inner join zeus.t_account a on a.shop_id = s.id
+      inner join zeus.t_agency ta on ta.id=a.default_agency_id
+      <where>
+        s.party_id is null
+        <if test="q != null">and (s.mobile like concat('%',#{q},'%') or s.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="defaultAgencyName !=null">and ta.name like concat('%',#{defaultAgencyName},'%')</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by s.id desc
+    </if>
+    <if test="partyType == 'user'.toString()">
+      select s.*
+      from zeus.t_applet_shop s
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'user'
+      inner join zeus.t_user u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      inner join zeus.t_agency ta on ta.id=u.default_agency_id
+      <where>
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.certificate_number like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="defaultAgencyName !=null">and ta.name like concat('%',#{defaultAgencyName},'%')</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by s.id desc
+    </if>
+    <if test="partyType == 'company'.toString()">
+      select s.*
+      from zeus.t_applet_shop s
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'company'
+      inner join zeus.t_company u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      inner join zeus.t_agency ta on ta.id=u.default_agency_id
+      <where>
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="defaultAgencyName !=null">and ta.name like concat('%',#{defaultAgencyName},'%')</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+      order by s.id desc
+    </if>
+  </select>
+
+  <select id="countInviteNum" resultType="int">
+    select count(0) from zeus.t_applet_shop where invite_type=#{inviteType} and invite_code=#{inviteCode}
+  </select>
+
+
+  <select id="getSummaryInfo" parameterType="java.util.Map" resultType="java.util.Map">
+    <if test="partyType == null or partyType == ''.toString()">
+      select count(0) shopCount,sum(s.service_charge) totalServiceCharge
+      from zeus.t_applet_shop s
+      inner join zeus.t_account a on a.shop_id = s.id
+      inner join zeus.t_agency ta on ta.id=a.default_agency_id
+      <where>
+        and s.party_id is null
+        <if test="q != null">and (s.mobile like concat('%',#{q},'%') or s.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="de !=null">and r.status=#{status}</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+    </if>
+    <if test="partyType == 'user'.toString()">
+      select count(0) shopCount,sum(s.service_charge) totalServiceCharge
+      from zeus.t_applet_shop s
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'user'
+      inner join zeus.t_user u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      inner join zeus.t_agency ta on ta.id=u.default_agency_id
+      <where>
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.certificate_number like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="de !=null">and r.status=#{status}</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+    </if>
+    <if test="partyType == 'company'.toString()">
+      select count(0) shopCount,sum(s.service_charge) totalServiceCharge
+      from zeus.t_applet_shop s
+      inner join zeus.t_party p on p.id = s.party_id and p.type = 'company'
+      inner join zeus.t_company u on u.id = p.id
+      inner join zeus.t_account a on a.id = u.account_id
+      inner join zeus.t_agency ta on ta.id=u.default_agency_id
+      <where>
+        <if test="q != null">and (u.mobile like concat('%',#{q},'%') or u.name like concat('%',#{q},'%'))</if>
+        <if test="createdAtFrom != null and createdAtTo != null">and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}</if>
+        <if test="defaultAgencyName !=null">and ta.name like concat('%',#{defaultAgencyName},'%')</if>
+        <if test="inviteCode !=null">and concat(s.invite_type,s.invite_code) like concat('%',#{inviteCode},'%')</if>
+      </where>
+    </if>
+  </select>
+
+  <select id="getInvitedList" parameterType="java.util.Map" resultType="com._360pai.core.model.applet.TAppletShop">
+      select s.*
+      from zeus.t_applet_shop s
+      where s.invite_type='DP' and s.invite_code=#{shopId}
+      order by s.id desc
+  </select>
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分49秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.asset.mapper.AssetTemplateOptionsResultMapper">
+
+    <resultMap id="BaseResultMap" type="com._360pai.core.model.asset.AssetTemplateOptionsResult">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="options" jdbcType="VARCHAR" property="options"/>
+        <result column="category_group_id" jdbcType="INTEGER" property="categoryGroupId"/>
+        <result column="current_category_id" jdbcType="INTEGER" property="currentCategoryId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, options, category_group_id, current_category_id
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_template_options_result
+    </select>
+
+    <select id="selectByCondition" parameterType="com._360pai.core.condition.asset.AssetTemplateOptionsResultCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zeus.asset_template_options_result
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="options != null">
+                AND options = #{options,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryGroupId != null">
+                AND category_group_id = #{categoryGroupId,jdbcType=INTEGER}
+            </if>
+            <if test="currentCategoryId != null">
+                AND current_category_id = #{currentCategoryId,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com._360pai.core.model.asset.AssetTemplateOptionsResult">
+        insert into zeus.asset_template_options_result
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="options != null">
+                options,
+            </if>
+            <if test="categoryGroupId != null">
+                category_group_id,
+            </if>
+            <if test="currentCategoryId != null">
+                current_category_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="options != null">
+                #{options,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryGroupId != null">
+                #{categoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="currentCategoryId != null">
+                #{currentCategoryId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com._360pai.core.model.asset.AssetTemplateOptionsResult">
+        update zeus.asset_template_options_result
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="options != null">
+                options = #{options,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryGroupId != null">
+                category_group_id = #{categoryGroupId,jdbcType=INTEGER},
+            </if>
+            <if test="currentCategoryId != null">
+                current_category_id = #{currentCategoryId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <delete id="deleteForGroupId">
+    delete * from asset_template_options_result where category_group_id = #{groupId ,jdbcType=INTEGER};
+  </delete>
+
+</mapper>

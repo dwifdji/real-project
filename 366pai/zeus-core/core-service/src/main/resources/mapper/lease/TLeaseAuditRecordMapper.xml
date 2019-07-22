@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月26日 13时29分17秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.lease.mapper.TLeaseAuditRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.lease.TLeaseAuditRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="activity_id" jdbcType="INTEGER" property="activityId" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="steps" jdbcType="VARCHAR" property="steps" />
+	<result column="reason" jdbcType="VARCHAR" property="reason" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, activity_id, status, steps, reason, 
+	create_time, update_time, delete_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_lease_audit_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.lease.TLeaseAuditRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_lease_audit_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="activityId != null">
+        AND activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="steps != null">
+        AND steps = #{steps,jdbcType=VARCHAR}
+      </if>
+      <if test="reason != null">
+        AND reason = #{reason,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.lease.TLeaseAuditRecord">
+    insert into zeus.t_lease_audit_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="activityId != null">
+        activity_id, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="steps != null">
+        steps, 
+      </if>
+      <if test="reason != null">
+        reason, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="steps != null">
+        #{steps,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.lease.TLeaseAuditRecord">
+    update zeus.t_lease_audit_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="steps != null">
+        steps = #{steps,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="getAuditRecordList" resultType="com._360pai.core.vo.lease.LeaseAuditRecordVo">
+  SELECT
+	s.NAME AS userName,
+	re.STATUS AS status,
+	re.steps AS statusDesc,
+	re.reason AS remark,
+	re.create_time AS createTime
+FROM
+	t_lease_audit_record re
+	LEFT JOIN t_lease_staff s ON re.account_id = s.account_id
+
+	where re.activity_id = ${assetId}
+	order by re.id desc
+  </select>
+  
+  <select id="myApplyLeaseRecord" parameterType="String" resultType="com._360pai.core.vo.lease.LeaseApplyRecordVo">
+      SELECT
+        aa.id as activityId,
+        ald.preview_at AS applyBeginTime,
+        ald.apply_end_time AS applyEndTime,
+        aa.MODE AS MODE,
+        tla.STATUS AS applyStatus,
+        aa.asset_name AS NAME,
+        tla.prove_url AS fileUrl,
+	    aa.deposit as deposit,
+        ass.extra ->> '$.images[0]' AS imageUrl
+
+    FROM
+        t_lease_apply tla
+        LEFT JOIN auction_activity aa ON aa.id = tla.activity_id
+        LEFT JOIN asset_lease_data ald ON ald.asset_id = aa.asset_id
+        LEFT JOIN asset ass on ass.id = aa.asset_id
+    where 1 = 1
+        and tla.part_id = #{partyId}
+        and tla.delete_flag = 0
+        and aa.category_id = -1
+      <if test="name != null and name != ''">
+        and aa.asset_name like concat('%',#{name},'%')
+      </if>
+  </select>
+
+</mapper>

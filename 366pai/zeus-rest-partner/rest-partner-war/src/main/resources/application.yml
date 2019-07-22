@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: rest-partner
+dubbo:
+  application:
+    id: rest-partner
+    name: rest-partner
+  scan:
+    basePackages: com._360pai.partner.controller
+  protocol:
+    port: -1
+server:
+  port: 8088
+  context-path: /rest-partner
+
+

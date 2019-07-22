@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月29日 13时21分37秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TPersonaIntermediaryOrganMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TPersonaIntermediaryOrgan">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="persona_id" jdbcType="INTEGER" property="personaId" />
+	<result column="business_type" jdbcType="CHAR" property="businessType" />
+	<result column="business_area" jdbcType="VARCHAR" property="businessArea" />
+	<result column="asset_property_type" jdbcType="VARCHAR" property="assetPropertyType" />
+	<result column="asset_type" jdbcType="CHAR" property="assetType" />
+	<result column="has_successful_case" jdbcType="BIT" property="hasSuccessfulCase" />
+	<result column="is_going_to_join_shop" jdbcType="BIT" property="isGoingToJoinShop" />
+	<result column="other_demand" jdbcType="VARCHAR" property="otherDemand" />
+	<result column="is_delete" jdbcType="BIT" property="isDelete" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, persona_id, business_type, business_area, asset_property_type, asset_type, 
+	has_successful_case, is_going_to_join_shop, other_demand, is_delete, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_persona_intermediary_organ
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TPersonaIntermediaryOrganCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_persona_intermediary_organ
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="personaId != null">
+        AND persona_id = #{personaId,jdbcType=INTEGER}
+      </if>
+      <if test="businessType != null">
+        AND business_type = #{businessType,jdbcType=CHAR}
+      </if>
+      <if test="businessArea != null">
+        AND business_area = #{businessArea,jdbcType=VARCHAR}
+      </if>
+      <if test="assetPropertyType != null">
+        AND asset_property_type = #{assetPropertyType,jdbcType=VARCHAR}
+      </if>
+      <if test="assetType != null">
+        AND asset_type = #{assetType,jdbcType=CHAR}
+      </if>
+      <if test="hasSuccessfulCase != null">
+        AND has_successful_case = #{hasSuccessfulCase,jdbcType=BIT}
+      </if>
+      <if test="isGoingToJoinShop != null">
+        AND is_going_to_join_shop = #{isGoingToJoinShop,jdbcType=BIT}
+      </if>
+      <if test="otherDemand != null">
+        AND other_demand = #{otherDemand,jdbcType=VARCHAR}
+      </if>
+      <if test="isDelete != null">
+        AND is_delete = #{isDelete,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TPersonaIntermediaryOrgan">
+    insert into zeus.t_persona_intermediary_organ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="personaId != null">
+        persona_id, 
+      </if>
+      <if test="businessType != null">
+        business_type, 
+      </if>
+      <if test="businessArea != null">
+        business_area, 
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type, 
+      </if>
+      <if test="assetType != null">
+        asset_type, 
+      </if>
+      <if test="hasSuccessfulCase != null">
+        has_successful_case, 
+      </if>
+      <if test="isGoingToJoinShop != null">
+        is_going_to_join_shop, 
+      </if>
+      <if test="otherDemand != null">
+        other_demand, 
+      </if>
+      <if test="isDelete != null">
+        is_delete, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="businessArea != null">
+        #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null">
+        #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="hasSuccessfulCase != null">
+        #{hasSuccessfulCase,jdbcType=BIT},
+      </if>
+      <if test="isGoingToJoinShop != null">
+        #{isGoingToJoinShop,jdbcType=BIT},
+      </if>
+      <if test="otherDemand != null">
+        #{otherDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TPersonaIntermediaryOrgan">
+    update zeus.t_persona_intermediary_organ
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personaId != null">
+        persona_id = #{personaId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="businessArea != null">
+        business_area = #{businessArea,jdbcType=VARCHAR},
+      </if>
+      <if test="assetPropertyType != null">
+        asset_property_type = #{assetPropertyType,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null">
+        asset_type = #{assetType,jdbcType=CHAR},
+      </if>
+      <if test="hasSuccessfulCase != null">
+        has_successful_case = #{hasSuccessfulCase,jdbcType=BIT},
+      </if>
+      <if test="isGoingToJoinShop != null">
+        is_going_to_join_shop = #{isGoingToJoinShop,jdbcType=BIT},
+      </if>
+      <if test="otherDemand != null">
+        other_demand = #{otherDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

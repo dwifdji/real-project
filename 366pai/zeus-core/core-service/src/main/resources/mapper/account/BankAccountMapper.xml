@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月10日 17时32分47秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.BankAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.BankAccount">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="number" jdbcType="VARCHAR" property="number" />
+	<result column="bank_id" jdbcType="INTEGER" property="bankId" />
+	<result column="party_id" jdbcType="INTEGER" property="partyId" />
+	<result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="branch_bank_name" jdbcType="VARCHAR" property="branchBankName" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, number, bank_id, party_id, bank_name,branch_bank_name
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.bank_account
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.BankAccountCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.bank_account
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="number != null">
+        AND number = #{number,jdbcType=VARCHAR}
+      </if>
+      <if test="bankId != null">
+        AND bank_id = #{bankId,jdbcType=INTEGER}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=INTEGER}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="branchBankName != null">
+        AND branch_bank_name = #{branchBankName,jdbcType=VARCHAR}
+      </if>
+	</where>
+    order by id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.BankAccount">
+    insert into zeus.bank_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="number != null">
+        number, 
+      </if>
+      <if test="bankId != null">
+        bank_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="bankName != null">
+        bank_name, 
+      </if>
+      <if test="branchBankName != null">
+        branch_bank_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="branchBankName != null">
+        #{branchBankName,jdbcType=VARCHAR},
+      </if>
+
+
+
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.BankAccount">
+    update zeus.bank_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="branchBankName != null">
+        branch_bank_name = #{branchBankName,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <delete id="deleteById">
+    delete from zeus.bank_account where id=#{id}
+  </delete>
+</mapper>

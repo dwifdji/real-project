@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 14时05分16秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.activity.mapper.TOfflineEnterAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.activity.TOfflineEnterAccount">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="finance_id" jdbcType="INTEGER" property="financeId" />
+	<result column="amount" jdbcType="VARCHAR" property="amount" />
+	<result column="bank_order_no" jdbcType="VARCHAR" property="bankOrderNo" />
+	<result column="bank_account_id" jdbcType="INTEGER" property="bankAccountId" />
+	<result column="enter_date" jdbcType="VARCHAR" property="enterDate" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, finance_id, amount, bank_order_no, bank_account_id, enter_date, 
+	delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_offline_enter_account
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.activity.TOfflineEnterAccountCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_offline_enter_account
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="financeId != null">
+        AND finance_id = #{financeId,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="bankOrderNo != null">
+        AND bank_order_no = #{bankOrderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountId != null">
+        AND bank_account_id = #{bankAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="enterDate != null">
+        AND enter_date = #{enterDate,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.activity.TOfflineEnterAccount">
+    insert into zeus.t_offline_enter_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="financeId != null">
+        finance_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="bankOrderNo != null">
+        bank_order_no, 
+      </if>
+      <if test="bankAccountId != null">
+        bank_account_id, 
+      </if>
+      <if test="enterDate != null">
+        enter_date, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="financeId != null">
+        #{financeId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankOrderNo != null">
+        #{bankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountId != null">
+        #{bankAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="enterDate != null">
+        #{enterDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.activity.TOfflineEnterAccount">
+    update zeus.t_offline_enter_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="financeId != null">
+        finance_id = #{financeId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankOrderNo != null">
+        bank_order_no = #{bankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountId != null">
+        bank_account_id = #{bankAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="enterDate != null">
+        enter_date = #{enterDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

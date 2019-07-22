@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018年08月17日 15时47分34秒 by Generator -->
+<mapper namespace="com._360pai.core.dao.account.mapper.TCompanyMapper">
+
+  <resultMap id="BaseResultMap" type="com._360pai.core.model.account.TCompany">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="virtual" jdbcType="INTEGER" property="virtual" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="default_agency_id" jdbcType="INTEGER" property="defaultAgencyId" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+	<result column="license" jdbcType="VARCHAR" property="license" />
+	<result column="license_img" jdbcType="VARCHAR" property="licenseImg" />
+	<result column="register_city_id" jdbcType="VARCHAR" property="registerCityId" />
+	<result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="register_province_id" jdbcType="VARCHAR" property="registerProvinceId" />
+    <result column="area_id" jdbcType="VARCHAR" property="areaId" />
+    <result column="register_area_id" jdbcType="VARCHAR" property="registerAreaId" />
+	<result column="register_address" jdbcType="VARCHAR" property="registerAddress" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="agency_id" jdbcType="INTEGER" property="agencyId" />
+	<result column="qualified_begin" jdbcType="TIMESTAMP" property="qualifiedBegin" />
+	<result column="qualified_end" jdbcType="TIMESTAMP" property="qualifiedEnd" />
+	<result column="authorization_img" jdbcType="VARCHAR" property="authorizationImg" />
+	<result column="account_license" jdbcType="VARCHAR" property="accountLicense" />
+	<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+	<result column="id_card_front_img" jdbcType="VARCHAR" property="idCardFrontImg" />
+	<result column="id_card_back_img" jdbcType="VARCHAR" property="idCardBackImg" />
+	<result column="status" jdbcType="INTEGER" property="status" />
+	<result column="fadada_id" jdbcType="VARCHAR" property="fadadaId" />
+	<result column="fadada_email" jdbcType="VARCHAR" property="fadadaEmail" />
+	<result column="dfft_id" jdbcType="VARCHAR" property="dfftId" />
+	<result column="pay_bind" jdbcType="INTEGER" property="payBind" />
+	<result column="channel_pay" jdbcType="INTEGER" property="channelPay" />
+	<result column="is_channel" jdbcType="INTEGER" property="isChannel" />
+	<result column="category" jdbcType="VARCHAR" property="category" />
+	<result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+	<result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+	<result column="bank_id" jdbcType="INTEGER" property="bankId" />
+    <result column="oper_offline" jdbcType="BIT" property="operOffline" />
+    <result column="oper_without_fadada" jdbcType="BIT" property="operWithoutFadada" />
+    <result column="open_account_operator_id" jdbcType="INTEGER" property="openAccountOperatorId" />
+    <result column="business_operator_id" jdbcType="INTEGER" property="businessOperatorId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="lease_num" jdbcType="INTEGER" property="leaseNum" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, account_id, default_agency_id, mobile, legal_person,
+    license, license_img, register_city_id, city_id, province_id, register_province_id,
+    area_id, register_area_id, register_address, address,
+    agency_id, qualified_begin, qualified_end, authorization_img, account_license, id_card,
+    id_card_front_img, id_card_back_img, status, fadada_id, fadada_email, dfft_id,
+    pay_bind, channel_pay, is_channel, category, bank_account_name, bank_account_number,
+    bank_id, oper_offline, oper_without_fadada, open_account_operator_id,lease_num, business_operator_id, delete_flag, create_time, update_time,`VIRTUAL`
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from zeus.t_company
+  </select>
+  
+  <select id="selectByCondition" parameterType="com._360pai.core.condition.account.TCompanyCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from zeus.t_company
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="virtual != null">
+        AND `VIRTUAL` = #{virtual,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="defaultAgencyId != null">
+        AND default_agency_id = #{defaultAgencyId,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPerson != null">
+        AND legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="license != null">
+        AND license = #{license,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseImg != null">
+        AND license_img = #{licenseImg,jdbcType=VARCHAR}
+      </if>
+      <if test="registerCityId != null">
+        AND register_city_id = #{registerCityId,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="registerProvinceId != null">
+        AND register_province_id = #{registerProvinceId,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAreaId != null">
+        AND register_area_id = #{registerAreaId,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null">
+        AND register_address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="agencyId != null">
+        AND agency_id = #{agencyId,jdbcType=INTEGER}
+      </if>
+      <if test="qualifiedBegin != null">
+        AND qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="qualifiedEnd != null">
+        AND qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="authorizationImg != null">
+        AND authorization_img = #{authorizationImg,jdbcType=VARCHAR}
+      </if>
+      <if test="accountLicense != null">
+        AND account_license = #{accountLicense,jdbcType=VARCHAR}
+      </if>
+      <if test="idCard != null">
+        AND id_card = #{idCard,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardFrontImg != null">
+        AND id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardBackImg != null">
+        AND id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="fadadaId != null">
+        AND fadada_id = #{fadadaId,jdbcType=VARCHAR}
+      </if>
+      <if test="fadadaEmail != null">
+        AND fadada_email = #{fadadaEmail,jdbcType=VARCHAR}
+      </if>
+      <if test="dfftId != null">
+        AND dfft_id = #{dfftId,jdbcType=VARCHAR}
+      </if>
+      <if test="payBind != null">
+        AND pay_bind = #{payBind,jdbcType=INTEGER}
+      </if>
+      <if test="channelPay != null">
+        AND channel_pay = #{channelPay,jdbcType=INTEGER}
+      </if>
+      <if test="isChannel != null">
+        AND is_channel = #{isChannel,jdbcType=INTEGER}
+      </if>
+      <if test="category != null">
+        AND category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountName != null">
+        AND bank_account_name = #{bankAccountName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountNumber != null">
+        AND bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="bankId != null">
+        AND bank_id = #{bankId,jdbcType=INTEGER}
+      </if>
+      <if test="operOffline != null">
+        AND oper_offline = #{operOffline,jdbcType=BIT}
+      </if>
+      <if test="operWithoutFadada != null">
+        AND oper_without_fadada = #{operWithoutFadada,jdbcType=BIT}
+      </if>
+      <if test="openAccountOperatorId != null">
+        AND open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="businessOperatorId != null">
+        AND business_operator_id = #{businessOperatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    ORDER BY id desc
+  </select>
+  
+  <insert id="insert" parameterType="com._360pai.core.model.account.TCompany" useGeneratedKeys="true" keyProperty="id">
+    insert into zeus.t_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="virtual != null">
+        `VIRTUAL`,
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id, 
+      </if>
+      <if test="mobile != null">
+        mobile, 
+      </if>
+      <if test="legalPerson != null">
+        legal_person, 
+      </if>
+      <if test="license != null">
+        license, 
+      </if>
+      <if test="licenseImg != null">
+        license_img, 
+      </if>
+      <if test="registerCityId != null">
+        register_city_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="registerProvinceId != null">
+        register_province_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="registerAreaId != null">
+        register_area_id,
+      </if>
+      <if test="registerAddress != null">
+        register_address, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="agencyId != null">
+        agency_id, 
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin, 
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end, 
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img, 
+      </if>
+      <if test="accountLicense != null">
+        account_license, 
+      </if>
+      <if test="idCard != null">
+        id_card, 
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img, 
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img, 
+      </if>
+      <if test="fadadaId != null">
+        fadada_id, 
+      </if>
+      <if test="fadadaEmail != null">
+        fadada_email, 
+      </if>
+      <if test="dfftId != null">
+        dfft_id, 
+      </if>
+      <if test="payBind != null">
+        pay_bind,
+      </if>
+      <if test="channelPay != null">
+        channel_pay,
+      </if>
+      <if test="isChannel != null">
+        is_channel,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name, 
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number, 
+      </if>
+      <if test="bankId != null">
+        bank_id, 
+      </if>
+      <if test="operOffline != null">
+        oper_offline,
+      </if>
+      <if test="operWithoutFadada != null">
+        oper_without_fadada,
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id,
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="leaseNum != null">
+        lease_num,
+      </if>
+        create_time,
+        update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="virtual != null">
+        #{virtual,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        #{registerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerProvinceId != null">
+        #{registerProvinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAreaId != null">
+        #{registerAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="qualifiedBegin != null">
+        #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authorizationImg != null">
+        #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaId != null">
+        #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaEmail != null">
+        #{fadadaEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="dfftId != null">
+        #{dfftId,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        #{payBind,jdbcType=INTEGER},
+      </if>
+      <if test="channelPay != null">
+        #{channelPay,jdbcType=INTEGER},
+      </if>
+      <if test="isChannel != null">
+        #{isChannel,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="operOffline != null">
+        #{operOffline,jdbcType=BIT},
+      </if>
+      <if test="operWithoutFadada != null">
+        #{operWithoutFadada,jdbcType=BIT},
+      </if>
+      <if test="openAccountOperatorId != null">
+        #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="leaseNum != null">
+        #{leaseNum,jdbcType=INTEGER},
+      </if>
+      now(),
+      now()
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com._360pai.core.model.account.TCompany">
+    update zeus.t_company
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="virtual != null">
+        `VIRTUAL` = #{virtual,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="defaultAgencyId != null">
+        default_agency_id = #{defaultAgencyId,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        license = #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        license_img = #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCityId != null">
+        register_city_id = #{registerCityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerProvinceId != null">
+        register_province_id = #{registerProvinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAreaId != null">
+        register_area_id = #{registerAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null">
+        register_address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="qualifiedBegin != null">
+        qualified_begin = #{qualifiedBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qualifiedEnd != null">
+        qualified_end = #{qualifiedEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authorizationImg != null">
+        authorization_img = #{authorizationImg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLicense != null">
+        account_license = #{accountLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFrontImg != null">
+        id_card_front_img = #{idCardFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBackImg != null">
+        id_card_back_img = #{idCardBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="fadadaId != null">
+        fadada_id = #{fadadaId,jdbcType=VARCHAR},
+      </if>
+      <if test="fadadaEmail != null">
+        fadada_email = #{fadadaEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="dfftId != null">
+        dfft_id = #{dfftId,jdbcType=VARCHAR},
+      </if>
+      <if test="payBind != null">
+        pay_bind = #{payBind,jdbcType=INTEGER},
+      </if>
+      <if test="channelPay != null">
+        channel_pay = #{channelPay,jdbcType=INTEGER},
+      </if>
+      <if test="isChannel != null">
+        is_channel = #{isChannel,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="operOffline != null">
+        oper_offline = #{operOffline,jdbcType=BIT},
+      </if>
+      <if test="operWithoutFadada != null">
+        oper_without_fadada = #{operWithoutFadada,jdbcType=BIT},
+      </if>
+      <if test="openAccountOperatorId != null">
+        open_account_operator_id = #{openAccountOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="businessOperatorId != null">
+        business_operator_id = #{businessOperatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaseNum != null">
+        lease_num = #{leaseNum,jdbcType=INTEGER},
+      </if>
+        update_time = now()
+    </set>
+	<where>
+       id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com._360pai.core.model.account.TCompany">
+    select t.*
+    from (
+      select c.*, case when s.id is null then 0 else 1 end `is_staff`
+      from zeus.t_company c
+      left join zeus.city ci on ci.id=c.city_id
+      inner join zeus.t_party p on p.id=c.id
+      inner join zeus.t_account a on a.id=c.account_id
+      left join zeus.staff s on s.mobile=a.mobile
+      <where>
+        c.`virtual`='0' and c.delete_flag='0'
+        <if test="status != null and status != ''"> and c.status=#{status}</if>
+        <if test="isChannelAgent != null and isChannelAgent != ''"> and p.is_channel_agent=#{isChannelAgent}</if>
+        <if test="isInBlackList != null and isInBlackList != ''"> and p.is_in_black_list=#{isInBlackList}</if>
+        <if test="cityId != null and cityId != ''"> and c.city_id=#{cityId}</if>
+        <if test="provinceId != null and provinceId != ''"> and c.province_id=#{provinceId}</if>
+        <if test="areaId != null and areaId != ''"> and c.area_id=#{areaId}</if>
+        <if test="channelPay != null and channelPay != ''"> and c.channel_pay=#{channelPay}</if>
+        <if test="defaultAgencyId != null and defaultAgencyId != ''"> and c.default_agency_id=#{defaultAgencyId}</if>
+        <if test="q != null and q != ''"> and (c.mobile like concat('%',#{q},'%') or c.name like concat('%',#{q},'%'))</if>
+        <if test="category != null and category != ''"> and p.category=#{category}</if>
+      </where>
+    ) t
+    <where>
+      <if test="isStaff != null and isStaff != ''">
+        and t.is_staff=#{isStaff}
+      </if>
+    </where>
+  </select>
+</mapper>

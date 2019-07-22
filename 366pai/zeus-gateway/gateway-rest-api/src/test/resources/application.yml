@@ -1,0 +1,15 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    dubbo:
+        application:
+            name: gatewayTest
+        scan: com._360pai.gateway.core.model
+
+server:
+  port: 8089
+
+
+
