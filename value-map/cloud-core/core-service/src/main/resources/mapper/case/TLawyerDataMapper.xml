@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月05日 09时26分19秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.TLawyerDataMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.TLawyerData">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="docid" jdbcType="VARCHAR" property="docid" />
+	<result column="lawyer" jdbcType="VARCHAR" property="lawyer" />
+	<result column="law_firm" jdbcType="VARCHAR" property="lawFirm" />
+	<result column="detail" jdbcType="VARCHAR" property="detail" />
+	<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result property="winFlag" jdbcType="VARCHAR" column="win_flag"/>
+    <result property="lawyerId" jdbcType="INTEGER" column="lawyer_id"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, docid, lawyer, law_firm, detail, updated_at, 
+	created_at, identity, win_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_lawyer_data
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.TLawyerDataCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_lawyer_data
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="docid != null">
+        AND docid = #{docid,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyer != null">
+        AND lawyer = #{lawyer,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirm != null">
+        AND law_firm = #{lawFirm,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=VARCHAR}
+      </if>
+      <if test="updatedAt != null">
+        AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="identity != null">
+        AND identity = #{identity,jdbcType=VARCHAR}
+      </if>
+      <if test="winFlag != null">
+        AND win_flag = #{winFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyerId != null">
+        AND lawyer_id = #{lawyerId,jdbcType=VARCHAR}
+      </if>
+	</where>
+    ORDER BY id DESC
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    insert into t_lawyer_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docid != null">
+        docid, 
+      </if>
+      <if test="lawyer != null">
+        lawyer, 
+      </if>
+      <if test="lawFirm != null">
+        law_firm, 
+      </if>
+      <if test="detail != null">
+        detail, 
+      </if>
+      <if test="updatedAt != null">
+        updated_at, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="identity != null">
+        identity, 
+      </if>
+      <if test="winFlag != null">
+        win_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docid != null">
+        #{docid,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyer != null">
+        #{lawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="winFlag != null">
+        #{winFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    update t_lawyer_data
+    <set>
+      <if test="docid != null">
+        docid = #{docid,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyer != null">
+        lawyer = #{lawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        law_firm = #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="winFlag != null">
+        win_flag = #{winFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerId != null">
+       lawyer_id = #{lawyerId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <update id="batchUpdateWinFlag">
+    update t_lawyer_data set win_flag=#{flag}, updated_at = now()
+    where id in
+    (
+    <foreach collection="list" separator= "," item="item" index="index">
+      #{item}
+    </foreach>
+    )
+  </update>
+
+  <select id="findJoinHtml" resultType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    SELECT
+      t1.id, t1.lawyer, t2.html
+    FROM
+      t_lawyer_data t1 left join case_html_data t2 on t1.docid = t2.doc_id
+    WHERE t1.lawyer is not null and t1.lawyer != ''
+  </select>
+
+  <select id="count" resultType="java.lang.Long">
+    SELECT
+      count(*)
+    FROM
+      t_lawyer_data
+  </select>
+
+  <update id="batchUpdateIdentity">
+    update t_lawyer_data set `identity`=#{identity}, updated_at = now()
+    where id in
+    (
+    <foreach collection="list" separator= "," item="item" index="index">
+      #{item}
+    </foreach>
+    )
+  </update>
+
+  
+  <select id="findNoIdentity" resultMap="BaseResultMap">
+    SELECT
+      t1.id, t1.lawyer, t2.html
+    FROM
+      t_lawyer_data t1 left join case_html_data t2 on t1.docid = t2.doc_id
+    WHERE
+      t1.identity is NULL AND t1.lawyer is not null AND t1.lawyer != ''
+  </select>
+
+  <select id="findNoIdentity2" resultMap="BaseResultMap">
+    SELECT
+      t1.id, t1.lawyer, t1.docid
+    FROM
+      t_lawyer_data t1
+    WHERE
+      t1.identity is NULL AND t1.lawyer is not null AND t1.lawyer != ''
+  </select>
+
+  <select id="findByParam" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT
+      id,docid,lawyer,law_firm,win_flag,`identity`
+    FROM
+      t_lawyer_data
+    <where>
+      lawyer is not null and lawyer != ''
+      <if test="beforeUpdate != null"> and <![CDATA[updated_at <= #{beforeUpdate}]]>  </if>
+      <if test="winFlag != null"> and win_flag is null and `identity` is not null </if>
+      <if test="docid != null"> and docid = #{docid} </if>
+    </where>
+  </select>
+
+  <select id="findByLawyer" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    id,docid,lawyer,law_firm,win_flag,`identity`
+    FROM
+    t_lawyer_data
+    <where>
+      lawyer = #{lawyer}
+    </where>
+  </select>
+
+  <select id="findLawyerDirty" resultMap="BaseResultMap">
+    select * from t_lawyer_data where <![CDATA[ char_length(lawyer) < 7  and instr(lawyer, '、') > 0 ]]> ;
+  </select>
+
+  <select id="findLawyerNoLawyerId" resultType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    select
+	t1.id,t1.lawyer,t1.law_firm,t1.lawyer_id
+    from
+	t_lawyer_data t1
+	where t1.lawyer_id is null  and t1.law_firm != '' and t1.law_firm is not null
+  </select>
+
+  <update id="batchUpdateLawyerId" parameterType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    <foreach collection="list" separator= ";" item="item" index="index">
+      update t_lawyer_data set lawyer_id = #{item.lawyerId}
+      where id = #{item.id}
+    </foreach>
+  </update>
+
+  <select id="findUnusualData1" resultType="com.tzCloud.core.model.caseMatching.TLawyerData">
+      select * from t_lawyer_data where lawyer_id is null and locate('、',lawyer) > 0
+  </select>
+
+  <delete id="deleteById" >
+    delete from t_lawyer_data where id = #{id}
+  </delete>
+
+  <select id="findLawyerByLawyerId" resultType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    select
+      t2.lawyer_id as lawyerId,
+      t3.doc_id as docid,
+      t3.brief
+    from
+      t_lawyer_data t2
+      left join cpwsw_item t3 on t2.docid = t3.doc_id
+    where t2.lawyer_id in
+    (
+    <foreach collection="list" index="index" item="item" separator=",">
+      #{item}
+    </foreach>
+    )
+  </select>
+
+  <update id="updateLawyerIdByLawyerId">
+      update t_lawyer_data set lawyer_id = #{newId}
+      where lawyer_id = #{oldId}
+  </update>
+
+  <select id="getCountDocId" resultType="java.lang.Integer">
+    select count(distinct(docid)) from t_lawyer_data where lawyer_id = #{lawyerId}
+  </select>
+
+  <select id="findByDocIds" resultType="com.tzCloud.core.model.caseMatching.TLawyerData">
+    select *
+    from t_lawyer_data
+    where docid in
+    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+    <select id="findGroupDocIdByLawyerIds" resultType="java.util.Map">
+         select lawyer_id, group_concat( docid)
+         from t_lawyer_data where lawyer_id in (#{lawyerIds}) group by lawyer_id;
+    </select>
+</mapper>

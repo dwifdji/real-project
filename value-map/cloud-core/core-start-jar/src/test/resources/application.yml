@@ -1,0 +1,25 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+dubbo:
+  application:
+    id: tzCloud-core
+    name: tzCloud-core
+  scan:
+    basePackages: com.tzCloud.core.provider
+  protocol:
+    port: -1
+
+server:
+  port: 8100
+xxl:
+  job:
+    executor:
+      appname: tzCloud-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:
+
+

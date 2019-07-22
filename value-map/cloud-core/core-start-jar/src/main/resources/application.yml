@@ -1,0 +1,36 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: tzCloud-core
+    datasource:
+      one:
+        url: mysql://192.168.1.83/sh_crawler?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: test
+        password: jfds@801
+        driver-class-name: com.mysql.jdbc.Driver
+      two:
+        url: jdbc:mysql://192.168.101.168/crawler?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: test
+        password: test
+        driver-class-name: com.mysql.jdbc.Driver
+dubbo:
+    application:
+         id: tzCloud-core
+         name: tzCloud-core
+    scan:
+        basePackages: com.tzCloud.core.provider
+    protocol:
+        port: -1
+server:
+  port: 8010
+
+xxl:
+  job:
+    executor:
+      appname: tzCloud-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:

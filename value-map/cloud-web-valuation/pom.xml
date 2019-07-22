@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>tzCloud-parent</artifactId>
+        <groupId>360pai</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cloud-web-valuation</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>rest-web-valuation-api</module>
+        <module>rest-web-valuation-jar</module>
+        <module>rest-web-valuation-war</module>
+    </modules>
+
+
+</project>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月07日 16时22分18秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.TBriefMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.TBrief">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_brief
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.TBriefCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_brief
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name like CONCAT('%',#{name},'%')
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.TBrief">
+    insert into t_brief
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.TBrief">
+    update t_brief
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

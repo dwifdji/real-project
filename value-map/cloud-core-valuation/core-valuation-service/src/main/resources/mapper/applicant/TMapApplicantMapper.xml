@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年07月05日 13时25分49秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.applicant.mapper.TMapApplicantMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.applicant.TMapApplicant">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="applicant_name" jdbcType="VARCHAR" property="applicantName" />
+	<result column="applicant_phone" jdbcType="VARCHAR" property="applicantPhone" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, applicant_name, applicant_phone, remark, delete_flag, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_map_applicant
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.applicant.TMapApplicantCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_map_applicant
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="applicantName != null">
+        AND applicant_name = #{applicantName,jdbcType=VARCHAR}
+      </if>
+      <if test="applicantPhone != null">
+        AND applicant_phone = #{applicantPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.applicant.TMapApplicant">
+    insert into t_map_applicant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="applicantName != null">
+        applicant_name, 
+      </if>
+      <if test="applicantPhone != null">
+        applicant_phone, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applicantName != null">
+        #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantPhone != null">
+        #{applicantPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.applicant.TMapApplicant">
+    update t_map_applicant
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applicantName != null">
+        applicant_name = #{applicantName,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantPhone != null">
+        applicant_phone = #{applicantPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

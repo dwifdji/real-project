@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月07日 15时53分29秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.CpwswItemMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.CpwswItem">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="cpyzdyw" jdbcType="LONGVARCHAR" property="cpyzdyw" />
+	<result column="bgkly" jdbcType="LONGVARCHAR" property="bgkly" />
+	<result column="ajlx" jdbcType="VARCHAR" property="ajlx" />
+	<result column="cprq" jdbcType="TIMESTAMP" property="cprq" />
+	<result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+	<result column="spcx" jdbcType="VARCHAR" property="spcx" />
+	<result column="ah" jdbcType="VARCHAR" property="ah" />
+	<result column="fymc" jdbcType="VARCHAR" property="fymc" />
+	<result column="request_id" jdbcType="INTEGER" property="requestId" />
+	<result column="court_id" jdbcType="INTEGER" property="courtId" />
+	<result column="parse_status" jdbcType="INTEGER" property="parseStatus" />
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="cpyzdyw" jdbcType="LONGVARCHAR" property="cpyzdyw" />
+	<result column="bgkly" jdbcType="LONGVARCHAR" property="bgkly" />
+	<result column="ajlx" jdbcType="VARCHAR" property="ajlx" />
+	<result column="cprq" jdbcType="TIMESTAMP" property="cprq" />
+	<result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+	<result column="spcx" jdbcType="VARCHAR" property="spcx" />
+	<result column="ah" jdbcType="VARCHAR" property="ah" />
+	<result column="fymc" jdbcType="VARCHAR" property="fymc" />
+	<result column="request_id" jdbcType="INTEGER" property="requestId" />
+	<result column="court_id" jdbcType="INTEGER" property="courtId" />
+	<result column="parse_status" jdbcType="INTEGER" property="parseStatus" />
+	<result column="brief" jdbcType="VARCHAR" property="brief" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, cpyzdyw, bgkly, ajlx, cprq, 
+	ajmc, spcx, ah, fymc, request_id, court_id, 
+	parse_status, id, doc_id, cpyzdyw, bgkly, ajlx, 
+	cprq, ajmc, spcx, ah, fymc, request_id, 
+	court_id, parse_status, brief, created_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from cpwsw_item
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.CpwswItemCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from cpwsw_item
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="cpyzdyw != null">
+        AND cpyzdyw = #{cpyzdyw,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="bgkly != null">
+        AND bgkly = #{bgkly,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="ajlx != null">
+        AND ajlx = #{ajlx,jdbcType=VARCHAR}
+      </if>
+      <if test="cprq != null">
+        AND cprq = #{cprq,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ajmc != null">
+        AND ajmc = #{ajmc,jdbcType=VARCHAR}
+      </if>
+      <if test="spcx != null">
+        AND spcx = #{spcx,jdbcType=VARCHAR}
+      </if>
+      <if test="ah != null">
+        AND ah = #{ah,jdbcType=VARCHAR}
+      </if>
+      <if test="fymc != null">
+        AND fymc = #{fymc,jdbcType=VARCHAR}
+      </if>
+      <if test="requestId != null">
+        AND request_id = #{requestId,jdbcType=INTEGER}
+      </if>
+      <if test="courtId != null">
+        AND court_id = #{courtId,jdbcType=INTEGER}
+      </if>
+      <if test="parseStatus != null">
+        AND parse_status = #{parseStatus,jdbcType=INTEGER}
+      </if>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="cpyzdyw != null">
+        AND cpyzdyw = #{cpyzdyw,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="bgkly != null">
+        AND bgkly = #{bgkly,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="ajlx != null">
+        AND ajlx = #{ajlx,jdbcType=VARCHAR}
+      </if>
+      <if test="cprq != null">
+        AND cprq = #{cprq,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ajmc != null">
+        AND ajmc = #{ajmc,jdbcType=VARCHAR}
+      </if>
+      <if test="spcx != null">
+        AND spcx = #{spcx,jdbcType=VARCHAR}
+      </if>
+      <if test="ah != null">
+        AND ah = #{ah,jdbcType=VARCHAR}
+      </if>
+      <if test="fymc != null">
+        AND fymc = #{fymc,jdbcType=VARCHAR}
+      </if>
+      <if test="requestId != null">
+        AND request_id = #{requestId,jdbcType=INTEGER}
+      </if>
+      <if test="courtId != null">
+        AND court_id = #{courtId,jdbcType=INTEGER}
+      </if>
+      <if test="parseStatus != null">
+        AND parse_status = #{parseStatus,jdbcType=INTEGER}
+      </if>
+      <if test="brief != null">
+        AND brief = #{brief,jdbcType=VARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  <select id="getCourtListByBrief" resultType="com.tzCloud.core.facade.caseMatching.resp.CourtResp">
+    select distinct t.fymc as courtName,count(t.fymc) as caseNum from cpwsw_item t
+    where
+     t.brief = #{brief,jdbcType=VARCHAR}
+    group by t.fymc
+    order by caseNum desc
+  </select>
+
+    <select id="getLawFirmList" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerFirmResp">
+      select  tld.law_firm as lawyerFirmName,count(tld.law_firm) as caseNum from cpwsw_item ci
+      left join t_lawyer_data tld on ci.doc_id = tld.docid
+      where tld.law_firm is not null and tld.law_firm !=''
+      and ci.brief = #{brief}
+      and ci.fymc = #{fymc}
+      GROUP BY tld.law_firm
+      order by caseNum desc
+    </select>
+  <select id="getLawyerList" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerForSearchingListResp">
+    select  tld.lawyer as lawyerName ,tld.law_firm as lawyerFirm ,ci.brief as brief
+
+    from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where tld.law_firm is not null and tld.law_firm !=''
+    and tld.lawyer is not null and tld.lawyer !=''
+    and ci.brief = #{brief}
+    and ci.fymc = #{fymc}
+    and tld.law_firm = #{lawFirm}
+  </select>
+
+  <select id="getLawyerRankingList"
+          resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerForRankingListResp">
+    select
+     tld.lawyer as lawyerName,
+    count(tld.lawyer) as thisCaseNum ,
+    sum(case when tld.win_flag=1 then 1 else 0 end)*100.0 /count(tld.lawyer) as thisCaseWinRates
+    from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where tld.law_firm is not null and tld.law_firm !=''
+    and tld.lawyer is not null and tld.lawyer !=''
+    and ci.brief = #{brief}
+    GROUP BY tld.lawyer
+    ORDER BY thisCaseNum desc, thisCaseWinRates desc
+  </select>
+
+  <select id="getCaseNumAndRates" resultType="java.util.Map">
+    select  count(tld.lawyer) as caseNum,
+    sum(
+    case when tld.win_flag = 'win' then 1
+    when tld.win_flag = 'draw' then 0.5
+    else 0 end )*100.0 /count(tld.lawyer) as rate
+    from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where tld.law_firm is not null and tld.law_firm !=''
+    and tld.lawyer is not null and tld.lawyer !=''
+    AND tld.lawyer = #{lawyer}
+    <if test="brief !=null">
+      and ci.brief = #{brief}
+    </if>
+  </select>
+
+    <select id="getCaseListByLawyer"
+            resultType="com.tzCloud.core.facade.caseMatching.resp.CaseListForLawyerResp">
+    select
+
+    distinct (ci.doc_id ) as docId,
+    ci.ajmc as caseTitle,
+    ci.spcx as caseProgram,
+    ci.fymc as courtName,
+    ci.ah as caseNo,
+    ci.cprq as caseDate,
+    ci.brief as brief
+    from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where  ci.brief is not null and  tld.lawyer = #{lawyer}
+    <if test="brief != null and brief != ''">
+      and ci.brief = #{brief}
+    </if>
+    </select>
+
+  <select id="getCaseListByLawyer2"
+          resultType="com.tzCloud.core.facade.caseMatching.resp.CaseListForLawyerResp">
+    select
+    distinct (ci.doc_id ) as docId,
+    ci.title as caseTitle,
+    case
+    when ci.`type` = '1' then '刑事'
+    when ci.`type` = '2' then '民事'
+    when ci.`type` = '3' then '行政'
+    when ci.`type` = '4' then '赔偿'
+    when ci.`type` = '5' then '执行'
+    else '' end as `type`,
+    case
+    when ci.judgement_type = '1' then '判决'
+    when ci.judgement_type = '2' then '裁定'
+    when ci.judgement_type = '3' then '调解'
+    when ci.judgement_type = '4' then '决定'
+    when ci.judgement_type = '5' then '通知'
+    when ci.judgement_type = '6' then '批复'
+    when ci.judgement_type = '7' then '答复'
+    when ci.judgement_type = '8' then '涵'
+    when ci.judgement_type = '9' then '令'
+    else '其他' end as judgementType,
+    ci.trial_round as caseProgram,
+    ci.court_name as courtName,
+    ci.case_number as caseNo,
+    ci.judgement_date as caseDate,
+    trc.key_word as brief
+    from t_case ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    left join t_tree_content trc on ci.brief_id = trc.id
+    where  ci.brief_id is not null and  tld.lawyer = #{lawyer}
+    <if test="brief != null and brief != ''">
+      and trc.key_word = #{brief}
+    </if>
+  </select>
+
+    <select id="getLawyerDetail" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerDetailResp">
+     select tld.lawyer as lawyerName,
+     tld.law_firm as lawyerFirm,
+     t2.img_url as lawyerImgUrl ,
+     t2.years as experienceYears,
+     tld.lawyer_id as lawyerId
+     from t_lawyer_data tld
+     left join t_lawyer_info t2 on( tld.lawyer = t2.xm
+     and tld.law_firm = t2.lsswsmc)
+     WHERE  tld.lawyer = #{lawyer}
+      <if test="lawFirm != null and lawFirm != ''">
+        and tld.law_firm  = #{lawFirm}
+      </if>
+    </select>
+  <select id="getCourtList" resultType="java.util.Map">
+    select  ci.fymc as courtName,count(distinct(ci.doc_id)) countNum
+    from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where   tld.lawyer = #{lawyer}
+    GROUP BY ci.fymc
+  </select>
+  <select id="getCountGroupByBrief" resultType="java.util.Map">
+
+  select tld.lawyer ,ci.brief , count(distinct ci.doc_id) as caseNum
+   from cpwsw_item ci
+  left join t_lawyer_data tld on ci.doc_id = tld.docid
+  where   tld.lawyer = #{lawyer}
+  and ci.brief is not null
+  GROUP BY tld.lawyer,ci.brief
+  </select>
+  <select id="getCaseCountByMonthList" resultType="java.util.Map">
+    select CONCAT(YEAR(ci.cprq),'-',DATE_FORMAT(ci.cprq,'%m')) months,
+    count(0) as caseNum from cpwsw_item ci
+    left join t_lawyer_data tld on ci.doc_id = tld.docid
+    where   tld.lawyer = #{lawyer}
+    GROUP BY months;
+  </select>
+
+  <select id="getTotalCaseNum" resultType="java.lang.Integer">
+     select   count(distinct ci.doc_id) as caseNum
+      from cpwsw_item ci
+      left join t_lawyer_data tld on ci.doc_id = tld.docid
+      where tld.law_firm is not null and tld.law_firm !=''
+      and tld.lawyer is not null and tld.lawyer !=''
+      and ci.brief is not null
+      AND tld.lawyer = #{lawyer}
+  </select>
+
+
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.CpwswItem">
+    insert into cpwsw_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="cpyzdyw != null">
+        cpyzdyw, 
+      </if>
+      <if test="bgkly != null">
+        bgkly, 
+      </if>
+      <if test="ajlx != null">
+        ajlx, 
+      </if>
+      <if test="cprq != null">
+        cprq, 
+      </if>
+      <if test="ajmc != null">
+        ajmc, 
+      </if>
+      <if test="spcx != null">
+        spcx, 
+      </if>
+      <if test="ah != null">
+        ah, 
+      </if>
+      <if test="fymc != null">
+        fymc, 
+      </if>
+      <if test="requestId != null">
+        request_id, 
+      </if>
+      <if test="courtId != null">
+        court_id, 
+      </if>
+      <if test="parseStatus != null">
+        parse_status, 
+      </if>
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="cpyzdyw != null">
+        cpyzdyw, 
+      </if>
+      <if test="bgkly != null">
+        bgkly, 
+      </if>
+      <if test="ajlx != null">
+        ajlx, 
+      </if>
+      <if test="cprq != null">
+        cprq, 
+      </if>
+      <if test="ajmc != null">
+        ajmc, 
+      </if>
+      <if test="spcx != null">
+        spcx, 
+      </if>
+      <if test="ah != null">
+        ah, 
+      </if>
+      <if test="fymc != null">
+        fymc, 
+      </if>
+      <if test="requestId != null">
+        request_id, 
+      </if>
+      <if test="courtId != null">
+        court_id, 
+      </if>
+      <if test="parseStatus != null">
+        parse_status, 
+      </if>
+      <if test="brief != null">
+        brief,
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpyzdyw != null">
+        #{cpyzdyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bgkly != null">
+        #{bgkly,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ajlx != null">
+        #{ajlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cprq != null">
+        #{cprq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ajmc != null">
+        #{ajmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spcx != null">
+        #{spcx,jdbcType=VARCHAR},
+      </if>
+      <if test="ah != null">
+        #{ah,jdbcType=VARCHAR},
+      </if>
+      <if test="fymc != null">
+        #{fymc,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="parseStatus != null">
+        #{parseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpyzdyw != null">
+        #{cpyzdyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bgkly != null">
+        #{bgkly,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ajlx != null">
+        #{ajlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cprq != null">
+        #{cprq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ajmc != null">
+        #{ajmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spcx != null">
+        #{spcx,jdbcType=VARCHAR},
+      </if>
+      <if test="ah != null">
+        #{ah,jdbcType=VARCHAR},
+      </if>
+      <if test="fymc != null">
+        #{fymc,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="parseStatus != null">
+        #{parseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.CpwswItem">
+    update cpwsw_item
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpyzdyw != null">
+        cpyzdyw = #{cpyzdyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bgkly != null">
+        bgkly = #{bgkly,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ajlx != null">
+        ajlx = #{ajlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cprq != null">
+        cprq = #{cprq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ajmc != null">
+        ajmc = #{ajmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spcx != null">
+        spcx = #{spcx,jdbcType=VARCHAR},
+      </if>
+      <if test="ah != null">
+        ah = #{ah,jdbcType=VARCHAR},
+      </if>
+      <if test="fymc != null">
+        fymc = #{fymc,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        court_id = #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="parseStatus != null">
+        parse_status = #{parseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpyzdyw != null">
+        cpyzdyw = #{cpyzdyw,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bgkly != null">
+        bgkly = #{bgkly,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ajlx != null">
+        ajlx = #{ajlx,jdbcType=VARCHAR},
+      </if>
+      <if test="cprq != null">
+        cprq = #{cprq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ajmc != null">
+        ajmc = #{ajmc,jdbcType=VARCHAR},
+      </if>
+      <if test="spcx != null">
+        spcx = #{spcx,jdbcType=VARCHAR},
+      </if>
+      <if test="ah != null">
+        ah = #{ah,jdbcType=VARCHAR},
+      </if>
+      <if test="fymc != null">
+        fymc = #{fymc,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null">
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        court_id = #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="parseStatus != null">
+        parse_status = #{parseStatus,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+
+
+</mapper>

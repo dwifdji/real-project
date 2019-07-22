@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月14日 11时14分35秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.house.mapper.TMapHouseAreaMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.house.TMapHouseArea">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="province" jdbcType="VARCHAR" property="province" />
+	<result column="area_url" jdbcType="VARCHAR" property="areaUrl" />
+	<result column="city" jdbcType="VARCHAR" property="city" />
+	<result column="area" jdbcType="VARCHAR" property="area" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, province, area_url, city, area, create_time, 
+	delete_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_map_house_area
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.house.TMapHouseAreaCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_map_house_area
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="province != null">
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="areaUrl != null">
+        AND area_url = #{areaUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="area != null">
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.house.TMapHouseArea">
+    insert into t_map_house_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="province != null">
+        province, 
+      </if>
+      <if test="areaUrl != null">
+        area_url, 
+      </if>
+      <if test="city != null">
+        city, 
+      </if>
+      <if test="area != null">
+        area, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="areaUrl != null">
+        #{areaUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.house.TMapHouseArea">
+    update t_map_house_area
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="areaUrl != null">
+        area_url = #{areaUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月14日 11时14分35秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.house.mapper.TMapHouseTransactionDataMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.house.TMapHouseTransactionData">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="end_time" jdbcType="VARCHAR" property="endTime" />
+	<result column="current_price" jdbcType="VARCHAR" property="currentPrice" />
+	<result column="unit_price" jdbcType="VARCHAR" property="unitPrice" />
+	<result column="listing_price" jdbcType="VARCHAR" property="listingPrice" />
+	<result column="transaction_cycle" jdbcType="VARCHAR" property="transactionCycle" />
+	<result column="price_adjustment" jdbcType="VARCHAR" property="priceAdjustment" />
+	<result column="look_times" jdbcType="INTEGER" property="lookTimes" />
+	<result column="attention_num" jdbcType="INTEGER" property="attentionNum" />
+	<result column="view_num" jdbcType="VARCHAR" property="viewNum" />
+	<result column="house_type" jdbcType="VARCHAR" property="houseType" />
+	<result column="house_floor" jdbcType="VARCHAR" property="houseFloor" />
+	<result column="construction_area" jdbcType="VARCHAR" property="constructionArea" />
+	<result column="house_structure" jdbcType="VARCHAR" property="houseStructure" />
+	<result column="Inner_area" jdbcType="VARCHAR" property="innerArea" />
+	<result column="building_type" jdbcType="VARCHAR" property="buildingType" />
+	<result column="house_orientation" jdbcType="VARCHAR" property="houseOrientation" />
+	<result column="built_era" jdbcType="VARCHAR" property="builtEra" />
+	<result column="renovation_condition" jdbcType="VARCHAR" property="renovationCondition" />
+	<result column="building_structure" jdbcType="VARCHAR" property="buildingStructure" />
+	<result column="heating_method" jdbcType="VARCHAR" property="heatingMethod" />
+	<result column="ladder_ratio" jdbcType="VARCHAR" property="ladderRatio" />
+	<result column="year_limit" jdbcType="VARCHAR" property="yearLimit" />
+	<result column="elevator_flag" jdbcType="VARCHAR" property="elevatorFlag" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="trading_authority" jdbcType="VARCHAR" property="tradingAuthority" />
+	<result column="listing_time" jdbcType="VARCHAR" property="listingTime" />
+	<result column="use_type" jdbcType="VARCHAR" property="useType" />
+	<result column="house_limit" jdbcType="VARCHAR" property="houseLimit" />
+	<result column="area_id" jdbcType="INTEGER" property="areaId" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="lng" jdbcType="VARCHAR" property="lng" />
+	<result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="item_url" jdbcType="VARCHAR" property="itemUrl" />
+    <result column="house_belong" jdbcType="VARCHAR" property="houseBelong" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, title, end_time, current_price, unit_price, listing_price, 
+	transaction_cycle, price_adjustment, look_times, attention_num, view_num, house_type, 
+	house_floor, construction_area, house_structure, Inner_area, building_type, house_orientation, 
+	built_era, renovation_condition, building_structure, heating_method, ladder_ratio, year_limit, 
+	elevator_flag, code, trading_authority, listing_time, use_type, house_limit, 
+	area_id, address, lng, lat, item_url, house_belong, create_time,
+	delete_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_map_house_transaction_data
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.house.TMapHouseTransactionDataCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_map_house_transaction_data
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null">
+        AND end_time = #{endTime,jdbcType=VARCHAR}
+      </if>
+      <if test="currentPrice != null">
+        AND current_price = #{currentPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="unitPrice != null">
+        AND unit_price = #{unitPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="listingPrice != null">
+        AND listing_price = #{listingPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="transactionCycle != null">
+        AND transaction_cycle = #{transactionCycle,jdbcType=VARCHAR}
+      </if>
+      <if test="priceAdjustment != null">
+        AND price_adjustment = #{priceAdjustment,jdbcType=VARCHAR}
+      </if>
+      <if test="lookTimes != null">
+        AND look_times = #{lookTimes,jdbcType=INTEGER}
+      </if>
+      <if test="attentionNum != null">
+        AND attention_num = #{attentionNum,jdbcType=INTEGER}
+      </if>
+      <if test="viewNum != null">
+        AND view_num = #{viewNum,jdbcType=VARCHAR}
+      </if>
+      <if test="houseType != null">
+        AND house_type = #{houseType,jdbcType=VARCHAR}
+      </if>
+      <if test="houseFloor != null">
+        AND house_floor = #{houseFloor,jdbcType=VARCHAR}
+      </if>
+      <if test="constructionArea != null">
+        AND construction_area = #{constructionArea,jdbcType=VARCHAR}
+      </if>
+      <if test="houseStructure != null">
+        AND house_structure = #{houseStructure,jdbcType=VARCHAR}
+      </if>
+      <if test="innerArea != null">
+        AND Inner_area = #{innerArea,jdbcType=VARCHAR}
+      </if>
+      <if test="buildingType != null">
+        AND building_type = #{buildingType,jdbcType=VARCHAR}
+      </if>
+      <if test="houseOrientation != null">
+        AND house_orientation = #{houseOrientation,jdbcType=VARCHAR}
+      </if>
+      <if test="builtEra != null">
+        AND built_era = #{builtEra,jdbcType=VARCHAR}
+      </if>
+      <if test="renovationCondition != null">
+        AND renovation_condition = #{renovationCondition,jdbcType=VARCHAR}
+      </if>
+      <if test="buildingStructure != null">
+        AND building_structure = #{buildingStructure,jdbcType=VARCHAR}
+      </if>
+      <if test="heatingMethod != null">
+        AND heating_method = #{heatingMethod,jdbcType=VARCHAR}
+      </if>
+      <if test="ladderRatio != null">
+        AND ladder_ratio = #{ladderRatio,jdbcType=VARCHAR}
+      </if>
+      <if test="yearLimit != null">
+        AND year_limit = #{yearLimit,jdbcType=VARCHAR}
+      </if>
+      <if test="elevatorFlag != null">
+        AND elevator_flag = #{elevatorFlag,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="tradingAuthority != null">
+        AND trading_authority = #{tradingAuthority,jdbcType=VARCHAR}
+      </if>
+      <if test="listingTime != null">
+        AND listing_time = #{listingTime,jdbcType=VARCHAR}
+      </if>
+      <if test="useType != null">
+        AND use_type = #{useType,jdbcType=VARCHAR}
+      </if>
+      <if test="houseLimit != null">
+        AND house_limit = #{houseLimit,jdbcType=VARCHAR}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=INTEGER}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="lng != null">
+        AND lng = #{lng,jdbcType=VARCHAR}
+      </if>
+      <if test="lat != null">
+        AND lat = #{lat,jdbcType=VARCHAR}
+      </if>
+      <if test="itemUrl != null">
+        AND item_url = #{itemUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="houseBelong != null">
+        AND house_belong = #{houseBelong,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.house.TMapHouseTransactionData">
+    insert into t_map_house_transaction_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="endTime != null">
+        end_time, 
+      </if>
+      <if test="currentPrice != null">
+        current_price, 
+      </if>
+      <if test="unitPrice != null">
+        unit_price, 
+      </if>
+      <if test="listingPrice != null">
+        listing_price, 
+      </if>
+      <if test="transactionCycle != null">
+        transaction_cycle, 
+      </if>
+      <if test="priceAdjustment != null">
+        price_adjustment, 
+      </if>
+      <if test="lookTimes != null">
+        look_times, 
+      </if>
+      <if test="attentionNum != null">
+        attention_num, 
+      </if>
+      <if test="viewNum != null">
+        view_num, 
+      </if>
+      <if test="houseType != null">
+        house_type, 
+      </if>
+      <if test="houseFloor != null">
+        house_floor, 
+      </if>
+      <if test="constructionArea != null">
+        construction_area, 
+      </if>
+      <if test="houseStructure != null">
+        house_structure, 
+      </if>
+      <if test="innerArea != null">
+        Inner_area, 
+      </if>
+      <if test="buildingType != null">
+        building_type, 
+      </if>
+      <if test="houseOrientation != null">
+        house_orientation, 
+      </if>
+      <if test="builtEra != null">
+        built_era, 
+      </if>
+      <if test="renovationCondition != null">
+        renovation_condition, 
+      </if>
+      <if test="buildingStructure != null">
+        building_structure, 
+      </if>
+      <if test="heatingMethod != null">
+        heating_method, 
+      </if>
+      <if test="ladderRatio != null">
+        ladder_ratio, 
+      </if>
+      <if test="yearLimit != null">
+        year_limit, 
+      </if>
+      <if test="elevatorFlag != null">
+        elevator_flag, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="tradingAuthority != null">
+        trading_authority, 
+      </if>
+      <if test="listingTime != null">
+        listing_time, 
+      </if>
+      <if test="useType != null">
+        use_type, 
+      </if>
+      <if test="houseLimit != null">
+        house_limit, 
+      </if>
+      <if test="areaId != null">
+        area_id, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="lng != null">
+        lng, 
+      </if>
+      <if test="lat != null">
+        lat, 
+      </if>
+      <if test="itemUrl != null">
+        item_url,
+      </if>
+      <if test="houseBelong != null">
+        house_belong, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="listingPrice != null">
+        #{listingPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionCycle != null">
+        #{transactionCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="priceAdjustment != null">
+        #{priceAdjustment,jdbcType=VARCHAR},
+      </if>
+      <if test="lookTimes != null">
+        #{lookTimes,jdbcType=INTEGER},
+      </if>
+      <if test="attentionNum != null">
+        #{attentionNum,jdbcType=INTEGER},
+      </if>
+      <if test="viewNum != null">
+        #{viewNum,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseFloor != null">
+        #{houseFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionArea != null">
+        #{constructionArea,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructure != null">
+        #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="innerArea != null">
+        #{innerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null">
+        #{buildingType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseOrientation != null">
+        #{houseOrientation,jdbcType=VARCHAR},
+      </if>
+      <if test="builtEra != null">
+        #{builtEra,jdbcType=VARCHAR},
+      </if>
+      <if test="renovationCondition != null">
+        #{renovationCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStructure != null">
+        #{buildingStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="heatingMethod != null">
+        #{heatingMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="ladderRatio != null">
+        #{ladderRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="yearLimit != null">
+        #{yearLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="elevatorFlag != null">
+        #{elevatorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingAuthority != null">
+        #{tradingAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="listingTime != null">
+        #{listingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="useType != null">
+        #{useType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseLimit != null">
+        #{houseLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUrl != null">
+        #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="houseBelong != null">
+        #{houseBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.house.TMapHouseTransactionData">
+    update t_map_house_transaction_data
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="listingPrice != null">
+        listing_price = #{listingPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionCycle != null">
+        transaction_cycle = #{transactionCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="priceAdjustment != null">
+        price_adjustment = #{priceAdjustment,jdbcType=VARCHAR},
+      </if>
+      <if test="lookTimes != null">
+        look_times = #{lookTimes,jdbcType=INTEGER},
+      </if>
+      <if test="attentionNum != null">
+        attention_num = #{attentionNum,jdbcType=INTEGER},
+      </if>
+      <if test="viewNum != null">
+        view_num = #{viewNum,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseFloor != null">
+        house_floor = #{houseFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionArea != null">
+        construction_area = #{constructionArea,jdbcType=VARCHAR},
+      </if>
+      <if test="houseStructure != null">
+        house_structure = #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="innerArea != null">
+        Inner_area = #{innerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null">
+        building_type = #{buildingType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseOrientation != null">
+        house_orientation = #{houseOrientation,jdbcType=VARCHAR},
+      </if>
+      <if test="builtEra != null">
+        built_era = #{builtEra,jdbcType=VARCHAR},
+      </if>
+      <if test="renovationCondition != null">
+        renovation_condition = #{renovationCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingStructure != null">
+        building_structure = #{buildingStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="heatingMethod != null">
+        heating_method = #{heatingMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="ladderRatio != null">
+        ladder_ratio = #{ladderRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="yearLimit != null">
+        year_limit = #{yearLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="elevatorFlag != null">
+        elevator_flag = #{elevatorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="tradingAuthority != null">
+        trading_authority = #{tradingAuthority,jdbcType=VARCHAR},
+      </if>
+      <if test="listingTime != null">
+        listing_time = #{listingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="useType != null">
+        use_type = #{useType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseLimit != null">
+        house_limit = #{houseLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUrl != null">
+        item_url = #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="houseBelong != null">
+        house_belong = #{houseBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <select id="getHouseTransactionList" parameterType="String" resultType="com.tzCloud.core.vo.house.HouseCoordinateStatisticsVO">
+    SELECT
+    COUNT( id ) AS total,
+    AVG( tn.unitPrice ) AS avgPrice,
+    tn.lat AS lat,
+    tn.lng AS lng
+    FROM
+    (
+    SELECT
+    ts.* from
+    (
+      SELECT
+      td.id as id,
+      td.title as title,
+      td.current_price as currentPrice,
+      td.unit_price as unitPrice,
+      td.listing_price as listingPrice,
+      td.transaction_cycle as transactionCycle,
+      td.end_time as endTime,
+      td.renovation_condition as renovationCondition,
+      td.house_orientation as houseOrientation,
+      td.elevator_flag as elevatorFlag,
+      td.lat as lat,
+      td.lng as lng,
+      td.use_type as useType
+      FROM
+      t_map_house_transaction_data td
+      WHERE
+      td.lng BETWEEN #{minlng}
+      AND #{maxlng}
+      AND td.lat BETWEEN #{minlat}
+      AND #{maxlat}
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+
+    <if test="beginTime != null and endTime != null and beginTime != '' and endTime != ''">
+      AND td.end_time BETWEEN #{beginTime}
+      AND #{endTime}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+    ) tn
+    GROUP BY
+    tn.lng,
+    tn.lat
+  </select>
+  
+  
+  <select id="getHouseAveragePrice" parameterType="Map" resultType="String">
+    SELECT
+    AVG(ts.unitPrice) as avgPrice  from
+    (SELECT
+          td.unit_price as unitPrice,
+          td.lng as lng,
+          td.lat as lat
+      FROM
+          t_map_house_transaction_data td
+      WHERE
+        td.lng BETWEEN #{minlng}
+        AND #{maxlng}
+        AND td.lat BETWEEN #{minlat}
+        AND #{maxlat}
+    <if test="beginTime != null and endTime != null and beginTime != '' and endTime != ''">
+        AND td.end_time BETWEEN #{beginTime}
+        AND #{endTime}
+    </if>
+    <if test="useType != null and useType != ''">
+          AND td.use_type = #{useType}
+    </if>
+        AND td.delete_flag = 0
+    ) ts
+
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+  </select>
+  
+  <select id="getHouseFirstPrice" parameterType="Map" resultType="com.tzCloud.core.vo.house.FirstPriceVO">
+    SELECT
+    ts.unitPrice as firstPrice, ts.id from
+    (SELECT
+    td.unit_price as unitPrice,
+    td.lng as lng,
+    td.lat as lat,
+    td.end_time as endTime,
+    td.id as id
+    FROM
+    t_map_house_transaction_data td
+    WHERE
+    td.lng BETWEEN #{minlng}
+    AND #{maxlng}
+    AND td.lat BETWEEN #{minlat}
+    AND #{maxlat}
+
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+
+    ORDER BY
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) asc, ts.endTime desc LIMIT 1
+  </select>
+  
+  
+  <select id="getHousePriceTrendList" parameterType="String" resultType="com.tzCloud.core.vo.house.HousePriceTrendVO">
+      SELECT
+        month,
+        avg( unitPrice ) AS avgPrice,
+        count(id) as num
+    FROM
+        (
+    SELECT
+        tmhtd.id as id,
+        tmhtd.end_time AS endTime,
+        tmhtd.unit_price AS unitPrice,
+        tmhtd.end_month AS month
+    FROM
+        t_map_house_area tmha inner join
+        t_map_house_transaction_data tmhtd on tmhtd.area_id = tmha
+        .id
+    WHERE
+        1 = 1
+        AND end_time BETWEEN #{beginTime}
+        AND #{endTime}
+        AND tmha.province = #{province}
+        AND tmha.city = #{city}
+        AND tmhtd.delete_flag = 0
+        ) td
+    GROUP BY
+        month
+  </select>
+  
+  <select id="getHouseListByCoordinate" parameterType="String" resultType="com.tzCloud.core.vo.house.HouseTransactionListVO">
+       SELECT
+          td.id as id,
+          td.title as title,
+          td.current_price as currentPrice,
+          td.unit_price as unitPrice,
+          td.listing_price as listingPrice,
+          td.transaction_cycle as transactionCycle,
+          td.end_time as endTime,
+          td.renovation_condition as renovationCondition,
+          td.house_orientation as houseOrientation,
+          td.elevator_flag as elevatorFlag,
+          td.lat as lat,
+          td.lng as lng,
+          td.use_type as useType
+      FROM
+          t_map_house_transaction_data td
+      WHERE
+          td.lng = #{lng}
+          AND td.lat = #{lat}
+        <if test="beginTime != null and endTime != null and beginTime != '' and endTime != ''">
+          AND td.end_time BETWEEN #{beginTime}
+          AND #{endTime}
+        </if>
+        <if test="useType != null and useType != ''">
+          AND td.use_type = #{useType}
+        </if>
+          order by endTime desc
+  </select>
+  
+  <select id="getSixMonthHouseList" parameterType="Map" resultType="com.tzCloud.core.vo.house.HouseTransactionListVO">
+    SELECT
+    ts.* from
+    (SELECT
+    td.lng as lng,
+    td.lat as lat,
+    td.end_time as endTime,
+    td.id as id,
+    td.title as title,
+    td.current_price as currentPrice,
+    td.unit_price as unitPrice,
+    td.listing_price as listingPrice,
+    td.transaction_cycle as transactionCycle,
+    td.renovation_condition as renovationCondition,
+    td.house_orientation as houseOrientation,
+    td.elevator_flag as elevatorFlag,
+    td.use_type as useType
+    FROM
+    t_map_house_transaction_data td
+    WHERE
+    td.lng BETWEEN #{minlng}
+    AND #{maxlng}
+    AND td.lat BETWEEN #{minlat}
+    AND #{maxlat}
+    AND td.end_time BETWEEN #{beginTime}
+    AND #{endTime}
+
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+
+    ORDER BY
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) asc, ts.endTime desc
+  </select>
+  
+  <select id="getAllAreaTotalPrice" parameterType="Map" resultType="String">
+          SELECT
+          avg( unitPrice ) AS avgPrice
+      FROM
+          (
+      SELECT
+          tmhtd.unit_price AS unitPrice
+      FROM
+          t_map_house_area tmha inner join
+          t_map_house_transaction_data tmhtd on tmhtd.area_id = tmha.id
+      WHERE
+            1 = 1
+            AND end_time BETWEEN #{beginTime}
+            AND #{endTime}
+            AND tmha.province = #{province}
+            AND tmha.city = #{city}
+            AND tmhtd.delete_flag = 0
+          ) td
+
+  </select>
+  
+  
+  <select id="getHouseFirstPriceByKeyWord" parameterType="Map" resultType="com.tzCloud.core.vo.house.FirstPriceVO">
+    SELECT
+    ts.unitPrice AS firstPrice,
+    ts.id from
+    (SELECT
+    td.unit_price as unitPrice,
+    td.title as title,
+    td.lng as lng,
+    td.lat as lat,
+    td.end_time as endTime,
+    td.id as id
+    FROM
+    t_map_house_transaction_data td
+    WHERE
+    td.lng BETWEEN #{minlng}
+    AND #{maxlng}
+    AND td.lat BETWEEN #{minlat}
+    AND #{maxlat}
+
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+    AND ts.title like concat('%',#{keyWord},'%')
+    order by ts.endTime desc LIMIT 1
+  </select>
+
+
+  <select id="getHousePriceByKeyWord" parameterType="Map" resultType="com.tzCloud.core.vo.house.HouseCoordinateStatisticsVO">
+    SELECT
+    COUNT( id ) AS total,
+    AVG( tn.unitPrice ) AS avgPrice,
+    tn.lat AS lat,
+    tn.lng AS lng,
+    any_value(tn.title) as title
+    FROM
+    (
+    SELECT
+    ts.* from
+    (
+    SELECT
+    td.id as id,
+    td.title as title,
+    td.current_price as currentPrice,
+    td.unit_price as unitPrice,
+    td.listing_price as listingPrice,
+    td.transaction_cycle as transactionCycle,
+    td.end_time as endTime,
+    td.renovation_condition as renovationCondition,
+    td.house_orientation as houseOrientation,
+    td.elevator_flag as elevatorFlag,
+    td.lat as lat,
+    td.lng as lng,
+    td.use_type as useType
+    FROM
+    t_map_house_transaction_data td
+    WHERE
+    td.lng BETWEEN #{minlng}
+    AND #{maxlng}
+    AND td.lat BETWEEN #{minlat}
+    AND #{maxlat}
+
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+    <if test="beginTime != null and endTime != null and beginTime != '' and endTime != ''">
+      AND td.end_time BETWEEN #{beginTime}
+      AND #{endTime}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+    ) tn
+    GROUP BY
+    tn.lng,
+    tn.lat
+    having title like concat('%',#{keyWord},'%')
+    limit 1
+  </select>
+  
+  <select id="getFirstHouse" parameterType="Map" resultType="com.tzCloud.core.vo.house.HouseCoordinateStatisticsVO">
+    SELECT
+    COUNT( id ) AS total,
+    AVG( tn.unitPrice ) AS avgPrice,
+    tn.lat AS lat,
+    tn.lng AS lng
+    FROM
+    (
+    SELECT
+    ts.* from
+    (
+    SELECT
+    td.id as id,
+    td.title as title,
+    td.current_price as currentPrice,
+    td.unit_price as unitPrice,
+    td.listing_price as listingPrice,
+    td.transaction_cycle as transactionCycle,
+    td.end_time as endTime,
+    td.renovation_condition as renovationCondition,
+    td.house_orientation as houseOrientation,
+    td.elevator_flag as elevatorFlag,
+    td.lat as lat,
+    td.lng as lng,
+    td.use_type as useType
+    FROM
+    t_map_house_transaction_data td
+    WHERE
+    td.lng BETWEEN #{minlng}
+    AND #{maxlng}
+    AND td.lat BETWEEN #{minlat}
+    AND #{maxlat}
+
+    <if test="useType != null and useType != ''">
+      AND td.use_type = #{useType}
+    </if>
+    <if test="beginTime != null and endTime != null and beginTime != '' and endTime != ''">
+      AND td.end_time BETWEEN #{beginTime}
+      AND #{endTime}
+    </if>
+    AND td.delete_flag = 0
+    ) ts
+    WHERE
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - ts.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( ts.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - ts.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    ) &lt; (#{radius} * 1000)
+    ) tn
+    GROUP BY
+    tn.lng,
+    tn.lat
+    ORDER BY
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN( ( #{lat} * PI( ) / 180 - tn.lat * PI( ) / 180 ) / 2 ),
+    2
+    ) + COS( #{lat} * PI( ) / 180 ) * COS( tn.lat * PI( ) / 180 ) * POW(
+    SIN( ( #{lng} * PI( ) / 180 - tn.lng * PI( ) / 180 ) / 2 ),
+    2
+    )
+    )
+    ) * 1000
+    )
+    asc
+    limit 1
+  </select>
+
+
+</mapper>

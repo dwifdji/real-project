@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月05日 11时05分19秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.CaseHtmlAnalysisMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.CaseHtmlAnalysis">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="html" jdbcType="LONGVARCHAR" property="html" />
+	<result column="prosecutor" jdbcType="VARCHAR" property="prosecutor" />
+	<result column="defendant" jdbcType="VARCHAR" property="defendant" />
+	<result column="prosecutor_lawyer" jdbcType="VARCHAR" property="prosecutorLawyer" />
+	<result column="defendant_lawyer" jdbcType="VARCHAR" property="defendantLawyer" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, html, prosecutor, defendant, prosecutor_lawyer, 
+	defendant_lawyer, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from case_html_analysis
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.CaseHtmlAnalysisCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from case_html_analysis
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="html != null">
+        AND html = #{html,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="prosecutor != null">
+        AND prosecutor = #{prosecutor,jdbcType=VARCHAR}
+      </if>
+      <if test="defendant != null">
+        AND defendant = #{defendant,jdbcType=VARCHAR}
+      </if>
+      <if test="prosecutorLawyer != null">
+        AND prosecutor_lawyer = #{prosecutorLawyer,jdbcType=VARCHAR}
+      </if>
+      <if test="defendantLawyer != null">
+        AND defendant_lawyer = #{defendantLawyer,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    ORDER BY id DESC
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlAnalysis">
+    insert into case_html_analysis
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="html != null">
+        html, 
+      </if>
+      <if test="prosecutor != null">
+        prosecutor, 
+      </if>
+      <if test="defendant != null">
+        defendant, 
+      </if>
+      <if test="prosecutorLawyer != null">
+        prosecutor_lawyer, 
+      </if>
+      <if test="defendantLawyer != null">
+        defendant_lawyer, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="html != null">
+        #{html,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="prosecutor != null">
+        #{prosecutor,jdbcType=VARCHAR},
+      </if>
+      <if test="defendant != null">
+        #{defendant,jdbcType=VARCHAR},
+      </if>
+      <if test="prosecutorLawyer != null">
+        #{prosecutorLawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="defendantLawyer != null">
+        #{defendantLawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlAnalysis">
+    update case_html_analysis
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="html != null">
+        html = #{html,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="prosecutor != null">
+        prosecutor = #{prosecutor,jdbcType=VARCHAR},
+      </if>
+      <if test="defendant != null">
+        defendant = #{defendant,jdbcType=VARCHAR},
+      </if>
+      <if test="prosecutorLawyer != null">
+        prosecutor_lawyer = #{prosecutorLawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="defendantLawyer != null">
+        defendant_lawyer = #{defendantLawyer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <insert id="insertOrUpdateAnalysisList" parameterType="java.util.List">
+    INSERT INTO case_html_analysis
+    (doc_id,html,prosecutor,defendant,prosecutor_lawyer,defendant_lawyer,update_time)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      ( #{item.docId}, #{item.html}, #{item.prosecutor}, #{item.defendant}, #{item.prosecutorLawyer}, #{item.defendantLawyer}, #{item.updateTime} )
+    </foreach>
+    ON DUPLICATE KEY UPDATE
+    doc_id = VALUES (doc_id),html = VALUES (html),prosecutor = VALUES (prosecutor),defendant = VALUES (defendant),prosecutor_lawyer = VALUES (prosecutor_lawyer),
+    defendant_lawyer = VALUES (defendant_lawyer),update_time = VALUES (update_time)
+  </insert>
+
+  <select id="findExist" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    select t1.doc_id, t2.html from case_html_analysis t1 left join case_html_data t2 on t1.doc_id = t2.doc_id
+  </select>
+
+  <select id="findByEarlyTime" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    select t1.doc_id, t1.html from case_html_analysis t1
+    where  <![CDATA[t1.update_time > #{updateTime}]]>
+  </select>
+
+  <insert id="insertOrUpdateAnalysis" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlAnalysis">
+    INSERT INTO case_html_analysis
+    (doc_id,html,prosecutor,defendant,prosecutor_lawyer,defendant_lawyer,update_time)
+    VALUES
+    ( #{docId}, #{html}, #{prosecutor}, #{defendant}, #{prosecutorLawyer}, #{defendantLawyer}, #{updateTime} )
+    ON DUPLICATE KEY UPDATE
+    doc_id = VALUES (doc_id),html = VALUES (html),prosecutor = VALUES (prosecutor),defendant = VALUES (defendant),prosecutor_lawyer = VALUES (prosecutor_lawyer),
+    defendant_lawyer = VALUES (defendant_lawyer),update_time = VALUES (update_time)
+  </insert>
+
+</mapper>

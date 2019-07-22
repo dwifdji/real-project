@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 19时25分32秒 by Generator -->
+<mapper namespace="com.tzCloud.gateway.dao.pay.mapper.TGatewayPayWayMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.gateway.model.pay.TGatewayPayWay">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+	<result column="desc" jdbcType="VARCHAR" property="desc" />
+	<result column="order_desc" jdbcType="INTEGER" property="orderDesc" />
+	<result column="recomm_flag" jdbcType="BIT" property="recommFlag" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, type, logo_url, desc, order_desc, 
+	recomm_flag, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_gateway_pay_way
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.gateway.condition.pay.TGatewayPayWayCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_gateway_pay_way
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="logoUrl != null">
+        AND logo_url = #{logoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="desc != null">
+        AND desc = #{desc,jdbcType=VARCHAR}
+      </if>
+      <if test="orderDesc != null">
+        AND order_desc = #{orderDesc,jdbcType=INTEGER}
+      </if>
+      <if test="recommFlag != null">
+        AND recomm_flag = #{recommFlag,jdbcType=BIT}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayWay">
+    insert into win.t_gateway_pay_way
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="logoUrl != null">
+        logo_url, 
+      </if>
+      <if test="desc != null">
+        desc, 
+      </if>
+      <if test="orderDesc != null">
+        order_desc, 
+      </if>
+      <if test="recommFlag != null">
+        recomm_flag, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="recommFlag != null">
+        #{recommFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayWay">
+    update win.t_gateway_pay_way
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        order_desc = #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="recommFlag != null">
+        recomm_flag = #{recommFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

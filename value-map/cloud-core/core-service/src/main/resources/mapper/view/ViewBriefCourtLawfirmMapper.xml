@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月15日 11时13分23秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.view.mapper.ViewBriefCourtLawfirmMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.view.ViewBriefCourtLawfirm">
+	<result column="brief" jdbcType="VARCHAR" property="brief" />
+	<result column="court_name" jdbcType="VARCHAR" property="courtName" />
+	<result column="lawyer_firm_name" jdbcType="VARCHAR" property="lawyerFirmName" />
+	<result column="case_num" jdbcType="BIGINT" property="caseNum" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	brief, court_name, lawyer_firm_name, case_num
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from view_brief_court_lawfirm
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.view.ViewBriefCourtLawfirmCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from view_brief_court_lawfirm
+	<where>
+      <if test="brief != null">
+        AND brief = #{brief,jdbcType=VARCHAR}
+      </if>
+      <if test="courtName != null">
+        AND court_name = #{courtName,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyerFirmName != null">
+        AND lawyer_firm_name = #{lawyerFirmName,jdbcType=VARCHAR}
+      </if>
+      <if test="caseNum != null">
+        AND case_num = #{caseNum,jdbcType=BIGINT}
+      </if>
+	</where>
+  </select>
+
+  <select id="getLawFirmList" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerFirmResp">
+    select distinct(lawyer_firm_name) as lawyerFirmName ,case_num as caseNum from view_brief_court_lawfirm
+    <where>
+      <if test="brief != null">
+        AND brief = #{brief,jdbcType=VARCHAR}
+      </if>
+      <if test="courtName != null and courtName != ''">
+        AND court_name = #{courtName,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyerFirmName != null">
+        AND lawyer_firm_name = #{lawyerFirmName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.tzCloud.core.model.view.ViewBriefCourtLawfirm">
+    insert into view_brief_court_lawfirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brief != null">
+        brief, 
+      </if>
+      <if test="courtName != null">
+        court_name, 
+      </if>
+      <if test="lawyerFirmName != null">
+        lawyer_firm_name, 
+      </if>
+      <if test="caseNum != null">
+        case_num, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerFirmName != null">
+        #{lawyerFirmName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null">
+        #{caseNum,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.view.ViewBriefCourtLawfirm">
+    update view_brief_court_lawfirm
+    <set>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        court_name = #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerFirmName != null">
+        lawyer_firm_name = #{lawyerFirmName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null">
+        case_num = #{caseNum,jdbcType=BIGINT},
+      </if>
+    </set>
+	<where>
+	  AND ID = #{ID,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

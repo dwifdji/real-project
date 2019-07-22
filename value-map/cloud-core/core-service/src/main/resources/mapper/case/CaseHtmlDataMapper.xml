@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月05日 11时05分20秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.CaseHtmlDataMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="pub_date" jdbcType="VARCHAR" property="pubDate" />
+	<result column="html" jdbcType="LONGVARCHAR" property="html" />
+	<result column="remove_html" jdbcType="LONGVARCHAR" property="removeHtml" />
+	<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+	<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, title, pub_date, html, remove_html, 
+	created_at, updated_at
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from case_html_data
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.CaseHtmlDataCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from case_html_data
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="pubDate != null">
+        AND pub_date = #{pubDate,jdbcType=VARCHAR}
+      </if>
+      <if test="html != null">
+        AND html = #{html,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="removeHtml != null">
+        AND remove_html = #{removeHtml,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="createdAt != null">
+        AND created_at = #{createdAt,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatedAt != null">
+        AND updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    ORDER BY id DESC
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    insert into case_html_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="pubDate != null">
+        pub_date, 
+      </if>
+      <if test="html != null">
+        html, 
+      </if>
+      <if test="removeHtml != null">
+        remove_html, 
+      </if>
+      <if test="createdAt != null">
+        created_at, 
+      </if>
+      <if test="updatedAt != null">
+        updated_at, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pubDate != null">
+        #{pubDate,jdbcType=VARCHAR},
+      </if>
+      <if test="html != null">
+        #{html,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="removeHtml != null">
+        #{removeHtml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    update case_html_data
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pubDate != null">
+        pub_date = #{pubDate,jdbcType=VARCHAR},
+      </if>
+      <if test="html != null">
+        html = #{html,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="removeHtml != null">
+        remove_html = #{removeHtml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findBySPCX" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    select
+      t1.doc_id, t2.spcx, t1.html
+    from
+      case_html_data t1 left join cpwsw_item t2 on t1.doc_id = t2.doc_id
+    <if test="spcx != null and spcx != ''">where t1.spcx = #{spcx}</if>
+  </select>
+
+  <select id="findByLimit" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    SELECT
+      t1.id, t1.doc_id, t1.html
+    FROM
+    case_html_data_20190528 t1
+  </select>
+
+  <select id="findByLimit_Count" resultType="java.lang.Long">
+    SELECT
+    count(t1.id)
+    FROM
+    case_html_data_20190528 t1
+  </select>
+
+  <select id="findByNoSave" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    SELECT lawyerDocId,caseDocId,html,spcx FROM
+    (
+    SELECT
+        t1.docid lawyerDocId, t2.doc_id caseDocId,t2.html html , t3.spcx
+    FROM
+        t_lawyer_data t1
+        RIGHT JOIN case_html_data t2 on t1.docid = t2.doc_id
+        LEFT  JOIN cpwsw_item t3 on t2.doc_id = t3.doc_id
+    ) temp
+    WHERE temp.lawyerDocId is NULL
+  </select>
+
+  <select id="findByNoUpdateCount" resultType="java.lang.Long">
+      SELECT count(*) FROM
+    (
+    SELECT
+        t1.docid lawyer_doc_id, t2.doc_id case_doc_id,t2.html html , t3.spcx
+    FROM
+        t_lawyer_data t1
+        RIGHT JOIN case_html_data t2 on t1.docid = t2.doc_id
+        LEFT  JOIN cpwsw_item t3 on t2.doc_id = t3.doc_id
+    ) temp
+    WHERE temp.lawyer_doc_id is NULL
+  </select>
+
+  <select id="findBySPCXCount" resultType="java.lang.Long">
+    select
+    count(*)
+    from
+    case_html_data t1 left join cpwsw_item t2 on t1.doc_id = t2.doc_id
+    <if test="spcx != null and spcx != ''">where t1.spcx = #{spcx}</if>
+  </select>
+
+  <select id="findByLimitCount" resultType="java.lang.Long">
+    SELECT
+      COUNT(*)
+    from
+      case_html_data t
+  </select>
+
+
+  <select id="findByDocIds" parameterType="java.util.List" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    SELECT
+      t1.doc_id, t2.spcx, t1.html
+    FROM
+      case_html_data t1 LEFT JOIN cpwsw_item t2 ON t1.doc_id = t2.doc_id
+    WHERE t1.doc_id IN
+    (
+    <foreach collection="list" item="item" index="index" separator=",">
+     #{item}
+    </foreach>
+    )
+  </select>
+
+  <select id="findByDocIdsNoSPCX" parameterType="java.util.List" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    SELECT
+    t1.doc_id, t1.html
+    FROM
+    case_html_data_20190528 t1
+    WHERE t1.doc_id IN
+    (
+    <foreach collection="list" item="item" index="index" separator=",">
+      #{item}
+    </foreach>
+    )
+  </select>
+
+  <select id="findByNewForAnalysis" resultMap="BaseResultMap">
+    select
+        t2.doc_id, t2.html
+    from
+        case_html_analysis t1 right join case_html_data t2 on t1.doc_id = t2.doc_id
+    where t1.doc_id is null
+  </select>
+
+  <select id="findByNewForDsrxx" resultMap="BaseResultMap">
+    select
+        t2.doc_id, t2.html, t2.id
+    from
+        case_html_dsrxx t1 right join case_html_data_20190528 t2 on t1.doc_id = t2.doc_id
+    where  t1.doc_id is null
+  </select>
+
+  <select id="findDocId" resultType="java.lang.String">
+    select doc_id from case_html_data
+  </select>
+
+  <select id="findDocId_COUNT" resultType="Long">
+    select count(doc_id) from case_html_data
+  </select>
+
+  <select id="findHtmlByDocIds" parameterType="java.util.List" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlData">
+    SELECT
+    t1.doc_id, t1.html
+    FROM
+    case_html_data t1
+    WHERE t1.doc_id IN
+    (
+    <foreach collection="list" item="item" index="index" separator=",">
+      #{item}
+    </foreach>
+    )
+  </select>
+</mapper>

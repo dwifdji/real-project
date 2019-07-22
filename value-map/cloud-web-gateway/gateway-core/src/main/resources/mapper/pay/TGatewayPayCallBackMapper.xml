@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 19时25分32秒 by Generator -->
+<mapper namespace="com.tzCloud.gateway.dao.pay.mapper.TGatewayPayCallBackMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.gateway.model.pay.TGatewayPayCallBack">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+	<result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="business_status" jdbcType="VARCHAR" property="businessStatus" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="req_param" jdbcType="VARCHAR" property="reqParam" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, order_no, business_no, status, business_status, 
+	amount, req_param, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_gateway_pay_call_back
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.gateway.condition.pay.TGatewayPayCallBackCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_gateway_pay_call_back
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNo != null">
+        AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="businessNo != null">
+        AND business_no = #{businessNo,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="businessStatus != null">
+        AND business_status = #{businessStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="reqParam != null">
+        AND req_param = #{reqParam,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayCallBack">
+    insert into win.t_gateway_pay_call_back
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="orderNo != null">
+        order_no, 
+      </if>
+      <if test="businessNo != null">
+        business_no, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="businessStatus != null">
+        business_status, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="reqParam != null">
+        req_param, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStatus != null">
+        #{businessStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="reqParam != null">
+        #{reqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayCallBack">
+    update win.t_gateway_pay_call_back
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStatus != null">
+        business_status = #{businessStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="reqParam != null">
+        req_param = #{reqParam,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

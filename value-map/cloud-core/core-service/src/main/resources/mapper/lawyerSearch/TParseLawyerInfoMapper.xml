@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月19日 09时15分10秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.lawyerSearch.mapper.TParseLawyerInfoMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="lawyer_name" jdbcType="VARCHAR" property="lawyerName" />
+	<result column="law_firm" jdbcType="VARCHAR" property="lawFirm" />
+	<result column="law_firm_short" jdbcType="VARCHAR" property="lawFirmShort" />
+	<result column="law_firm_city" jdbcType="VARCHAR" property="lawFirmCity" />
+	<result column="law_firm_province" jdbcType="VARCHAR" property="lawFirmProvince" />
+	<result column="years" jdbcType="INTEGER" property="years" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="del_flag" jdbcType="BIT" property="delFlag" />
+	<result column="lawyer_firm_id" jdbcType="VARCHAR" property="lawyerFirmId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, lawyer_name, law_firm, law_firm_short, law_firm_city, law_firm_province, 
+	years, create_time, update_time, del_flag, lawyer_firm_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_parse_lawyer_info
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.lawyerSearch.TParseLawyerInfoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_parse_lawyer_info
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="lawyerName != null">
+        AND lawyer_name = #{lawyerName,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirm != null">
+        AND law_firm = #{lawFirm,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirmShort != null">
+        AND law_firm_short = #{lawFirmShort,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirmCity != null">
+        AND law_firm_city = #{lawFirmCity,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirmProvince != null">
+        AND law_firm_province = #{lawFirmProvince,jdbcType=VARCHAR}
+      </if>
+      <if test="years != null">
+        AND years = #{years,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    insert ignore  into t_parse_lawyer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="lawyerName != null">
+        lawyer_name, 
+      </if>
+      <if test="lawFirm != null">
+        law_firm, 
+      </if>
+      <if test="lawFirmShort != null">
+        law_firm_short, 
+      </if>
+      <if test="lawFirmCity != null">
+        law_firm_city, 
+      </if>
+      <if test="lawFirmProvince != null">
+        law_firm_province, 
+      </if>
+      <if test="years != null">
+        years, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+      <if test="lawyerFirmId != null">
+        lawyer_firm_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lawyerName != null">
+        #{lawyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmShort != null">
+        #{lawFirmShort,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmCity != null">
+        #{lawFirmCity,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmProvince != null">
+        #{lawFirmProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        #{years,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="lawyerFirmId != null">
+        #{lawyerFirmId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    update t_parse_lawyer_info
+    <set>
+      <if test="lawyerName != null">
+        lawyer_name = #{lawyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        law_firm = #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmShort != null">
+        law_firm_short = #{lawFirmShort,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmCity != null">
+        law_firm_city = #{lawFirmCity,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirmProvince != null">
+        law_firm_province = #{lawFirmProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        years = #{years,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="lawyerFirmId != null">
+        lawyer_firm_id = #{lawyerFirmId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <insert id="batchSave" parameterType="java.util.List">
+    insert ignore into t_parse_lawyer_info (lawyer_name, law_firm, law_firm_short, law_firm_city, law_firm_province, years, create_time, update_time) values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.lawyerName},#{item.lawFirm},#{item.lawFirmShort},#{item.lawFirmCity},#{item.lawFirmProvince},#{item.years},#{item.createTime},#{item.updateTime})
+    </foreach>
+  </insert>
+
+  <select id="searchList" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select
+      t1.id id,t1.lawyer_name lawyerName,t1.law_firm lawFirm,t1.law_firm_province lawFirmProvince,t1.years,
+      if(t1.law_firm_city is not null and t1.law_firm_city != '', t1.law_firm_city,t1.law_firm_province) as lawFirmCity,
+      group_concat(distinct (t3.brief)) brief,
+      count(t3.doc_id) caseCount
+    from
+        t_parse_lawyer_info t1
+        left join t_lawyer_data t2 on t1.id = t2.lawyer_id
+        left join cpwsw_item t3 on t2.docid = t3.doc_id
+    <where>
+      <if test="conditions.searchWord != null">and t1.lawyer_name = #{conditions.searchWord}</if>
+      <if test="conditions.years_begin != null"><![CDATA[and t1.years >= #{conditions.years_begin}]]> </if>
+      <if test="conditions.years_end != null"><![CDATA[and t1.years <= #{conditions.years_end}]]> </if>
+      <if test="conditions.brief != null">and t3.brief = #{conditions.brief}</if>
+      <if test="conditions.lawFirmProvince != null">and t1.law_firm_province = #{conditions.lawFirmProvince}</if>
+    </where>
+    group by id,lawyerName,lawFirm,lawFirmProvince,t1.years,lawFirmCity
+    <if test="orderBy != null">
+        order by #{orderBy}
+    </if>
+  </select>
+
+  <select id="searchByIdList" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select
+    t1.id id,t1.lawyer_name lawyerName,t1.law_firm lawFirm,t1.law_firm_province lawFirmProvince,t1.years,
+    if(t1.law_firm_city is not null and t1.law_firm_city != '', t1.law_firm_city,t1.law_firm_province) as lawFirmCity,
+    group_concat(distinct (t3.brief)) brief,
+    count(t3.doc_id) caseCount
+    from
+    t_parse_lawyer_info t1
+    left join t_lawyer_data t2 on t1.id = t2.lawyer_id
+    left join cpwsw_item t3 on t2.docid = t3.doc_id
+    where t1.id in
+    (
+    <foreach collection="list" item="item" index="index" separator=",">
+      #{item}
+    </foreach>
+    )
+    group by id,lawyerName,lawFirm,lawFirmProvince,t1.years,lawFirmCity
+  </select>
+
+  <select id="searchByIdLawFirmShort" resultType="com.tzCloud.core.facade.legalEngine.resp.LawFirmInfoVO">
+    select
+      t1.law_firm as lawFirm,
+      t1.law_firm_short as lawFirmShort,
+      t2.found_time as foundTime,
+      t1.law_firm_province as lawFirmProvince,
+      count(distinct(t1.lawyer_name)) as lawyerCount,
+      count(distinct(t3.docid)) as caseCount,
+      group_concat(distinct(t4.brief)) as briefConcat,
+      t2.contact_address as contactAddress,
+      t2.contact_number as contactNumber,
+      t2.license_number as licenseNumber,
+      t2.firm_id as firmId
+    from
+    t_parse_lawyer_info t1 left join t_lawyer_firm_info t2 on (locate(t1.law_firm_short,t2.firm_name) > 0 and locate(t1.law_firm_province,t2.firm_name) > 0)
+    left join t_lawyer_data t3 on t1.id = t3.lawyer_id
+    left join cpwsw_item t4 on t3.docid = t4.doc_id
+    where
+         t1.law_firm_short = #{lawFirmShort}
+    group by t1.law_firm, t1.law_firm_province,t2.contact_address,t2.contact_number,t2.found_time,t2.license_number,t2.firm_id,t1.law_firm_short;
+  </select>
+
+  <select id="searchGroupByLawFirm" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select law_firm,law_firm_short,law_firm_city,law_firm_province
+    from t_parse_lawyer_info
+    where law_firm_short != ''
+    group by law_firm,law_firm_short,law_firm_city,law_firm_province
+  </select>
+
+  <select id="searchByIdLawFirm" resultType="com.tzCloud.core.facade.legalEngine.resp.LawFirmInfoVO">
+    select
+      t1.law_firm,
+      t1.law_firm_short,
+      t1.law_firm_province,
+      count(distinct(t1.lawyer_name))  as lawyerCount,
+      count(distinct(t3.docid)) as caseCount,
+      group_concat(distinct(t4.brief)) as briefConcat
+    from
+      t_parse_lawyer_info t1
+    left join t_lawyer_data t3 on t1.id = t3.lawyer_id
+    left join cpwsw_item t4 on t3.docid = t4.doc_id
+    where
+          t1.law_firm = #{lawFirm}
+    group by t1.law_firm, t1.law_firm_province,t1.law_firm_short;
+  </select>
+
+  <select id="getBriefDistributed" resultType="com.tzCloud.core.model.legalEngine.FieldCount">
+    select
+ 	  t3.brief as field1,count(t3.brief) as `count1`
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    left join cpwsw_item t3 on t2.docid = t3.doc_id
+    where t1.law_firm = #{lawFirm} and t3.brief is not null
+    group by t3.brief
+  </select>
+
+  <select id="getJudgeResultCount" resultType="com.tzCloud.core.model.legalEngine.LawFirmAnalysis">
+    select
+      sum(case when t2.win_flag = 'win' then 1 else 0 end) as winCount,
+      sum(case when t2.win_flag = 'lose' then 1 else 0 end) as loseCount,
+      sum(case when t2.win_flag = 'draw' then 1 else 0 end) as drawCount
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    where t1.law_firm = #{lawFirm}
+  </select>
+
+  <select id="getCourtLevel" resultType="com.tzCloud.core.model.legalEngine.FieldCount">
+    select
+	  t3.fymc as field1 ,t4.`field` as field2
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    left join cpwsw_item t3 on t2.docid = t3.doc_id
+    left join t_tree_content t4 on t3.fymc = t4.key_word
+    where t1.law_firm = #{lawFirm} and t3.fymc is not null
+    group by t3.doc_id,t3.fymc,t4.`field`
+  </select>
+
+  <select id="getJudgeStatistics" resultType="com.tzCloud.core.model.legalEngine.FieldCount">
+    select
+        t3.presiding_judge as field1
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    left join t_judge_person t3 on t2.docid=t3.doc_id
+    where t1.law_firm = #{lawFirm} and t3.presiding_judge != ''
+    group by t3.presiding_judge
+  </select>
+
+  <select id="getDsrxxStatistics" resultType="com.tzCloud.core.model.legalEngine.FieldCount">
+    select
+ 	  t2.docid as field1 , t2.identity as field2
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    where t1.law_firm = #{lawFirm} and t2.identity is not null
+    group by t2.docid, t2.identity
+  </select>
+
+  <select id="getLawyerListByLawFirm" resultType="com.tzCloud.core.facade.legalEngine.resp.LawyerInfoVO">
+    select
+      t2.lawyer as lawyerName,
+      t2.law_firm as lawFirm,
+      t2.lawyer_id as id,
+      if(t1.law_firm_city is not null , t1.law_firm_city, t1.law_firm_province) as lawFirmCity,
+      t1.years as years,
+      count(t2.id) as caseCount,
+      sum(case when t2.win_flag = 'win' then 1
+      when t2.win_flag = 'draw' then 0.5
+      else 0 end )*100.0 /count(t2.lawyer) as winRate
+    from t_parse_lawyer_info t1 right join t_lawyer_data t2 on  t1.id = t2.lawyer_id
+    where t1.law_firm = #{lawFirm}
+    group by t2.lawyer, t2.law_firm,t2.lawyer_id,t1.law_firm_city,t1.law_firm_province,t1.years
+  </select>
+
+  <select id="findByIdGreaterThan" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select `id`,`lawyer_name`,`law_firm`,`law_firm_short`,`law_firm_city`,`law_firm_province`,`years`
+    from t_parse_lawyer_info where id > #{id}
+  </select>
+
+  <select id="findByIdGreaterThan2" resultType="com.tzCloud.core.vo.LawyerVO">
+    select `id`,`lawyer_name`,`law_firm`,`law_firm_short`,`law_firm_city`,`law_firm_province`,`years`
+    from t_parse_lawyer_info where id > #{id}
+  </select>
+
+  <select id="getByLawyerFirmISNUll" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info where years is null
+  </select>
+
+  <select id="getByLawyerFirmError1" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info  where locate('指派的', law_firm) > 0
+    union
+    select * from t_parse_lawyer_info  where law_firm like '系%'
+    order by lawyer_name desc
+  </select>
+
+  <update id="deleteById">
+    delete from t_parse_lawyer_info where id = #{id}
+  </update>
+
+  <select id="getByLawyerFirmError2" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info where lawyer_name like '同%'
+  </select>
+
+  <select id="getLawyerByltUpdateTime" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info where <![CDATA[update_time < #{updateTime}]]>
+  </select>
+
+  <select id="getLawyerByNoLawFirmId" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info where lawyer_firm_id is null
+  </select>
+
+  <select id="getCaseCountByLawFirm" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select t1.`id` , t1.`law_firm`,t1.`law_firm_short`, t1.`law_firm_city`, t1.`law_firm_province`, count(distinct(t2.docid)) as caseCount
+    from t_parse_lawyer_info  t1
+    left join t_lawyer_data t2 on t1.id = t2.lawyer_id
+    where t1.law_firm = #{law_firm}
+    group by t1.`id` , t1.`law_firm`, t1.`law_firm_city`, t1.`law_firm_province`
+  </select>
+
+  <select id="getLawFirmGroupBylawFirm" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select
+      group_concat( t1.`id`) as ids,
+      t1.`law_firm`,
+      t1.`law_firm_short`,
+      t1.`law_firm_city`,
+      t1.`law_firm_province`
+    from t_parse_lawyer_info  t1
+    <if test="toESTime != null">
+      where <![CDATA[create_time > #{toESTime}]]>
+    </if>
+    group by t1.`law_firm`,t1.`law_firm_short`, t1.`law_firm_city`, t1.`law_firm_province`
+  </select>
+
+    <select id="getDocIdsByGroupId" resultType="java.util.Map">
+     select
+       t1.`id` as id,
+       group_concat( t2.`docid`) as docIds
+     from t_parse_lawyer_info  t1
+     left join t_lawyer_data t2 on t1.id = t2.lawyer_id
+     group by t1.`id`
+    </select>
+
+  <select id="getLawFirmShortGroupBy" resultType="java.lang.String">
+    select distinct(law_firm_short) from t_parse_lawyer_info
+  </select>
+
+  <select id="searchByLawyerIds" parameterType="java.util.List" resultType="com.tzCloud.core.model.lawyerSearch.TParseLawyerInfo">
+    select * from t_parse_lawyer_info from
+    (
+    <foreach collection="list" separator="," index="index" item="item">
+      #{index}
+    </foreach>
+    )
+  </select>
+
+</mapper>

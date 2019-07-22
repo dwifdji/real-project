@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年05月13日 09时31分46秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.legalEngine.mapper.TLawtimeCourtMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.legalEngine.TLawtimeCourt">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="item_url" jdbcType="VARCHAR" property="itemUrl" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="address" jdbcType="VARCHAR" property="address" />
+	<result column="phone" jdbcType="VARCHAR" property="phone" />
+	<result column="other_phone" jdbcType="VARCHAR" property="otherPhone" />
+	<result column="work_time" jdbcType="VARCHAR" property="workTime" />
+	<result column="description" jdbcType="LONGVARCHAR" property="description" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="province" jdbcType="VARCHAR" property="province" />
+	<result column="city" jdbcType="VARCHAR" property="city" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, item_url, type, name, address, phone, 
+	other_phone, work_time, description, img_url, province, city, 
+	delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_lawtime_court
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.legalEngine.TLawtimeCourtCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_lawtime_court
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="itemUrl != null">
+        AND item_url = #{itemUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="otherPhone != null">
+        AND other_phone = #{otherPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="workTime != null">
+        AND work_time = #{workTime,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null">
+        AND description = #{description,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="province != null">
+        AND province = #{province,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null">
+        AND city = #{city,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.legalEngine.TLawtimeCourt">
+    insert into t_lawtime_court
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="itemUrl != null">
+        item_url, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="address != null">
+        address, 
+      </if>
+      <if test="phone != null">
+        phone, 
+      </if>
+      <if test="otherPhone != null">
+        other_phone, 
+      </if>
+      <if test="workTime != null">
+        work_time, 
+      </if>
+      <if test="description != null">
+        description, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="province != null">
+        province, 
+      </if>
+      <if test="city != null">
+        city, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemUrl != null">
+        #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="otherPhone != null">
+        #{otherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.legalEngine.TLawtimeCourt">
+    update t_lawtime_court
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemUrl != null">
+        item_url = #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="otherPhone != null">
+        other_phone = #{otherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

@@ -1,0 +1,28 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: fzyq-core
+dubbo:
+    application:
+        id: fzyq-core
+        name: fzyq-core
+    scan:
+        basePackages: com.tzCloud.core.provider
+    protocol:
+        port: -1
+
+server:
+  port: 8085
+
+xxl:
+  job:
+    executor:
+      appname: tzCloud-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:
+
+

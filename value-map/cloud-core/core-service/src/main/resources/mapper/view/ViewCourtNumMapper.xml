@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月22日 12时40分08秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.view.mapper.ViewCourtNumMapper">
+
+    <resultMap id="BaseResultMap" type="com.tzCloud.core.model.view.ViewCourtNum">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="court_name" jdbcType="VARCHAR" property="courtName"/>
+        <result column="court_num" jdbcType="INTEGER" property="courtNum"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city_name" jdbcType="VARCHAR" property="cityName"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, court_name, court_num, province ,city_name
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from view_court_num
+    </select>
+
+    <select id="selectByCondition" parameterType="com.tzCloud.core.condition.view.ViewCourtNumCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from view_court_num
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="courtName != null">
+                AND court_name = #{courtName,jdbcType=VARCHAR}
+            </if>
+            <if test="courtNum != null">
+                AND court_num = #{courtNum,jdbcType=INTEGER}
+            </if>
+            <if test="province != null">
+                AND province = #{province,jdbcType=VARCHAR}
+            </if>
+            <if test="cityName != null">
+                AND city_name = #{cityName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.tzCloud.core.model.view.ViewCourtNum">
+        insert into view_court_num
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="courtName != null">
+                court_name,
+            </if>
+            <if test="courtNum != null">
+                court_num,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="cityName != null">
+                city_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="courtName != null">
+                #{courtName,jdbcType=VARCHAR},
+            </if>
+            <if test="courtNum != null">
+                #{courtNum,jdbcType=INTEGER},
+            </if>
+            <if test="province != null">
+                #{province,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.tzCloud.core.model.view.ViewCourtNum">
+        update view_court_num
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="courtName != null">
+                court_name = #{courtName,jdbcType=VARCHAR},
+            </if>
+            <if test="courtNum != null">
+                court_num = #{courtNum,jdbcType=INTEGER},
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="cityName != null">
+                city_name = #{cityName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="findByCourtName" resultType="com.tzCloud.core.facade.caseMatching.resp.ViewCourtNumResp">
+        SELECT * from view_court_num
+        <where>
+            <if test="courtName != null and courtName.length() > 0">
+                AND court_name like CONCAT('%',#{courtName},'%')
+            </if>
+            <if test="province != null and province.length() > 0">
+                AND province like CONCAT('%',#{province},'%')
+            </if>
+            <if test="cityName != null and cityName.length() > 0">
+                AND  city_name like CONCAT('%',#{cityName},'%')
+            </if>
+        </where>
+        order by court_num desc
+    </select>
+
+
+</mapper>

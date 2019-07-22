@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月08日 15时17分56秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.CaseHtmlDsrxxMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.CaseHtmlDsrxx">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="identity" jdbcType="VARCHAR" property="identity" />
+	<result column="detail" jdbcType="VARCHAR" property="detail" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, name, identity, detail, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from case_html_dsrxx
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.CaseHtmlDsrxxCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from case_html_dsrxx
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="identity != null">
+        AND identity = #{identity,jdbcType=VARCHAR}
+      </if>
+      <if test="detail != null">
+        AND detail = #{detail,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    ORDER BY id DESC
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlDsrxx">
+    insert into case_html_dsrxx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="identity != null">
+        identity, 
+      </if>
+      <if test="detail != null">
+        detail, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.CaseHtmlDsrxx">
+    update case_html_dsrxx
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="batchInsert" parameterType="java.util.List">
+    INSERT INTO case_html_dsrxx (doc_id, `name`, `identity`, detail, create_time, update_time)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.docId},#{item.name},#{item.identity},#{item.detail},#{item.createTime},#{item.updateTime})
+    </foreach>
+  </select>
+
+  <select id="findDocId" resultType="java.lang.String">
+    SELECT distinct(doc_id) from case_html_dsrxx
+  </select>
+
+  <select id="findDocId_COUNT" resultType="Long">
+    SELECT count(distinct(doc_id)) from case_html_dsrxx
+  </select>
+
+  <select id="findUnusualList" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlDsrxx">
+    select id, doc_id from case_html_dsrxx where name like CONCAT('%','原审','%') and  <![CDATA[create_time < '2019-07-01 00:00:00']]>
+  </select>
+
+  <delete id="deleteById">
+    delete from case_html_dsrxx where id = #{id}
+  </delete>
+
+  <select id="findMoreThanId" resultType="com.tzCloud.core.model.caseMatching.CaseHtmlDsrxx">
+    select * from case_html_dsrxx where id > #{id}
+  </select>
+</mapper>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月19日 10时08分47秒 by Generator -->
+<mapper namespace="com.tzCloud.gateway.dao.pay.mapper.TGatewayPayOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.gateway.model.pay.TGatewayPayOrder">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+	<result column="original_order_num" jdbcType="VARCHAR" property="originalOrderNum" />
+	<result column="trade_order_id" jdbcType="VARCHAR" property="tradeOrderId" />
+	<result column="party_id" jdbcType="BIGINT" property="partyId" />
+	<result column="bus_id" jdbcType="VARCHAR" property="busId" />
+	<result column="pay_type" jdbcType="VARCHAR" property="payType" />
+	<result column="pay_bus_code" jdbcType="VARCHAR" property="payBusCode" />
+	<result column="pay_mem_code" jdbcType="VARCHAR" property="payMemCode" />
+	<result column="pay_mem_name" jdbcType="VARCHAR" property="payMemName" />
+	<result column="rec_mem_code" jdbcType="VARCHAR" property="recMemCode" />
+	<result column="jump_pay" jdbcType="VARCHAR" property="jumpPay" />
+	<result column="lock_tag" jdbcType="VARCHAR" property="lockTag" />
+	<result column="rec_mem_name" jdbcType="VARCHAR" property="recMemName" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_num, original_order_num, trade_order_id, party_id, bus_id, 
+	pay_type, pay_bus_code, pay_mem_code, pay_mem_name, rec_mem_code, jump_pay, 
+	lock_tag, rec_mem_name, amount, pay_status, msg, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_gateway_pay_order
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.gateway.condition.pay.TGatewayPayOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_gateway_pay_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="originalOrderNum != null">
+        AND original_order_num = #{originalOrderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeOrderId != null">
+        AND trade_order_id = #{tradeOrderId,jdbcType=VARCHAR}
+      </if>
+      <if test="partyId != null">
+        AND party_id = #{partyId,jdbcType=BIGINT}
+      </if>
+      <if test="busId != null">
+        AND bus_id = #{busId,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="payBusCode != null">
+        AND pay_bus_code = #{payBusCode,jdbcType=VARCHAR}
+      </if>
+      <if test="payMemCode != null">
+        AND pay_mem_code = #{payMemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="payMemName != null">
+        AND pay_mem_name = #{payMemName,jdbcType=VARCHAR}
+      </if>
+      <if test="recMemCode != null">
+        AND rec_mem_code = #{recMemCode,jdbcType=VARCHAR}
+      </if>
+      <if test="jumpPay != null">
+        AND jump_pay = #{jumpPay,jdbcType=VARCHAR}
+      </if>
+      <if test="lockTag != null">
+        AND lock_tag = #{lockTag,jdbcType=VARCHAR}
+      </if>
+      <if test="recMemName != null">
+        AND rec_mem_name = #{recMemName,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayOrder">
+    insert into t_gateway_pay_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="originalOrderNum != null">
+        original_order_num, 
+      </if>
+      <if test="tradeOrderId != null">
+        trade_order_id, 
+      </if>
+      <if test="partyId != null">
+        party_id, 
+      </if>
+      <if test="busId != null">
+        bus_id, 
+      </if>
+      <if test="payType != null">
+        pay_type, 
+      </if>
+      <if test="payBusCode != null">
+        pay_bus_code, 
+      </if>
+      <if test="payMemCode != null">
+        pay_mem_code, 
+      </if>
+      <if test="payMemName != null">
+        pay_mem_name, 
+      </if>
+      <if test="recMemCode != null">
+        rec_mem_code, 
+      </if>
+      <if test="jumpPay != null">
+        jump_pay, 
+      </if>
+      <if test="lockTag != null">
+        lock_tag, 
+      </if>
+      <if test="recMemName != null">
+        rec_mem_name, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="payStatus != null">
+        pay_status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="originalOrderNum != null">
+        #{originalOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null">
+        #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        #{partyId,jdbcType=BIGINT},
+      </if>
+      <if test="busId != null">
+        #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payBusCode != null">
+        #{payBusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemCode != null">
+        #{payMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemName != null">
+        #{payMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemCode != null">
+        #{recMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jumpPay != null">
+        #{jumpPay,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTag != null">
+        #{lockTag,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemName != null">
+        #{recMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayOrder">
+    update t_gateway_pay_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="originalOrderNum != null">
+        original_order_num = #{originalOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null">
+        trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="partyId != null">
+        party_id = #{partyId,jdbcType=BIGINT},
+      </if>
+      <if test="busId != null">
+        bus_id = #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payBusCode != null">
+        pay_bus_code = #{payBusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemCode != null">
+        pay_mem_code = #{payMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMemName != null">
+        pay_mem_name = #{payMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemCode != null">
+        rec_mem_code = #{recMemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jumpPay != null">
+        jump_pay = #{jumpPay,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTag != null">
+        lock_tag = #{lockTag,jdbcType=VARCHAR},
+      </if>
+      <if test="recMemName != null">
+        rec_mem_name = #{recMemName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

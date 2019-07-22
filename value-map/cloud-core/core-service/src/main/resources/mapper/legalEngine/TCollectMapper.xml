@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月24日 15时06分59秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.legalEngine.mapper.TCollectMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.legalEngine.TCollect">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="collect_type" jdbcType="VARCHAR" property="collectType" />
+	<result column="collect_key" jdbcType="VARCHAR" property="collectKey" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, collect_type, collect_key, create_time, update_time, 
+	del_flag
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_collect
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.legalEngine.TCollectCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_collect
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="collectType != null">
+        AND collect_type = #{collectType,jdbcType=VARCHAR}
+      </if>
+      <if test="collectKey != null">
+        AND collect_key = #{collectKey,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="delFlag != null">
+        AND del_flag = #{delFlag,jdbcType=VARCHAR}
+      </if>
+      AND del_flag = '0'
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.legalEngine.TCollect" useGeneratedKeys="true" keyProperty="id">
+    insert into t_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="collectType != null">
+        collect_type, 
+      </if>
+      <if test="collectKey != null">
+        collect_key, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="delFlag != null">
+        del_flag, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="collectType != null">
+        #{collectType,jdbcType=VARCHAR},
+      </if>
+      <if test="collectKey != null">
+        #{collectKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.legalEngine.TCollect">
+    update t_collect
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="collectType != null">
+        collect_type = #{collectType,jdbcType=VARCHAR},
+      </if>
+      <if test="collectKey != null">
+        collect_key = #{collectKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

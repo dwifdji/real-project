@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: tzCloud-gateway
+dubbo:
+  application:
+    id: tzCloud-gateway
+    name: tzCloud-gateway
+  scan:
+    basePackages: com.tzCloud.gateway
+  protocol:
+    port: -1
+server:
+  port: 8089
+  context-path: /tzCloud-gateway
+
+

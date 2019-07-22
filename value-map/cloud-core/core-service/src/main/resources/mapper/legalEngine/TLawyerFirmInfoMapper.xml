@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 16时43分49秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.legalEngine.mapper.TLawyerFirmInfoMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.legalEngine.TLawyerFirmInfo">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="firm_id" jdbcType="VARCHAR" property="firmId" />
+	<result column="found_time" jdbcType="VARCHAR" property="foundTime" />
+	<result column="firm_name" jdbcType="VARCHAR" property="firmName" />
+	<result column="jd" jdbcType="VARCHAR" property="jd" />
+	<result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
+	<result column="contact_number" jdbcType="VARCHAR" property="contactNumber" />
+	<result column="license_number" jdbcType="VARCHAR" property="licenseNumber" />
+	<result column="area" jdbcType="VARCHAR" property="area" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+	<result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+	<result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+	<result column="zt" jdbcType="VARCHAR" property="zt" />
+	<result column="wd" jdbcType="VARCHAR" property="wd" />
+	<result column="nums" jdbcType="INTEGER" property="nums" />
+	<result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+	<result column="tyshxydm" jdbcType="VARCHAR" property="tyshxydm" />
+	<result column="yezc" jdbcType="VARCHAR" property="yezc" />
+	<result column="ywzclist" jdbcType="VARCHAR" property="ywzclist" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, firm_id, found_time, firm_name, jd, contact_address, 
+	contact_number, license_number, area, img_url, province_code, city_code, 
+	region_code, zt, wd, nums, introduction, tyshxydm, 
+	yezc, ywzclist, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_lawyer_firm_info
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.legalEngine.TLawyerFirmInfoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_lawyer_firm_info
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="firmId != null">
+        AND firm_id = #{firmId,jdbcType=VARCHAR}
+      </if>
+      <if test="foundTime != null">
+        AND found_time = #{foundTime,jdbcType=VARCHAR}
+      </if>
+      <if test="firmName != null">
+        AND firm_name = #{firmName,jdbcType=VARCHAR}
+      </if>
+      <if test="jd != null">
+        AND jd = #{jd,jdbcType=VARCHAR}
+      </if>
+      <if test="contactAddress != null">
+        AND contact_address = #{contactAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="contactNumber != null">
+        AND contact_number = #{contactNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseNumber != null">
+        AND license_number = #{licenseNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="area != null">
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceCode != null">
+        AND province_code = #{provinceCode,jdbcType=VARCHAR}
+      </if>
+      <if test="cityCode != null">
+        AND city_code = #{cityCode,jdbcType=VARCHAR}
+      </if>
+      <if test="regionCode != null">
+        AND region_code = #{regionCode,jdbcType=VARCHAR}
+      </if>
+      <if test="zt != null">
+        AND zt = #{zt,jdbcType=VARCHAR}
+      </if>
+      <if test="wd != null">
+        AND wd = #{wd,jdbcType=VARCHAR}
+      </if>
+      <if test="nums != null">
+        AND nums = #{nums,jdbcType=INTEGER}
+      </if>
+      <if test="introduction != null">
+        AND introduction = #{introduction,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="tyshxydm != null">
+        AND tyshxydm = #{tyshxydm,jdbcType=VARCHAR}
+      </if>
+      <if test="yezc != null">
+        AND yezc = #{yezc,jdbcType=VARCHAR}
+      </if>
+      <if test="ywzclist != null">
+        AND ywzclist = #{ywzclist,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.legalEngine.TLawyerFirmInfo">
+    insert into t_lawyer_firm_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="firmId != null">
+        firm_id, 
+      </if>
+      <if test="foundTime != null">
+        found_time, 
+      </if>
+      <if test="firmName != null">
+        firm_name, 
+      </if>
+      <if test="jd != null">
+        jd, 
+      </if>
+      <if test="contactAddress != null">
+        contact_address, 
+      </if>
+      <if test="contactNumber != null">
+        contact_number, 
+      </if>
+      <if test="licenseNumber != null">
+        license_number, 
+      </if>
+      <if test="area != null">
+        area, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="provinceCode != null">
+        province_code, 
+      </if>
+      <if test="cityCode != null">
+        city_code, 
+      </if>
+      <if test="regionCode != null">
+        region_code, 
+      </if>
+      <if test="zt != null">
+        zt, 
+      </if>
+      <if test="wd != null">
+        wd, 
+      </if>
+      <if test="nums != null">
+        nums, 
+      </if>
+      <if test="introduction != null">
+        introduction, 
+      </if>
+      <if test="tyshxydm != null">
+        tyshxydm, 
+      </if>
+      <if test="yezc != null">
+        yezc, 
+      </if>
+      <if test="ywzclist != null">
+        ywzclist, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="firmId != null">
+        #{firmId,jdbcType=VARCHAR},
+      </if>
+      <if test="foundTime != null">
+        #{foundTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="jd != null">
+        #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null">
+        #{wd,jdbcType=VARCHAR},
+      </if>
+      <if test="nums != null">
+        #{nums,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tyshxydm != null">
+        #{tyshxydm,jdbcType=VARCHAR},
+      </if>
+      <if test="yezc != null">
+        #{yezc,jdbcType=VARCHAR},
+      </if>
+      <if test="ywzclist != null">
+        #{ywzclist,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.legalEngine.TLawyerFirmInfo">
+    update t_lawyer_firm_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="firmId != null">
+        firm_id = #{firmId,jdbcType=VARCHAR},
+      </if>
+      <if test="foundTime != null">
+        found_time = #{foundTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        firm_name = #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="jd != null">
+        jd = #{jd,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null">
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        contact_number = #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        license_number = #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null">
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null">
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="wd != null">
+        wd = #{wd,jdbcType=VARCHAR},
+      </if>
+      <if test="nums != null">
+        nums = #{nums,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tyshxydm != null">
+        tyshxydm = #{tyshxydm,jdbcType=VARCHAR},
+      </if>
+      <if test="yezc != null">
+        yezc = #{yezc,jdbcType=VARCHAR},
+      </if>
+      <if test="ywzclist != null">
+        ywzclist = #{ywzclist,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="selectByFirmNameLike" resultMap="BaseResultMap">
+    select * from t_lawyer_firm_info where firm_name like concat('%',#{name},'%')
+  </select>
+
+</mapper>

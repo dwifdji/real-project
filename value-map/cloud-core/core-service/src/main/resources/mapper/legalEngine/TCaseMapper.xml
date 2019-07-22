@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月19日 15时41分11秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.legalEngine.mapper.TCaseMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.legalEngine.TCase">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="judgement_type" jdbcType="VARCHAR" property="judgementType" />
+	<result column="judgement_date" jdbcType="TIMESTAMP" property="judgementDate" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="court_opinion" jdbcType="LONGVARCHAR" property="courtOpinion" />
+	<result column="trial_round" jdbcType="VARCHAR" property="trialRound" />
+	<result column="case_number" jdbcType="VARCHAR" property="caseNumber" />
+	<result column="court_name" jdbcType="VARCHAR" property="courtName" />
+	<result column="brief_id" jdbcType="INTEGER" property="briefId" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, type, judgement_type, judgement_date, title, 
+	court_opinion, trial_round, case_number, court_name, brief_id, delete_flag, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_case
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.legalEngine.TCaseCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_case
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="judgementType != null">
+        AND judgement_type = #{judgementType,jdbcType=VARCHAR}
+      </if>
+      <if test="judgementDate != null">
+        AND judgement_date = #{judgementDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="courtOpinion != null">
+        AND court_opinion = #{courtOpinion,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="trialRound != null">
+        AND trial_round = #{trialRound,jdbcType=VARCHAR}
+      </if>
+      <if test="caseNumber != null">
+        AND case_number = #{caseNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="courtName != null">
+        AND court_name = #{courtName,jdbcType=VARCHAR}
+      </if>
+      <if test="briefId != null">
+        AND brief_id = #{briefId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.legalEngine.TCase">
+    insert into t_case
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="judgementType != null">
+        judgement_type, 
+      </if>
+      <if test="judgementDate != null">
+        judgement_date, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="courtOpinion != null">
+        court_opinion, 
+      </if>
+      <if test="trialRound != null">
+        trial_round, 
+      </if>
+      <if test="caseNumber != null">
+        case_number, 
+      </if>
+      <if test="courtName != null">
+        court_name, 
+      </if>
+      <if test="briefId != null">
+        brief_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="judgementType != null">
+        #{judgementType,jdbcType=VARCHAR},
+      </if>
+      <if test="judgementDate != null">
+        #{judgementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="courtOpinion != null">
+        #{courtOpinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trialRound != null">
+        #{trialRound,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNumber != null">
+        #{caseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="briefId != null">
+        #{briefId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.legalEngine.TCase">
+    update t_case
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="judgementType != null">
+        judgement_type = #{judgementType,jdbcType=VARCHAR},
+      </if>
+      <if test="judgementDate != null">
+        judgement_date = #{judgementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="courtOpinion != null">
+        court_opinion = #{courtOpinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="trialRound != null">
+        trial_round = #{trialRound,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNumber != null">
+        case_number = #{caseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        court_name = #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="briefId != null">
+        brief_id = #{briefId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getMaxId" resultType="java.lang.Integer">
+      select max(id) from t_case
+  </select>
+
+  <insert id="migrationFromCpwswItem" parameterType="java.util.Map">
+    insert into t_case(id, doc_id, `type`, judgement_date, title, court_opinion, trial_round, case_number, court_name)
+    select i.id,i.doc_id,i.ajlx,i.cprq,i.ajmc,i.cpyzdyw,i.spcx,i.ah,i.fymc
+    from cpwsw_item i
+    left join t_case c on c.id=i.id
+    <where>
+      c.id is null and i.parse_status=1
+      <if test="maxId != null"> and i.id > #{maxId}</if>
+    </where>
+    limit #{limit}
+  </insert>
+
+  <select id="findNeedToRepair" parameterType="java.util.Map" resultType="com.tzCloud.core.model.legalEngine.TCase">
+      select c.*
+      from t_case c
+      where c.judgement_type is null
+  </select>
+
+  <select id="findBriefIdIsNull" parameterType="java.util.Map" resultType="com.tzCloud.core.model.legalEngine.TCase">
+       select c.id,c.title,i.brief
+      from t_case c
+      inner join cpwsw_item i on i.id=c.id
+      where c.brief_id is null
+  </select>
+
+  <update id="batchUpdateJudgementTypeBriefId" parameterType="java.util.List">
+    update t_case
+    set
+    update_time = now()
+    ,`judgement_type`=
+    <foreach collection="list" item="item" separator=" " open="case id" close="end">
+      when #{item.id} then #{item.judgementType}
+    </foreach>
+    ,`brief_id`=
+    <foreach collection="list" item="item" separator=" " open="case id" close="end">
+      when #{item.id} then #{item.briefId}
+    </foreach>
+    where id in
+    <foreach collection="list" item="item" separator="," open="(" close=")">
+      #{item.id}
+    </foreach>
+  </update>
+  <select id="findByIdGreaterThan" parameterType="java.lang.Integer" resultType="com.tzCloud.core.model.legalEngine.TCase">
+    select c.*
+    from t_case c
+    where c.id > #{id} and c.brief_id is not null
+  </select>
+
+  <select id="findBriefByCourtName" resultType="java.util.Map">
+      SELECT
+	      temp.*,
+	      tr.key_word
+      FROM
+	( SELECT brief_id, count( brief_id ) AS briefNum FROM t_case WHERE court_name = #{courtName} GROUP BY brief_id ORDER BY briefNum DESC ) AS temp
+	INNER JOIN t_tree_content tr ON tr.id = temp.brief_id limit 0.5;
+  </select>
+
+  <select id="selectJudgeDateByCourtName" resultType="java.util.Map">
+        SELECT
+            DATE_FORMAT( judgement_date, '%Y' ) AS jugdeDate,
+            count( judgement_date ) AS count
+        FROM
+            t_case
+        WHERE
+            court_name = #{courtName}
+        GROUP BY
+            DATE_FORMAT( judgement_date, '%Y' )
+        ORDER BY
+            jugdeDate DESC;
+    </select>
+  <select id="selectTypeAndJudgementType" resultType="com.tzCloud.core.model.legalEngine.TCase">
+      	select type , judgement_type from t_case where court_name =#{courtName};
+    </select>
+    <select id="getTotalCaseCount" resultType="java.lang.Integer">
+      select count(0) from t_case where delete_flag=0
+    </select>
+</mapper>

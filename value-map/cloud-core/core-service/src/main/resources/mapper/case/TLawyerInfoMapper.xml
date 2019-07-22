@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月12日 11时53分17秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.caseMatching.mapper.TLawyerInfoMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.caseMatching.TLawyerInfo">
+	<result column="id" jdbcType="BIGINT" property="id" />
+	<result column="lsswsbs" jdbcType="VARCHAR" property="lsswsbs" />
+	<result column="lsbs" jdbcType="VARCHAR" property="lsbs" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="xm" jdbcType="VARCHAR" property="xm" />
+	<result column="years" jdbcType="INTEGER" property="years" />
+	<result column="lsswsmc" jdbcType="VARCHAR" property="lsswsmc" />
+	<result column="ywzc" jdbcType="VARCHAR" property="ywzc" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, lsswsbs, lsbs, img_url, xm, years, 
+	lsswsmc, ywzc, create_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_lawyer_info
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.caseMatching.TLawyerInfoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_lawyer_info
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="lsswsbs != null">
+        AND lsswsbs = #{lsswsbs,jdbcType=VARCHAR}
+      </if>
+      <if test="lsbs != null">
+        AND lsbs = #{lsbs,jdbcType=VARCHAR}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="xm != null">
+        AND xm = #{xm,jdbcType=VARCHAR}
+      </if>
+      <if test="years != null">
+        AND years = #{years,jdbcType=INTEGER}
+      </if>
+      <if test="lsswsmc != null">
+        AND lsswsmc = #{lsswsmc,jdbcType=VARCHAR}
+      </if>
+      <if test="ywzc != null">
+        AND ywzc = #{ywzc,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.caseMatching.TLawyerInfo">
+    insert into t_lawyer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="lsswsbs != null">
+        lsswsbs, 
+      </if>
+      <if test="lsbs != null">
+        lsbs, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="xm != null">
+        xm, 
+      </if>
+      <if test="years != null">
+        years, 
+      </if>
+      <if test="lsswsmc != null">
+        lsswsmc, 
+      </if>
+      <if test="ywzc != null">
+        ywzc, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lsswsbs != null">
+        #{lsswsbs,jdbcType=VARCHAR},
+      </if>
+      <if test="lsbs != null">
+        #{lsbs,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        #{years,jdbcType=INTEGER},
+      </if>
+      <if test="lsswsmc != null">
+        #{lsswsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ywzc != null">
+        #{ywzc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.caseMatching.TLawyerInfo">
+    update t_lawyer_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lsswsbs != null">
+        lsswsbs = #{lsswsbs,jdbcType=VARCHAR},
+      </if>
+      <if test="lsbs != null">
+        lsbs = #{lsbs,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        years = #{years,jdbcType=INTEGER},
+      </if>
+      <if test="lsswsmc != null">
+        lsswsmc = #{lsswsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ywzc != null">
+        ywzc = #{ywzc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=BIGINT}
+	</where>
+  </update>
+
+  <select id="getLawyerByName" resultType="com.tzCloud.core.model.caseMatching.TLawyerInfo">
+    select
+      t1.id,t1.xm,t1.years,t1.lsswsmc,t1.ywzc,t2.id as lawFirmId
+    from t_lawyer_info t1 left join t_lawyer_firm_info t2 on t1.lsswsbs = t2.firm_id
+    where t1.xm = #{name} and t1.lsswsmc like CONCAT('%', #{firmShort}, '%')
+  </select>
+
+</mapper>

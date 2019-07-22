@@ -1,0 +1,25 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: valuation-core
+dubbo:
+    application:
+         id: valuation-core
+         name: valuation-core
+    scan:
+        basePackages: com.tzCloud.core.provider
+    protocol:
+        port: -1
+server:
+  port: 8100
+
+xxl:
+  job:
+    executor:
+      appname: valuation-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:

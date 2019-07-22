@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月20日 15时06分34秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.account.mapper.TAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.account.TAccount">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="register_source" jdbcType="VARCHAR" property="registerSource" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, mobile, email, password, nick_name, head_img_url,
+	name, gender, company, industry, address, title,
+	register_source, source, invite_code, delete_flag, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_account
+  </select>
+
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.account.TAccountCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_account
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        AND nick_name = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="headImgUrl != null">
+        AND head_img_url = #{headImgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="gender != null">
+        AND gender = #{gender,jdbcType=CHAR}
+      </if>
+      <if test="company != null">
+        AND company = #{company,jdbcType=VARCHAR}
+      </if>
+      <if test="industry != null">
+        AND industry = #{industry,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="registerSource != null">
+        AND register_source = #{registerSource,jdbcType=VARCHAR}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="inviteCode != null">
+        AND invite_code = #{inviteCode,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.tzCloud.core.model.account.TAccount" useGeneratedKeys="true" keyProperty="id">
+    insert into t_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="registerSource != null">
+        register_source,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.tzCloud.core.model.account.TAccount">
+    update t_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        register_source = #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+</mapper>

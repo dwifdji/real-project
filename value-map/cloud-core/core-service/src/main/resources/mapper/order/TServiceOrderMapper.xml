@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月19日 15时47分59秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.order.mapper.TServiceOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.order.TServiceOrder">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+	<result column="order_type" jdbcType="INTEGER" property="orderType" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="bus_id" jdbcType="VARCHAR" property="busId" />
+	<result column="pay_type" jdbcType="VARCHAR" property="payType" />
+	<result column="pay_bus_code" jdbcType="VARCHAR" property="payBusCode" />
+	<result column="pay_url" jdbcType="VARCHAR" property="payUrl" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, order_num, order_type, account_id, bus_id, pay_type, 
+	pay_bus_code, pay_url, amount, pay_status, msg, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_service_order
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.order.TServiceOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_service_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=VARCHAR}
+      </if>
+      <if test="orderType != null">
+        AND order_type = #{orderType,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="busId != null">
+        AND bus_id = #{busId,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="payBusCode != null">
+        AND pay_bus_code = #{payBusCode,jdbcType=VARCHAR}
+      </if>
+      <if test="payUrl != null">
+        AND pay_url = #{payUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.order.TServiceOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into t_service_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="orderType != null">
+        order_type, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="busId != null">
+        bus_id, 
+      </if>
+      <if test="payType != null">
+        pay_type, 
+      </if>
+      <if test="payBusCode != null">
+        pay_bus_code, 
+      </if>
+      <if test="payUrl != null">
+        pay_url, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="payStatus != null">
+        pay_status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="busId != null">
+        #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payBusCode != null">
+        #{payBusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payUrl != null">
+        #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.order.TServiceOrder">
+    update t_service_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="busId != null">
+        bus_id = #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payBusCode != null">
+        pay_bus_code = #{payBusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payUrl != null">
+        pay_url = #{payUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

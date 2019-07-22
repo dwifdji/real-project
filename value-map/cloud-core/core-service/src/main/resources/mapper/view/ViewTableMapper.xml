@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tzCloud.core.dao.view.mapper.ViewTableMapper">
+
+    <select id="getLawFirmList" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerFirmResp">
+        select distinct(lawyer_firm_name) as lawyerFirmName ,case_num as caseNum from view_brief_court_lawfirm
+        <where>
+            <if test="brief != null">
+                AND brief = #{brief,jdbcType=VARCHAR}
+            </if>
+            <if test="courtName != null and courtName != ''">
+                AND court_name = #{courtName,jdbcType=VARCHAR}
+            </if>
+            <if test="lawyerFirmName != null">
+                AND lawyer_firm_name = #{lawyerFirmName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="getLawyerRankingList"
+            resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerForRankingListResp">
+        select lawyer_name as lawyerName, this_case_num as thisCaseNum, this_case_win_rates as thisCaseWinRates
+        from view_brief_lawyer_ranking
+        <where>
+            <if test="brief != null">
+                AND brief = #{brief,jdbcType=VARCHAR}
+            </if>
+            and lawyer_name not like '%Ｘ%'
+        </where>
+    </select>
+
+    <select id="getLawyerList" resultType="com.tzCloud.core.facade.caseMatching.resp.LawyerForSearchingListResp">
+        select lawyer_name as lawyerName, lawyer_firm as lawyerFirm, brief as brief,
+        this_case_num as thisCaseNum , total_case_num as totalCaseNum, this_case_win_rates as thisCaseWinRates ,
+        experience_years as experienceYears, lawyer_image_url as lawyerImageUrl
+        from view_brief_lawfirm_lawyer
+        <where>
+            <if test="lawyerName != null">
+                AND lawyer_name = #{lawyerName,jdbcType=VARCHAR}
+            </if>
+            <if test="lawyerFirm != null">
+                AND lawyer_firm = #{lawyerFirm,jdbcType=VARCHAR}
+            </if>
+            <if test="brief != null">
+                AND brief = #{brief,jdbcType=VARCHAR}
+            </if>
+            and lawyer_name not like '%Ｘ%'  and this_case_win_rates is not null
+        </where>
+
+        order by thisCaseNum desc ,thisCaseWinRates desc
+    </select>
+
+    <select id="selectNeedProcessList" resultType="com.tzCloud.core.model.view.ViewBriefLawfirmLawyer">
+        select
+        lawyer_name, lawyer_firm, brief
+        from view_brief_lawfirm_lawyer
+        <where>
+            <if test="lawyerName != null">
+                AND lawyer_name like '%${lawyerName}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="getCourtList" resultType="com.tzCloud.core.facade.caseMatching.resp.CourtResp">
+        select court_name as courtName,case_num as caseNum from view_brief_court
+        where 1=1
+        <if test="brief != null">
+            and brief = #{brief}
+        </if>
+    </select>
+
+    <select id="getTotalCaseCount" resultType="java.lang.Integer">
+        select IFNULL(sum(IFNULL(case_num,0)),0) as caseNum from view_brief_court
+        <where>
+            <if test="briefStr != null">
+                AND brief = #{briefStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="getCollegialPanel" resultType="java.lang.String">
+      select CONCAT(presiding_judge ,judicial_officer , court_clerk) as collegialPanel  from t_judge_person
+        <where>
+            <if test="docId != null">
+                AND doc_id = #{docId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="getInitLawyerList" resultType="java.util.Map">
+        select lawyer_firm as lawyerFirm,lawyer_name as lawyerName from view_brief_lawfirm_lawyer
+        where lawyer_name not like '%Ｘ%'
+        and lawyer_firm not like '%Ｘ%'
+        and brief = #{brief}
+        order by this_case_num * 0.2 + this_case_num * this_case_win_rates/100 * 0.8 desc
+    </select>
+    <select id="getInitBrief" resultType="java.util.Map">
+         select count(brief) as count,brief as brief from view_brief_lawfirm_lawyer GROUP BY brief
+		ORDER BY count(brief) desc;
+    </select>
+
+</mapper>

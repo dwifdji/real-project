@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月28日 14时39分26秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.view.mapper.ViewCaseLawFirmMapper">
+
+    <resultMap id="BaseResultMap" type="com.tzCloud.core.model.view.ViewCaseLawFirm">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="doc_id" jdbcType="VARCHAR" property="docId"/>
+        <result column="law_firm" jdbcType="VARCHAR" property="lawFirm"/>
+        <result column="court_name" jdbcType="VARCHAR" property="courtName"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+	id, doc_id, law_firm, court_name
+  </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from view_case_law_firm
+    </select>
+
+    <select id="selectByCondition" parameterType="com.tzCloud.core.condition.view.ViewCaseLawFirmCondition"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from view_case_law_firm
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="docId != null">
+                AND doc_id = #{docId,jdbcType=VARCHAR}
+            </if>
+            <if test="lawFirm != null">
+                AND law_firm = #{lawFirm,jdbcType=VARCHAR}
+            </if>
+            <if test="courtName != null">
+                AND court_name = #{courtName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.tzCloud.core.model.view.ViewCaseLawFirm">
+        insert into view_case_law_firm
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="docId != null">
+                doc_id,
+            </if>
+            <if test="lawFirm != null">
+                law_firm,
+            </if>
+            <if test="courtName != null">
+                court_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="docId != null">
+                #{docId,jdbcType=VARCHAR},
+            </if>
+            <if test="lawFirm != null">
+                #{lawFirm,jdbcType=VARCHAR},
+            </if>
+            <if test="courtName != null">
+                #{courtName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.tzCloud.core.model.view.ViewCaseLawFirm">
+        update view_case_law_firm
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="docId != null">
+                doc_id = #{docId,jdbcType=VARCHAR},
+            </if>
+            <if test="lawFirm != null">
+                law_firm = #{lawFirm,jdbcType=VARCHAR},
+            </if>
+            <if test="courtName != null">
+                court_name = #{courtName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            AND id = #{id,jdbcType=INTEGER}
+        </where>
+    </update>
+
+    <select id="findByCourtName" resultType="java.util.Map">
+            SELECT
+                law_firm,
+                count( law_firm ) AS count
+            FROM
+                view_case_law_firm
+            WHERE
+                court_name = #{courtName}
+                AND LENGTH( law_firm ) > 1
+            GROUP BY
+                law_firm
+            ORDER BY
+                count DESC limit 0 ,10
+    </select>
+
+</mapper>

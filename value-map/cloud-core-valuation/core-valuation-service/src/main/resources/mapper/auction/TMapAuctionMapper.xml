@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月14日 16时07分02秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.auction.mapper.TMapAuctionMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.auction.TMapAuction">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="source" jdbcType="VARCHAR" property="source" />
+	<result column="relevance_id" jdbcType="INTEGER" property="relevanceId" />
+	<result column="item_url" jdbcType="VARCHAR" property="itemUrl" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="starting_price" jdbcType="VARCHAR" property="startingPrice" />
+	<result column="current_price" jdbcType="VARCHAR" property="currentPrice" />
+	<result column="consult_price" jdbcType="VARCHAR" property="consultPrice" />
+	<result column="amount" jdbcType="VARCHAR" property="amount" />
+	<result column="start_date" jdbcType="VARCHAR" property="startDate" />
+	<result column="end_date" jdbcType="VARCHAR" property="endDate" />
+	<result column="pro_name" jdbcType="VARCHAR" property="proName" />
+	<result column="city_name" jdbcType="VARCHAR" property="cityName" />
+	<result column="area_name" jdbcType="VARCHAR" property="areaName" />
+	<result column="type_name" jdbcType="VARCHAR" property="typeName" />
+	<result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+	<result column="raise_price" jdbcType="VARCHAR" property="raisePrice" />
+	<result column="deposit" jdbcType="VARCHAR" property="deposit" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="bid_num" jdbcType="VARCHAR" property="bidNum" />
+	<result column="market_price" jdbcType="VARCHAR" property="marketPrice" />
+	<result column="appler" jdbcType="VARCHAR" property="appler" />
+	<result column="reminder" jdbcType="VARCHAR" property="reminder" />
+	<result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+	<result column="lat" jdbcType="DECIMAL" property="lat" />
+	<result column="lng" jdbcType="DECIMAL" property="lng" />
+	<result column="area" jdbcType="VARCHAR" property="area" />
+	<result column="land_area" jdbcType="VARCHAR" property="landArea" />
+	<result column="looker" jdbcType="VARCHAR" property="looker" />
+	<result column="sell_type" jdbcType="VARCHAR" property="sellType" />
+	<result column="stage" jdbcType="VARCHAR" property="stage" />
+	<result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, source, relevance_id, item_url, title, starting_price, 
+	current_price, consult_price, amount, start_date, end_date, pro_name, 
+	city_name, area_name, type_name, type_code, raise_price, deposit, 
+	status, bid_num, market_price, appler, reminder, address_detail, 
+	lat, lng, area, land_area, looker, sell_type, 
+	stage, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_map_auction
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.auction.TMapAuctionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_map_auction
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="relevanceId != null">
+        AND relevance_id = #{relevanceId,jdbcType=INTEGER}
+      </if>
+      <if test="itemUrl != null">
+        AND item_url = #{itemUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="startingPrice != null">
+        AND starting_price = #{startingPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="currentPrice != null">
+        AND current_price = #{currentPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="consultPrice != null">
+        AND consult_price = #{consultPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="startDate != null">
+        AND start_date = #{startDate,jdbcType=VARCHAR}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=VARCHAR}
+      </if>
+      <if test="proName != null">
+        AND pro_name = #{proName,jdbcType=VARCHAR}
+      </if>
+      <if test="cityName != null">
+        AND city_name = #{cityName,jdbcType=VARCHAR}
+      </if>
+      <if test="areaName != null">
+        AND area_name = #{areaName,jdbcType=VARCHAR}
+      </if>
+      <if test="typeName != null">
+        AND type_name = #{typeName,jdbcType=VARCHAR}
+      </if>
+      <if test="typeCode != null">
+        AND type_code = #{typeCode,jdbcType=VARCHAR}
+      </if>
+      <if test="raisePrice != null">
+        AND raise_price = #{raisePrice,jdbcType=VARCHAR}
+      </if>
+      <if test="deposit != null">
+        AND deposit = #{deposit,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="bidNum != null">
+        AND bid_num = #{bidNum,jdbcType=VARCHAR}
+      </if>
+      <if test="marketPrice != null">
+        AND market_price = #{marketPrice,jdbcType=VARCHAR}
+      </if>
+      <if test="appler != null">
+        AND appler = #{appler,jdbcType=VARCHAR}
+      </if>
+      <if test="reminder != null">
+        AND reminder = #{reminder,jdbcType=VARCHAR}
+      </if>
+      <if test="addressDetail != null">
+        AND address_detail = #{addressDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="lat != null">
+        AND lat = #{lat,jdbcType=DECIMAL}
+      </if>
+      <if test="lng != null">
+        AND lng = #{lng,jdbcType=DECIMAL}
+      </if>
+      <if test="area != null">
+        AND area = #{area,jdbcType=VARCHAR}
+      </if>
+      <if test="landArea != null">
+        AND land_area = #{landArea,jdbcType=VARCHAR}
+      </if>
+      <if test="looker != null">
+        AND looker = #{looker,jdbcType=VARCHAR}
+      </if>
+      <if test="sellType != null">
+        AND sell_type = #{sellType,jdbcType=VARCHAR}
+      </if>
+      <if test="stage != null">
+        AND stage = #{stage,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.auction.TMapAuction">
+    insert into t_map_auction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="source != null">
+        source, 
+      </if>
+      <if test="relevanceId != null">
+        relevance_id, 
+      </if>
+      <if test="itemUrl != null">
+        item_url, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="startingPrice != null">
+        starting_price, 
+      </if>
+      <if test="currentPrice != null">
+        current_price, 
+      </if>
+      <if test="consultPrice != null">
+        consult_price, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="startDate != null">
+        start_date, 
+      </if>
+      <if test="endDate != null">
+        end_date, 
+      </if>
+      <if test="proName != null">
+        pro_name, 
+      </if>
+      <if test="cityName != null">
+        city_name, 
+      </if>
+      <if test="areaName != null">
+        area_name, 
+      </if>
+      <if test="typeName != null">
+        type_name, 
+      </if>
+      <if test="typeCode != null">
+        type_code, 
+      </if>
+      <if test="raisePrice != null">
+        raise_price, 
+      </if>
+      <if test="deposit != null">
+        deposit, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="bidNum != null">
+        bid_num, 
+      </if>
+      <if test="marketPrice != null">
+        market_price, 
+      </if>
+      <if test="appler != null">
+        appler, 
+      </if>
+      <if test="reminder != null">
+        reminder, 
+      </if>
+      <if test="addressDetail != null">
+        address_detail, 
+      </if>
+      <if test="lat != null">
+        lat, 
+      </if>
+      <if test="lng != null">
+        lng, 
+      </if>
+      <if test="area != null">
+        area, 
+      </if>
+      <if test="landArea != null">
+        land_area, 
+      </if>
+      <if test="looker != null">
+        looker, 
+      </if>
+      <if test="sellType != null">
+        sell_type, 
+      </if>
+      <if test="stage != null">
+        stage, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="relevanceId != null">
+        #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="itemUrl != null">
+        #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="startingPrice != null">
+        #{startingPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="consultPrice != null">
+        #{consultPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proName != null">
+        #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="raisePrice != null">
+        #{raisePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="bidNum != null">
+        #{bidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        #{marketPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="appler != null">
+        #{appler,jdbcType=VARCHAR},
+      </if>
+      <if test="reminder != null">
+        #{reminder,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DECIMAL},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="landArea != null">
+        #{landArea,jdbcType=VARCHAR},
+      </if>
+      <if test="looker != null">
+        #{looker,jdbcType=VARCHAR},
+      </if>
+      <if test="sellType != null">
+        #{sellType,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.auction.TMapAuction">
+    update t_map_auction
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="relevanceId != null">
+        relevance_id = #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="itemUrl != null">
+        item_url = #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="startingPrice != null">
+        starting_price = #{startingPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="consultPrice != null">
+        consult_price = #{consultPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proName != null">
+        pro_name = #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        type_code = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="raisePrice != null">
+        raise_price = #{raisePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="bidNum != null">
+        bid_num = #{bidNum,jdbcType=VARCHAR},
+      </if>
+      <if test="marketPrice != null">
+        market_price = #{marketPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="appler != null">
+        appler = #{appler,jdbcType=VARCHAR},
+      </if>
+      <if test="reminder != null">
+        reminder = #{reminder,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=DECIMAL},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="landArea != null">
+        land_area = #{landArea,jdbcType=VARCHAR},
+      </if>
+      <if test="looker != null">
+        looker = #{looker,jdbcType=VARCHAR},
+      </if>
+      <if test="sellType != null">
+        sell_type = #{sellType,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+
+  <select id="getMapAuctionListByParam" parameterType="String" resultType="com.tzCloud.core.model.auction.TMapAuction">
+    SELECT
+    id, source, relevance_id, item_url, title, starting_price,
+    current_price, consult_price, amount, start_date, end_date, pro_name,
+    city_name, area_name, type_name, type_code, raise_price, deposit,
+    status, bid_num, market_price, appler, reminder, address_detail,
+    lat, lng, area, land_area, looker, sell_type,
+    stage, delete_flag, create_time, update_time,
+    ROUND(
+    6378.138 * 2 * ASIN(
+    SQRT(
+    POW(
+    SIN(
+    (
+    #{lat} * PI() / 180 - lat * PI() / 180
+    ) / 2
+    ),
+    2
+    ) + COS(#{lat} * PI() / 180) * COS(lat * PI() / 180) * POW(
+    SIN(
+    (
+    #{lng} * PI() / 180 - lng * PI() / 180
+    ) / 2
+    ),
+    2
+    )
+    )
+    ) * 1000
+    ) AS distance_num
+
+    FROM
+    t_map_auction td
+    WHERE 1=1
+
+
+    <if test="lat != null and lat != ''">
+      AND td.lng BETWEEN #{minlng}
+      AND #{maxlng}
+      AND td.lat BETWEEN #{minlat}
+      AND #{maxlat}
+      AND   #{radius}>=ROUND(
+      6378.138 * 2 * ASIN(
+      SQRT(
+      POW(
+      SIN(
+      (
+      #{lat} * PI() / 180 - lat * PI() / 180
+      ) / 2
+      ),
+      2
+      ) + COS(#{lat} * PI() / 180) * COS(lat * PI() / 180) * POW(
+      SIN(
+      (
+      #{lng} * PI() / 180 - lng * PI() / 180
+      ) / 2
+      ),
+      2
+      )
+      )
+      ) * 1000
+      )
+    </if>
+
+    <if test="assetType != null and assetType != ''">
+      AND td.type_name = #{assetType}
+    </if>
+
+
+    <if test="status != null and status != ''">
+      AND td.status = #{status}
+    </if>
+
+    <if test="proName != null and proName != ''">
+      AND (td.pro_name = #{proName} or td.pro_name = #{proName1})
+    </if>
+
+    <if test="cityName != null and cityName != ''">
+      AND (td.city_name = #{cityName} or td.city_name = #{cityName1})
+    </if>
+
+    <if test="areaName != null and areaName != ''">
+      AND (td.area_name = #{areaName} or td.area_name = #{areaName1})
+    </if>
+
+    <if test="endDate != null and endDate != ''">
+      AND DATE_FORMAT(td.end_date,'%Y-%m-%d %h:%i:%s')>=#{endDate}
+    </if>
+
+
+    <if test="startEndDate != null and startEndDate != ''">
+      AND DATE_FORMAT(td.end_date,'%Y-%m')>=#{startEndDate}
+    </if>
+
+    <if test="endEndDate != null and endEndDate != ''">
+      AND #{endEndDate}>=DATE_FORMAT(td.end_date,'%Y-%m')
+    </if>
+
+    AND td.delete_flag = 0
+    order by
+
+    <if test="searchKey != null and searchKey != ''">
+      case
+        when td.title = #{searchKey} then 1
+        when td.title like concat('',#{searchKey},'%') then 2
+        when td.title like concat('%',#{searchKey},'') then 3
+        when td.title like concat('%',#{searchKey},'%') then 4
+      else 5
+      end ,
+    </if>
+
+    <if test="distanceNum != null and distanceNum != ''">
+      distance_num asc,
+    </if>
+    case
+      when td.status ='done' then 1
+      when td.status = 'failure' then 2
+    end,
+    td.end_date desc
+
+  </select>
+
+
+
+
+
+
+
+
+</mapper>

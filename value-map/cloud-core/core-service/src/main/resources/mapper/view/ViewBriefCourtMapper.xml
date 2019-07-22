@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年03月15日 11时13分23秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.view.mapper.ViewBriefCourtMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.view.ViewBriefCourt">
+	<result column="court_name" jdbcType="VARCHAR" property="courtName" />
+	<result column="brief" jdbcType="VARCHAR" property="brief" />
+	<result column="case_num" jdbcType="BIGINT" property="caseNum" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	court_name, brief, case_num
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from view_brief_court
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.view.ViewBriefCourtCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from view_brief_court
+	<where>
+      <if test="courtName != null">
+        AND court_name = #{courtName,jdbcType=VARCHAR}
+      </if>
+      <if test="brief != null">
+        AND brief = #{brief,jdbcType=VARCHAR}
+      </if>
+      <if test="caseNum != null">
+        AND case_num = #{caseNum,jdbcType=BIGINT}
+      </if>
+	</where>
+  </select>
+  <select id="getCourtList" resultType="com.tzCloud.core.facade.caseMatching.resp.CourtResp">
+    select court_name as courtName,case_num as caseNum from view_brief_court
+    where 1=1
+    <if test="brief != null">
+       and brief = #{brief}
+    </if>
+  </select>
+
+  <select id="getTotalCaseCount" resultType="java.lang.Integer">
+    select sum(case_num) as caseNum from view_brief_court
+    <where>
+      <if test="briefStr != null">
+        AND brief = #{briefStr,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.tzCloud.core.model.view.ViewBriefCourt">
+    insert into view_brief_court
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courtName != null">
+        court_name, 
+      </if>
+      <if test="brief != null">
+        brief, 
+      </if>
+      <if test="caseNum != null">
+        case_num, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courtName != null">
+        #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null">
+        #{caseNum,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.view.ViewBriefCourt">
+    update view_brief_court
+    <set>
+      <if test="courtName != null">
+        court_name = #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null">
+        case_num = #{caseNum,jdbcType=BIGINT},
+      </if>
+    </set>
+	<where>
+	  AND ID = #{ID,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

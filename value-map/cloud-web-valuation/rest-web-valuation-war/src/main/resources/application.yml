@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: valuation-web
+dubbo:
+  application:
+    id: valuation-web
+    name: valuation-web
+  scan:
+    basePackages: com.tzCloud.valuation.controller
+  protocol:
+    port: -1
+server:
+  port: 8086
+  context-path: /valuation-web
+
+

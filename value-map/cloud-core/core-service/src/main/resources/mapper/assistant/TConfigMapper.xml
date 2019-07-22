@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月19日 15时49分48秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.assistant.mapper.TConfigMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.assistant.TConfig">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="config_type" jdbcType="VARCHAR" property="configType" />
+	<result column="config_value" jdbcType="VARCHAR" property="configValue" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<result column="operator_id" jdbcType="VARCHAR" property="operatorId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, config_type, config_value, delete_flag, create_time, update_time, 
+	operator_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_config
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.assistant.TConfigCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_config
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="configType != null">
+        AND config_type = #{configType,jdbcType=VARCHAR}
+      </if>
+      <if test="configValue != null">
+        AND config_value = #{configValue,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.assistant.TConfig">
+    insert into t_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="configType != null">
+        config_type, 
+      </if>
+      <if test="configValue != null">
+        config_value, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configType != null">
+        #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null">
+        #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.assistant.TConfig">
+    update t_config
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configType != null">
+        config_type = #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null">
+        config_value = #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

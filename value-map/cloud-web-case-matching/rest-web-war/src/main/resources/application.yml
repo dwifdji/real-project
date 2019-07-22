@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: tzCloud-web
+dubbo:
+  application:
+    id: tzCloud-web
+    name: tzCloud-web
+  scan:
+    basePackages: com.tzCloud.web.controller
+  protocol:
+    port: -1
+server:
+  port: 8086
+  context-path: /tzCloud-web
+
+

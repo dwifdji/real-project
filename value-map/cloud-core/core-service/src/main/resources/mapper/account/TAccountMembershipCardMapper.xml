@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月19日 13时37分40秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.account.mapper.TAccountMembershipCardMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.account.TAccountMembershipCard">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+	<result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, type, start_time, end_time, delete_flag, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_account_membership_card
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.account.TAccountMembershipCardCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_account_membership_card
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="startTime != null">
+        AND start_time = #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endTime != null">
+        AND end_time = #{endTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.account.TAccountMembershipCard">
+    insert into t_account_membership_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="startTime != null">
+        start_time, 
+      </if>
+      <if test="endTime != null">
+        end_time, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.account.TAccountMembershipCard">
+    update t_account_membership_card
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findAvailableCard" resultType="com.tzCloud.core.model.account.TAccountMembershipCard">
+    select * from t_account_membership_card
+    where account_id = #{id} and DATE_FORMAT(end_time, '%Y-%m-%d') > DATE_FORMAT(now(), '%Y-%m-%d')
+  </select>
+
+</mapper>

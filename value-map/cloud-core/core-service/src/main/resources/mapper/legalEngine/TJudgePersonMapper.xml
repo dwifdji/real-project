@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年04月23日 14时53分12秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.legalEngine.mapper.TJudgePersonMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.legalEngine.TJudgePerson">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="doc_id" jdbcType="VARCHAR" property="docId" />
+	<result column="presiding_judge" jdbcType="VARCHAR" property="presidingJudge" />
+	<result column="judicial_officer" jdbcType="VARCHAR" property="judicialOfficer" />
+	<result column="court_clerk" jdbcType="VARCHAR" property="courtClerk" />
+	<result column="judge_assistant" jdbcType="VARCHAR" property="judgeAssistant" />
+	<result column="acting_judge" jdbcType="VARCHAR" property="actingJudge" />
+	<result column="executor" jdbcType="VARCHAR" property="executor" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, doc_id, presiding_judge, judicial_officer, court_clerk, judge_assistant, 
+	acting_judge, executor
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_judge_person
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.legalEngine.TJudgePersonCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_judge_person
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="docId != null">
+        AND doc_id = #{docId,jdbcType=VARCHAR}
+      </if>
+      <if test="presidingJudge != null">
+        AND presiding_judge = #{presidingJudge,jdbcType=VARCHAR}
+      </if>
+      <if test="judicialOfficer != null">
+        AND judicial_officer = #{judicialOfficer,jdbcType=VARCHAR}
+      </if>
+      <if test="courtClerk != null">
+        AND court_clerk = #{courtClerk,jdbcType=VARCHAR}
+      </if>
+      <if test="judgeAssistant != null">
+        AND judge_assistant = #{judgeAssistant,jdbcType=VARCHAR}
+      </if>
+      <if test="actingJudge != null">
+        AND acting_judge = #{actingJudge,jdbcType=VARCHAR}
+      </if>
+      <if test="executor != null">
+        AND executor = #{executor,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.legalEngine.TJudgePerson">
+    insert into t_judge_person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="docId != null">
+        doc_id, 
+      </if>
+      <if test="presidingJudge != null">
+        presiding_judge, 
+      </if>
+      <if test="judicialOfficer != null">
+        judicial_officer, 
+      </if>
+      <if test="courtClerk != null">
+        court_clerk, 
+      </if>
+      <if test="judgeAssistant != null">
+        judge_assistant, 
+      </if>
+      <if test="actingJudge != null">
+        acting_judge, 
+      </if>
+      <if test="executor != null">
+        executor, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="presidingJudge != null">
+        #{presidingJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="judicialOfficer != null">
+        #{judicialOfficer,jdbcType=VARCHAR},
+      </if>
+      <if test="courtClerk != null">
+        #{courtClerk,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeAssistant != null">
+        #{judgeAssistant,jdbcType=VARCHAR},
+      </if>
+      <if test="actingJudge != null">
+        #{actingJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="executor != null">
+        #{executor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.legalEngine.TJudgePerson">
+    update t_judge_person
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docId != null">
+        doc_id = #{docId,jdbcType=VARCHAR},
+      </if>
+      <if test="presidingJudge != null">
+        presiding_judge = #{presidingJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="judicialOfficer != null">
+        judicial_officer = #{judicialOfficer,jdbcType=VARCHAR},
+      </if>
+      <if test="courtClerk != null">
+        court_clerk = #{courtClerk,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeAssistant != null">
+        judge_assistant = #{judgeAssistant,jdbcType=VARCHAR},
+      </if>
+      <if test="actingJudge != null">
+        acting_judge = #{actingJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="executor != null">
+        executor = #{executor,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findByIds" resultType="com.tzCloud.core.model.legalEngine.TJudgePerson">
+    select *
+    from t_judge_person
+    where doc_id in
+      <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </select>
+</mapper>

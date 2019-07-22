@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月19日 15时47分59秒 by Generator -->
+<mapper namespace="com.tzCloud.core.dao.order.mapper.TServiceConfigMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.core.model.order.TServiceConfig">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="config_type" jdbcType="VARCHAR" property="configType" />
+	<result column="config_value" jdbcType="VARCHAR" property="configValue" />
+	<result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, config_type, config_value, created_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_service_config
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.core.condition.order.TServiceConfigCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_service_config
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="configType != null">
+        AND config_type = #{configType,jdbcType=VARCHAR}
+      </if>
+      <if test="configValue != null">
+        AND config_value = #{configValue,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null">
+        AND created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.core.model.order.TServiceConfig">
+    insert into t_service_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="configType != null">
+        config_type, 
+      </if>
+      <if test="configValue != null">
+        config_value, 
+      </if>
+      <if test="createdTime != null">
+        created_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configType != null">
+        #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null">
+        #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.core.model.order.TServiceConfig">
+    update t_service_config
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configType != null">
+        config_type = #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null">
+        config_value = #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="selectByLike" resultType="com.tzCloud.core.model.order.TServiceConfig" parameterType="java.lang.String">
+    select * from t_service_config where config_type like  CONCAT(#{configStart},'%')
+  </select>
+
+</mapper>

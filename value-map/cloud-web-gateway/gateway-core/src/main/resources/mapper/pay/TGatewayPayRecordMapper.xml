@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年06月19日 10时08分47秒 by Generator -->
+<mapper namespace="com.tzCloud.gateway.dao.pay.mapper.TGatewayPayRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com.tzCloud.gateway.model.pay.TGatewayPayRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="bus_id" jdbcType="VARCHAR" property="busId" />
+	<result column="pay_type" jdbcType="VARCHAR" property="payType" />
+	<result column="request_param" jdbcType="LONGVARCHAR" property="requestParam" />
+	<result column="response_param" jdbcType="LONGVARCHAR" property="responseParam" />
+	<result column="response_code" jdbcType="VARCHAR" property="responseCode" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, bus_id, pay_type, request_param, response_param, response_code, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_gateway_pay_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.tzCloud.gateway.condition.pay.TGatewayPayRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_gateway_pay_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="busId != null">
+        AND bus_id = #{busId,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="requestParam != null">
+        AND request_param = #{requestParam,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="responseParam != null">
+        AND response_param = #{responseParam,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="responseCode != null">
+        AND response_code = #{responseCode,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayRecord">
+    insert into t_gateway_pay_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="busId != null">
+        bus_id, 
+      </if>
+      <if test="payType != null">
+        pay_type, 
+      </if>
+      <if test="requestParam != null">
+        request_param, 
+      </if>
+      <if test="responseParam != null">
+        response_param, 
+      </if>
+      <if test="responseCode != null">
+        response_code, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="busId != null">
+        #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParam != null">
+        #{requestParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseParam != null">
+        #{responseParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseCode != null">
+        #{responseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.tzCloud.gateway.model.pay.TGatewayPayRecord">
+    update t_gateway_pay_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="busId != null">
+        bus_id = #{busId,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParam != null">
+        request_param = #{requestParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseParam != null">
+        response_param = #{responseParam,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseCode != null">
+        response_code = #{responseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>
