@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分04秒 by Generator -->
+<mapper namespace="com.winback.core.dao.connect.mapper.TConnectRoomPersonMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.connect.TConnectRoomPerson">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="room_id" jdbcType="INTEGER" property="roomId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="relevance_id" jdbcType="INTEGER" property="relevanceId" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="shutup_flag" jdbcType="BIT" property="shutupFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+    <result column="unread_num" jdbcType="INTEGER" property="unreadNum" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, room_id, type, relevance_id, delete_flag, shutup_flag, 
+	create_time, update_time,case_id,unread_num
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_connect_room_person
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.connect.TConnectRoomPersonCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_connect_room_person
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="roomId != null">
+        AND room_id = #{roomId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="relevanceId != null">
+        AND relevance_id = #{relevanceId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="shutupFlag != null">
+        AND shutup_flag = #{shutupFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="unreadNum != null">
+        AND unread_num = #{unreadNum,jdbcType=INTEGER}
+      </if>
+
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.connect.TConnectRoomPerson">
+    insert into win.t_connect_room_person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="roomId != null">
+        room_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="relevanceId != null">
+        relevance_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="shutupFlag != null">
+        shutup_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+      <if test="caseId != null">
+        case_id,
+      </if>
+
+      <if test="unreadNum != null">
+        unread_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="relevanceId != null">
+        #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="shutupFlag != null">
+        #{shutupFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+
+      <if test="unreadNum != null">
+        #{unreadNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.connect.TConnectRoomPerson">
+    update win.t_connect_room_person
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="relevanceId != null">
+        relevance_id = #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="shutupFlag != null">
+        shutup_flag = #{shutupFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+
+      <if test="unreadNum != null">
+        unread_num = #{unreadNum,jdbcType=INTEGER},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+
+  <insert id="batchSave" useGeneratedKeys="true" keyProperty="id"
+          keyColumn="id" parameterType="java.util.List">
+    INSERT INTO win.t_connect_room_person (room_id, type, relevance_id, delete_flag,shutup_flag,case_id, create_time)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.roomId},#{item.type},#{item.relevanceId},#{item.deleteFlag},#{item.shutupFlag},#{item.caseId},#{item.createTime})
+    </foreach>
+  </insert>
+
+
+
+
+  <select id="getRoomPersonList" parameterType="com.winback.core.condition.connect.TConnectRoomPersonCondition" resultType="com.winback.core.vo.connect.RoomPersonVo">
+    SELECT
+    p.type,
+    a.nick_name AS NAME,
+    p.relevance_id as id,
+    l.name as lawyerName,
+    p.unread_num as unreadNum,
+    p.id as primaryId
+    FROM
+    win.t_connect_room_person p
+    LEFT JOIN t_account a ON p.relevance_id = a.id
+    LEFT JOIN t_lawyer l ON  a.id = l.account_id
+    <where>
+      <if test="id != null">
+        AND p.id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="roomId != null">
+        AND p.room_id = #{roomId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND p.type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="relevanceId != null">
+        AND p.relevance_id = #{relevanceId,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND p.case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND p.delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="shutupFlag != null">
+        AND p.shutup_flag = #{shutupFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND p.create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND p.update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+
+  <select id="getRoomMsgList" resultType="com.winback.core.vo.connect.RoomMsgListVO">
+     SELECT
+        tcr.id AS roomId,
+        tcrp.relevance_id AS accountId,
+        tcrp.unread_num AS unreadNum,
+        tcm.msg AS msgInfo,
+        tcm.msg_type AS msgType,
+        tcm.create_time AS createTime,
+    CASE
+        tcm.person_type
+        WHEN 1 THEN
+        c.nick_name
+        WHEN 4 THEN
+        c.nick_name
+        WHEN 2 THEN
+        l.NAME ELSE s.NAME
+        END AS userName
+    FROM
+        `t_connect_room` tcr
+        LEFT JOIN t_connect_room_person tcrp ON tcrp.room_id = tcr.id
+        LEFT JOIN t_connect_msg tcm ON tcm.person_id = tcrp.relevance_id
+        LEFT JOIN t_account c ON tcm.person_id = c.id
+        LEFT JOIN t_lawyer l ON tcm.person_id = l.account_id
+        LEFT JOIN t_sys_staff s ON tcm.person_id = s.id
+    WHERE
+        1 = 1
+        AND tcr.case_id IS NULL
+        AND tcrp.type IN ( 1, 2 )
+        AND tcm.create_time IN (
+    SELECT
+        MAX( tcm.create_time ) AS createTime
+    FROM
+        `t_connect_room` tcr
+        LEFT JOIN t_connect_room_person tcrp ON tcrp.room_id = tcr.id
+        LEFT JOIN t_connect_msg tcm ON tcm.person_id = tcrp.relevance_id and tcm.room_id = tcr.id
+    WHERE
+        1 = 1
+        AND tcr.case_id IS NULL
+        AND tcrp.type IN ( 1, 2 )
+    GROUP BY
+        tcm.person_id
+        )
+  </select>
+
+
+  <select id="getRoomMsgBackList" resultType="com.winback.core.vo.connect.RoomMsgBackVO">
+    SELECT
+        tcrp.room_id AS roomId,
+        unread_num AS unreadNum
+    FROM
+        t_connect_room_person tcrp
+    WHERE
+        1 = 1
+        AND tcrp.type = 3
+        AND tcrp.room_id IN
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+    <update id="updateUnreadNum" parameterType="String">
+      UPDATE t_connect_room_person  SET unread_num = 0
+      WHERE
+        1 = 1
+        AND case_id IS NULL
+        AND delete_flag = 0
+        AND relevance_id = #{accountId}
+    </update>
+
+</mapper>

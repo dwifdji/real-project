@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 16时13分05秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseStepMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseStep">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="name_desc" jdbcType="VARCHAR" property="nameDesc" />
+	<result column="branch_flag" jdbcType="BIT" property="branchFlag" />
+	<result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="next_id" jdbcType="INTEGER" property="nextId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="order_desc" jdbcType="INTEGER" property="orderDesc" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, name_desc, branch_flag, group_id, next_id, 
+	type, order_desc, delete_flag, create_time, update_time, parent_id
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_step
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseStepCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_step
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="nameDesc != null">
+        AND name_desc = #{nameDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="branchFlag != null">
+        AND branch_flag = #{branchFlag,jdbcType=BIT}
+      </if>
+      <if test="groupId != null">
+        AND group_id = #{groupId,jdbcType=INTEGER}
+      </if>
+      <if test="parentId != null">
+        AND parent_id = #{parentId,jdbcType=INTEGER}
+      </if>
+      <if test="nextId != null">
+        AND next_id = #{nextId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="orderDesc != null">
+        AND order_desc = #{orderDesc,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseStep" keyProperty="id"
+          keyColumn="id" useGeneratedKeys="true">
+
+    insert into win.t_case_step
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="nameDesc != null">
+        name_desc, 
+      </if>
+      <if test="branchFlag != null">
+        branch_flag, 
+      </if>
+      <if test="groupId != null">
+        group_id, 
+      </if>
+      <if test="parentId != null">
+          parent_id,
+      </if>
+      <if test="nextId != null">
+        next_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="orderDesc != null">
+        order_desc, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameDesc != null">
+        #{nameDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="branchFlag != null">
+        #{branchFlag,jdbcType=BIT},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+          #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseStep">
+    update win.t_case_step
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameDesc != null">
+        name_desc = #{nameDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="branchFlag != null">
+        branch_flag = #{branchFlag,jdbcType=BIT},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        next_id = #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        order_desc = #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <resultMap type="com.winback.core.vo._case.TCaseStepGroupVO" id="caseStepGroupMap">
+    <id column="groupId" property="groupId" />
+    <result property="groupName" column="groupName"/>
+    <result property="groupType" column="groupType"/>
+    <result property="groupOrderDesc" column="groupOrder"/>
+
+    <collection property="caseStepVOS" ofType="com.winback.core.vo._case.TCaseStepVO">
+      <id property="id" column="id"/>
+      <result property="name" column="name"/>
+      <result property="type" column="type"/>
+      <result property="nameDesc" column="name_desc"/>
+      <result property="orderDesc" column="order_desc"/>
+      <result property="groupId" column="group_id"/>
+      <result property="branchFlag" column="branch_flag"/>
+      <result property="nextId" column="next_id"/>
+      <result property="nextName" column="nextName"/>
+
+        <collection property="caseStepBranchVOS" ofType="com.winback.core.vo._case.TCaseStepBranchVO">
+            <id property="branchId" column="branchId"/>
+            <result property="branchName" column="branchName"/>
+            <result property="branchType" column="branchType"/>
+            <result property="branchOrder" column="branchOrder"/>
+            <result property="branchNameDesc" column="branchNameDesc"/>
+            <result property="branchNextId" column="branchNextId"/>
+            <result property="branchNextName" column="branchNextName"/>
+            <result property="stepId" column="stepId"/>
+        </collection>
+    </collection>
+
+  </resultMap>
+
+  <select id="getCaseSteps" parameterType="String" resultMap="caseStepGroupMap">
+	    SELECT
+            tasg.id AS groupId,
+            tasg.NAME AS groupName,
+            tasg.type AS groupType,
+            tasg.order_desc AS groupOrder,
+            tas.id,
+            tas.NAME,
+            tas.type,
+            tas.name_desc,
+            tas.order_desc,
+            tas.group_id,
+            tas.next_id,
+            tas3.NAME AS nextName,
+            tas.branch_flag,
+            tasb.id AS branchId,
+            tasb.NAME AS branchName,
+            tasb.type AS branchType,
+            tasb.order_desc AS branchOrder,
+            tasb.name_desc AS branchNameDesc,
+            tasb.next_id AS branchNextId,
+            tasb.parent_id AS stepId,
+            tas2.NAME AS branchNextName
+        FROM
+            t_case_step_group tasg
+            LEFT JOIN t_case_step tas ON tasg.id = tas.group_id AND tas.delete_flag = 0 and parent_id is null
+            LEFT JOIN t_case_step tasb ON tas.id = tasb.parent_id AND tasb.delete_flag = 0
+            LEFT JOIN t_case_step tas3 ON tas3.id = tas.next_id
+            LEFT JOIN t_case_step tas2 ON tas2.id = tasb.next_id
+        WHERE
+            1 = 1
+            AND tasg.type = #{type}
+            AND tasg.delete_flag = 0
+        ORDER BY
+            tasg.order_desc ASC,
+            tas.order_desc ASC,
+            tasb.order_desc ASC
+     </select>
+
+     <select id="getOrderDescByTypeGroup" parameterType="String" resultType="com.winback.core.model._case.TCaseStep">
+             SELECT
+                    *
+                FROM
+                    t_case_step
+            WHERE
+                1 = 1
+                AND group_id = #{groupId}
+                AND delete_flag = 0
+                ORDER BY order_desc desc
+                limit 1
+    </select>
+
+    <update id="updateOrderDescByGroupId" parameterType="Integer">
+      UPDATE t_case_step
+          SET order_desc = order_desc - 1
+        WHERE
+            group_id = #{groupId}
+            AND order_desc > #{orderDesc}
+            AND delete_flag = 0
+    </update>
+
+    <resultMap type="com.winback.core.vo._case.TCaseStepDetailVO" id="CaseStepDetailMap">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="type" column="type"/>
+            <result property="nameDesc" column="name_desc"/>
+            <result property="orderDesc" column="order_desc"/>
+            <result property="nameDesc" column="name_desc"/>
+            <result property="groupId" column="group_id"/>
+            <result property="branchFlag" column="branch_flag"/>
+            <result property="nextId" column="next_id"/>
+            <result property="nextName" column="nextName"/>
+
+            <collection property="caseBranchList" ofType="com.winback.core.vo._case.TCaseStepBranchVO">
+                <id property="branchId" column="branchId"/>
+                <result property="branchName" column="branchName"/>
+                <result property="branchType" column="branchType"/>
+                <result property="branchOrder" column="branchOrder"/>
+                <result property="branchNameDesc" column="branchNameDesc"/>
+                <result property="branchNextId" column="branchNextId"/>
+                <result property="branchNextName" column="branchNextName"/>
+                <result property="branchFlag" column="branchFlag"/>
+                <result property="stepId" column="stepId"/>
+            </collection>
+
+    </resultMap>
+
+    <select id="getCaseStepById" parameterType="String" resultMap="CaseStepDetailMap">
+     SELECT
+        tas.id,
+        tas.NAME,
+        tas.type,
+        tas.name_desc,
+        tas.order_desc,
+        tas.group_id,
+        tas.next_id,
+        tas3.name as nextName,
+        tas.branch_flag,
+        tasb.id as branchId,
+        if(IFNULL(tasb.id,0) = 0,0,1)  as branchFlag,
+        tasb.name as branchName,
+        tasb.type as branchType,
+        tasb.order_desc as branchOrder,
+	    tasb.name_desc as branchNameDesc,
+        tasb.next_id as branchNextId,
+        tasb.parent_id as stepId,
+        tas2.name as branchNextName
+   FROM
+     t_case_step tas
+        LEFT JOIN t_case_step tasb ON tas.id = tasb.parent_id and tasb.delete_flag = 0
+        LEFT JOIN t_case_step tas3 on tas3.id = tas.next_id
+        LEFT JOIN t_case_step tas2 on tas2.id = tasb.next_id
+        where 1 = 1
+        and tas.id = #{id}
+        and tas.delete_flag = 0
+        order by tasb.order_desc asc
+    </select>
+
+    <select id="getCaseStepNotBranch" parameterType="String" resultType="com.winback.core.vo._case.TCaseStepSelectVO">
+        SELECT
+            id,
+            NAME
+        FROM
+            t_case_step
+        WHERE
+            1 = 1
+            AND delete_flag = 0
+            AND branch_flag = 0
+            tcs.NAME AS stepName,
+            tl.name as lawyer
+        FROM
+            AND type = #{type}
+    </select>
+
+
+    <select id="getCurrentSteps" parameterType="String" resultType="com.winback.core.vo._case.TCaseCurrentStepVO">
+     SELECT
+            tc.case_id as caseNo,
+            tc.plaintiff AS accuser,
+            tc.defendant AS accused,
+            tcs.NAME AS stepName,
+            tl.name as lawyer
+        FROM
+            t_case tc
+			LEFT JOIN t_case_step_record tcsr on tcsr.case_id = tc.id
+            LEFT JOIN t_case_step tcs ON tcs.id = tcsr.step_id
+            LEFT JOIN t_lawyer tl ON tl.account_id = tc.lawyer_account_id
+        WHERE
+            1 = 1
+            AND tc.id = #{caseId}
+			AND tcs.type = #{type}
+            AND tc.delete_flag = 0
+            AND tcs.delete_flag = 0
+        ORDER BY
+			tcsr.update_time desc,
+            tcs.group_id DESC,
+            tcs.order_desc DESC
+            LIMIT 1
+    </select>
+    
+    <select id="getAllStepMsg" parameterType="String" resultType="com.winback.core.vo._case.TCaseStepMsgTemplateVO">
+        SELECT
+            0 AS branchFlag,
+            concat (any_value( tcsg.NAME ), '_', any_value(tcs.NAME)) AS stepName,
+            any_value(tcs.id) AS stepId,
+            any_value(tcsnt.id) AS templateId,
+            any_value(tcsnt.name_desc) AS templateBody
+        FROM
+            t_case_step tcs
+            LEFT JOIN t_case_step_group tcsg ON tcsg.id = tcs.group_id
+            LEFT JOIN t_case_step_notice_template tcsnt ON tcsnt.step_id = tcs.id
+         WHERE
+            1 = 1
+            AND tcs.delete_flag = 0
+            AND tcs.type = #{type}
+            GROUP BY tcs.id
+			order by
+			tcsg.order_desc ASC,
+            tcs.order_desc ASC
+
+
+    </select>
+    
+    <select id="getLawsuitManagements" parameterType="com.winback.core.dto._case.CaseStatusStepDto" resultType="com.winback.core.vo._case.TCaseStatusStepVO">
+        SELECT
+            any_value ( tc.id ) AS id,
+            any_value ( tc.case_id ) AS caseId,
+            any_value ( tc.plaintiff ) AS plaintiff,
+            any_value ( tc.defendant ) AS defendant,
+            any_value ( tc.update_time ) AS updateTime,
+            any_value ( ta.name ) AS lawyer,
+            any_value ( tcsr.step_id ) AS stepId,
+            any_value ( tcs.name ) AS stepName,
+            any_value (tcsr.push_msg) as stepDesc,
+            any_value (tc.case_type_id) as caseTypeId
+
+        FROM
+        t_case_step_record tcsr
+        left JOIN t_case tc on tc.id = tcsr.case_id
+        LEFT JOIN t_case_step tcs ON tcs.id = tcsr.step_id
+        LEFT JOIN t_lawyer ta ON ta.account_id = tc.lawyer_account_id
+        WHERE
+        1 = 1
+        AND tc.delete_flag = 0
+
+        <if test="type != null and type != ''">
+            and tc.main_status = #{type}
+        </if>
+        AND tcsr.update_time in (
+        SELECT
+        max(any_value( tcsr.update_time )) AS updateTime
+        FROM
+        t_case_step_record tcsr
+        left JOIN t_case tc on tc.id = tcsr.case_id
+        LEFT JOIN t_case_step tcs ON tcs.id = tcsr.step_id
+        LEFT JOIN t_lawyer ta ON ta.account_id = tc.lawyer_account_id
+        WHERE
+        1 = 1
+        AND tc.delete_flag = 0
+
+        <if test="type != null and type != ''">
+            and tc.main_status = #{type}
+        </if>
+        GROUP BY tc.id)
+        GROUP BY tc.id
+        having 1 = 1
+        <if test="caseId != null and caseId != ''">
+            and caseId = #{caseId}
+        </if>
+
+        <if test="litigant != null and litigant != ''">
+            and (plaintiff like concat('%', #{litigant},'%') or defendant like concat('%', #{litigant},'%'))
+        </if>
+
+        <if test="beginTime != null and beginTime != ''">
+            and updateTime &gt;= #{beginTime}
+        </if>
+
+        <if test="endTime != null and endTime != ''">
+            and updateTime &lt;= #{endTime}
+        </if>
+
+        <if test="caseTypeId != null and caseTypeId != ''">
+            and caseTypeId = #{caseTypeId}
+        </if>
+
+        <if test="stepId != null and stepId != ''">
+            and stepId = #{stepId}
+        </if>
+        ORDER BY tc.update_time desc
+    </select>
+
+    <select id="getAllCaseStep" parameterType="String" resultType="com.winback.core.vo.operate.CaseStepVO">
+        SELECT
+            tcs.id AS stepId,
+            tcs.NAME AS `name`
+        FROM
+            t_case_step_group tcsg
+            LEFT JOIN t_case_step tcs ON tcsg.id = tcs.group_id
+            where 1 = 1
+            and tcs.delete_flag = 0
+            and tcsg.delete_flag = 0
+        <if test="type != null and type != ''">
+            and tcsg.type = #{type}
+        </if>
+    </select>
+    
+    <select id="getApplyPerson" parameterType="String" resultType="String">
+        SELECT
+            IFNULL( CONCAT( IFNULL( tl.NAME, ta.nick_name ), '-', ta.mobile ),
+						CONCAT(IFNULL(tc.apply_name,''), '-', tc.apply_mobile )
+            ) AS applyName
+        FROM
+            t_case tc
+            LEFT JOIN t_lawyer tl ON tl.account_id = tc.account_id
+            LEFT JOIN t_account ta ON ta.id = tc.account_id
+        WHERE
+	        1 = 1  AND
+            tc.id = #{caseId}
+    </select>
+
+
+    <insert id="saveCaseBranchTypeList" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id" parameterType="java.util.List">
+        INSERT INTO t_case_step (id, name, name_desc, parent_id, next_id, group_id, type, order_desc, delete_flag, create_time, update_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.name},#{item.nameDesc},#{item.parentId},#{item.nextId}, #{item.groupId}, #{item.type},#{item.orderDesc},#{item.deleteFlag}, #{item.createTime}, #{item.updateTime})
+        </foreach>
+    </insert>
+
+
+
+    <update id="deleteBatchCaseStepBranch" parameterType="Integer">
+      update t_case_step set delete_flag = 1 where parent_id = #{stepId} and delete_flag = 0
+    </update>
+    
+    <select id="getFirstStep" parameterType="String" resultType="com.winback.core.model._case.TCaseStep">
+        SELECT
+            tcs.id,
+            tcs.name,
+            tcsn.name_desc as nameDesc
+        FROM
+            t_case_step_group tcsg
+            LEFT JOIN t_case_step tcs ON tcs.group_id = tcsg.id
+			LEFT JOIN t_case_step_notice_template tcsn on tcsn.step_id = tcs.id
+        WHERE
+            1 = 1
+            AND tcs.delete_flag = 0
+            AND tcsg.type = #{type}
+        ORDER BY
+            tcsg.order_desc ASC,
+            tcs.order_desc ASC
+            limit 1
+    </select>
+    
+    <select id="getLastLitigationStep" parameterType="String" resultType="com.winback.core.model._case.TCaseStep">
+        SELECT
+            tcs.*
+        FROM
+            t_case_step_record tcsr
+            LEFT JOIN t_case_step tcs ON tcsr.step_id = tcs.id
+        WHERE
+            1 = 1
+            AND tcsr.case_type = #{type}
+            AND case_id = #{caseId}
+        ORDER BY
+            tcsr.update_time DESC
+            LIMIT 1
+    </select>
+    
+    <select id="getAllSmaSteps" parameterType="String" resultType="com.winback.core.model._case.TCaseStep">
+        SELECT
+            tcs.*
+        FROM
+            t_case_step_group tcsg
+            LEFT JOIN t_case_step tcs ON tcs.group_id = tcsg.id
+        WHERE
+            1 = 1
+            AND tcs.delete_flag = 0
+            AND tcsg.type = #{type}
+        ORDER BY
+            tcsg.order_desc ASC,
+            tcs.order_desc ASC
+
+    </select>
+
+    <update id="batchUpdateCaseStep" parameterType="java.util.List">
+        update t_case_step
+
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="next_id = case" suffix="end,">
+                <foreach collection="list" item="item"  index="index">
+                    <if test="item.nextId != null and '' != item.nextId">
+                        when id = #{item.id} then #{item.nextId}
+                    </if>
+                </foreach>
+            </trim>
+
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" item="item"  index="index">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id} then #{item.updateTime}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where
+        <foreach collection="list" separator="or" item="item" index="index" >
+            id = #{item.id}
+        </foreach>
+
+
+        <!--update t_applet_enrolling_map-->
+
+        <!--<trim prefix="set" suffixOverrides=",">-->
+            <!--<trim prefix="push_desc = case" suffix="end,">-->
+                <!--<foreach collection="list" item="item"  index="index">-->
+                    <!--<if test="item.pushDesc != null and '' != item.pushDesc">-->
+                        <!--when id = #{item.id} then #{item.pushDesc}-->
+                    <!--</if>-->
+                <!--</foreach>-->
+            <!--</trim>-->
+            <!--<trim prefix="update_time = case" suffix="end,">-->
+                <!--<foreach collection="list" item="item"  index="index">-->
+                    <!--<if test="item.updateTime!=null">-->
+                        <!--when id = #{item.id} then #{item.updateTime}-->
+                    <!--</if>-->
+                <!--</foreach>-->
+            <!--</trim>-->
+        <!--</trim>-->
+        <!--where-->
+        <!--<foreach collection="list" separator="or" item="item" index="index" >-->
+            <!--id = #{item.id}-->
+        <!--</foreach>-->
+    </update>
+</mapper>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 19时25分32秒 by Generator -->
+<mapper namespace="com.winback.gateway.dao.pay.mapper.TGatewayPayOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.gateway.model.pay.TGatewayPayOrder">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="business_code" jdbcType="VARCHAR" property="businessCode" />
+	<result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+	<result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="desc_info" jdbcType="VARCHAR" property="descInfo" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, type, business_code, business_no, order_no, account_id, 
+	amount, status, desc_info, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_gateway_pay_order
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.gateway.condition.pay.TGatewayPayOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_gateway_pay_order
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="businessCode != null">
+        AND business_code = #{businessCode,jdbcType=VARCHAR}
+      </if>
+      <if test="businessNo != null">
+        AND business_no = #{businessNo,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNo != null">
+        AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="descInfo != null">
+        AND desc_info = #{descInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.gateway.model.pay.TGatewayPayOrder">
+    insert into win.t_gateway_pay_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="businessCode != null">
+        business_code, 
+      </if>
+      <if test="businessNo != null">
+        business_no, 
+      </if>
+      <if test="orderNo != null">
+        order_no, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="descInfo != null">
+        desc_info,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null">
+        #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="descInfo != null">
+        #{descInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.gateway.model.pay.TGatewayPayOrder">
+    update win.t_gateway_pay_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCode != null">
+        business_code = #{businessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="descInfo != null">
+        desc_info = #{descInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="getNotPayOrder"  resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from win.t_gateway_pay_order
+    WHERE
+  `status` != '000000' and  create_time > date_sub(now(), interval 0.2 hour)
+
+  </select>
+
+</mapper>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月22日 10时27分34秒 by Generator -->
+<mapper namespace="com.winback.core.dao.operate.mapper.TOperateIconInfoMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.operate.TOperateIconInfo">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="group_type" jdbcType="INTEGER" property="groupType" />
+	<result column="type" jdbcType="INTEGER" property="type" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="sort" jdbcType="INTEGER" property="sort" />
+	<result column="online_flag" jdbcType="BIT" property="onlineFlag" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, group_type, type, img_url, name, sort, 
+	online_flag, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_operate_icon_info
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.operate.TOperateIconInfoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_operate_icon_info
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="groupType != null">
+        AND group_type = #{groupType,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="sort != null">
+        AND sort = #{sort,jdbcType=INTEGER}
+      </if>
+      <if test="onlineFlag != null">
+        AND online_flag = #{onlineFlag,jdbcType=BIT}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.operate.TOperateIconInfo">
+    insert into win.t_operate_icon_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="groupType != null">
+        group_type, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="sort != null">
+        sort, 
+      </if>
+      <if test="onlineFlag != null">
+        online_flag, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupType != null">
+        #{groupType,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="onlineFlag != null">
+        #{onlineFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.operate.TOperateIconInfo">
+    update win.t_operate_icon_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupType != null">
+        group_type = #{groupType,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="onlineFlag != null">
+        online_flag = #{onlineFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+  
+  <select id="getReleaseAreaList" parameterType="com.winback.core.dto.operate.OperateIconDto" resultType="com.winback.core.vo.operate.OperateIconListVO">
+      SELECT
+        id AS id,
+        type AS type,
+        group_type AS groupType,
+        img_url AS imgUrl,
+        sort as sort,
+        NAME AS NAME,
+        update_time as updateTime
+      FROM
+          t_operate_icon_info
+      WHERE
+          1 = 1
+          AND delete_flag = 0
+      <if test="groupType != null and groupType != ''">
+        AND group_type = #{groupType}
+      </if>
+      ORDER BY sort asc, create_time desc
+      <if test="limitSize != null">
+          LIMIT 0, #{limitSize}
+      </if>
+  </select>
+
+
+  <select id="getQualityCaseIcons" parameterType="Integer" resultType="com.winback.core.vo.operate.HomeIconCategoryVO">
+     SELECT
+        any_value ( toii.NAME ) AS NAME,
+        any_value ( toii.id ) AS id,
+        any_value ( toii.img_url ) AS imgUrl,
+        any_value ( toii.type ) AS categoryId,
+        any_value ( toii.sort ) AS sort,
+        COUNT( tc.id ) AS totalCount
+      FROM
+        ( SELECT * FROM t_operate_icon_info WHERE group_type = 3 AND delete_flag = 0) toii
+        LEFT JOIN t_case tc ON toii.type = tc.case_brief_id  AND tc.main_status = 'RISK_CHECK_SUCCESS'
+        and tc.delete_flag = 0
+        WHERE
+        1 = 1
+        AND toii.delete_flag = 0
+        GROUP BY
+        toii.type
+        ORDER BY sort
+      <if test="limitSize != null">
+          LIMIT 0, #{limitSize}
+      </if>
+  </select>
+
+  <select id="getContractModelIcons" parameterType="Integer" resultType="com.winback.core.vo.operate.HomeContractCategoryVO">
+      SELECT
+          any_value ( toii.NAME ) AS NAME,
+          any_value ( toii.id ) AS id,
+          any_value ( toii.img_url ) AS imgUrl,
+          any_value ( toii.type ) AS categoryId,
+          any_value ( toii.big_type_id ) AS bigCategoryId,
+          any_value ( toii.sort ) AS sort,
+          COUNT( tc.id ) AS totalCount
+      FROM
+      (
+          SELECT
+              toi.*,
+              tct.big_type_id
+          FROM t_operate_icon_info toi
+          LEFT JOIN t_contract_type tct ON toi.type = tct.id
+          WHERE
+              toi.group_type = 4
+              AND toi.delete_flag = 0
+          ORDER BY sort
+      ) toii
+      INNER JOIN t_contract_type_map tc ON toii.type = tc.contract_type_id AND tc.delete_flag=0
+      INNER JOIN win.t_contract c ON c.id=tc.contract_id AND c.sale_flag=1 AND c.delete_flag=0
+      WHERE
+          1 = 1
+          AND toii.delete_flag = 0
+      GROUP BY
+      toii.type
+      ORDER BY sort
+      <if test="limitSize != null">
+            LIMIT 0, #{limitSize}
+        </if>
+  </select>
+
+    <select id="getCaseTypeList" parameterType="Integer" resultType="com.winback.core.vo.operate.QuickReleaseVO">
+        SELECT
+            toii.id AS id,
+            toii.type AS caseTypeId,
+            toii.group_type AS groupType,
+            toii.img_url AS imgUrl,
+            toii.sort as sort,
+            toii.NAME AS NAME,
+            toii.update_time as updateTime
+        FROM
+            t_operate_icon_info toii
+            LEFT JOIN t_case_type tcy ON tcy.id = toii.type
+        WHERE
+            toii.delete_flag = 0
+            AND group_type = 1
+	        ORDER BY toii.sort
+
+    </select>
+
+</mapper>

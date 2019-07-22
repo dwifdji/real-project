@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分01秒 by Generator -->
+<mapper namespace="com.winback.core.dao.account.mapper.TAccountMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.account.TAccount">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="register_source" jdbcType="VARCHAR" property="registerSource" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="project_manager_flag" jdbcType="BIT" property="projectManagerFlag" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, mobile, password, nick_name, head_img_url, register_source,
+    source, invite_code, project_manager_flag, delete_flag, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_account
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.account.TAccountCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_account
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        AND nick_name = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="headImgUrl != null">
+        AND head_img_url = #{headImgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="registerSource != null">
+        AND register_source = #{registerSource,jdbcType=VARCHAR}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="inviteCode != null">
+        AND invite_code = #{inviteCode,jdbcType=VARCHAR}
+      </if>
+      <if test="projectManagerFlag != null">
+        AND project_manager_flag = #{projectManagerFlag,jdbcType=BIT}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.account.TAccount" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url,
+      </if>
+      <if test="registerSource != null">
+        register_source,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="projectManagerFlag != null">
+        project_manager_flag,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManagerFlag != null">
+        #{projectManagerFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.account.TAccount">
+    update win.t_account
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="registerSource != null">
+        register_source = #{registerSource,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectManagerFlag != null">
+        project_manager_flag = #{projectManagerFlag,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com.winback.core.model.account.TAccount">
+    select a.*
+    from win.t_account a
+    <where>
+      delete_flag=0
+      <if test="id != null and id !=''"> and a.id = #{id}</if>
+      <if test="q != null and q !=''"> and a.nick_name like concat('%',#{q},'%')</if>
+      <if test="mobile != null and mobile !=''"> and a.mobile like concat('%',#{mobile},'%')</if>
+      <if test="registerSource != null and registerSource !=''"> and a.register_source = #{registerSource}</if>
+      <if test="createdAtFrom != null and createdAtFrom !='' and createdAtTo != null and createdAtTo != ''">
+        and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}
+      </if>
+      <if test="projectManagerFlag != null and projectManagerFlag !=''"> and a.project_manager_flag = #{projectManagerFlag}</if>
+    </where>
+  </select>
+
+  <select id="getPartyList" parameterType="java.util.Map" resultType="com.winback.core.facade.account.vo.Party">
+    select a.*,t.applyCaseCount
+    from win.t_account a
+    inner join (
+      select a.id,count(0) applyCaseCount
+      from win.t_account a
+      inner join win.t_case c on c.account_id=a.id
+      group by a.id
+    ) t on t.id=a.id
+    <where>
+      delete_flag=0
+      <if test="id != null and id !=''"> and a.id = #{id}</if>
+      <if test="q != null and q !=''"> and a.nick_name like concat('%',#{q},'%')</if>
+      <if test="mobile != null and mobile !=''"> and a.mobile like concat('%',#{mobile},'%')</if>
+      <if test="registerSource != null and registerSource !=''"> and a.register_source = #{registerSource}</if>
+      <if test="createdAtFrom != null and createdAtFrom !='' and createdAtTo != null and createdAtTo != ''">
+        and a.create_time>=#{createdAtFrom} and a.create_time&lt;=#{createdAtTo}
+      </if>
+    </where>
+  </select>
+
+  <select id="getTodayRole" parameterType="String" resultType="com.winback.core.vo.finance.WorkBenchVO">
+    select 9 as type, count(id) as total, DATE_FORMAT(NOW(),'%Y-%m-%d') as params from t_account where delete_flag = 0 and DATE_FORMAT(create_time,'%Y-%m-%d') = #{searchDay}
+    UNION ALL
+    select 10 as type, count(id) as total, DATE_FORMAT(NOW(),'%Y-%m-%d') as params from t_lawyer where delete_flag = 0 and DATE_FORMAT(create_time,'%Y-%m-%d') = #{searchDay}
+    UNION ALL
+    select 11 as type, count(id) as total, DATE_FORMAT(NOW(),'%Y-%m-%d') as params from t_law_firm where delete_flag = 0 and DATE_FORMAT(create_time,'%Y-%m-%d') = #{searchDay}
+    UNION ALL
+    select 12 as type, count(id) as total, DATE_FORMAT(NOW(),'%Y-%m-%d') as params from t_case where delete_flag = 0 and DATE_FORMAT(create_time,'%Y-%m-%d') = #{searchDay}
+  </select>
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月18日 10时01分28秒 by Generator -->
+<mapper namespace="com.winback.core.dao.assistant.mapper.TAppMessageMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.assistant.TAppMessage">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, type, title, content, delete_flag, 
+	create_time,param
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_app_message
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.assistant.TAppMessageCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_app_message
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="param != null">
+        AND param = #{createTime,param=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.winback.core.model.assistant.TAppMessage">
+    insert into win.t_app_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="content != null">
+        content, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.assistant.TAppMessage">
+    update win.t_app_message
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="param != null">
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getAppMessageList" parameterType="java.util.Map" resultType="com.winback.core.facade.account.vo.AppMessage">
+    select t.*
+    from (
+      select m.id,m.`type`,m.title,m.`content`,m.create_time createTime,case when mm.id is null then 0 else 1 end readFlag,m.param
+      from win.t_app_message m
+      left join win.t_app_read_message_map mm on mm.message_id=m.id and mm.account_id=#{loginId}
+      <where>
+        m.delete_flag=0 and m.account_id=#{loginId}
+        <if test="id != null and id !=''"> and m.id=#{id}</if>
+      </where>
+      union all
+      select m.id,m.`type`,m.title,m.`content`,m.create_time createTime,case when mm.id is null then 0 else 1 end readFlag,m.param
+      from t_account a
+      left join win.t_app_message m on m.delete_flag=0 and m.account_id=-1
+      left join win.t_app_read_message_map mm on mm.message_id=m.id and mm.account_id=#{loginId} and mm.delete_flag=0
+      <where>
+        a.id=#{loginId} and a.create_time &lt; m.create_time
+        <if test="id != null and id !=''"> and m.id=#{id}</if>
+      </where>
+    ) t
+    order by t.id desc
+  </select>
+
+  <select id="unreadMessageCount" resultType="int">
+    select sum(cnt)
+    from (
+      select count(m.id) - count(mm.id) cnt
+      from win.t_app_message m
+      left join win.t_app_read_message_map mm on mm.message_id=m.id and mm.delete_flag=0 and mm.account_id=#{accountId}
+      where m.delete_flag=0 and m.account_id=#{accountId}
+      union all
+      select count(m.id) - count(mm.id) cnt
+      from t_account a
+      left join win.t_app_message m on m.delete_flag=0 and m.account_id=-1
+      left join win.t_app_read_message_map mm on mm.message_id=m.id and mm.account_id=#{accountId} and mm.delete_flag=0
+      where a.id=#{accountId} and a.create_time &lt; m.create_time
+    ) t
+  </select>
+
+
+
+
+  <select id="unreadConnectCount" resultType="int">
+
+    select sum(unread_num) from t_connect_room_person where  relevance_id = #{accountId}  and  type !=3  and delete_flag = '0'
+
+  </select>
+
+
+</mapper>

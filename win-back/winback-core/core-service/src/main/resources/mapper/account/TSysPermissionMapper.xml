@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月30日 14时39分52秒 by Generator -->
+<mapper namespace="com.winback.core.dao.account.mapper.TSysPermissionMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.account.TSysPermission">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="button_code" jdbcType="VARCHAR" property="buttonCode" />
+	<result column="button_name" jdbcType="VARCHAR" property="buttonName" />
+	<result column="order_num" jdbcType="INTEGER" property="orderNum" />
+	<result column="permission_code" jdbcType="VARCHAR" property="permissionCode" />
+	<result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+	<result column="required_permission" jdbcType="BIT" property="requiredPermission" />
+	<result column="permission_type" jdbcType="CHAR" property="permissionType" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, button_code, button_name, order_num, permission_code, permission_name, 
+	required_permission, permission_type, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_sys_permission
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.account.TSysPermissionCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_sys_permission
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="buttonCode != null">
+        AND button_code = #{buttonCode,jdbcType=VARCHAR}
+      </if>
+      <if test="buttonName != null">
+        AND button_name = #{buttonName,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="permissionCode != null">
+        AND permission_code = #{permissionCode,jdbcType=VARCHAR}
+      </if>
+      <if test="permissionName != null">
+        AND permission_name = #{permissionName,jdbcType=VARCHAR}
+      </if>
+      <if test="requiredPermission != null">
+        AND required_permission = #{requiredPermission,jdbcType=BIT}
+      </if>
+      <if test="permissionType != null">
+        AND permission_type = #{permissionType,jdbcType=CHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.account.TSysPermission">
+    insert into win.t_sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="buttonCode != null">
+        button_code, 
+      </if>
+      <if test="buttonName != null">
+        button_name, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="permissionCode != null">
+        permission_code, 
+      </if>
+      <if test="permissionName != null">
+        permission_name, 
+      </if>
+      <if test="requiredPermission != null">
+        required_permission, 
+      </if>
+      <if test="permissionType != null">
+        permission_type, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buttonCode != null">
+        #{buttonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonName != null">
+        #{buttonName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="permissionCode != null">
+        #{permissionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredPermission != null">
+        #{requiredPermission,jdbcType=BIT},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.account.TSysPermission">
+    update win.t_sys_permission
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buttonCode != null">
+        button_code = #{buttonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buttonName != null">
+        button_name = #{buttonName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="permissionCode != null">
+        permission_code = #{permissionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        permission_name = #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredPermission != null">
+        required_permission = #{requiredPermission,jdbcType=BIT},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="findBy">
+
+  </select>
+</mapper>

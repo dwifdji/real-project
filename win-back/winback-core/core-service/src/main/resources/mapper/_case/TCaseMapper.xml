@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月28日 18时42分11秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseMapper">
+
+    <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCase">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="case_id" jdbcType="VARCHAR" property="caseId" />
+        <result column="account_id" jdbcType="INTEGER" property="accountId" />
+        <result column="plaintiff" jdbcType="VARCHAR" property="plaintiff" />
+        <result column="defendant" jdbcType="VARCHAR" property="defendant" />
+        <result column="lawyer_account_id" jdbcType="INTEGER" property="lawyerAccountId" />
+        <result column="case_amount" jdbcType="DECIMAL" property="caseAmount" />
+        <result column="case_desc" jdbcType="VARCHAR" property="caseDesc" />
+        <result column="apply_mobile" jdbcType="VARCHAR" property="applyMobile" />
+        <result column="apply_name" jdbcType="VARCHAR" property="applyName" />
+        <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+        <result column="applyer_type" jdbcType="VARCHAR" property="applyerType" />
+        <result column="case_type_id" jdbcType="INTEGER" property="caseTypeId" />
+        <result column="main_status" jdbcType="VARCHAR" property="mainStatus" />
+        <result column="lawsuit_status" jdbcType="VARCHAR" property="lawsuitStatus" />
+        <result column="execute_status" jdbcType="VARCHAR" property="executeStatus" />
+        <result column="sub_status" jdbcType="VARCHAR" property="subStatus" />
+        <result column="main_source" jdbcType="VARCHAR" property="mainSource" />
+        <result column="sub_source" jdbcType="VARCHAR" property="subSource" />
+        <result column="asset_clue" jdbcType="VARCHAR" property="assetClue" />
+        <result column="sign_contract_time" jdbcType="TIMESTAMP" property="signContractTime" />
+        <result column="case_phase" jdbcType="VARCHAR" property="casePhase" />
+        <result column="case_no" jdbcType="VARCHAR" property="caseNo" />
+        <result column="case_brief_id" jdbcType="INTEGER" property="caseBriefId" />
+        <result column="case_demand" jdbcType="VARCHAR" property="caseDemand" />
+        <result column="case_court" jdbcType="VARCHAR" property="caseCourt" />
+        <result column="judge_president" jdbcType="VARCHAR" property="judgePresident" />
+        <result column="judge_officer" jdbcType="VARCHAR" property="judgeOfficer" />
+        <result column="proxy_judge_officer" jdbcType="VARCHAR" property="proxyJudgeOfficer" />
+        <result column="case_accept_fee" jdbcType="DECIMAL" property="caseAcceptFee" />
+        <result column="asset_protect_fee" jdbcType="DECIMAL" property="assetProtectFee" />
+        <result column="protect_warrant_fee" jdbcType="DECIMAL" property="protectWarrantFee" />
+        <result column="lawyer_fee" jdbcType="DECIMAL" property="lawyerFee" />
+        <result column="notarial_fee" jdbcType="DECIMAL" property="notarialFee" />
+        <result column="audit_fee" jdbcType="DECIMAL" property="auditFee" />
+        <result column="appraise_fee" jdbcType="DECIMAL" property="appraiseFee" />
+        <result column="notice_fee" jdbcType="DECIMAL" property="noticeFee" />
+        <result column="execute_fee" jdbcType="DECIMAL" property="executeFee" />
+        <result column="investigate_fee" jdbcType="DECIMAL" property="investigateFee" />
+        <result column="other_fee" jdbcType="DECIMAL" property="otherFee" />
+        <result column="total_fee" jdbcType="DECIMAL" property="totalFee" />
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+        <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+        <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, case_id, account_id, plaintiff, defendant, lawyer_account_id,
+        case_amount, case_desc, apply_mobile, apply_name, id_card_no, applyer_type,
+        case_type_id, main_status, sub_status, main_source, sub_source, asset_clue,
+        sign_contract_time, case_phase, case_no, case_brief_id, case_demand, case_court,
+        judge_president, judge_officer, proxy_judge_officer, case_accept_fee, asset_protect_fee, protect_warrant_fee,
+        lawyer_fee, notarial_fee, audit_fee, appraise_fee, notice_fee, execute_fee,
+        investigate_fee, other_fee, total_fee, province_code, city_code, area_code,
+        delete_flag, create_time,update_time,lawsuit_status,execute_status
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from win.t_case
+    </select>
+
+    <select id="searchSelfCaseByName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM win.`t_case`
+        <where>
+            account_id=#{accountId}
+            and delete_flag=0
+            <if test="name!=null and name!=''">
+                AND case_brief_id in
+                (
+                select id from win.`t_case_brief`
+                where name like concat('%',#{name},'%')
+                )
+            </if>
+        </where>
+
+        union
+
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM win.`t_case`
+        <where>
+            case_id in
+            (
+            SELECT case_id FROM t_case_lawyer_order
+            where lawyer_account_id=#{accountId}
+            and delete_flag=0
+            )
+            and delete_flag=0
+            <if test="name!=null and name!=''">
+                AND case_brief_id in
+                (
+                select id from win.`t_case_brief`
+                where name like concat('%',#{name},'%')
+                )
+            </if>
+        </where>
+
+        union
+
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM win.`t_case`
+        <where>
+            case_id in
+            (
+            SELECT case_id FROM t_case_project_manager_map
+            where account_id=#{accountId}
+            and delete_flag=0
+            )
+            and delete_flag=0
+            <if test="name!=null and name!=''">
+                AND case_brief_id in
+                (
+                select id from win.`t_case_brief`
+                where name like concat('%',#{name},'%')
+                )
+            </if>
+        </where>
+    </select>
+
+    <select id="getApplyCase"  resultMap="BaseResultMap">
+        SELECT c.*
+        FROM win.`t_case` c
+        inner join win.t_case_brief b on b.id=c.case_brief_id
+        INNER JOIN win.`t_case_lawyer_order` tclo
+        ON c.`case_id`=tclo.`case_id`
+        <where>
+            tclo.`lawyer_account_id` = #{accountId}
+            and c.delete_flag=0
+            and tclo.delete_flag=0
+            <if test="caseTypeId != null and caseTypeId!=''">
+                AND c.case_type_id = #{caseTypeId,jdbcType=INTEGER}
+            </if>
+            <if test="provinceCode != null and provinceCode!=''">
+                AND c.province_code = #{provinceCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cityCode != null and cityCode!=''">
+                AND c.city_code = #{cityCode,jdbcType=VARCHAR}
+            </if>
+            <if test="areaCode != null and areaCode!=''">
+                AND c.area_code = #{areaCode,jdbcType=VARCHAR}
+            </if>
+            <if test="deleteFlag != null">
+                AND c.delete_flag = #{deleteFlag,jdbcType=BIT}
+            </if>
+            <if test="caseBriefId != null and caseBriefId!=''">
+                AND c.case_brief_id = #{caseBriefId}
+            </if>
+            <if test="caseBigBriefId != null and caseBigBriefId!=''">
+                AND b.big_brief_id = #{caseBigBriefId}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="searchCaseByName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM win.`t_case`
+        where case_brief_id in
+        (
+          select id from win.`t_case_brief`
+          where name like concat('%',#{name},'%')
+        )
+        and main_status in ('RISK_CHECK_SUCCESS','HAS_SIGN_CONTRACT','BEING_LAWSUIT','BEING_EXECUTE','WAIT_RECEIVED_PAY','SUCCESS')
+        and delete_flag=0
+
+    </select>
+
+
+    <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from win.t_case
+        <where>
+            delete_flag=0
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="caseId != null and caseId !=''" >
+                AND case_id = #{caseId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null">
+                AND account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="plaintiff != null and plaintiff!=''">
+                AND plaintiff like concat('%',#{plaintiff},'%')
+            </if>
+            <if test="defendant != null and defendant!=''">
+                AND defendant like concat('%',#{defendant},'%')
+            </if>
+            <if test="lawyerAccountId != null">
+                AND lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER}
+            </if>
+            <if test="caseAmount != null">
+                AND case_amount = #{caseAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="caseDesc != null">
+                AND case_desc = #{caseDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="applyMobile != null">
+                AND apply_mobile = #{applyMobile,jdbcType=VARCHAR}
+            </if>
+            <if test="applyName != null">
+                AND apply_name = #{applyName,jdbcType=VARCHAR}
+            </if>
+            <if test="idCardNo != null">
+                AND id_card_no = #{idCardNo,jdbcType=VARCHAR}
+            </if>
+            <if test="applyerType != null">
+                AND applyer_type = #{applyerType,jdbcType=VARCHAR}
+            </if>
+            <if test="caseTypeId != null and caseTypeId!=''">
+                AND case_type_id = #{caseTypeId,jdbcType=INTEGER}
+            </if>
+            <if test="mainStatus != null and mainStatus!=''">
+                AND main_status = #{mainStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="subStatus != null">
+                AND sub_status = #{subStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="mainSource != null">
+                AND main_source = #{mainSource,jdbcType=VARCHAR}
+            </if>
+            <if test="subSource != null">
+                AND sub_source = #{subSource,jdbcType=VARCHAR}
+            </if>
+            <if test="assetClue != null">
+                AND asset_clue = #{assetClue,jdbcType=VARCHAR}
+            </if>
+            <if test="signContractTime != null and signContractTime!=''">
+                AND  DATE_FORMAT(sign_contract_time,'%Y-%m-%d')= #{signContractTime}
+            </if>
+            <if test="casePhase != null">
+                AND case_phase = #{casePhase,jdbcType=VARCHAR}
+            </if>
+            <if test="caseNo != null">
+                AND case_no = #{caseNo,jdbcType=VARCHAR}
+            </if>
+            <if test="caseBriefId != null">
+                AND case_brief_id = #{caseBriefId,jdbcType=INTEGER}
+            </if>
+            <if test="caseDemand != null">
+                AND case_demand = #{caseDemand,jdbcType=VARCHAR}
+            </if>
+            <if test="caseCourt != null">
+                AND case_court = #{caseCourt,jdbcType=VARCHAR}
+            </if>
+            <if test="judgePresident != null">
+                AND judge_president = #{judgePresident,jdbcType=VARCHAR}
+            </if>
+            <if test="judgeOfficer != null">
+                AND judge_officer = #{judgeOfficer,jdbcType=VARCHAR}
+            </if>
+            <if test="proxyJudgeOfficer != null">
+                AND proxy_judge_officer = #{proxyJudgeOfficer,jdbcType=VARCHAR}
+            </if>
+            <if test="caseAcceptFee != null">
+                AND case_accept_fee = #{caseAcceptFee,jdbcType=DECIMAL}
+            </if>
+            <if test="assetProtectFee != null">
+                AND asset_protect_fee = #{assetProtectFee,jdbcType=DECIMAL}
+            </if>
+            <if test="protectWarrantFee != null">
+                AND protect_warrant_fee = #{protectWarrantFee,jdbcType=DECIMAL}
+            </if>
+            <if test="lawyerFee != null">
+                AND lawyer_fee = #{lawyerFee,jdbcType=DECIMAL}
+            </if>
+            <if test="notarialFee != null">
+                AND notarial_fee = #{notarialFee,jdbcType=DECIMAL}
+            </if>
+            <if test="auditFee != null">
+                AND audit_fee = #{auditFee,jdbcType=DECIMAL}
+            </if>
+            <if test="appraiseFee != null">
+                AND appraise_fee = #{appraiseFee,jdbcType=DECIMAL}
+            </if>
+            <if test="noticeFee != null">
+                AND notice_fee = #{noticeFee,jdbcType=DECIMAL}
+            </if>
+            <if test="executeFee != null">
+                AND execute_fee = #{executeFee,jdbcType=DECIMAL}
+            </if>
+            <if test="investigateFee != null">
+                AND investigate_fee = #{investigateFee,jdbcType=DECIMAL}
+            </if>
+            <if test="otherFee != null">
+                AND other_fee = #{otherFee,jdbcType=DECIMAL}
+            </if>
+            <if test="totalFee != null">
+                AND total_fee = #{totalFee,jdbcType=DECIMAL}
+            </if>
+            <if test="provinceCode != null and provinceCode!=''">
+                AND province_code = #{provinceCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cityCode != null and cityCode!=''">
+                AND city_code = #{cityCode,jdbcType=VARCHAR}
+            </if>
+            <if test="areaCode != null and areaCode!=''">
+                AND area_code = #{areaCode,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and  createTime!=''">
+                AND  DATE_FORMAT(create_time,'%Y-%m-%d')= #{createTime}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <select id="getPublishedCaseList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from win.t_case
+        where case_type_id = #{caseTypeId}
+        and account_id!=-1
+        and delete_flag=0
+    </select>
+
+    <insert id="insert" parameterType="com.winback.core.model._case.TCase" useGeneratedKeys="true" keyProperty="id">
+        insert into win.t_case
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="caseId != null">
+                case_id,
+            </if>
+            <if test="accountId != null">
+                account_id,
+            </if>
+            <if test="plaintiff != null">
+                plaintiff,
+            </if>
+            <if test="defendant != null">
+                defendant,
+            </if>
+            <if test="lawyerAccountId != null">
+                lawyer_account_id,
+            </if>
+            <if test="caseAmount != null">
+                case_amount,
+            </if>
+            <if test="caseDesc != null">
+                case_desc,
+            </if>
+            <if test="applyMobile != null">
+                apply_mobile,
+            </if>
+            <if test="applyName != null">
+                apply_name,
+            </if>
+            <if test="idCardNo != null">
+                id_card_no,
+            </if>
+            <if test="applyerType != null">
+                applyer_type,
+            </if>
+            <if test="caseTypeId != null">
+                case_type_id,
+            </if>
+            <if test="mainStatus != null">
+                main_status,
+            </if>
+            <if test="subStatus != null">
+                sub_status,
+            </if>
+            <if test="mainSource != null">
+                main_source,
+            </if>
+            <if test="subSource != null">
+                sub_source,
+            </if>
+            <if test="assetClue != null">
+                asset_clue,
+            </if>
+            <if test="signContractTime != null">
+                sign_contract_time,
+            </if>
+            <if test="casePhase != null">
+                case_phase,
+            </if>
+            <if test="caseNo != null">
+                case_no,
+            </if>
+            <if test="caseBriefId != null">
+                case_brief_id,
+            </if>
+            <if test="caseDemand != null">
+                case_demand,
+            </if>
+            <if test="caseCourt != null">
+                case_court,
+            </if>
+            <if test="judgePresident != null">
+                judge_president,
+            </if>
+            <if test="judgeOfficer != null">
+                judge_officer,
+            </if>
+            <if test="proxyJudgeOfficer != null">
+                proxy_judge_officer,
+            </if>
+            <if test="caseAcceptFee != null">
+                case_accept_fee,
+            </if>
+            <if test="assetProtectFee != null">
+                asset_protect_fee,
+            </if>
+            <if test="protectWarrantFee != null">
+                protect_warrant_fee,
+            </if>
+            <if test="lawyerFee != null">
+                lawyer_fee,
+            </if>
+            <if test="notarialFee != null">
+                notarial_fee,
+            </if>
+            <if test="auditFee != null">
+                audit_fee,
+            </if>
+            <if test="appraiseFee != null">
+                appraise_fee,
+            </if>
+            <if test="noticeFee != null">
+                notice_fee,
+            </if>
+            <if test="executeFee != null">
+                execute_fee,
+            </if>
+            <if test="investigateFee != null">
+                investigate_fee,
+            </if>
+            <if test="otherFee != null">
+                other_fee,
+            </if>
+            <if test="totalFee != null">
+                total_fee,
+            </if>
+            <if test="provinceCode != null">
+                province_code,
+            </if>
+            <if test="cityCode != null">
+                city_code,
+            </if>
+            <if test="areaCode != null">
+                area_code,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="caseId != null">
+                #{caseId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="plaintiff != null">
+                #{plaintiff,jdbcType=VARCHAR},
+            </if>
+            <if test="defendant != null">
+                #{defendant,jdbcType=VARCHAR},
+            </if>
+            <if test="lawyerAccountId != null">
+                #{lawyerAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="caseAmount != null">
+                #{caseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="caseDesc != null">
+                #{caseDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="applyMobile != null">
+                #{applyMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="applyName != null">
+                #{applyName,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardNo != null">
+                #{idCardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="applyerType != null">
+                #{applyerType,jdbcType=VARCHAR},
+            </if>
+            <if test="caseTypeId != null">
+                #{caseTypeId,jdbcType=INTEGER},
+            </if>
+            <if test="mainStatus != null">
+                #{mainStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="subStatus != null">
+                #{subStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="mainSource != null">
+                #{mainSource,jdbcType=VARCHAR},
+            </if>
+            <if test="subSource != null">
+                #{subSource,jdbcType=VARCHAR},
+            </if>
+            <if test="assetClue != null">
+                #{assetClue,jdbcType=VARCHAR},
+            </if>
+            <if test="signContractTime != null">
+                #{signContractTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="casePhase != null">
+                #{casePhase,jdbcType=VARCHAR},
+            </if>
+            <if test="caseNo != null">
+                #{caseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="caseBriefId != null">
+                #{caseBriefId,jdbcType=INTEGER},
+            </if>
+            <if test="caseDemand != null">
+                #{caseDemand,jdbcType=VARCHAR},
+            </if>
+            <if test="caseCourt != null">
+                #{caseCourt,jdbcType=VARCHAR},
+            </if>
+            <if test="judgePresident != null">
+                #{judgePresident,jdbcType=VARCHAR},
+            </if>
+            <if test="judgeOfficer != null">
+                #{judgeOfficer,jdbcType=VARCHAR},
+            </if>
+            <if test="proxyJudgeOfficer != null">
+                #{proxyJudgeOfficer,jdbcType=VARCHAR},
+            </if>
+            <if test="caseAcceptFee != null">
+                #{caseAcceptFee,jdbcType=DECIMAL},
+            </if>
+            <if test="assetProtectFee != null">
+                #{assetProtectFee,jdbcType=DECIMAL},
+            </if>
+            <if test="protectWarrantFee != null">
+                #{protectWarrantFee,jdbcType=DECIMAL},
+            </if>
+            <if test="lawyerFee != null">
+                #{lawyerFee,jdbcType=DECIMAL},
+            </if>
+            <if test="notarialFee != null">
+                #{notarialFee,jdbcType=DECIMAL},
+            </if>
+            <if test="auditFee != null">
+                #{auditFee,jdbcType=DECIMAL},
+            </if>
+            <if test="appraiseFee != null">
+                #{appraiseFee,jdbcType=DECIMAL},
+            </if>
+            <if test="noticeFee != null">
+                #{noticeFee,jdbcType=DECIMAL},
+            </if>
+            <if test="executeFee != null">
+                #{executeFee,jdbcType=DECIMAL},
+            </if>
+            <if test="investigateFee != null">
+                #{investigateFee,jdbcType=DECIMAL},
+            </if>
+            <if test="otherFee != null">
+                #{otherFee,jdbcType=DECIMAL},
+            </if>
+            <if test="totalFee != null">
+                #{totalFee,jdbcType=DECIMAL},
+            </if>
+            <if test="provinceCode != null">
+                #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCode != null">
+                #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaCode != null">
+                #{areaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.winback.core.model._case.TCase">
+        update win.t_case
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="caseId != null">
+                case_id = #{caseId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null">
+                account_id = #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="plaintiff != null">
+                plaintiff = #{plaintiff,jdbcType=VARCHAR},
+            </if>
+            <if test="defendant != null">
+                defendant = #{defendant,jdbcType=VARCHAR},
+            </if>
+            <if test="lawyerAccountId != null">
+                lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER},
+            </if>
+            <if test="caseAmount != null">
+                case_amount = #{caseAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="caseDesc != null">
+                case_desc = #{caseDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="applyMobile != null">
+                apply_mobile = #{applyMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="applyName != null">
+                apply_name = #{applyName,jdbcType=VARCHAR},
+            </if>
+            <if test="idCardNo != null">
+                id_card_no = #{idCardNo,jdbcType=VARCHAR},
+            </if>
+            <if test="applyerType != null">
+                applyer_type = #{applyerType,jdbcType=VARCHAR},
+            </if>
+            <if test="caseTypeId != null">
+                case_type_id = #{caseTypeId,jdbcType=INTEGER},
+            </if>
+            <if test="mainStatus != null">
+                main_status = #{mainStatus,jdbcType=VARCHAR},
+            </if>
+
+            <if test="lawsuitStatus != null">
+                lawsuit_status = #{lawsuitStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="executeStatus != null">
+                execute_status = #{executeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="subStatus != null and  subStatus!=''">
+                sub_status = #{subStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="mainSource != null">
+                main_source = #{mainSource,jdbcType=VARCHAR},
+            </if>
+            <if test="subSource != null">
+                sub_source = #{subSource,jdbcType=VARCHAR},
+            </if>
+            <if test="assetClue != null">
+                asset_clue = #{assetClue,jdbcType=VARCHAR},
+            </if>
+            <if test="signContractTime != null">
+                sign_contract_time = #{signContractTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="casePhase != null">
+                case_phase = #{casePhase,jdbcType=VARCHAR},
+            </if>
+            <if test="caseNo != null">
+                case_no = #{caseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="caseBriefId != null">
+                case_brief_id = #{caseBriefId,jdbcType=INTEGER},
+            </if>
+            <if test="caseDemand != null">
+                case_demand = #{caseDemand,jdbcType=VARCHAR},
+            </if>
+            <if test="caseCourt != null">
+                case_court = #{caseCourt,jdbcType=VARCHAR},
+            </if>
+            <if test="judgePresident != null">
+                judge_president = #{judgePresident,jdbcType=VARCHAR},
+            </if>
+            <if test="judgeOfficer != null">
+                judge_officer = #{judgeOfficer,jdbcType=VARCHAR},
+            </if>
+            <if test="proxyJudgeOfficer != null">
+                proxy_judge_officer = #{proxyJudgeOfficer,jdbcType=VARCHAR},
+            </if>
+            <if test="caseAcceptFee != null">
+                case_accept_fee = #{caseAcceptFee,jdbcType=DECIMAL},
+            </if>
+            <if test="assetProtectFee != null">
+                asset_protect_fee = #{assetProtectFee,jdbcType=DECIMAL},
+            </if>
+            <if test="protectWarrantFee != null">
+                protect_warrant_fee = #{protectWarrantFee,jdbcType=DECIMAL},
+            </if>
+            <if test="lawyerFee != null">
+                lawyer_fee = #{lawyerFee,jdbcType=DECIMAL},
+            </if>
+            <if test="notarialFee != null">
+                notarial_fee = #{notarialFee,jdbcType=DECIMAL},
+            </if>
+            <if test="auditFee != null">
+                audit_fee = #{auditFee,jdbcType=DECIMAL},
+            </if>
+            <if test="appraiseFee != null">
+                appraise_fee = #{appraiseFee,jdbcType=DECIMAL},
+            </if>
+            <if test="noticeFee != null">
+                notice_fee = #{noticeFee,jdbcType=DECIMAL},
+            </if>
+            <if test="executeFee != null">
+                execute_fee = #{executeFee,jdbcType=DECIMAL},
+            </if>
+            <if test="investigateFee != null">
+                investigate_fee = #{investigateFee,jdbcType=DECIMAL},
+            </if>
+            <if test="otherFee != null">
+                other_fee = #{otherFee,jdbcType=DECIMAL},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee,jdbcType=DECIMAL},
+            </if>
+            <if test="provinceCode != null">
+                province_code = #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCode != null">
+                city_code = #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaCode != null">
+                area_code = #{areaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            AND case_id = #{caseId,jdbcType=VARCHAR}
+        </where>
+    </update>
+
+    <select id="applyCaseCount" resultType="java.lang.Integer">
+        select count(0)
+        from win.t_case
+        where account_id=#{accoundId} and delete_flag=0
+    </select>
+    
+    <select id="getRecommendedCaseList" parameterType="Integer" resultType="com.winback.core.facade._case.vo.HomePageCaseVO">
+        SELECT
+            tc.id,
+            tc.case_id as caseId,
+            tc.defendant,
+            tc.case_amount AS casePrice,
+            tcp.`name` AS province,
+            tcc.`name` AS city,
+            tcb.name as caseBrief,
+            tc.case_court as caseCourt,
+            tc.main_status mainStatus
+        FROM
+            t_case tc
+            LEFT JOIN t_com_province tcp ON tc.province_code = tcp.`code`
+            LEFT JOIN t_com_city tcc ON tc.city_code = tcc.`code`
+            LEFT JOIN t_case_brief tcb on tcb.id = tc.case_brief_id
+            INNER JOIN t_case_status_desc d ON d.status=tc.main_status
+        WHERE
+            tc.delete_flag = 0
+            and tc.main_status in ('RISK_CHECK_SUCCESS','HAS_SIGN_CONTRACT','BEING_LAWSUIT','BEING_EXECUTE','WAIT_RECEIVED_PAY','SUCCESS')
+        ORDER BY
+            tc.create_time DESC,d.order_num ASC
+        <if test="caseSize != null">
+            LIMIT 0, #{caseSize}
+        </if>
+    </select>
+
+    <select id="getStatusCase" resultType="com.winback.core.vo.finance.WorkBenchVO">
+       	 select count(id) as total, 4 as type, 'INIT' as params from t_case where delete_flag = 0 and main_status = 'INIT'
+         UNION ALL
+         select count(id) as total, 5 as type, 'RISK_CHECK_SUCCESS' as params from t_case where delete_flag = 0 and main_status = 'RISK_CHECK_SUCCESS'
+         UNION ALL
+         select count(id) as total, 6 as type, 'PRE_CHECK_SUCCESS' as params from t_case where delete_flag = 0 and main_status = 'PRE_CHECK_SUCCESS'
+         UNION ALL
+         select count(id) as total, 7 as type, 'BEING_LAWSUIT' as params from t_case where delete_flag = 0 and main_status = 'BEING_LAWSUIT'
+         UNION ALL
+         select count(id) as total, 8 as type, 'BEING_EXECUTE' as params from t_case where delete_flag = 0 and main_status = 'BEING_EXECUTE'
+    </select>
+
+    <select id="searchCase" parameterType="com.winback.core.condition._case.TCaseCondition" resultType="com.winback.core.model._case.TCase">
+        select c.*, case when m.id is null then 0 else 1 end as allocatedProjectManagerFlag
+        from win.t_case c
+        inner join win.t_case_brief b on b.id=c.case_brief_id
+        left join win.t_case_project_manager_map m on m.case_id=c.case_id and m.delete_flag=0
+        <where>
+            c.delete_flag=0
+            <if test="id != null">
+                AND c.id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="caseId != null and caseId !=''" >
+                AND c.case_id = #{caseId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null">
+                AND c.account_id = #{accountId,jdbcType=INTEGER}
+            </if>
+            <if test="plaintiff != null and plaintiff!=''">
+                AND c.plaintiff like concat('%',#{plaintiff},'%')
+            </if>
+            <if test="defendant != null and defendant!=''">
+                AND c.defendant like concat('%',#{defendant},'%')
+            </if>
+            <if test="lawyerAccountId != null">
+                AND c.lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER}
+            </if>
+            <if test="caseAmount != null">
+                AND c.case_amount = #{caseAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="caseDesc != null">
+                AND c.case_desc = #{caseDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="applyMobile != null">
+                AND c.apply_mobile = #{applyMobile,jdbcType=VARCHAR}
+            </if>
+            <if test="applyName != null">
+                AND c.apply_name = #{applyName,jdbcType=VARCHAR}
+            </if>
+            <if test="idCardNo != null">
+                AND c.id_card_no = #{idCardNo,jdbcType=VARCHAR}
+            </if>
+            <if test="applyerType != null">
+                AND c.applyer_type = #{applyerType,jdbcType=VARCHAR}
+            </if>
+            <if test="caseTypeId != null and caseTypeId!=''">
+                AND c.case_type_id = #{caseTypeId,jdbcType=INTEGER}
+            </if>
+            <if test="mainStatus != null and mainStatus!=''">
+                AND c.main_status = #{mainStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="subStatus != null">
+                AND c.sub_status = #{subStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="mainSource != null">
+                AND c.main_source = #{mainSource,jdbcType=VARCHAR}
+            </if>
+            <if test="subSource != null">
+                AND c.sub_source = #{subSource,jdbcType=VARCHAR}
+            </if>
+            <if test="assetClue != null">
+                AND c.asset_clue = #{assetClue,jdbcType=VARCHAR}
+            </if>
+            <if test="signContractTime != null and signContractTime!=''">
+                AND  DATE_FORMAT(c.sign_contract_time,'%Y-%m-%d')= #{signContractTime}
+            </if>
+            <if test="casePhase != null">
+                AND c.case_phase = #{casePhase,jdbcType=VARCHAR}
+            </if>
+            <if test="caseNo != null">
+                AND c.case_no = #{caseNo,jdbcType=VARCHAR}
+            </if>
+            <if test="caseBriefId != null and caseBriefId!=''">
+                AND c.case_brief_id = #{caseBriefId,jdbcType=INTEGER}
+            </if>
+            <if test="caseBigBriefId != null and caseBigBriefId !=''">
+                AND b.big_brief_id = #{caseBigBriefId}
+            </if>
+            <if test="caseDemand != null">
+                AND c.case_demand = #{caseDemand,jdbcType=VARCHAR}
+            </if>
+            <if test="caseCourt != null">
+                AND c.case_court = #{caseCourt,jdbcType=VARCHAR}
+            </if>
+            <if test="judgePresident != null">
+                AND c.judge_president = #{judgePresident,jdbcType=VARCHAR}
+            </if>
+            <if test="judgeOfficer != null">
+                AND c.judge_officer = #{judgeOfficer,jdbcType=VARCHAR}
+            </if>
+            <if test="proxyJudgeOfficer != null">
+                AND c.proxy_judge_officer = #{proxyJudgeOfficer,jdbcType=VARCHAR}
+            </if>
+            <if test="caseAcceptFee != null">
+                AND c.case_accept_fee = #{caseAcceptFee,jdbcType=DECIMAL}
+            </if>
+            <if test="assetProtectFee != null">
+                AND c.asset_protect_fee = #{assetProtectFee,jdbcType=DECIMAL}
+            </if>
+            <if test="protectWarrantFee != null">
+                AND c.protect_warrant_fee = #{protectWarrantFee,jdbcType=DECIMAL}
+            </if>
+            <if test="lawyerFee != null">
+                AND c.lawyer_fee = #{lawyerFee,jdbcType=DECIMAL}
+            </if>
+            <if test="notarialFee != null">
+                AND c.notarial_fee = #{notarialFee,jdbcType=DECIMAL}
+            </if>
+            <if test="auditFee != null">
+                AND c.audit_fee = #{auditFee,jdbcType=DECIMAL}
+            </if>
+            <if test="appraiseFee != null">
+                AND c.appraise_fee = #{appraiseFee,jdbcType=DECIMAL}
+            </if>
+            <if test="noticeFee != null">
+                AND c.notice_fee = #{noticeFee,jdbcType=DECIMAL}
+            </if>
+            <if test="executeFee != null">
+                AND c.execute_fee = #{executeFee,jdbcType=DECIMAL}
+            </if>
+            <if test="investigateFee != null">
+                AND c.investigate_fee = #{investigateFee,jdbcType=DECIMAL}
+            </if>
+            <if test="otherFee != null">
+                AND c.other_fee = #{otherFee,jdbcType=DECIMAL}
+            </if>
+            <if test="totalFee != null">
+                AND c.total_fee = #{totalFee,jdbcType=DECIMAL}
+            </if>
+            <if test="provinceCode != null and provinceCode!=''">
+                AND c.province_code = #{provinceCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cityCode != null and cityCode!=''">
+                AND c.city_code = #{cityCode,jdbcType=VARCHAR}
+            </if>
+            <if test="areaCode != null and areaCode!=''">
+                AND c.area_code = #{areaCode,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and  createTime!=''">
+                AND  DATE_FORMAT(c.create_time,'%Y-%m-%d')= #{createTime}
+            </if>
+
+            <if test="frontFlag != null and frontFlag==1">
+                AND c.main_status in ('RISK_CHECK_SUCCESS','HAS_SIGN_CONTRACT','BEING_LAWSUIT','BEING_EXECUTE','WAIT_RECEIVED_PAY','SUCCESS')
+            </if>
+        </where>
+    </select>
+
+    <select id="getProjectManagerAllocatedCaseList" resultType="com.winback.core.facade._case.vo.Case">
+        select c.*,m.create_time allocatedTime
+        from win.t_case_project_manager_map m
+        inner join win.t_case c on c.case_id=m.case_id and c.delete_flag=0
+        where m.account_id=#{accountId} and m.delete_flag=0
+        order by m.id desc
+    </select>
+
+    <select id="getMyManageCaseList" parameterType="java.util.Map" resultType="com.winback.core.model._case.TCase">
+        select c.*
+        from win.t_case_project_manager_map m
+        inner join win.t_case c on c.case_id=m.case_id and c.delete_flag=0
+        inner join win.t_case_brief b on b.id=c.case_brief_id
+        <where>
+            m.account_id=#{accountId} and m.delete_flag=0
+            <if test="caseTypeId != null and caseTypeId!=''">
+                AND c.case_type_id = #{caseTypeId,jdbcType=INTEGER}
+            </if>
+            <if test="mainStatus != null and mainStatus!=''">
+                AND c.main_status = #{mainStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="caseBriefId != null and caseBriefId!=''">
+                AND c.case_brief_id = #{caseBriefId,jdbcType=INTEGER}
+            </if>
+            <if test="caseBigBriefId != null and caseBigBriefId !=''">
+                AND b.big_brief_id = #{caseBigBriefId}
+            </if>
+            <if test="provinceCode != null and provinceCode!=''">
+                AND c.province_code = #{provinceCode,jdbcType=VARCHAR}
+            </if>
+            <if test="cityCode != null and cityCode!=''">
+                AND c.city_code = #{cityCode,jdbcType=VARCHAR}
+            </if>
+            <if test="areaCode != null and areaCode!=''">
+                AND c.area_code = #{areaCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by m.id desc
+    </select>
+</mapper>

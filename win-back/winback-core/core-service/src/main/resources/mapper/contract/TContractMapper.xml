@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月18日 13时38分36秒 by Generator -->
+<mapper namespace="com.winback.core.dao.contract.mapper.TContractMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.contract.TContract">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="first_image" jdbcType="VARCHAR" property="firstImage" />
+    <result column="images" jdbcType="LONGVARCHAR" property="images" />
+    <result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+    <result column="manual" jdbcType="LONGVARCHAR" property="manual" />
+    <result column="hint" jdbcType="LONGVARCHAR" property="hint" />
+    <result column="length" jdbcType="INTEGER" property="length" />
+    <result column="download_count" jdbcType="INTEGER" property="downloadCount" />
+    <result column="favorite_count" jdbcType="INTEGER" property="favoriteCount" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="purchase_count" jdbcType="INTEGER" property="purchaseCount" />
+    <result column="recommend_flag" jdbcType="BIT" property="recommendFlag" />
+    <result column="sale_flag" jdbcType="BIT" property="saleFlag" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, amount, first_image, images, download_url,
+    manual, hint, length, download_count, favorite_count, view_count,
+    purchase_count, recommend_flag, sale_flag, order_num, delete_flag, create_time,
+    update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_contract
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.contract.TContractCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_contract
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="firstImage != null">
+        AND first_image = #{firstImage,jdbcType=VARCHAR}
+      </if>
+      <if test="images != null">
+        AND images = #{images,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="downloadUrl != null">
+        AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="manual != null">
+        AND manual = #{manual,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="hint != null">
+        AND hint = #{hint,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="length != null">
+        AND length = #{length,jdbcType=INTEGER}
+      </if>
+      <if test="downloadCount != null">
+        AND download_count = #{downloadCount,jdbcType=INTEGER}
+      </if>
+      <if test="favoriteCount != null">
+        AND favorite_count = #{favoriteCount,jdbcType=INTEGER}
+      </if>
+      <if test="viewCount != null">
+        AND view_count = #{viewCount,jdbcType=INTEGER}
+      </if>
+      <if test="purchaseCount != null">
+        AND purchase_count = #{purchaseCount,jdbcType=INTEGER}
+      </if>
+      <if test="recommendFlag != null">
+        AND recommend_flag = #{recommendFlag,jdbcType=BIT}
+      </if>
+      <if test="saleFlag != null">
+        AND sale_flag = #{saleFlag,jdbcType=BIT}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.contract.TContract" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="firstImage != null">
+        first_image,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+      <if test="downloadUrl != null">
+        download_url,
+      </if>
+      <if test="manual != null">
+        manual,
+      </if>
+      <if test="hint != null">
+        hint,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+      <if test="favoriteCount != null">
+        favorite_count,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="purchaseCount != null">
+        purchase_count,
+      </if>
+      <if test="recommendFlag != null">
+        recommend_flag,
+      </if>
+      <if test="saleFlag != null">
+        sale_flag,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="firstImage != null">
+        #{firstImage,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="manual != null">
+        #{manual,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hint != null">
+        #{hint,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=INTEGER},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoriteCount != null">
+        #{favoriteCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseCount != null">
+        #{purchaseCount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendFlag != null">
+        #{recommendFlag,jdbcType=BIT},
+      </if>
+      <if test="saleFlag != null">
+        #{saleFlag,jdbcType=BIT},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.contract.TContract">
+    update win.t_contract
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="firstImage != null">
+        first_image = #{firstImage,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="downloadUrl != null">
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="manual != null">
+        manual = #{manual,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hint != null">
+        hint = #{hint,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="length != null">
+        length = #{length,jdbcType=INTEGER},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="favoriteCount != null">
+        favorite_count = #{favoriteCount,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseCount != null">
+        purchase_count = #{purchaseCount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendFlag != null">
+        recommend_flag = #{recommendFlag,jdbcType=BIT},
+      </if>
+      <if test="saleFlag != null">
+        sale_flag = #{saleFlag,jdbcType=BIT},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+
+  <select id="getFrontList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContract">
+    select c.*
+    from win.t_contract c
+    <where>
+      c.delete_flag=0 and c.sale_flag=1
+      <if test="q != null and q !=''"> and c.name like concat('%',#{q},'%')</if>
+      <if test="contractTypeId != null and contractTypeId != ''">
+        and c.id in (
+          select ctm.contract_id
+          from win.t_contract_type ct
+          inner join win.t_contract_type_map ctm on ctm.contract_type_id=ct.id and ctm.delete_flag=0
+          where ct.id=#{contractTypeId}
+        )
+      </if>
+      <if test="contractBigTypeId != null and contractBigTypeId != ''">
+        and c.id in (
+          select ctm.contract_id
+          from win.t_contract_type ct
+          inner join win.t_contract_type_map ctm on ctm.contract_type_id=ct.id and ctm.delete_flag=0
+          inner join win.t_contract_big_type cbt on cbt.id=ct.big_type_id
+          where ct.big_type_id=#{contractBigTypeId}
+        )
+      </if>
+    </where>
+    order by
+    <choose>
+      <when test="orderBy != null and orderBy == 'downloadCount_asc'.toString()"> c.download_count asc</when>
+      <when test="orderBy != null and orderBy == 'downloadCount_desc'.toString()"> c.download_count desc</when>
+      <when test="orderBy != null and orderBy == 'length_asc'.toString()"> c.length asc</when>
+      <when test="orderBy != null and orderBy == 'length_desc'.toString()"> c.length desc</when>
+      <when test="orderBy != null and orderBy == 'amount_asc'.toString()"> c.amount asc</when>
+      <when test="orderBy != null and orderBy == 'amount_desc'.toString()"> c.amount desc</when>
+      <otherwise> c.order_num asc, c.view_count desc, c.purchase_count desc</otherwise>
+    </choose>
+  </select>
+
+  <select id="getPossessedContractList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContract">
+    select c.*
+    from win.t_contract c
+    inner join win.t_account_contract_map acm on acm.contract_id=c.id and acm.account_id=#{loginId}
+    <where>
+      c.delete_flag=0 and acm.delete_flag=0
+      <choose>
+        <when test="period == '3'.toString()"> and acm.create_time > DATE_SUB(CURDATE(),INTERVAL 3 MONTH)</when>
+        <when test="period == '12'.toString()"> and acm.create_time > DATE_SUB(CURDATE(),INTERVAL 12 MONTH)</when>
+        <otherwise></otherwise>
+      </choose>
+    </where>
+  </select>
+
+  <select id="getBackgroundList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContract">
+    select c.*
+    from win.t_contract c
+    <where>
+      c.delete_flag=0
+      <if test="q != null and q !=''"> and c.name like concat('%',#{q},'%')</if>
+      <if test="saleFlag != null"> and c.sale_flag=#{saleFlag}</if>
+      <if test="contractTypeId != null and contractTypeId != ''">
+        and c.id in (
+        select ctm.contract_id
+        from win.t_contract_type ct
+        inner join win.t_contract_type_map ctm on ctm.contract_type_id=ct.id and ctm.delete_flag=0
+        where ct.id=#{contractTypeId}
+        )
+      </if>
+      <if test="contractBigTypeId != null and contractBigTypeId != ''">
+        and c.id in (
+        select ctm.contract_id
+        from win.t_contract_type ct
+        inner join win.t_contract_type_map ctm on ctm.contract_type_id=ct.id and ctm.delete_flag=0
+        inner join win.t_contract_big_type cbt on cbt.id=ct.big_type_id
+        where ct.big_type_id=#{contractBigTypeId}
+        )
+      </if>
+    </where>
+    order by
+    <choose>
+      <when test="orderBy != null and orderBy == 'downloadCount_desc'.toString()"> c.download_count desc</when>
+      <when test="orderBy != null and orderBy == 'purchaseCount_desc'.toString()"> c.purchase_count desc</when>
+      <when test="orderBy != null and orderBy == 'favoriteCount_desc'.toString()"> c.favorite_count desc</when>
+      <otherwise> c.order_num asc, c.id desc</otherwise>
+    </choose>
+  </select>
+
+  <update id="addDownloadCount">
+    update win.t_contract set download_count=download_count+1,update_time=now() where id=#{id}
+  </update>
+
+  <update id="addFavoriteCount">
+    update win.t_contract set favorite_count=favorite_count+1,update_time=now() where id=#{id}
+  </update>
+
+  <update id="subFavoriteCount">
+    update win.t_contract set favorite_count=favorite_count-1,update_time=now() where id=#{id} and favorite_count > 0
+  </update>
+
+  <update id="addViewCount">
+    update win.t_contract set view_count=view_count+1,update_time=now() where id=#{id}
+  </update>
+
+  <update id="addPurchaseCount">
+    update win.t_contract set purchase_count=purchase_count+1,update_time=now() where id=#{id}
+  </update>
+
+  <select id="findByNameContractTypeId" resultType="com.winback.core.model.contract.TContract">
+      select c.*
+      from win.t_contract c
+      inner join win.t_contract_type_map m on m.contract_id=c.id
+      where c.name=#{name} and m.contract_type_id=#{contractTypeId}
+  </select>
+
+  <select id="getWrongList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContract">
+    select c.*
+    from win.t_contract c
+    <where>
+      c.delete_flag=0 and c.name like concat('%','20','%') or c.name like concat('','20','%') and id >=1000
+
+    </where>
+
+  </select>
+</mapper>

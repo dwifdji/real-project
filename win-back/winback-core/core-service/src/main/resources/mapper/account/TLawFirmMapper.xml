@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分02秒 by Generator -->
+<mapper namespace="com.winback.core.dao.account.mapper.TLawFirmMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.account.TLawFirm">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="license_img" jdbcType="VARCHAR" property="licenseImg" />
+    <result column="license_number" jdbcType="VARCHAR" property="licenseNumber" />
+    <result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+    <result column="contact_person" jdbcType="VARCHAR" property="contactPerson" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="team_size" jdbcType="VARCHAR" property="teamSize" />
+    <result column="business_province_code" jdbcType="VARCHAR" property="businessProvinceCode" />
+    <result column="business_city_code" jdbcType="VARCHAR" property="businessCityCode" />
+    <result column="business_area_code" jdbcType="VARCHAR" property="businessAreaCode" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, type, license_img, license_number, legal_person,
+    contact_person, contact_phone, team_size, business_province_code, business_city_code, business_area_code,
+    delete_flag, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_law_firm
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.account.TLawFirmCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_law_firm
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseImg != null">
+        AND license_img = #{licenseImg,jdbcType=VARCHAR}
+      </if>
+      <if test="licenseNumber != null">
+        AND license_number = #{licenseNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPerson != null">
+        AND legal_person = #{legalPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPerson != null">
+        AND contact_person = #{contactPerson,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="teamSize != null">
+        AND team_size = #{teamSize,jdbcType=VARCHAR}
+      </if>
+      <if test="businessProvinceCode != null">
+        AND business_province_code = #{businessProvinceCode,jdbcType=VARCHAR}
+      </if>
+      <if test="businessCityCode != null">
+        AND business_city_code = #{businessCityCode,jdbcType=VARCHAR}
+      </if>
+      <if test="businessAreaCode != null">
+        AND business_area_code = #{businessAreaCode,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.account.TLawFirm" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_law_firm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="licenseImg != null">
+        license_img,
+      </if>
+      <if test="licenseNumber != null">
+        license_number,
+      </if>
+      <if test="legalPerson != null">
+        legal_person,
+      </if>
+      <if test="contactPerson != null">
+        contact_person,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="teamSize != null">
+        team_size,
+      </if>
+      <if test="businessProvinceCode != null">
+        business_province_code,
+      </if>
+      <if test="businessCityCode != null">
+        business_city_code,
+      </if>
+      <if test="businessAreaCode != null">
+        business_area_code,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teamSize != null">
+        #{teamSize,jdbcType=VARCHAR},
+      </if>
+      <if test="businessProvinceCode != null">
+        #{businessProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityCode != null">
+        #{businessCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAreaCode != null">
+        #{businessAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.account.TLawFirm">
+    update win.t_law_firm
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseImg != null">
+        license_img = #{licenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null">
+        license_number = #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null">
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teamSize != null">
+        team_size = #{teamSize,jdbcType=VARCHAR},
+      </if>
+      <if test="businessProvinceCode != null">
+        business_province_code = #{businessProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityCode != null">
+        business_city_code = #{businessCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAreaCode != null">
+        business_area_code = #{businessAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com.winback.core.model.account.TLawFirm">
+    select f.*
+    from win.t_law_firm f
+    <where>
+      f.delete_flag=0
+      <if test="id != null and id != ''"> and f.id=#{id}</if>
+      <if test="q != null and q !=''"> and f.name like concat('%',#{q},'%')</if>
+      <if test="mobile != null and mobile !=''"> and f.contact_phone like concat('%',#{mobile},'%')</if>
+      <if test="type != null and type != ''"> and f.type=#{type}</if>
+      <if test="createdAtFrom != null and createdAtFrom !='' and createdAtTo != null and createdAtTo != ''">
+        and f.create_time>=#{createdAtFrom} and f.create_time&lt;=#{createdAtTo}
+      </if>
+    </where>
+  </select>
+</mapper>

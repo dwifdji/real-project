@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月23日 10时13分56秒 by Generator -->
+<mapper namespace="com.winback.core.dao.systemsite.mapper.TCaseStatusMsgTemplateMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.systemsite.TCaseStatusMsgTemplate">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="code" jdbcType="VARCHAR" property="code" />
+	<result column="case_status" jdbcType="VARCHAR" property="caseStatus" />
+	<result column="msg_body" jdbcType="VARCHAR" property="msgBody" />
+	<result column="type" jdbcType="INTEGER" property="type" />
+	<result column="status" jdbcType="BIT" property="status" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, code, case_status, msg_body, type, status, 
+	delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_status_msg_template
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.systemsite.TCaseStatusMsgTemplateCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_status_msg_template
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="code != null">
+        AND code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="caseStatus != null">
+        AND case_status = #{caseStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="msgBody != null">
+        AND msg_body = #{msgBody,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=BIT}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.systemsite.TCaseStatusMsgTemplate">
+    insert into win.t_case_status_msg_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="code != null">
+        code, 
+      </if>
+      <if test="caseStatus != null">
+        case_status, 
+      </if>
+      <if test="msgBody != null">
+        msg_body, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null">
+        #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msgBody != null">
+        #{msgBody,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.systemsite.TCaseStatusMsgTemplate">
+    update win.t_case_status_msg_template
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null">
+        case_status = #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="msgBody != null">
+        msg_body = #{msgBody,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+  <select id="getCaseStatusMsgList" parameterType="String" resultType="com.winback.core.vo.systemsite.CaseStatusMsgVO" >
+        SELECT
+            id AS id,
+            id AS CODE,
+            `status` AS caseStatus,
+            status_name AS caseStatusDesc,
+            status_desc AS msgBody
+        FROM
+            t_case_status_desc
+        WHERE
+            delete_flag = 0
+        ORDER BY id
+
+  </select>
+</mapper>

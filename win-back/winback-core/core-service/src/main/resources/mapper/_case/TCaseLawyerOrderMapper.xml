@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月25日 10时50分54秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseLawyerOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseLawyerOrder">
+	<result column="id" jdbcType="VARCHAR" property="id" />
+	<result column="case_id" jdbcType="VARCHAR" property="caseId" />
+	<result column="lawyer_account_id" jdbcType="INTEGER" property="lawyerAccountId" />
+	<result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, lawyer_account_id, order_status, operator_id, delete_flag, 
+	create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_lawyer_order
+  </select>
+
+
+  <select id="searchLawyerOrder" parameterType="com.winback.core.facade._case.req.CaseLawyerOrderReq" resultMap="BaseResultMap">
+    select
+    tclo.*
+    from win.t_case_lawyer_order tclo,win.`t_case` tc
+    <where>
+      tc.`case_id`=tclo.`case_id`
+      and tc.delete_flag=0
+      and tclo.delete_flag=0
+      <if test="id != null and id!=''">
+        AND tclo.id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="caseId != null and caseId!=''">
+        AND tclo.case_id = #{caseId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatus != null and  orderStatus!=''">
+        AND tclo.order_status = #{orderStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="plaintiff != null and plaintiff!=''">
+        AND tc.plaintiff like concat('%',#{plaintiff},'%')
+      </if>
+      <if test="defendant != null and defendant!=''">
+        AND tc.defendant like concat('%',#{defendant},'%')
+      </if>
+      <if test="beginTime != null and beginTime!=''">
+        AND DATE_FORMAT(tclo.create_time,'%Y-%m-%d') >= #{beginTime,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime!=''">
+        AND #{endTime,jdbcType=VARCHAR} >= DATE_FORMAT(tclo.create_time,'%Y-%m-%d')
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseLawyerOrderCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_lawyer_order
+	<where>
+      delete_flag=0
+      <if test="id != null">
+        AND id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyerAccountId != null">
+        AND lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="orderStatus != null">
+        AND order_status = #{orderStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseLawyerOrder">
+    insert into win.t_case_lawyer_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="lawyerAccountId != null">
+        lawyer_account_id, 
+      </if>
+      <if test="orderStatus != null">
+        order_status, 
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerAccountId != null">
+        #{lawyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateAcceptOrderStatus">
+    update win.t_case_lawyer_order
+    set
+    order_status = 'ACCEPTED',
+    operator_id=#{operatorId}
+    where case_id=#{caseId}
+    and lawyer_account_id=#{lawyerId}
+    and delete_flag=0
+  </update>
+
+  <update id="updateSuccessOrderStatus">
+    update win.t_case_lawyer_order
+    set
+    order_status = 'SUCCESS',
+    operator_id=#{operatorId}
+    where case_id=#{caseId}
+    and lawyer_account_id=#{lawyerId}
+    and delete_flag=0
+  </update>
+
+  <update id="updateRefusedOrderStatus">
+    update win.t_case_lawyer_order
+    set
+    order_status = 'REFUSED',
+    operator_id=#{operatorId}
+    where case_id=#{caseId}
+    and lawyer_account_id!=#{lawyerId}
+    and delete_flag=0
+  </update>
+
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseLawyerOrder">
+    update win.t_case_lawyer_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerAccountId != null">
+        lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=VARCHAR}
+	</where>
+  </update>
+
+</mapper>

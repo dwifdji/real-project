@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月28日 16时03分22秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseAssetMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseAsset">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="asset_amount" jdbcType="DECIMAL" property="assetAmount" />
+	<result column="asset_desc" jdbcType="VARCHAR" property="assetDesc" />
+	<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, asset_amount, asset_desc, delete_flag, create_time, 
+	update_time,mobile
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_asset
+    where delete_flag=0
+  </select>
+
+  <select id="searchCaseAsset" parameterType="com.winback.core.facade._case.req.CaseAssetReq" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_case_asset
+    <where>
+      delete_flag=0
+      <if test="mobile != null and mobile!=''">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="beginTime != null and beginTime!=''">
+        AND DATE_FORMAT(create_time,'%Y-%m-%d') >= #{beginTime,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime!=''">
+        AND #{endTime,jdbcType=VARCHAR} >= DATE_FORMAT(create_time,'%Y-%m-%d')
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseAssetCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_asset
+	<where>
+      delete_flag = 0
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="assetAmount != null">
+        AND asset_amount = #{assetAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="assetDesc != null">
+        AND asset_desc = #{assetDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="mobile != null">
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseAsset">
+    insert into win.t_case_asset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="assetAmount != null">
+        asset_amount, 
+      </if>
+      <if test="assetDesc != null">
+        asset_desc, 
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="assetAmount != null">
+        #{assetAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="assetDesc != null">
+        #{assetDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseAsset">
+    update win.t_case_asset
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="assetAmount != null">
+        asset_amount = #{assetAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="assetDesc != null">
+        asset_desc = #{assetDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

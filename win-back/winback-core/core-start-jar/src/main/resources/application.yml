@@ -1,0 +1,25 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: winback-core
+dubbo:
+    application:
+         id: winback-core
+         name: winback-core
+    scan:
+        basePackages: com.winback.core.provider
+    protocol:
+        port: -1
+server:
+  port: ${random.int[7500,7600]}
+
+xxl:
+  job:
+    executor:
+      appname: winback-job
+      port: ${random.int[9500,9600]}
+      ip:
+    accessToken:

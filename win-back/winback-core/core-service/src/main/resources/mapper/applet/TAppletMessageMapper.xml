@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月18日 10时01分28秒 by Generator -->
+<mapper namespace="com.winback.core.dao.applet.mapper.TAppletMessageMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.applet.TAppletMessage">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="ext_bind_id" jdbcType="INTEGER" property="extBindId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, ext_bind_id, type, title, content, param,
+    delete_flag, create_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_applet_message
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.applet.TAppletMessageCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_applet_message
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="extBindId != null">
+        AND ext_bind_id = #{extBindId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="param != null">
+        AND param = #{param,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.applet.TAppletMessage" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_applet_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.applet.TAppletMessage">
+    update win.t_applet_message
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id = #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getAppletMessageList" parameterType="java.util.Map" resultType="com.winback.core.facade.account.vo.AppletMessage">
+    select t.*
+    from (
+      select m.id,m.`type`,m.title,m.`content`,m.param,m.create_time createTime,case when mm.id is null then 0 else 1 end readFlag
+      from win.t_applet_message m
+      left join win.t_applet_read_message_map mm on mm.message_id=m.id
+      <where>
+        m.delete_flag=0 and m.ext_bind_id=#{loginId}
+        <if test="id != null and id !=''"> and m.id=#{id}</if>
+      </where>
+      union all
+      select m.id,m.`type`,m.title,m.`content`,m.param,m.create_time createTime,case when mm.id is null then 0 else 1 end readFlag
+      from t_account_ext_bind b
+      left join win.t_applet_message m on m.delete_flag=0 and m.ext_bind_id=-1
+      left join win.t_applet_read_message_map mm on mm.message_id=m.id and mm.ext_bind_id=#{loginId} and mm.delete_flag=0
+      <where>
+        b.id=#{loginId} and b.create_time &lt; m.create_time
+        <if test="id != null and id !=''"> and m.id=#{id}</if>
+      </where>
+    ) t
+    order by t.id desc
+  </select>
+
+  <select id="unreadMessageCount" resultType="int">
+    select sum(cnt)
+    from (
+      select count(m.id) - count(mm.id) cnt
+      from win.t_applet_message m
+      left join win.t_applet_read_message_map mm on mm.message_id=m.id and mm.delete_flag=0 and mm.ext_bind_id=#{extBindId}
+      where m.delete_flag=0 and m.ext_bind_id=#{extBindId}
+      union all
+      select count(m.id) - count(mm.id) cnt
+      from t_account_ext_bind b
+      left join win.t_applet_message m on m.delete_flag=0 and m.ext_bind_id=-1
+      left join win.t_applet_read_message_map mm on mm.message_id=m.id and mm.ext_bind_id=#{extBindId} and mm.delete_flag=0
+      where b.id=#{extBindId} and b.create_time &lt; m.create_time
+    ) t
+  </select>
+</mapper>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分03秒 by Generator -->
+<mapper namespace="com.winback.core.dao.payment.mapper.TFinanceInvoiceMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.payment.TFinanceInvoice">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="case_id" jdbcType="INTEGER" property="caseId" />
+	<result column="type" jdbcType="INTEGER" property="type" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="com_name" jdbcType="VARCHAR" property="comName" />
+	<result column="com_duty" jdbcType="VARCHAR" property="comDuty" />
+	<result column="phone" jdbcType="VARCHAR" property="phone" />
+	<result column="invoice_time" jdbcType="TIMESTAMP" property="invoiceTime" />
+	<result column="oper_id" jdbcType="INTEGER" property="operId" />
+	<result column="oper_name" jdbcType="VARCHAR" property="operName" />
+	<result column="fin_id" jdbcType="INTEGER" property="finId" />
+	<result column="fin_name" jdbcType="VARCHAR" property="finName" />
+	<result column="certificate" jdbcType="VARCHAR" property="certificate" />
+	<result column="status" jdbcType="INTEGER" property="status" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, type, amount, com_name, com_duty, 
+	phone, invoice_time, oper_id, oper_name, fin_id, fin_name, 
+	certificate, status, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_finance_invoice
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.payment.TFinanceInvoiceCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_finance_invoice
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="comName != null">
+        AND com_name = #{comName,jdbcType=VARCHAR}
+      </if>
+      <if test="comDuty != null">
+        AND com_duty = #{comDuty,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="invoiceTime != null">
+        AND invoice_time = #{invoiceTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operId != null">
+        AND oper_id = #{operId,jdbcType=INTEGER}
+      </if>
+      <if test="operName != null">
+        AND oper_name = #{operName,jdbcType=VARCHAR}
+      </if>
+      <if test="finId != null">
+        AND fin_id = #{finId,jdbcType=INTEGER}
+      </if>
+      <if test="finName != null">
+        AND fin_name = #{finName,jdbcType=VARCHAR}
+      </if>
+      <if test="certificate != null">
+        AND certificate = #{certificate,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.payment.TFinanceInvoice">
+    insert into win.t_finance_invoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="comName != null">
+        com_name, 
+      </if>
+      <if test="comDuty != null">
+        com_duty, 
+      </if>
+      <if test="phone != null">
+        phone, 
+      </if>
+      <if test="invoiceTime != null">
+        invoice_time, 
+      </if>
+      <if test="operId != null">
+        oper_id, 
+      </if>
+      <if test="operName != null">
+        oper_name, 
+      </if>
+      <if test="finId != null">
+        fin_id, 
+      </if>
+      <if test="finName != null">
+        fin_name, 
+      </if>
+      <if test="certificate != null">
+        certificate, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="comName != null">
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comDuty != null">
+        #{comDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTime != null">
+        #{invoiceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operId != null">
+        #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="finId != null">
+        #{finId,jdbcType=INTEGER},
+      </if>
+      <if test="finName != null">
+        #{finName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.payment.TFinanceInvoice">
+    update win.t_finance_invoice
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="comName != null">
+        com_name = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comDuty != null">
+        com_duty = #{comDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTime != null">
+        invoice_time = #{invoiceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operId != null">
+        oper_id = #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="finId != null">
+        fin_id = #{finId,jdbcType=INTEGER},
+      </if>
+      <if test="finName != null">
+        fin_name = #{finName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="getInvoiceList" parameterType="com.winback.core.dto.finance.InvoiceDto" resultType="com.winback.core.vo.finance.InvoiceVo">
+    SELECT
+    c.id as id,
+    c.case_id as caseNo,
+    c.case_id as caseId,
+    c.plaintiff as accuser,
+    c.defendant as accused,
+    f.amount as amount,
+    c.case_desc as caseDesc,
+    f.create_time as receivableDate,
+    per.name as auditor,
+    f.status as status,
+    f.type as type,
+    f.com_name as comName,
+    f.com_duty as invoiceNo,
+    f.create_time as expendDate
+    FROM
+    t_finance_invoice f
+    LEFT JOIN t_case c ON f.case_id = c.id
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+    f.delete_flag = 0
+    AND c.delete_flag = 0
+     <if test="caseNo != null and caseNo != ''">
+      AND c.case_id like   concat('%',#{caseNo},'%')
+    </if>
+    <if test="customer != null and customer != ''">
+      AND (c.plaintiff like concat('%',#{customer},'%') or c.defendant like concat('%',#{customer},'%') )
+    </if>
+    <if test="expendBeginAt != null and expendBeginAt != ''">
+      AND f.create_time >= #{expendBeginAt}
+    </if>
+    <if test="expendEndAt != null and expendEndAt != ''">
+      AND  #{expendEndAt} >= f.create_time
+    </if>
+    <if test="mode != null and mode != ''">
+      AND c.case_type_id = #{mode,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null and status != ''">
+      AND f.status = #{status,jdbcType=VARCHAR}
+    </if>
+
+    order by f.create_time desc
+   </select>
+
+
+
+  <select id="getInvoiceSum" parameterType="com.winback.core.dto.finance.InvoiceDto" resultType="String">
+    SELECT
+    sum(f.amount)
+    FROM
+    t_finance_invoice f
+    LEFT JOIN t_case c ON f.case_id = c.id
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+
+    f.delete_flag = 0
+    AND c.delete_flag = 0
+    <if test="caseNo != null and caseNo != ''">
+      AND c.case_id like   concat('%',#{caseNo},'%')
+    </if>
+    <if test="customer != null and customer != ''">
+      AND (c.plaintiff like concat('%',#{customer},'%') or c.defendant like concat('%',#{customer},'%') )
+    </if>
+    <if test="expendBeginAt != null and expendBeginAt != ''">
+      AND f.create_time >= #{expendBeginAt}
+    </if>
+    <if test="expendEndAt != null and expendEndAt != ''">
+      AND  #{expendEndAt} >= f.create_time
+    </if>
+    <if test="mode != null and mode != ''">
+      AND c.case_type_id = #{mode,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null and status != ''">
+      AND f.status = #{status,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+
+
+
+
+
+
+
+
+  <select id="getInvoiceAuditList" parameterType="com.winback.core.dto.finance.CommonDto" resultType="com.winback.core.vo.finance.InvoiceAuditVo">
+    SELECT
+    f.id as id,
+    f.case_id as caseId,
+    f.type as type,
+    f.amount as amount,
+    f.com_name as comName,
+    f.com_duty as dutyNo,
+    per.name as auditor,
+    f.status as status,
+    f.invoice_time as invoiceDate,
+    fin.name as finance,
+    f.certificate as certificateUrl,
+    f.create_time as applyDate,
+    f.phone as phone
+    FROM
+    t_finance_invoice f
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+    f.delete_flag = 0
+
+    <if test="caseId != null and caseId != ''">
+      AND f.case_id = #{caseId}
+    </if>
+
+
+  </select>
+
+
+
+
+
+</mapper>

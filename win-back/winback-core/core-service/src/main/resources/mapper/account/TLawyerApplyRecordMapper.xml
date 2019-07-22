@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月25日 14时50分59秒 by Generator -->
+<mapper namespace="com.winback.core.dao.account.mapper.TLawyerApplyRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.account.TLawyerApplyRecord">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="certificate_number" jdbcType="VARCHAR" property="certificateNumber" />
+    <result column="certificate_front_img" jdbcType="VARCHAR" property="certificateFrontImg" />
+    <result column="certificate_back_img" jdbcType="VARCHAR" property="certificateBackImg" />
+    <result column="certificate_begin" jdbcType="TIMESTAMP" property="certificateBegin" />
+    <result column="certificate_end" jdbcType="TIMESTAMP" property="certificateEnd" />
+    <result column="lawyer_license_img" jdbcType="VARCHAR" property="lawyerLicenseImg" />
+    <result column="lawyer_license_number" jdbcType="VARCHAR" property="lawyerLicenseNumber" />
+    <result column="law_firm" jdbcType="VARCHAR" property="lawFirm" />
+    <result column="work_year" jdbcType="VARCHAR" property="workYear" />
+    <result column="business_province_code" jdbcType="VARCHAR" property="businessProvinceCode" />
+    <result column="business_city_code" jdbcType="VARCHAR" property="businessCityCode" />
+    <result column="business_area_code" jdbcType="VARCHAR" property="businessAreaCode" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+    <result column="case_brief_ids" jdbcType="VARCHAR" property="caseBriefIds" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, account_id, email, name, head_img_url, certificate_number,
+    certificate_front_img, certificate_back_img, certificate_begin, certificate_end, lawyer_license_img, lawyer_license_number,
+    law_firm, work_year, business_province_code, business_city_code, business_area_code, bank_name,
+    bank_account_number, case_brief_ids, status, reason, operator_id, delete_flag,
+    create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_lawyer_apply_record
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.account.TLawyerApplyRecordCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_lawyer_apply_record
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="headImgUrl != null">
+        AND head_img_url = #{headImgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateNumber != null">
+        AND certificate_number = #{certificateNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateFrontImg != null">
+        AND certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBackImg != null">
+        AND certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR}
+      </if>
+      <if test="certificateBegin != null">
+        AND certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificateEnd != null">
+        AND certificate_end = #{certificateEnd,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lawyerLicenseImg != null">
+        AND lawyer_license_img = #{lawyerLicenseImg,jdbcType=VARCHAR}
+      </if>
+      <if test="lawyerLicenseNumber != null">
+        AND lawyer_license_number = #{lawyerLicenseNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="lawFirm != null">
+        AND law_firm = #{lawFirm,jdbcType=VARCHAR}
+      </if>
+      <if test="workYear != null">
+        AND work_year = #{workYear,jdbcType=VARCHAR}
+      </if>
+      <if test="businessProvinceCode != null">
+        AND business_province_code = #{businessProvinceCode,jdbcType=VARCHAR}
+      </if>
+      <if test="businessCityCode != null">
+        AND business_city_code = #{businessCityCode,jdbcType=VARCHAR}
+      </if>
+      <if test="businessAreaCode != null">
+        AND business_area_code = #{businessAreaCode,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccountNumber != null">
+        AND bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="caseBriefIds != null">
+        AND case_brief_ids = #{caseBriefIds,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="reason != null">
+        AND reason = #{reason,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    order by id desc
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.account.TLawyerApplyRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_lawyer_apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url,
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number,
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img,
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img,
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin,
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end,
+      </if>
+      <if test="lawyerLicenseImg != null">
+        lawyer_license_img,
+      </if>
+      <if test="lawyerLicenseNumber != null">
+        lawyer_license_number,
+      </if>
+      <if test="lawFirm != null">
+        law_firm,
+      </if>
+      <if test="workYear != null">
+        work_year,
+      </if>
+      <if test="businessProvinceCode != null">
+        business_province_code,
+      </if>
+      <if test="businessCityCode != null">
+        business_city_code,
+      </if>
+      <if test="businessAreaCode != null">
+        business_area_code,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number,
+      </if>
+      <if test="caseBriefIds != null">
+        case_brief_ids,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lawyerLicenseImg != null">
+        #{lawyerLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerLicenseNumber != null">
+        #{lawyerLicenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="workYear != null">
+        #{workYear,jdbcType=VARCHAR},
+      </if>
+      <if test="businessProvinceCode != null">
+        #{businessProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityCode != null">
+        #{businessCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAreaCode != null">
+        #{businessAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="caseBriefIds != null">
+        #{caseBriefIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.account.TLawyerApplyRecord">
+    update win.t_lawyer_apply_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null">
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null">
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateFrontImg != null">
+        certificate_front_img = #{certificateFrontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBackImg != null">
+        certificate_back_img = #{certificateBackImg,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateBegin != null">
+        certificate_begin = #{certificateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificateEnd != null">
+        certificate_end = #{certificateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lawyerLicenseImg != null">
+        lawyer_license_img = #{lawyerLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerLicenseNumber != null">
+        lawyer_license_number = #{lawyerLicenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lawFirm != null">
+        law_firm = #{lawFirm,jdbcType=VARCHAR},
+      </if>
+      <if test="workYear != null">
+        work_year = #{workYear,jdbcType=VARCHAR},
+      </if>
+      <if test="businessProvinceCode != null">
+        business_province_code = #{businessProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityCode != null">
+        business_city_code = #{businessCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAreaCode != null">
+        business_area_code = #{businessAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="caseBriefIds != null">
+        case_brief_ids = #{caseBriefIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com.winback.core.model.account.TLawyerApplyRecord">
+      select r.*
+      from win.t_lawyer_apply_record r
+      inner join win.t_account a on a.id=r.account_id
+      <where>
+        r.delete_flag=0
+        <if test="id != null and id !=''"> and r.id = #{id}</if>
+        <if test="q != null and q !=''"> and r.name like concat('%',#{q},'%')</if>
+        <if test="status != null and status !=''"> and r.status=#{status}</if>
+        <if test="mobile != null and mobile !=''"> and a.mobile like concat('%',#{mobile},'%')</if>
+        <if test="lawyerFirm != null and lawyerFirm != ''"> and r.lawyer_firm like concat('%',#{lawyerFirm},'%')</if>
+        <if test="createdAtFrom != null and createdAtFrom !='' and createdAtTo != null and createdAtTo != ''">
+          and r.create_time>=#{createdAtFrom} and r.create_time&lt;=#{createdAtTo}
+        </if>
+      </where>
+  </select>
+</mapper>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分03秒 by Generator -->
+<mapper namespace="com.winback.core.dao.payment.mapper.TFinanceExpendMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.payment.TFinanceExpend">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="case_id" jdbcType="INTEGER" property="caseId" />
+	<result column="amount" jdbcType="DECIMAL" property="amount" />
+	<result column="acct_name" jdbcType="VARCHAR" property="acctName" />
+	<result column="acct_no" jdbcType="VARCHAR" property="acctNo" />
+	<result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="expend_time" jdbcType="TIMESTAMP" property="expendTime" />
+	<result column="certificate" jdbcType="VARCHAR" property="certificate" />
+	<result column="oper_id" jdbcType="INTEGER" property="operId" />
+	<result column="oper_name" jdbcType="VARCHAR" property="operName" />
+	<result column="fin_id" jdbcType="INTEGER" property="finId" />
+	<result column="fin_name" jdbcType="VARCHAR" property="finName" />
+	<result column="status" jdbcType="INTEGER" property="status" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, amount, acct_name, acct_no, bank_name, 
+	msg, expend_time, certificate, oper_id, oper_name, fin_id,
+	fin_name, status, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_finance_expend
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.payment.TFinanceExpendCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_finance_expend
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="acctName != null">
+        AND acct_name = #{acctName,jdbcType=VARCHAR}
+      </if>
+      <if test="acctNo != null">
+        AND acct_no = #{acctNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="expendTime != null">
+        AND expend_time = #{expendTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="certificate != null">
+        AND certificate = #{certificate,jdbcType=VARCHAR}
+      </if>
+      <if test="operId != null">
+        AND oper_id = #{operId,jdbcType=INTEGER}
+      </if>
+      <if test="operName != null">
+        AND oper_name = #{operName,jdbcType=VARCHAR}
+      </if>
+      <if test="finId != null">
+        AND fin_id = #{finId,jdbcType=INTEGER}
+      </if>
+      <if test="finName != null">
+        AND fin_name = #{finName,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.payment.TFinanceExpend">
+    insert into win.t_finance_expend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="acctName != null">
+        acct_name, 
+      </if>
+      <if test="acctNo != null">
+        acct_no, 
+      </if>
+      <if test="bankName != null">
+        bank_name, 
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="expendTime != null">
+        expend_time, 
+      </if>
+      <if test="certificate != null">
+        certificate, 
+      </if>
+      <if test="operId != null">
+        oper_id, 
+      </if>
+      <if test="operName != null">
+        oper_name, 
+      </if>
+      <if test="finId != null">
+        fin_id, 
+      </if>
+      <if test="finName != null">
+        fin_name, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="acctName != null">
+        #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="expendTime != null">
+        #{expendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificate != null">
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null">
+        #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="finId != null">
+        #{finId,jdbcType=INTEGER},
+      </if>
+      <if test="finName != null">
+        #{finName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.payment.TFinanceExpend">
+    update win.t_finance_expend
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="acctName != null">
+        acct_name = #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        acct_no = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="expendTime != null">
+        expend_time = #{expendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certificate != null">
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null">
+        oper_id = #{operId,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="finId != null">
+        fin_id = #{finId,jdbcType=INTEGER},
+      </if>
+      <if test="finName != null">
+        fin_name = #{finName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="getExpendList" parameterType="com.winback.core.dto.finance.ExpendDto" resultType="com.winback.core.vo.finance.ExpendVo">
+    SELECT
+    c.id as id,
+    c.case_id as caseNo,
+    c.case_id as caseId,
+    c.plaintiff as accuser,
+    c.defendant as accused,
+    f.amount as amount,
+    f.msg as caseDesc,
+    f.expend_time as expendDate,
+    per.name as auditor,
+    f.status as status
+    FROM
+    t_finance_expend f
+    LEFT JOIN t_case c ON f.case_id = c.id
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+    f.delete_flag = 0
+    AND c.delete_flag = 0
+     <if test="caseNo != null and caseNo != ''">
+      AND c.case_id like  concat('%',#{caseNo},'%')
+    </if>
+    <if test="customer != null and customer != ''">
+      AND (c.plaintiff like concat('%',#{customer},'%') or c.defendant like concat('%',#{customer},'%') )
+    </if>
+    <if test="expendBeginAt != null and expendBeginAt != ''">
+      AND f.expend_time >= #{expendBeginAt}
+    </if>
+    <if test="expendEndAt != null and expendEndAt != ''">
+      AND  #{expendEndAt} >= f.expend_time
+    </if>
+    <if test="mode != null and mode != ''">
+      AND c.case_type_id = #{mode,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null and status != ''">
+      AND f.status = #{status,jdbcType=VARCHAR}
+    </if>
+
+    order by f.expend_time desc
+
+   </select>
+
+
+
+
+
+  <select id="getExpendSum" parameterType="com.winback.core.dto.finance.ExpendDto" resultType="String">
+    SELECT
+    sum(f.amount)
+    FROM
+    t_finance_expend f
+    LEFT JOIN t_case c ON f.case_id = c.id
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+    f.delete_flag = 0
+    AND c.delete_flag = 0
+    <if test="caseNo != null and caseNo != ''">
+      AND c.case_id like  concat('%',#{caseNo},'%')
+    </if>
+    <if test="customer != null and customer != ''">
+      AND (c.plaintiff like concat('%',#{customer},'%') or c.defendant like concat('%',#{customer},'%') )
+    </if>
+    <if test="expendBeginAt != null and expendBeginAt != ''">
+      AND f.expend_time >= #{expendBeginAt}
+    </if>
+    <if test="expendEndAt != null and expendEndAt != ''">
+      AND  #{expendEndAt} >= f.expend_time
+    </if>
+    <if test="mode != null and mode != ''">
+      AND c.case_type_id = #{mode,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null and status != ''">
+      AND f.status = #{status,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <select id="getExpendAuditList" parameterType="com.winback.core.dto.finance.CommonDto" resultType="com.winback.core.vo.finance.ExpendAuditVo">
+    SELECT
+    f.id as id,
+    f.case_id as caseId,
+    f.amount as amount,
+    f.acct_no as acctNo,
+    f.bank_name as acctBankName,
+    f.msg as descInfo,
+    per.name as auditor,
+    f.status as status,
+    f.create_time as applyDate,
+    f.expend_time as loanDate,
+    fin.name as finance,
+    f.certificate as certificateUrl,
+    f.acct_name as acctName
+    FROM
+    t_finance_expend f
+    LEFT JOIN t_sys_staff per ON per.id = f.oper_id
+    LEFT JOIN t_sys_staff fin ON fin.id = f.fin_id
+    WHERE
+    f.delete_flag = 0
+    <if test="caseId != null and caseId != ''">
+        AND f.case_id = #{caseId}
+    </if>
+  </select>
+  
+  <select id="getFinanceWorkBench" resultType="com.winback.core.vo.finance.WorkBenchVO">
+        select 1 as type, count(id) as total, 0 as params from t_finance_expend where delete_flag = 0 and `status` = 0
+        UNION ALL
+        select 2 as type, count(id) as total, 0 as params  from t_finance_invoice where delete_flag = 0 and `status` = 0
+        UNION ALL
+        select 3 as type, count(id) as total, 0 as params  from t_finance_receivable where delete_flag = 0 and `status` = 0
+  </select>
+
+</mapper>

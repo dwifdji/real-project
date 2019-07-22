@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月17日 13时31分40秒 by Generator -->
+<mapper namespace="com.winback.core.dao.payment.mapper.TInvoiceMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.payment.TInvoice">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="title_type" jdbcType="VARCHAR" property="titleType" />
+	<result column="taxpayer_identification_number" jdbcType="VARCHAR" property="taxpayerIdentificationNumber" />
+	<result column="content" jdbcType="VARCHAR" property="content" />
+	<result column="amount" jdbcType="VARCHAR" property="amount" />
+	<result column="memo" jdbcType="VARCHAR" property="memo" />
+	<result column="recipient" jdbcType="VARCHAR" property="recipient" />
+	<result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+	<result column="province_id" jdbcType="INTEGER" property="provinceId" />
+	<result column="city_id" jdbcType="INTEGER" property="cityId" />
+	<result column="area_id" jdbcType="INTEGER" property="areaId" />
+	<result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+	<result column="email" jdbcType="VARCHAR" property="email" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, account_id, type, title, title_type, taxpayer_identification_number, 
+	content, amount, memo, recipient, contact_phone, province_id, 
+	city_id, area_id, address_detail, email, delete_flag, create_time, 
+	update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_invoice
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.payment.TInvoiceCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_invoice
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="titleType != null">
+        AND title_type = #{titleType,jdbcType=VARCHAR}
+      </if>
+      <if test="taxpayerIdentificationNumber != null">
+        AND taxpayer_identification_number = #{taxpayerIdentificationNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=VARCHAR}
+      </if>
+      <if test="memo != null">
+        AND memo = #{memo,jdbcType=VARCHAR}
+      </if>
+      <if test="recipient != null">
+        AND recipient = #{recipient,jdbcType=VARCHAR}
+      </if>
+      <if test="contactPhone != null">
+        AND contact_phone = #{contactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="provinceId != null">
+        AND province_id = #{provinceId,jdbcType=INTEGER}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=INTEGER}
+      </if>
+      <if test="areaId != null">
+        AND area_id = #{areaId,jdbcType=INTEGER}
+      </if>
+      <if test="addressDetail != null">
+        AND address_detail = #{addressDetail,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.payment.TInvoice">
+    insert into win.t_invoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="titleType != null">
+        title_type, 
+      </if>
+      <if test="taxpayerIdentificationNumber != null">
+        taxpayer_identification_number, 
+      </if>
+      <if test="content != null">
+        content, 
+      </if>
+      <if test="amount != null">
+        amount, 
+      </if>
+      <if test="memo != null">
+        memo, 
+      </if>
+      <if test="recipient != null">
+        recipient, 
+      </if>
+      <if test="contactPhone != null">
+        contact_phone, 
+      </if>
+      <if test="provinceId != null">
+        province_id, 
+      </if>
+      <if test="cityId != null">
+        city_id, 
+      </if>
+      <if test="areaId != null">
+        area_id, 
+      </if>
+      <if test="addressDetail != null">
+        address_detail, 
+      </if>
+      <if test="email != null">
+        email, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="titleType != null">
+        #{titleType,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerIdentificationNumber != null">
+        #{taxpayerIdentificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null">
+        #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.payment.TInvoice">
+    update win.t_invoice
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="titleType != null">
+        title_type = #{titleType,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerIdentificationNumber != null">
+        taxpayer_identification_number = #{taxpayerIdentificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null">
+        recipient = #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

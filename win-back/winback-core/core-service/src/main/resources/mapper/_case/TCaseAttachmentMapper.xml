@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月25日 10时50分54秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseAttachmentMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseAttachment">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="case_id" jdbcType="VARCHAR" property="caseId" />
+	<result column="case_status" jdbcType="VARCHAR" property="caseStatus" />
+	<result column="attach_name" jdbcType="VARCHAR" property="attachName" />
+	<result column="attach_url" jdbcType="VARCHAR" property="attachUrl" />
+	<result column="attach_type" jdbcType="VARCHAR" property="attachType" />
+	<result column="file_type" jdbcType="VARCHAR" property="fileType" />
+	<result column="file_size" jdbcType="INTEGER" property="fileSize" />
+	<result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, case_status, attach_name, attach_url, file_type, 
+	file_size, delete_flag, create_time, update_time,attach_type
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_attachment
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseAttachmentCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_attachment
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=VARCHAR}
+      </if>
+      <if test="caseStatus != null">
+        AND case_status = #{caseStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="attachName != null">
+        AND attach_name = #{attachName,jdbcType=VARCHAR}
+      </if>
+      <if test="attachUrl != null">
+        AND attach_url = #{attachUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="attachType != null">
+        AND attach_type = #{attachType,jdbcType=VARCHAR}
+      </if>
+      <if test="fileType != null">
+        AND file_type = #{fileType,jdbcType=VARCHAR}
+      </if>
+      <if test="fileSize != null">
+        AND file_size = #{fileSize,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=TINYINT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseAttachment">
+    insert into win.t_case_attachment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="caseStatus != null">
+        case_status, 
+      </if>
+      <if test="attachName != null">
+        attach_name, 
+      </if>
+      <if test="attachUrl != null">
+        attach_url, 
+      </if>
+      <if test="attachType != null">
+        attach_type,
+      </if>
+      <if test="fileType != null">
+        file_type, 
+      </if>
+      <if test="fileSize != null">
+        file_size, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null">
+        #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="attachName != null">
+        #{attachName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachUrl != null">
+        #{attachUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachType != null">
+        #{attachType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseAttachment">
+    update win.t_case_attachment
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseStatus != null">
+        case_status = #{caseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="attachName != null">
+        attach_name = #{attachName,jdbcType=VARCHAR},
+      </if>
+      <if test="attachUrl != null">
+        attach_url = #{attachUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="attachType != null">
+        attach_type = #{attachType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

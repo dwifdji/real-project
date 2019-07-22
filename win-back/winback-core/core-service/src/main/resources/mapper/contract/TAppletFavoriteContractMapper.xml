@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月18日 13时38分37秒 by Generator -->
+<mapper namespace="com.winback.core.dao.contract.mapper.TAppletFavoriteContractMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.contract.TAppletFavoriteContract">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="ext_bind_id" jdbcType="INTEGER" property="extBindId" />
+	<result column="contract_id" jdbcType="INTEGER" property="contractId" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, ext_bind_id, contract_id, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_applet_favorite_contract
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.contract.TAppletFavoriteContractCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_applet_favorite_contract
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="extBindId != null">
+        AND ext_bind_id = #{extBindId,jdbcType=INTEGER}
+      </if>
+      <if test="contractId != null">
+        AND contract_id = #{contractId,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.contract.TAppletFavoriteContract">
+    insert into win.t_applet_favorite_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id, 
+      </if>
+      <if test="contractId != null">
+        contract_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.contract.TAppletFavoriteContract">
+    update win.t_applet_favorite_contract
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="extBindId != null">
+        ext_bind_id = #{extBindId,jdbcType=INTEGER},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getFavoriteContractList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContract">
+    select c.*
+    from win.t_applet_favorite_contract fc
+    inner join win.t_contract c on c.id=fc.contract_id
+    where fc.delete_flag=0 and fc.ext_bind_id=#{loginId}
+    order by fc.id desc
+  </select>
+
+  <select id="getContractIdList" resultType="java.lang.Integer">
+    select fc.contract_id
+    from win.t_applet_favorite_contract fc
+    where fc.delete_flag=0 and fc.ext_bind_id=#{extBindId}
+  </select>
+
+  <select id="favoriteContractCount" resultType="java.lang.Integer">
+    select count(0)
+    from win.t_applet_favorite_contract fc
+    where fc.delete_flag=0 and fc.ext_bind_id=#{extBindId}
+  </select>
+</mapper>

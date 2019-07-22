@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月25日 10时50分54秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseStatusUpdateRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseStatusUpdateRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="case_id" jdbcType="VARCHAR" property="caseId" />
+	<result column="main_status" jdbcType="VARCHAR" property="mainStatus" />
+	<result column="sub_staus" jdbcType="VARCHAR" property="subStaus" />
+	<result column="remark" jdbcType="VARCHAR" property="remark" />
+	<result column="record_type" jdbcType="VARCHAR" property="recordType" />
+	<result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+	<result column="lawyer_account_id" jdbcType="INTEGER" property="lawyerAccountId" />
+	<result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, main_status, sub_staus, remark, operator_id, record_type,
+	lawyer_account_id, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_status_update_record
+  </select>
+
+
+  <select id="getPrecheckRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_case_status_update_record
+    where case_id=#{caseId}
+    and main_status in ('PRE_CHECK_SUCCESS','PRE_CHECK_FAIL')
+    and record_type='OPERATE'
+    and delete_flag=0
+    order by id desc
+  </select>
+
+  <select id="getStepRecordListByCaseId" resultMap="BaseResultMap">
+    SELECT * FROM win.`t_case_status_update_record`
+WHERE id IN
+(
+SELECT MIN(id)  FROM win.`t_case_status_update_record`
+WHERE case_id=#{caseId}
+AND record_type=#{recordType}
+AND delete_flag=0
+GROUP BY main_status
+)
+ORDER BY id DESC
+  </select>
+
+  <select id="getSignContractRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_case_status_update_record
+    where case_id=#{caseId}
+    and main_status in ('SCHEDULE_ACCEPTED_LAWYER')
+    and record_type='OPERATE'
+    and delete_flag=0
+    order by id desc
+  </select>
+
+  <select id="getRiskcheckRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_case_status_update_record
+    where case_id=#{caseId}
+    and main_status in ('LAWSUIT_RISK_CHECK_SUCCESS','LAWSUIT_RISK_CHECK_FAIL','EXECUTE_RISK_CHECK_SUCCESS','EXECUTE_RISK_CHECK_FAIL')
+    and record_type='OPERATE'
+    and delete_flag=0
+    order by id desc
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseStatusUpdateRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_status_update_record
+	<where>
+      delete_flag=0
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=VARCHAR}
+      </if>
+      <if test="mainStatus != null">
+        AND main_status = #{mainStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="subStaus != null">
+        AND sub_staus = #{subStaus,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="recordType != null">
+        AND record_type = #{recordType,jdbcType=VARCHAR}
+      </if>
+      <if test="operatorId != null">
+        AND operator_id = #{operatorId,jdbcType=INTEGER}
+      </if>
+      <if test="lawyerAccountId != null">
+        AND lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      order by id desc
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseStatusUpdateRecord">
+    insert into win.t_case_status_update_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="mainStatus != null">
+        main_status, 
+      </if>
+      <if test="subStaus != null">
+        sub_staus, 
+      </if>
+      <if test="remark != null">
+        remark, 
+      </if>
+      <if test="recordType != null">
+        record_type,
+      </if>
+      <if test="operatorId != null">
+        operator_id, 
+      </if>
+      <if test="lawyerAccountId != null">
+        lawyer_account_id, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStatus != null">
+        #{mainStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="subStaus != null">
+        #{subStaus,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="lawyerAccountId != null">
+        #{lawyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseStatusUpdateRecord">
+    update win.t_case_status_update_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="mainStatus != null">
+        main_status = #{mainStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="subStaus != null">
+        sub_staus = #{subStaus,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        record_type = #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="lawyerAccountId != null">
+        lawyer_account_id = #{lawyerAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

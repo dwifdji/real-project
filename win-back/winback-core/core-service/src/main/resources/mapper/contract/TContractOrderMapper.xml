@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月11日 13时17分01秒 by Generator -->
+<mapper namespace="com.winback.core.dao.contract.mapper.TContractOrderMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.contract.TContractOrder">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="pay_deadline" jdbcType="TIMESTAMP" property="payDeadline" />
+    <result column="order_source" jdbcType="VARCHAR" property="orderSource" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, account_id, order_no, amount, pay_type, pay_status,
+    pay_deadline, order_source, delete_flag, create_time, update_time
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_contract_order
+  </select>
+
+  <select id="selectByCondition" parameterType="com.winback.core.condition.contract.TContractOrderCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from win.t_contract_order
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="orderNo != null">
+        AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="amount != null">
+        AND amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=VARCHAR}
+      </if>
+      <if test="payStatus != null">
+        AND pay_status = #{payStatus,jdbcType=INTEGER}
+      </if>
+      <if test="payDeadline != null">
+        AND pay_deadline = #{payDeadline,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderSource != null">
+        AND order_source = #{orderSource,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.winback.core.model.contract.TContractOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into win.t_contract_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="payDeadline != null">
+        pay_deadline,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payDeadline != null">
+        #{payDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateById" parameterType="com.winback.core.model.contract.TContractOrder">
+    update win.t_contract_order
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="payDeadline != null">
+        pay_deadline = #{payDeadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      AND id = #{id,jdbcType=INTEGER}
+    </where>
+  </update>
+
+  <select id="getFrontList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContractOrder">
+    select o.*
+    from win.t_contract_order o
+    <where>
+      o.delete_flag=0 and o.account_id=#{loginId}
+      <choose>
+        <when test="period == '3'.toString()"> and o.create_time > DATE_SUB(CURDATE(),INTERVAL 3 MONTH)</when>
+        <when test="period == '12'.toString()"> and o.create_time > DATE_SUB(CURDATE(),INTERVAL 12 MONTH)</when>
+        <otherwise></otherwise>
+      </choose>
+      <choose>
+        <when test="payStatus == '0'.toString()"> and o.pay_status in (0,2,3)</when>
+        <when test="payStatus == '1'.toString()"> and o.pay_status=1</when>
+        <otherwise></otherwise>
+      </choose>
+    </where>
+  </select>
+
+  <select id="getBackgroundList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContractOrder">
+    select o.*
+    from win.t_contract_order o
+    inner join win.t_account a on a.id=o.account_id
+    <where>
+      o.delete_flag=0
+      <if test="q != null and q !=''"> and o.order_no like concat('%',#{q},'%')</if>
+      <if test="mobile != null and mobile !=''"> and a.mobile like concat('%',#{mobile},'%')</if>
+      <if test="payType != null and payType != ''"> and o.pay_type=#{payType}</if>
+      <choose>
+        <when test="payStatus == '0'.toString()"> and o.pay_status=0</when>
+        <when test="payStatus == '1'.toString()"> and o.pay_status=1</when>
+        <when test="payStatus == '2'.toString()"> and o.pay_status=2</when>
+        <when test="payStatus == '3'.toString()"> and o.pay_status=3</when>
+        <otherwise></otherwise>
+      </choose>
+      <if test="orderSource != null and orderSource != ''"> and o.order_source=#{orderSource}</if>
+    </where>
+  </select>
+
+  <select id="hasInvoice" resultType="java.lang.Boolean">
+    select count(0)
+    from win.t_contract_invoice_order_map m
+    inner join win.t_contract_invoice i on i.id=m.invoice_id and i.delete_flag=0 and i.status in ('PENDING','APPROVED')
+    where m.delete_flag=0 and m.order_id=#{orderId}
+  </select>
+
+  <select id="getSummaryInfo" parameterType="java.util.Map" resultType="java.util.Map">
+    select sum(o.amount) totalPayAmount
+    from win.t_contract_order o
+    inner join win.t_account a on a.id=o.account_id
+	where o.delete_flag=0 and o.pay_status = 1  </select>
+
+  <select id="getContractList" resultType="com.winback.core.model.contract.TContract">
+      select c.*
+      from win.t_contract_order o
+      inner join win.t_contract_order_item i on i.order_id=o.id
+      inner join win.t_contract c on c.id=i.contract_id
+      where o.id=#{orderId} and o.delete_flag=0 and o.pay_status=1
+  </select>
+
+  <select id="getInvoiceOrderList" parameterType="java.util.Map" resultType="com.winback.core.model.contract.TContractOrder">
+      select o.*
+      from win.t_contract_order o
+      where o.account_id=#{loginId} and o.pay_status =1 and o.delete_flag=0 and o.id not in (
+        select o.id
+        from win.t_contract_order o
+        inner join win.t_contract_invoice_order_map m on m.order_id=o.id
+        inner join win.t_contract_invoice i on i.id=m.invoice_id and i.delete_flag=0 and i.status in ('PENDING','APPROVED')
+        where o.account_id=#{loginId} and o.delete_flag=0
+      )
+      order by o.id desc
+  </select>
+</mapper>

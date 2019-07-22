@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月15日 17时21分00秒 by Generator -->
+<mapper namespace="com.winback.core.dao.assistant.mapper.TFileMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.assistant.TFile">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+	<result column="file_url_watermark" jdbcType="VARCHAR" property="fileUrlWatermark" />
+	<result column="etag" jdbcType="VARCHAR" property="etag" />
+	<result column="etag_watermark" jdbcType="VARCHAR" property="etagWatermark" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, file_url, file_url_watermark, etag, etag_watermark
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_file
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.assistant.TFileCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_file
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="fileUrl != null">
+        AND file_url = #{fileUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="fileUrlWatermark != null">
+        AND file_url_watermark = #{fileUrlWatermark,jdbcType=VARCHAR}
+      </if>
+      <if test="etag != null">
+        AND etag = #{etag,jdbcType=VARCHAR}
+      </if>
+      <if test="etagWatermark != null">
+        AND etag_watermark = #{etagWatermark,jdbcType=VARCHAR}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.assistant.TFile">
+    insert into win.t_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="fileUrl != null">
+        file_url, 
+      </if>
+      <if test="fileUrlWatermark != null">
+        file_url_watermark, 
+      </if>
+      <if test="etag != null">
+        etag, 
+      </if>
+      <if test="etagWatermark != null">
+        etag_watermark, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrlWatermark != null">
+        #{fileUrlWatermark,jdbcType=VARCHAR},
+      </if>
+      <if test="etag != null">
+        #{etag,jdbcType=VARCHAR},
+      </if>
+      <if test="etagWatermark != null">
+        #{etagWatermark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.assistant.TFile">
+    update win.t_file
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fileUrl != null">
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrlWatermark != null">
+        file_url_watermark = #{fileUrlWatermark,jdbcType=VARCHAR},
+      </if>
+      <if test="etag != null">
+        etag = #{etag,jdbcType=VARCHAR},
+      </if>
+      <if test="etagWatermark != null">
+        etag_watermark = #{etagWatermark,jdbcType=VARCHAR},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

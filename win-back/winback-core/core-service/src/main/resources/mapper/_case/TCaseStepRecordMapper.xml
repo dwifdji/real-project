@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月28日 18时47分10秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseStepRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseStepRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="case_id" jdbcType="INTEGER" property="caseId" />
+	<result column="case_type" jdbcType="VARCHAR" property="caseType" />
+    <result column="step_id" jdbcType="VARCHAR" property="stepId" />
+	<result column="branch_step_id" jdbcType="VARCHAR" property="branchStepId" />
+	<result column="push_msg" jdbcType="VARCHAR" property="pushMsg" />
+	<result column="account_id" jdbcType="INTEGER" property="accountId" />
+	<result column="next_id" jdbcType="INTEGER" property="nextId" />
+	<result column="push_status" jdbcType="VARCHAR" property="pushStatus" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, case_id, case_type, step_id, branch_step_id, push_msg, account_id,
+	next_id, push_status, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_step_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseStepRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_step_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+      <if test="caseType != null">
+        AND case_type = #{caseType,jdbcType=VARCHAR}
+      </if>
+      <if test="stepId != null">
+        AND step_id = #{stepId,jdbcType=VARCHAR}
+      </if>
+      <if test="branchStepId != null">
+        AND branch_step_id = #{stepId,jdbcType=VARCHAR}
+      </if>
+      <if test="pushMsg != null">
+        AND push_msg = #{pushMsg,jdbcType=VARCHAR}
+      </if>
+      <if test="accountId != null">
+        AND account_id = #{accountId,jdbcType=INTEGER}
+      </if>
+      <if test="nextId != null">
+        AND next_id = #{nextId,jdbcType=INTEGER}
+      </if>
+      <if test="pushStatus != null">
+        AND push_status = #{pushStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true"  parameterType="com.winback.core.model._case.TCaseStepRecord">
+    insert into win.t_case_step_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="caseId != null">
+        case_id, 
+      </if>
+      <if test="caseType != null">
+        case_type, 
+      </if>
+      <if test="stepId != null">
+        step_id, 
+      </if>
+      <if test="branchStepId != null">
+          branch_step_id,
+      </if>
+      <if test="pushMsg != null">
+        push_msg, 
+      </if>
+      <if test="accountId != null">
+        account_id, 
+      </if>
+      <if test="nextId != null">
+        next_id, 
+      </if>
+      <if test="pushStatus != null">
+        push_status, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="caseType != null">
+        #{caseType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null">
+        #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="branchStepId != null">
+        #{branchStepId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushMsg != null">
+        #{pushMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="pushStatus != null">
+        #{pushStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseStepRecord">
+    update win.t_case_step_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="caseType != null">
+        case_type = #{caseType,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null">
+        step_id = #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="branchStepId != null">
+          branch_step_id = #{branchStepId,jdbcType=VARCHAR},
+      </if>
+      <if test="pushMsg != null">
+        push_msg = #{pushMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        next_id = #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="pushStatus != null">
+        push_status = #{pushStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+  
+  <select id="getCaseStepRecordList" resultType="com.winback.core.vo._case.TCaseStepRecordVO" parameterType="com.winback.core.dto._case.CaseStepRecordDto">
+   SELECT
+        tcsr.id AS id,
+        tcsr.create_time AS createTime,
+        tcsr.push_msg AS pushMsg,
+        ta.name AS lawyer,
+        tcs.NAME AS stepName,
+        if(IFNULL(tcs.parent_id,0) = 0,0,1)  as branchFlag
+    FROM
+        t_case_step_record tcsr
+        LEFT JOIN t_case tc ON tcsr.case_id = tc.id
+        LEFT JOIN t_lawyer ta ON ta.account_id = tc.lawyer_account_id
+        LEFT JOIN t_case_step tcs ON tcsr.step_id = tcs.id
+    WHERE
+        1 = 1
+        AND tcsr.delete_flag = 0
+        AND tcsr.case_type = #{type}
+        AND tcsr.case_id = #{caseId}
+  </select>
+
+</mapper>

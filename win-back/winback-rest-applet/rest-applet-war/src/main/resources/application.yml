@@ -1,0 +1,20 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: winback-applet
+dubbo:
+  application:
+    id: winback-applet
+    name: winback-applet
+  scan:
+    basePackages: com.winback.web.controller
+  protocol:
+    port: -1
+server:
+  port: 7066
+  context-path: /winback-applet
+
+

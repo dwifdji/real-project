@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月28日 15时32分09秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseBriefMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseBrief">
+	<result column="id" jdbcType="INTEGER" property="id" />
+    <result column="big_brief_id" jdbcType="INTEGER" property="bigBriefId" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+	<result column="display" jdbcType="BIT" property="display" />
+	<result column="order_num" jdbcType="INTEGER" property="orderNum" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, big_brief_id, name, img_url, display, order_num,
+    delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_brief
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseBriefCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_brief
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="bigBriefId != null">
+        AND big_brief_id = #{bigBriefId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="imgUrl != null">
+        AND img_url = #{imgUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="display != null">
+        AND display = #{display,jdbcType=BIT}
+      </if>
+      <if test="orderNum != null">
+        AND order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+    order by order_num desc, id asc
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseBrief">
+    insert into win.t_case_brief
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="bigBriefId != null">
+        big_brief_id,
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="imgUrl != null">
+        img_url, 
+      </if>
+      <if test="display != null">
+        display, 
+      </if>
+      <if test="orderNum != null">
+        order_num, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bigBriefId != null">
+        #{bigBriefId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null">
+        #{display,jdbcType=BIT},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseBrief">
+    update win.t_case_brief
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bigBriefId != null">
+        big_brief_id = #{bigBriefId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null">
+        display = #{display,jdbcType=BIT},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+  <select id="getCaseBriefList" resultType="com.winback.core.vo.operate.CaseBriefVO">
+    SELECT
+        id AS briefId,
+        NAME
+    FROM
+        `t_case_brief`
+    WHERE
+        delete_flag = 0
+    ORDER BY
+        update_time DESC
+  </select>
+
+  <select id="getList" parameterType="java.util.Map" resultType="com.winback.core.model._case.TCaseBrief">
+      select b.*
+      from win.t_case_brief b
+      <where>
+          b.delete_flag=0
+        <if test="q != null and q !=''"> and b.name like concat('%',#{q},'%')</if>
+      </where>
+  </select>
+</mapper>

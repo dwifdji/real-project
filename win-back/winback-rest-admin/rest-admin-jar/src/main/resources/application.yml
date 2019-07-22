@@ -1,0 +1,19 @@
+
+## Dubbo 服务消费者配置
+spring:
+    profiles:
+        active: biz
+    application:
+      name: winback-admin
+dubbo:
+  application:
+    id: winback-admin
+    name: winback-admin
+  scan:
+    basePackages: com.winback.admin.controller
+  protocol:
+      port: -1
+server:
+  port: 7087
+  context-path: /winback-admin
+

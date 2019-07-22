@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年02月26日 19时39分16秒 by Generator -->
+<mapper namespace="com.winback.core.dao.assistant.mapper.TAppMessageTemplateMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.assistant.TAppMessageTemplate">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="group_type" jdbcType="VARCHAR" property="groupType" />
+	<result column="send_type" jdbcType="VARCHAR" property="sendType" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	<result column="push_type" jdbcType="VARCHAR" property="pushType" />
+	<result column="push_ids" jdbcType="VARCHAR" property="pushIds" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, group_type, send_type, type, title, content, 
+	push_type, push_ids, delete_flag, msg, create_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_app_message_template
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.assistant.TAppMessageTemplateCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_app_message_template
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="groupType != null">
+        AND group_type = #{groupType,jdbcType=VARCHAR}
+      </if>
+      <if test="sendType != null">
+        AND send_type = #{sendType,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="pushType != null">
+        AND push_type = #{pushType,jdbcType=VARCHAR}
+      </if>
+      <if test="pushIds != null">
+        AND push_ids = #{pushIds,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.assistant.TAppMessageTemplate">
+    insert into win.t_app_message_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="groupType != null">
+        group_type, 
+      </if>
+      <if test="sendType != null">
+        send_type, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="content != null">
+        content, 
+      </if>
+      <if test="pushType != null">
+        push_type, 
+      </if>
+      <if test="pushIds != null">
+        push_ids, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupType != null">
+        #{groupType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null">
+        #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pushType != null">
+        #{pushType,jdbcType=VARCHAR},
+      </if>
+      <if test="pushIds != null">
+        #{pushIds,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.assistant.TAppMessageTemplate">
+    update win.t_app_message_template
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupType != null">
+        group_type = #{groupType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null">
+        send_type = #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pushType != null">
+        push_type = #{pushType,jdbcType=VARCHAR},
+      </if>
+      <if test="pushIds != null">
+        push_ids = #{pushIds,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

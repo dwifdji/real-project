@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 15时40分04秒 by Generator -->
+<mapper namespace="com.winback.core.dao.connect.mapper.TConnectMsgMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.connect.TConnectMsg">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="room_id" jdbcType="INTEGER" property="roomId" />
+	<result column="person_id" jdbcType="INTEGER" property="personId" />
+	<result column="msg" jdbcType="VARCHAR" property="msg" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+    <result column="person_type" jdbcType="VARCHAR" property="personType" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="msg_type" jdbcType="VARCHAR" property="msgType" />
+    <result column="time_info" jdbcType="VARCHAR" property="timeInfo" />
+
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, room_id, person_id, msg, delete_flag, create_time, 
+	update_time,case_id,person_type,source,msg_type,time_info
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_connect_msg
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.connect.TConnectMsgCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_connect_msg
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="roomId != null">
+        AND room_id = #{roomId,jdbcType=INTEGER}
+      </if>
+      <if test="personId != null">
+        AND person_id = #{personId,jdbcType=INTEGER}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="caseId != null">
+        AND case_id = #{caseId,jdbcType=INTEGER}
+      </if>
+      <if test="personType != null">
+        AND person_type = #{personType,jdbcType=VARCHAR}
+      </if>
+      <if test="source != null">
+        AND source = #{source,jdbcType=VARCHAR}
+      </if>
+      <if test="msgType != null">
+        AND msg_type = #{msgType,jdbcType=VARCHAR}
+      </if>
+      <if test="timeInfo != null">
+        AND time_info = #{timeInfo,jdbcType=VARCHAR}
+      </if>
+
+    </where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.connect.TConnectMsg">
+    insert into win.t_connect_msg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="roomId != null">
+        room_id, 
+      </if>
+      <if test="personId != null">
+        person_id, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+
+      <if test="caseId != null">
+        case_id,
+      </if>
+      <if test="personType != null">
+        person_type,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+
+      <if test="msgType != null">
+        msg_type,
+      </if>
+
+      <if test="timeInfo != null">
+        time_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="personId != null">
+        #{personId,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+
+      <if test="msgType != null">
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+
+      <if test="timeInfo != null">
+        #{timeInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.connect.TConnectMsg">
+    update win.t_connect_msg
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="personId != null">
+        person_id = #{personId,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+
+
+
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="personType != null">
+        person_type = #{personType,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+
+
+      <if test="msgType != null">
+        msg_type = #{msgType,jdbcType=VARCHAR},
+      </if>
+
+
+      <if test="timeInfo != null">
+        time_info = #{timeInfo,jdbcType=VARCHAR},
+      </if>
+
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+
+
+  <select id="getMsgList" parameterType="com.winback.core.condition.connect.TConnectMsgCondition" resultType="com.winback.core.vo.connect.HistoryMsgVo">
+    SELECT
+    m.id,
+    m.msg AS msgInfo,
+    m.create_time AS createTime,
+    m.msg_type AS msgType,
+    m.person_type AS personType,
+
+    CASE
+    m.person_type
+    WHEN 1 THEN
+    c.id
+    WHEN 4 THEN
+    c.id
+    WHEN 2 THEN
+
+    c.id  ELSE s.id
+    END AS acctId,
+    CASE
+    m.person_type
+    WHEN 1 THEN
+    c.nick_name
+    WHEN 4 THEN
+    c.nick_name
+    WHEN 2 THEN
+    l.NAME ELSE s.NAME
+    END AS NAME,
+    CASE
+    m.person_type
+    WHEN 1 THEN
+    c.head_img_url
+    WHEN 4 THEN
+    c.head_img_url
+    WHEN 2 THEN
+    l.head_img_url ELSE ""
+    END AS imageUrl,
+    m.time_info as timeInfo
+
+    FROM
+    t_connect_msg m
+    LEFT JOIN t_account c ON m.person_id = c.id
+    LEFT JOIN t_lawyer l ON m.person_id = l.account_id
+    LEFT JOIN t_sys_staff s ON m.person_id = s.id
+
+    where m.delete_flag = 0
+    <if test="id != null">
+      AND m.id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="roomId != null">
+      AND m.room_id = #{roomId,jdbcType=INTEGER}
+    </if>
+    <if test="personId != null">
+      AND m.person_id = #{personId,jdbcType=INTEGER}
+    </if>
+    <if test="msg != null">
+      AND m.msg = #{msg,jdbcType=VARCHAR}
+    </if>
+    <if test="deleteFlag != null">
+      AND m.delete_flag = #{deleteFlag,jdbcType=BIT}
+    </if>
+    <if test="createTime != null">
+      AND m.create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateTime != null">
+      AND m.update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+
+    <if test="caseId != null">
+      AND m.case_id = #{caseId}
+    </if>
+
+    order by m.create_time desc
+  </select>
+
+  <select id="getRoomMsgHistoryList" parameterType="String" resultType="com.winback.core.vo.connect.HistoryMsgVo">
+      SELECT
+        m.id,
+        m.msg AS msgInfo,
+        m.create_time AS createTime,
+        m.msg_type AS msgType,
+        m.person_type AS personType,
+    CASE
+        m.person_type
+        WHEN 1 THEN
+        c.id
+        WHEN 4 THEN
+        c.id
+        WHEN 2 THEN
+        c.id ELSE s.id
+        END AS acctId,
+    CASE
+        m.person_type
+        WHEN 1 THEN
+        c.nick_name
+        WHEN 4 THEN
+        c.nick_name
+        WHEN 2 THEN
+        l.NAME ELSE s.NAME
+        END AS NAME,
+    CASE
+        m.person_type
+        WHEN 1 THEN
+        c.head_img_url
+        WHEN 4 THEN
+        c.head_img_url
+        WHEN 2 THEN
+        l.head_img_url ELSE ""
+        END AS imageUrl,
+        m.time_info AS timeInfo
+    FROM
+        t_connect_msg m
+        LEFT JOIN t_account c ON m.person_id = c.id
+        LEFT JOIN t_lawyer l ON m.person_id = l.account_id
+        LEFT JOIN t_sys_staff s ON m.person_id = s.id
+    WHERE
+        1 = 1
+        AND m.delete_flag = 0
+        AND m.room_id = #{roomId}
+        order by m.create_time desc
+  </select>
+    
+    <select id="getMaxCreateTimeMsg" parameterType="String" resultType="com.winback.core.model.connect.TConnectMsg">
+        SELECT
+            *
+        FROM
+            t_connect_msg
+        WHERE
+            1 = 1
+            AND delete_flag = 0
+            AND room_id = #{roomId}
+        ORDER BY
+            create_time DESC
+            limit 1
+    </select>
+
+
+    <select id="getWebRoomHistoryMsgList" parameterType="String" resultType="com.winback.core.vo.connect.HistoryMsgVo">
+        SELECT
+            m.id,
+            m.msg AS msgInfo,
+            m.create_time AS createTime,
+            m.msg_type AS msgType,
+            m.person_type AS personType,
+        CASE
+            m.person_type
+            WHEN 1 THEN
+            c.id
+            WHEN 4 THEN
+            c.id
+            WHEN 2 THEN
+            c.id ELSE s.id
+            END AS acctId,
+        CASE
+            m.person_type
+            WHEN 1 THEN
+            c.nick_name
+            WHEN 4 THEN
+            c.nick_name
+            WHEN 2 THEN
+            l.NAME ELSE s.NAME
+            END AS NAME,
+        CASE
+            m.person_type
+            WHEN 1 THEN
+            c.head_img_url
+            WHEN 4 THEN
+            c.head_img_url
+            WHEN 2 THEN
+            l.head_img_url ELSE ""
+            END AS imageUrl,
+            m.time_info AS timeInfo
+        FROM
+            t_connect_msg m
+            LEFT JOIN t_account c ON m.person_id = c.id
+            LEFT JOIN t_lawyer l ON m.person_id = l.account_id
+            LEFT JOIN t_sys_staff s ON m.person_id = s.id
+        WHERE
+            1 = 1
+            AND m.delete_flag = 0
+            AND m.room_id IN (
+        SELECT
+            tcr.id AS roomId
+        FROM
+            t_connect_room tcr
+            LEFT JOIN t_connect_room_person tcrp ON tcr.id = tcrp.room_id
+        WHERE
+            tcr.case_id IS NULL
+            AND tcr.delete_flag = 0
+            AND tcrp.delete_flag = 0
+            AND tcrp.relevance_id = #{accountId}
+            )
+        ORDER BY
+            m.create_time DESC
+
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月23日 18时45分29秒 by Generator -->
+<mapper namespace="com.winback.core.dao.risk.mapper.TRiskComInfoMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.risk.TRiskComInfo">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="exception_flag" jdbcType="INTEGER" property="exceptionFlag" />
+	<result column="register_capital" jdbcType="VARCHAR" property="registerCapital" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="register_area" jdbcType="VARCHAR" property="registerArea" />
+	<result column="com_type" jdbcType="VARCHAR" property="comType" />
+	<result column="accuser_num" jdbcType="VARCHAR" property="accuserNum" />
+	<result column="defendant_num" jdbcType="VARCHAR" property="defendantNum" />
+	<result column="execute_num" jdbcType="VARCHAR" property="executeNum" />
+	<result column="lose_credit_num" jdbcType="VARCHAR" property="loseCreditNum" />
+	<result column="shareholders_info" jdbcType="VARCHAR" property="shareholdersInfo" />
+	<result column="property_clue" jdbcType="VARCHAR" property="propertyClue" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, type, exception_flag, register_capital, status, 
+	register_area, com_type, accuser_num, defendant_num, execute_num, lose_credit_num, 
+	shareholders_info, property_clue, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_risk_com_info
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.risk.TRiskComInfoCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_risk_com_info
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="exceptionFlag != null">
+        AND exception_flag = #{exceptionFlag,jdbcType=INTEGER}
+      </if>
+      <if test="registerCapital != null">
+        AND register_capital = #{registerCapital,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="registerArea != null">
+        AND register_area = #{registerArea,jdbcType=VARCHAR}
+      </if>
+      <if test="comType != null">
+        AND com_type = #{comType,jdbcType=VARCHAR}
+      </if>
+      <if test="accuserNum != null">
+        AND accuser_num = #{accuserNum,jdbcType=VARCHAR}
+      </if>
+      <if test="defendantNum != null">
+        AND defendant_num = #{defendantNum,jdbcType=VARCHAR}
+      </if>
+      <if test="executeNum != null">
+        AND execute_num = #{executeNum,jdbcType=VARCHAR}
+      </if>
+      <if test="loseCreditNum != null">
+        AND lose_credit_num = #{loseCreditNum,jdbcType=VARCHAR}
+      </if>
+      <if test="shareholdersInfo != null">
+        AND shareholders_info = #{shareholdersInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="propertyClue != null">
+        AND property_clue = #{propertyClue,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.risk.TRiskComInfo">
+    insert into win.t_risk_com_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="exceptionFlag != null">
+        exception_flag, 
+      </if>
+      <if test="registerCapital != null">
+        register_capital, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="registerArea != null">
+        register_area, 
+      </if>
+      <if test="comType != null">
+        com_type, 
+      </if>
+      <if test="accuserNum != null">
+        accuser_num, 
+      </if>
+      <if test="defendantNum != null">
+        defendant_num, 
+      </if>
+      <if test="executeNum != null">
+        execute_num, 
+      </if>
+      <if test="loseCreditNum != null">
+        lose_credit_num, 
+      </if>
+      <if test="shareholdersInfo != null">
+        shareholders_info, 
+      </if>
+      <if test="propertyClue != null">
+        property_clue, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionFlag != null">
+        #{exceptionFlag,jdbcType=INTEGER},
+      </if>
+      <if test="registerCapital != null">
+        #{registerCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="registerArea != null">
+        #{registerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null">
+        #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="accuserNum != null">
+        #{accuserNum,jdbcType=VARCHAR},
+      </if>
+      <if test="defendantNum != null">
+        #{defendantNum,jdbcType=VARCHAR},
+      </if>
+      <if test="executeNum != null">
+        #{executeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loseCreditNum != null">
+        #{loseCreditNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholdersInfo != null">
+        #{shareholdersInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyClue != null">
+        #{propertyClue,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.risk.TRiskComInfo">
+    update win.t_risk_com_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionFlag != null">
+        exception_flag = #{exceptionFlag,jdbcType=INTEGER},
+      </if>
+      <if test="registerCapital != null">
+        register_capital = #{registerCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="registerArea != null">
+        register_area = #{registerArea,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null">
+        com_type = #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="accuserNum != null">
+        accuser_num = #{accuserNum,jdbcType=VARCHAR},
+      </if>
+      <if test="defendantNum != null">
+        defendant_num = #{defendantNum,jdbcType=VARCHAR},
+      </if>
+      <if test="executeNum != null">
+        execute_num = #{executeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loseCreditNum != null">
+        lose_credit_num = #{loseCreditNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shareholdersInfo != null">
+        shareholders_info = #{shareholdersInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyClue != null">
+        property_clue = #{propertyClue,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

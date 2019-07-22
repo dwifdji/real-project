@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 19时33分16秒 by Generator -->
+<mapper namespace="com.winback.gateway.dao.email.mapper.TGatewayEmailRecordMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.gateway.model.email.TGatewayEmailRecord">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="email" jdbcType="VARCHAR" property="email" />
+	<result column="copy_email" jdbcType="VARCHAR" property="copyEmail" />
+	<result column="send_type" jdbcType="VARCHAR" property="sendType" />
+	<result column="template_code" jdbcType="VARCHAR" property="templateCode" />
+	<result column="template_param" jdbcType="VARCHAR" property="templateParam" />
+	<result column="title" jdbcType="VARCHAR" property="title" />
+	<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	<result column="status" jdbcType="VARCHAR" property="status" />
+	<result column="msg" jdbcType="LONGVARCHAR" property="msg" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, email, copy_email, send_type, template_code, template_param, 
+	title, content, status, msg, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_gateway_email_record
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.gateway.condition.email.TGatewayEmailRecordCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_gateway_email_record
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="email != null">
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="copyEmail != null">
+        AND copy_email = #{copyEmail,jdbcType=VARCHAR}
+      </if>
+      <if test="sendType != null">
+        AND send_type = #{sendType,jdbcType=VARCHAR}
+      </if>
+      <if test="templateCode != null">
+        AND template_code = #{templateCode,jdbcType=VARCHAR}
+      </if>
+      <if test="templateParam != null">
+        AND template_param = #{templateParam,jdbcType=VARCHAR}
+      </if>
+      <if test="title != null">
+        AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null">
+        AND content = #{content,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+        AND msg = #{msg,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert"  keyProperty="id" useGeneratedKeys="true" parameterType="com.winback.gateway.model.email.TGatewayEmailRecord">
+    insert into win.t_gateway_email_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="email != null">
+        email, 
+      </if>
+      <if test="copyEmail != null">
+        copy_email, 
+      </if>
+      <if test="sendType != null">
+        send_type, 
+      </if>
+      <if test="templateCode != null">
+        template_code, 
+      </if>
+      <if test="templateParam != null">
+        template_param, 
+      </if>
+      <if test="title != null">
+        title, 
+      </if>
+      <if test="content != null">
+        content, 
+      </if>
+      <if test="status != null">
+        status, 
+      </if>
+      <if test="msg != null">
+        msg, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="copyEmail != null">
+        #{copyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null">
+        #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateParam != null">
+        #{templateParam,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.gateway.model.email.TGatewayEmailRecord">
+    update win.t_gateway_email_record
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="copyEmail != null">
+        copy_email = #{copyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null">
+        send_type = #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="templateCode != null">
+        template_code = #{templateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="templateParam != null">
+        template_param = #{templateParam,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>

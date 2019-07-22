@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年01月16日 16时13分05秒 by Generator -->
+<mapper namespace="com.winback.core.dao._case.mapper.TCaseStepBranchMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model._case.TCaseStepBranch">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="name" jdbcType="VARCHAR" property="name" />
+	<result column="name_desc" jdbcType="VARCHAR" property="nameDesc" />
+	<result column="step_id" jdbcType="INTEGER" property="stepId" />
+	<result column="next_id" jdbcType="INTEGER" property="nextId" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="order_desc" jdbcType="INTEGER" property="orderDesc" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, name, name_desc, step_id, next_id, type, 
+	order_desc, delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_case_step_branch
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition._case.TCaseStepBranchCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_case_step_branch
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="nameDesc != null">
+        AND name_desc = #{nameDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="stepId != null">
+        AND step_id = #{stepId,jdbcType=INTEGER}
+      </if>
+      <if test="nextId != null">
+        AND next_id = #{nextId,jdbcType=INTEGER}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="orderDesc != null">
+        AND order_desc = #{orderDesc,jdbcType=INTEGER}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model._case.TCaseStepBranch">
+    insert into win.t_case_step_branch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="name != null">
+        name, 
+      </if>
+      <if test="nameDesc != null">
+        name_desc, 
+      </if>
+      <if test="stepId != null">
+        step_id, 
+      </if>
+      <if test="nextId != null">
+        next_id, 
+      </if>
+      <if test="type != null">
+        type, 
+      </if>
+      <if test="orderDesc != null">
+        order_desc, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameDesc != null">
+        #{nameDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null">
+        #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model._case.TCaseStepBranch">
+    update win.t_case_step_branch
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameDesc != null">
+        name_desc = #{nameDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null">
+        step_id = #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="nextId != null">
+        next_id = #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDesc != null">
+        order_desc = #{orderDesc,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+  
+  <select id="getMaxCaseStepBranch" parameterType="String" resultType="com.winback.core.model._case.TCaseStepBranch">
+
+    SELECT
+        *
+    FROM
+        t_case_step_branch
+    WHERE
+        1 = 1
+        and step_id = #{stepId}
+        AND delete_flag = 0
+    ORDER BY
+        order_desc DESC
+        LIMIT 1
+  </select>
+
+
+  <insert id="saveBatchCaseBranch" useGeneratedKeys="true" keyProperty="id"
+          keyColumn="id" parameterType="java.util.List">
+    INSERT INTO t_case_step_branch (id, name, name_desc, step_id, next_id, type, order_desc, delete_flag, create_time, update_time)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id},#{item.name},#{item.nameDesc},#{item.stepId},#{item.nextId},#{item.type},#{item.orderDesc},#{item.deleteFlag}, #{item.createTime}, #{item.updateTime})
+    </foreach>
+  </insert>
+  
+  <update id="deleteBatchCaseStepBranch" parameterType="Integer">
+      update t_case_step_branch set  delete_flag = 1 where step_id = #{stepId}
+  </update>
+
+</mapper>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2019年05月06日 18时55分44秒 by Generator -->
+<mapper namespace="com.winback.core.dao.assistant.mapper.TAppVersionUpdateMapper">
+
+  <resultMap id="BaseResultMap" type="com.winback.core.model.assistant.TAppVersionUpdate">
+	<result column="id" jdbcType="INTEGER" property="id" />
+	<result column="device_type" jdbcType="VARCHAR" property="deviceType" />
+	<result column="version" jdbcType="VARCHAR" property="version" />
+	<result column="alert_flag" jdbcType="BIT" property="alertFlag" />
+	<result column="force_flag" jdbcType="BIT" property="forceFlag" />
+	<result column="description" jdbcType="VARCHAR" property="description" />
+	<result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+	id, device_type, version, alert_flag, force_flag, description, 
+	delete_flag, create_time, update_time
+  </sql>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    from win.t_app_version_update
+  </select>
+  
+  <select id="selectByCondition" parameterType="com.winback.core.condition.assistant.TAppVersionUpdateCondition" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from win.t_app_version_update
+	<where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="deviceType != null">
+        AND device_type = #{deviceType,jdbcType=VARCHAR}
+      </if>
+      <if test="version != null">
+        AND version = #{version,jdbcType=VARCHAR}
+      </if>
+      <if test="alertFlag != null">
+        AND alert_flag = #{alertFlag,jdbcType=BIT}
+      </if>
+      <if test="forceFlag != null">
+        AND force_flag = #{forceFlag,jdbcType=BIT}
+      </if>
+      <if test="description != null">
+        AND description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="deleteFlag != null">
+        AND delete_flag = #{deleteFlag,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+	</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.winback.core.model.assistant.TAppVersionUpdate">
+    insert into win.t_app_version_update
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id, 
+      </if>
+      <if test="deviceType != null">
+        device_type, 
+      </if>
+      <if test="version != null">
+        version, 
+      </if>
+      <if test="alertFlag != null">
+        alert_flag, 
+      </if>
+      <if test="forceFlag != null">
+        force_flag, 
+      </if>
+      <if test="description != null">
+        description, 
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag, 
+      </if>
+      <if test="createTime != null">
+        create_time, 
+      </if>
+      <if test="updateTime != null">
+        update_time, 
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="alertFlag != null">
+        #{alertFlag,jdbcType=BIT},
+      </if>
+      <if test="forceFlag != null">
+        #{forceFlag,jdbcType=BIT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateById" parameterType="com.winback.core.model.assistant.TAppVersionUpdate">
+    update win.t_app_version_update
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="alertFlag != null">
+        alert_flag = #{alertFlag,jdbcType=BIT},
+      </if>
+      <if test="forceFlag != null">
+        force_flag = #{forceFlag,jdbcType=BIT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+	<where>
+      AND id = #{id,jdbcType=INTEGER}
+	</where>
+  </update>
+
+</mapper>
