@@ -1,0 +1,45 @@
+#*
+ * Copyright (c) 2017, Ajsgn 杨光 (Ajsgn@foxmail.com).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *#
+package ${basePackage_}.${templeteVariable_.servicePackage}.${templeteVariable_.implPackage};
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import ${basePackage_}.${templeteVariable_.conditionPackage}.${beanName}${templeteVariable_.conditionSuffix};
+import ${basePackage_}.${templeteVariable_.daoPackage}.${beanName}${templeteVariable_.daoSuffix};
+import ${basePackage_}.${templeteVariable_.entityPackage}.${beanName};
+import ${basePackage_}.${templeteVariable_.absPackage}.Base${templeteVariable_.daoSuffix};
+import ${basePackage_}.${templeteVariable_.absPackage}.Abstract${templeteVariable_.serviceSuffix}${templeteVariable_.implSuffix};
+import ${basePackage_}.${templeteVariable_.servicePackage}.${beanName}${templeteVariable_.serviceSuffix};
+
+@Service
+public class ${beanName}${templeteVariable_.serviceSuffix}${templeteVariable_.implSuffix} extends Abstract${templeteVariable_.serviceSuffix}${templeteVariable_.implSuffix}<${beanName}, ${beanName}${templeteVariable_.conditionSuffix}, Base${templeteVariable_.daoSuffix}<${beanName},${beanName}${templeteVariable_.conditionSuffix}>> implements ${beanName}${templeteVariable_.serviceSuffix}{
+	
+	@Resource
+	private ${beanName}${templeteVariable_.daoSuffix} ${lowBeanName}${templeteVariable_.daoSuffix};
+	
+	@Override
+	protected Base${templeteVariable_.daoSuffix}<${beanName}, ${beanName}${templeteVariable_.conditionSuffix}> daoSupport() {
+		return ${lowBeanName}${templeteVariable_.daoSuffix};
+	}
+
+	@Override
+	protected ${beanName}${templeteVariable_.conditionSuffix} blank${templeteVariable_.conditionSuffix}() {
+		return new ${beanName}${templeteVariable_.conditionSuffix}();
+	}
+
+}

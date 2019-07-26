@@ -1,0 +1,72 @@
+#*
+ * Copyright (c) 2017, Ajsgn 杨光 (Ajsgn@foxmail.com).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *#
+package ${basePackage_}.${templeteVariable_.absPackage};
+
+import java.util.List;
+
+/**
+ * <p>数据库层操作的共性方法抽象</p>
+ * @ClassName: Base${templeteVariable_.daoSuffix}
+ * @Description: 数据库层操作的共性方法抽象
+ * @author Generator
+ * @date ${createDate_}
+ * @param <E> E Element 类型元素，返回类型
+ * @param <C> ${templeteVariable_.conditionSuffix} 操作条件
+ */
+public interface Base${templeteVariable_.daoSuffix}<E,C extends Dao${templeteVariable_.conditionSuffix}> {
+	
+	/**
+	 * <p>通过给定查询条件，查询出一组结果集</p>
+	 * @Title: selectBy${templeteVariable_.conditionSuffix}
+	 * @Description: 通过给定查询条件，查询出一组结果集
+	 * @param dao${templeteVariable_.daoSuffix} 查询条件
+	 * @return List<E> 查询结果集
+	 * @author Generator
+	 * @date ${createDate_}
+	 */
+	public abstract List<E> selectBy${templeteVariable_.conditionSuffix}(C dao${templeteVariable_.conditionSuffix});
+	
+	/**
+	 * <p>查询当前表下的所有数据</p>
+	 * @Title: selectAll
+	 * @Description: 查询当前表下的所有数据
+	 * @return List<E> 结果集合
+	 * @author Generator
+	 * @date ${createDate_}
+	 */
+	public abstract List<E> selectAll();
+	
+	/**
+	 * <p>插入指定实体bean到数据库中</p>
+	 * @Title: insert
+	 * @Description: 插入指定实体bean到数据库中
+	 * @param entity 需要插入的实体bean
+	 * @author Generator
+	 * @date ${createDate_}
+	 */
+	public abstract int insert(E entity);
+	
+	/**
+	 * <p>根据主键更新指定实体bean</p>
+	 * @Title: updateById
+	 * @Description: 根据主键更新指定实体bean
+	 * @param entity 需要更新的实体bean
+	 * @author Generator
+	 * @date ${createDate_}
+	 */
+	public abstract int updateById(E entity);
+	
+}
