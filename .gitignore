@@ -1,0 +1,7 @@
+/target/
+/*/*/*/target
+/value-map/*.idea
+*.iml
+*.class
+*.lock
+
