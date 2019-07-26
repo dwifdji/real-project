@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatisPlus.demo.mapper.LjTransactionDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mybatisPlus.demo.vo.LjTransactionDataVO">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="end_time" property="endTime" />
+        <result column="current_price" property="currentPrice" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="listing_price" property="listingPrice" />
+        <result column="transaction_cycle" property="transactionCycle" />
+        <result column="price_adjustment" property="priceAdjustment" />
+        <result column="look_times" property="lookTimes" />
+        <result column="attention_num" property="attentionNum" />
+        <result column="view_num" property="viewNum" />
+        <result column="house_type" property="houseType" />
+        <result column="house_floor" property="houseFloor" />
+        <result column="construction_area" property="constructionArea" />
+        <result column="house_structure" property="houseStructure" />
+        <result column="Inner_area" property="innerArea" />
+        <result column="building_type" property="buildingType" />
+        <result column="house_orientation" property="houseOrientation" />
+        <result column="built_era" property="builtEra" />
+        <result column="renovation_condition" property="renovationCondition" />
+        <result column="building_structure" property="buildingStructure" />
+        <result column="heating_method" property="heatingMethod" />
+        <result column="ladder_ratio" property="ladderRatio" />
+        <result column="year_limit" property="yearLimit" />
+        <result column="elevator_flag" property="elevatorFlag" />
+        <result column="code" property="code" />
+        <result column="trading_authority" property="tradingAuthority" />
+        <result column="listing_time" property="listingTime" />
+        <result column="use_type" property="useType" />
+        <result column="house_limit" property="houseLimit" />
+        <result column="area_id" property="areaId" />
+        <result column="address" property="address" />
+        <result column="lng" property="lng" />
+        <result column="lat" property="lat" />
+        <result column="house_belong" property="houseBelong" />
+        <result column="create_time" property="createTime" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="area" property="area" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, end_time, current_price, unit_price, listing_price, transaction_cycle, price_adjustment, look_times, attention_num, view_num, house_type, house_floor, construction_area, house_structure, Inner_area, building_type, house_orientation, built_era, renovation_condition, building_structure, heating_method, ladder_ratio, year_limit, elevator_flag, code, trading_authority, listing_time, use_type, house_limit, area_id, address, lng, lat, house_belong, create_time
+    </sql>
+    
+    <select id="getLjTransactionData" resultMap="BaseResultMap">
+	    SELECT
+			ltd.*, la.province, la.city, la.area
+		FROM
+			lj_area la
+			INNER JOIN lj_transaction_data ltd ON ltd.area_id = la.id 
+		WHERE
+			1 = 1 
+			and ltd.lng is null
+    </select>
+    
+    
+    <select id="getProblems" resultMap="BaseResultMap">
+    	 SELECT
+			ltd.*, la.province, la.city, la.area
+		FROM
+			lj_area la
+			INNER JOIN lj_transaction_data ltd ON ltd.area_id = la.id 
+		WHERE
+			1 = 1 
+			and ltd.current_price = ''
+    </select>
+
+</mapper>

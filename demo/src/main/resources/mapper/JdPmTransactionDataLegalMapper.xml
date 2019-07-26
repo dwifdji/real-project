@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatisPlus.demo.mapper.JdPmTransactionDataLegalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mybatisPlus.demo.model.JdPmTransactionDataLegal">
+        <id column="id" property="id" />
+        <result column="code" property="code" />
+        <result column="category_name" property="categoryName" />
+        <result column="title" property="title" />
+        <result column="start_price" property="startPrice" />
+        <result column="priceLower_offset" property="pricelowerOffset" />
+        <result column="assessment_price" property="assessmentPrice" />
+        <result column="ensure_price" property="ensurePrice" />
+        <result column="consult_name" property="consultName" />
+        <result column="consult_tel" property="consultTel" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="county" property="county" />
+        <result column="address" property="address" />
+        <result column="current_price" property="currentPrice" />
+        <result column="delayed_count" property="delayedCount" />
+        <result column="access_ensure_num" property="accessEnsureNum" />
+        <result column="access_num" property="accessNum" />
+        <result column="begin_time" property="beginTime" />
+        <result column="end_time" property="endTime" />
+        <result column="confirmation_url" property="confirmationUrl" />
+        <result column="priority_flag" property="priorityFlag" />
+        <result column="auction_times" property="auctionTimes" />
+        <result column="shop_name" property="shopName" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code, category_name, title, start_price, priceLower_offset, assessment_price, ensure_price, consult_name, consult_tel, province, city, county, address, current_price, delayed_count, access_ensure_num, access_num, begin_time, end_time, confirmation_url, priority_flag, auction_times, shop_name, create_time
+    </sql>
+
+</mapper>

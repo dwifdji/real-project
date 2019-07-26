@@ -1,0 +1,99 @@
+package com.mybatisPlus.demo.util;
+
+import java.io.File;
+
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+import net.sourceforge.tess4j.util.LoadLibs;
+
+/**
+ * tesseract for java， ocr（Optical Character Recognition，光学字符识别） 工具类
+ * 
+ * @author wind
+ */
+public class Tess4jUtils {
+	/**
+	 * 从图片中提取文字,默认设置英文字库,使用classpath目录下的训练库
+	 * 
+	 * @param path
+	 * @return
+	 */
+	public static String readChar(String path) {
+		// JNA Interface Mapping
+		ITesseract instance = new Tesseract();
+		// JNA Direct Mapping
+		// ITesseract instance = new Tesseract1();
+		File imageFile = new File(path);
+		// In case you don't have your own tessdata, let it also be extracted for you
+		// 这样就能使用classpath目录下的训练库了
+		File tessDataFolder = LoadLibs.extractTessResources("tessdata");
+		// Set the tessdata path
+		instance.setDatapath(tessDataFolder.getAbsolutePath());
+		// 英文库识别数字比较准确
+		instance.setLanguage("eng");
+		return getOCRText(instance, imageFile);
+	}
+
+	/**
+	 * 从图片中提取文字
+	 * 
+	 * @param path
+	 *            图片路径
+	 * @param dataPath
+	 *            训练库路径
+	 * @param language
+	 *            语言字库
+	 * @return
+	 */
+	public static String readChar(File file, String dataPath, String language) {
+//		File imageFile = new File(path);
+		ITesseract instance = new Tesseract();
+		instance.setDatapath(dataPath);
+		// 英文库识别数字比较准确
+		instance.setLanguage(language);
+		return getOCRText(instance, file);
+	}
+
+	/**
+	 * 识别图片文件中的文字
+	 * 
+	 * @param instance
+	 * @param imageFile
+	 * @return
+	 */
+	private static String getOCRText(ITesseract instance, File imageFile) {
+		String result = null;
+		try {
+			result = instance.doOCR(imageFile);
+		} catch (TesseractException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
+	public static void main(String[] args) {
+//		D:\test\test
+//		  String path = "D:/test/test/test0.png";
+//		  System.out.println(readChar(new File(path), "D:/javaInstall/tess4j/Tess4J/tessdata", "eng"));
+//		 
+
+//		String ch = "test5.png";
+		File file = new File("D:/test/test");
+//		for(int i = 0 ; i < 10; i++) {
+//			  System.out.println(readChar(new File("D:/test/test/test" + i + ".png"),
+//					  "D:/javaInstall/tess4j/Tess4J/tessdata", "eng"));
+//		}
+		
+		
+		if(file.exists()) {
+			File[] listFiles = file.listFiles();
+			for (File file2 : listFiles) {
+				System.out.println(readChar(file2, "D:/javaInstall/tess4j/Tess4J/tessdata", "eng"));
+				System.out.println("**************************************");
+			}
+		}
+	}
+
+}
