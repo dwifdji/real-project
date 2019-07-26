@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhaolei.dreamer.mapper.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhaolei.dreamer.model.Order">
+        <id column="id" property="id" />
+        <result column="order_name" property="orderName" />
+        <result column="order_type" property="orderType" />
+        <result column="address" property="address" />
+        <result column="duration" property="duration" />
+        <result column="price" property="price" />
+        <result column="total_area" property="totalArea" />
+        <result column="images" property="images" />
+        <result column="order_desc" property="orderDesc" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, order_name, order_type, address, duration, price, total_area, images, order_desc, create_at, update_at
+    </sql>
+    
+    <!-- 通用查询 -->
+    <select id="getOrderList" parameterType="map" resultType="com.liuhaolei.dreamer.vo.OrderVO">
+    	SELECT
+    		id as orderId,
+			order_name AS orderName,
+			order_type AS type,
+			duration AS duration,
+			price AS price,
+			total_area AS totalArea,
+			create_at AS createAt,
+			address AS address,
+			left(images,32) as imageUrl
+		FROM
+			`t_order` where 
+			is_del = 0
+			<if test="keyWords != null and keyWords != '' ">
+				and order_name like CONCAT('%',#{keyWords},'%')  
+			</if>
+			
+			<if test="type != null and type != '' ">
+				and order_type = #{type}
+			</if>
+			order by update_at desc
+			<if test="limit != null and limit != '' ">
+				limit 0, #{limit}
+			</if>
+    </select>
+    
+    <!-- 查询所有类别 -->
+    <select id="getCategory" resultType="com.liuhaolei.dreamer.vo.CategoryVO">
+    	SELECT order_type as type FROM `t_order` where is_del = 0 GROUP BY order_type 
+    </select>
+
+</mapper>

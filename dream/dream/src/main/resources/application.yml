@@ -1,0 +1,77 @@
+server:
+  port: 7001
+  
+spring:
+  application:
+    name: dreamer
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.104.174.247:3306/dreamer?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: Hello!!!123
+    platform: msyql
+    
+    #数据库连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    
+  #rabbitMQ的配置信息    
+  rabbitmq:
+    host:  47.104.174.247
+    port: 5672
+    username: guest
+    password: guest
+  
+  #mail服务器配置
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: 15538068782@163.com
+    password: bit15538068782
+  
+  #redis配置
+  redis:
+    host: 47.104.174.247
+    port: 9011
+    timeout: 10000    #客户端超时时间单位是毫秒 默认是2000
+    maxIdle: 300      #最大空闲数  
+    maxActive: 600    
+
+ftp:
+  address: 47.104.174.247
+  port: 21
+  username: ftpuser
+  password: bit15538068782@
+  basepath: /home/ftpuser/images
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count, countSql
+ 
+    
+#jwt参数配置
+audience:
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  name: liuhaolei
+  expiresSecond: 1200
+  
+#WXPay支付参数
+wxpay:
+  wxPayCertPath: D:\apiclient_cert.p12
+  wxPayAppID: wxbd4e3ed4f6fdc955       #扫码支付AppId wxfad0870c6548729a
+  wxPayMchID: 1522860751               #扫码支付商户号 1512986911
+  wxPayKey: 792f6771a9cd11e893ce00163e026661
+  wxPayNotifyUrl: http://a81766ee.ngrok.io/order/getPayStatus.api
+    
+  
